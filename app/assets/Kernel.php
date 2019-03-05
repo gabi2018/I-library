@@ -1,4 +1,4 @@
-<?php  
+  <?php  
 	# Mapping url
 	class Kernel{
 		protected $activeController = 'Home';
