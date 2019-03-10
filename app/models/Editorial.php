@@ -25,5 +25,15 @@
 						return false;
 					}
 				}
-			}
-		?>
+
+
+
+		public function getEditorialAll(){
+			$this->db->query('SELECT * FROM  editorial');
+			$result=$this->$db->getRecords();
+
+
+
+		}		
+	}
+?>

@@ -15,28 +15,41 @@
  # almacenar editorial
 		public function store(){
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
-				if(isset($_POST['editorial-name']) && isset($_POST['editorial-address'])){
-				$param = [
-					'editorial-name' 	=> trim($_POST['editorial-name']),
-					'editorial-address' 	=> trim($_POST['editorial-address']),
-					
-				];
+				if(!empty($_POST['editorial-name']) && !empty($_POST['editorial-address'])){
+					$param = [
+						'editorial-name' 	=> trim($_POST['editorial-name']),
+						'editorial-address' 	=> trim($_POST['editorial-address']),
+						
+					];
 				
 					if($this->editorialModel->editorialRecord($param)){
-						redirect('editorial/create.php');
-						echo 'guardado con exito';
+					#redirect('editorial/create.php');		
+						echo 'guardado con exito';		
 					}	
 				}
-
-			
-				else{
-					redirect('editorial/create.php');
+			    else{
+					#redirect('app/views/editorial/create.php');
 					echo 'error';
 				}
-
 			}
 		
-		
-	}
+		}
+
+		public function show(){
+			if ($_POST['view']){
+				$this->view('editorial/show');
+				$editoriales=$this->editorialModel->getEditorialAll();
+				
+				$parama=[
+					'editorial' => $editoriales;
+
+				]
+				$this->view('editorial/show',$param);
+			}
+
+
+		}
+
+
 }
 ?>
