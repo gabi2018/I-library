@@ -32,7 +32,7 @@
 			$this->db->query('SELECT * FROM  editorial');
 			$result=$this->$db->getRecords();
 
-
+			return $result;
 
 		}		
 	}
