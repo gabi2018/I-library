@@ -10,7 +10,7 @@
 	define('APP_ROUTE', dirname(dirname(__FILE__)));
 
 	# URL route
-	define('URL_ROUTE', 'http://localhost/I-library/'); # Put the url route of your site
+	define('URL_ROUTE', 'http://localhost/i-library/'); # Put the url route of your site
 
 	# Site name
 	define('SITENAME', '_SITENAME_');  # Put the name of the site
