@@ -43,7 +43,7 @@
 				$parama=[
 					'editorial' => $editoriales;
 
-				]
+				];
 				$this->view('editorial/show',$param);
 			}
 
