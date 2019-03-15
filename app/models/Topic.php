@@ -11,27 +11,35 @@
 			$this->db = new DataBase;
 		}
 		
-		public function topicRecord($param){
+		public function getTopic($cdu){
+			$this->db->query('SELECT * FROM topic WHERE topic_cdu = topic_cdu');
+			$this->db->bind(':topic_cdu', $cdu);
 
-			$this->db->query('INSERT INTO topic(topic_name) VALUES(:topic_name)');
 
-			//Link values y pasamos por parametro a la base de datos
-			$this->db->bind('topic_name', $param['topic_name']);
+			$response = $this->db-> getRecord();
+			return $response;
+		}
+		
+		public function getTopics(){
+			$this->db-query('SELECT * FROM topic');
+			$response = $this->$db->getRecords();
+			return $response;
 
-			//ejecuta la base de dato, simpre  cuando ese correcto
+		}
+		public function addTopic($param){
+			$this->db->query('INSERT INTO Topic(topic_name)VALUES (:topic_name)');
+			$this->db->bind(':topic_name', $param['topic_name']);
 
 			if($this->db->execute()){
-				return true;
+			return true;
 			}
 			else{
 				return false;
-			}
-
+			}	
 		}
-		
-		public function getTopicAll(){
-			$this->db-query('SELECT * FROM topic');
-			$result=$this->$db->getRecords();
+
+		public function editTopic($param){
+			
 		}
 	}
 ?>

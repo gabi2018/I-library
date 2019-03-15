@@ -5,30 +5,33 @@
 	// conectar el modelo con los temas
 		public function __construct(){
 			$this->topicModel = $this->model('Topic');
-			session_start();
+			
 		}
 
-	//se llama a la vista del tema
-		public function viewTopic(){
-
-			$this->view('topic/create');	
+	//se traen lo temas y se muestra en la vista
+		public function index(){
+			$topics = $this->topicModel->getTopics();
+			$param = ['topics' => $topics
+			];
+			$this->view('topics/index', $param);	
 		}	
 
+		public function create(){
+			$this->view('topics/create');
+		}
 	// almacenando el tema
 	
 		public function store(){
-			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
-				if(!empty($_POST['topic_name'])){
-					$param = ['topic_name' => trim($_POST)['topic_name']];
-					if($this->topicModel->topicRecord($param)){
+			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['topic-register'])){
+				if(isset($_POST['topic-name'])){
+					$param = ['topic-name' => trim($_POST)['topic-name']];
 
-					// redirect ('topic/create.php');	
-						echo "save ok";
+					if($this->topicModel->addTopic($param)){
 
+						redirect ('topics/index');	
 					}
 					else{
-						//redirect ('app/views/topic/create.php');
-						echo "error";
+						die("ERROR");
 					}
 				}
 			}
