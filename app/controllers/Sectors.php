@@ -10,9 +10,7 @@
 
 		public function index(){
 			$sectors = $this->sectorModel->getSectors();
-			$param = [
-				'sectors' => $sectors
-			];
+			$param = ['sectors' => $sectors];
 			$this->view('sectors/index', $param);
 		}
 
