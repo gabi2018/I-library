@@ -7,12 +7,13 @@
 			session_start(); 
 		}
 
-#llamar vista de editorial 
-		public function viewEditorial(){
+#llamar vista de editorial S
+		public function create(){
 
-			$this->view('editorial/create');
+			$this->view('editorials/create');
 		}
  # almacenar editorial
+
 		public function store(){
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
 				if(!empty($_POST['editorial-name']) && !empty($_POST['editorial-address'])){
@@ -23,33 +24,66 @@
 					];
 				
 					if($this->editorialModel->editorialRecord($param)){
-					#redirect('editorial/create.php');		
+					redirect('editorials/index.php');		
 						echo 'guardado con exito';		
 					}	
 				}
 			    else{
-					#redirect('app/views/editorial/create.php');
+					
 					echo 'error';
 				}
 			}
 		
 		}
 
-		public function show(){
-			if ($_POST['view']){
-				$this->view('editorial/show');
-				$editoriales=$this->editorialModel->getEditorialAll();
+		public function index(){
 				
-				$parama=[
-					'editorial' => $editoriales;
-
+				$editorial=$this->editorialModel->getEditorials();
+				
+				$param=[
+					'editorial' => $editorial,
 				];
-				$this->view('editorial/show',$param);
-			}
-
-
+				$this->view('editorials/index',$param);
 		}
 
 
+		
+
+public function edit($id){
+			$editorial = $this->editorialModel->getEditorial($id);
+			$param = [
+				'editorial' => $editorial,
+			];
+			$this->view('editorials/edit', $param);
+		}
+
+
+
+
+		public function update(){
+			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editorial-update'])){
+				if (!empty($_POST['editorial-id'])&&!empty($_POST['editorial-name'])&&!empty($_POST['editorial-address'])) {
+					$param = [
+						'editorial-id'	  => trim($_POST['editorial-id']),
+						'editorial-name' => trim($_POST['editorial-name']),
+						'editorial-address' => trim($_POST['editorial-address']),
+
+					];
+
+					if($this->editorialModel->editEditorial($param)){
+						redirect('editorials/index');
+					}
+					else{
+						die("FATAL ERROR");
+					}
+
+				}
+
+				else{
+
+					echo 'eror puto no guardes vacio';
+				}
+			}
+		}
 }
 ?>
