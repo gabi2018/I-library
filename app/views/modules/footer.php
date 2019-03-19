@@ -3,6 +3,7 @@
 		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/bootstrap.bundle.min.js"></script>
 		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/isotope.pkgd.min.js"></script>
+		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/promise.js"></script>
 		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/script.js"></script>
 	</body>
 </html>
