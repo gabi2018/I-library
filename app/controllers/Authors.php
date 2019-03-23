@@ -18,7 +18,10 @@
 				if(!empty($_POST['author-name']) && !
 					empty($_POST['author-lastname'])){
 					$param = [
-						'author-name' => trim()]
+						'author-name' => trim ($_POST['author-name']),
+						'author-lastname' => trim ($_POST['author-lastname'])
+					];
+					
 				}
 			}
 		}
