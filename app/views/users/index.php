@@ -24,4 +24,4 @@
 	<?php endforeach; ?>
 </table>
 
-<a href="<?php echo URL_ROUTE ?>users/create">Agregar nuevo usuario</a>
+<a href="<?php echo URL_ROUTE ?>users/create">Agregar nuevo usuario</a> 

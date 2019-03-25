@@ -21,7 +21,32 @@
 
 		public static function authenticated(){
 			session_start();
-			return (isset($_SESSION['user']));
+			if (!isset($_SESSION['user'])){
+			    return false;
+			}
+			else{
+				return true;
+			}
+		}
+
+		# Delete possible injections 
+		public static function deleteSpecialChars($param, $type){
+			
+			switch ($type) {
+				case 'email':
+					$filter = FILTER_SANITIZE_EMAIL;
+					break;
+				case 'int':
+					$filter = FILTER_SANITIZE_NUMBER_INT;
+					break;
+				case 'float':
+					$filter = FILTER_SANITIZE_NUMBER_FLOAT;
+					break;
+				case 'char':
+					$filter = FILTER_SANITIZE_SPECIAL_CHARS;
+					break;
+			}
+			return filter_var(htmlspecialchars(trim($param)), $filter);
 		}
 	}
 
