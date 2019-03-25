@@ -1,7 +1,7 @@
 <?php 
 
 	class Sectors extends Controller{
-		 private $sectorModel;
+		private $sectorModel;
 
 		public function __construct(){
 			$this->sectorModel = $this->model('Sector');

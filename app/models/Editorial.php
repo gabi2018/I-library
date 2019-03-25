@@ -9,6 +9,7 @@
 		}
 
 		public function editorialRecord($param){
+			$db->deleteSpecialChars($param['name'], 'text');
 					$this->db->query('INSERT INTO editorial(editorial_name, editorial_fiscal_address)
 											 VALUES (:editorial_name, :editorial_address )');
 
@@ -24,7 +25,7 @@
 					else{
 						return false;
 					}
-				}
+		}
 
 
 
