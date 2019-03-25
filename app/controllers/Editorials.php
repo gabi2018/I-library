@@ -64,7 +64,7 @@ public function edit($id){
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editorial-update'])){
 				if (!empty($_POST['editorial-id'])&&!empty($_POST['editorial-name'])&&!empty($_POST['editorial-address'])) {
 					$param = [
-						'editorial-id' => trim($_POST['editorial-id']),
+						'editorial-id'	  => trim($_POST['editorial-id']),
 						'editorial-name' => trim($_POST['editorial-name']),
 						'editorial-address' => trim($_POST['editorial-address']),
 
