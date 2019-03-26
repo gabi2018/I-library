@@ -81,7 +81,7 @@ public function edit($id){
 
 				else{
 
-					echo 'eror puto no guardes vacio';
+					echo 'error puto no guardes vacio';
 				}
 			}
 		}
