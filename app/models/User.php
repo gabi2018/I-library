@@ -28,7 +28,7 @@
 
 		public function addUser($param){
 			$this->db->query('INSERT INTO user (user_name, user_lastname, user_address, user_phone, user_email, user_password, user_type_id)
-									 VALUES (:user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, :user_type)');
+							  VALUES (:user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, :user_type)');
 
 			# Link values
 			$this->db->bind(':user_name', $param['user-name']);
@@ -38,7 +38,6 @@
 			$this->db->bind(':user_email', $param['user-email']);
 			$this->db->bind(':user_password', $param['user-password']);
 			$this->db->bind(':user_type', $param['user-type']);
-
 			# Run
 			if($this->db->execute()){
 				return true;
@@ -48,10 +47,9 @@
 			}
 		}
 
-
 		public function userRecord($param){
 			$this->db->query('INSERT INTO user (user_nick, user_email, user_password)
-									 VALUES (:user_nick, :user_email, :user_password)');
+							  VALUES (:user_nick, :user_email, :user_password)');
 
 			# Link values
 			$this->db->bind(':user_nick', $param['user-nick']);
@@ -67,5 +65,4 @@
 			}
 		}
 	}
-
  ?>

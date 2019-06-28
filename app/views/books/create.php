@@ -6,16 +6,13 @@
     <input type="text" name="book-register" placeholder="numero de registro"><br>
     <input type="numero" name="book-year" placeholder="año publicacion"><br>
     <input type="number" name="book-num-pages" placeholder="numero de paginas"><br>
-     <input type="number" name="book-edition" placeholder="edicion"><br>
-      <input type="text" name="book-edition" placeholder="edicion"><br>
-
-
+    <input type="number" name="book-edition" placeholder="edicion"><br>
+    <input type="text" name="book-edition" placeholder="edicion"><br>
     <select name="book-single-copy"  >
          <option value="1" >si</option>
          <option value="2" >no</option>
-         </select><br>
-
- <select name="languaje"  >
+    </select><br>
+    <select name="languaje">
         <option value="" selected disabled>Seleccionar tipo de lenguaje</option>
         <?php 
             $languajes = $param['languajes']; 
@@ -23,10 +20,9 @@
                 echo '<option value="' . $languaje->laguaje_id .'">'. $languaje->languaje_desc .'</option> ';
             endforeach;
         ?>
-        
     </select><br>
 
- <select name="editorial"  >
+    <select name="editorial"  >
         <option value="" selected disabled>Seleccionar tipo de editorial</option>
         <?php 
             $editorials = $param['editorials']; 
@@ -34,7 +30,6 @@
                 echo '<option value="' . $editorial->editorial_id .'">'. $editorial->editorial_name .'</option> ';
             endforeach;
         ?>
-        
     </select><br>
 
     <select name="topic"  >
@@ -45,7 +40,6 @@
                 echo '<option value="' . $topic->topic_cdu .'">'. $topic->topic_name .'</option> ';
             endforeach;
         ?>
-        
     </select><br>
 	<button type="submit" name="book-register">Guardar</button>
 </form> 

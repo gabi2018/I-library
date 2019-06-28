@@ -1,5 +1,3 @@
-
-
 <table>
 	<tr>
 		<th>Nombre escuela</th>

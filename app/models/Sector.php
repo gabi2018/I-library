@@ -1,5 +1,4 @@
 <?php  
-
 	class Sector{
 		private $db;
 
@@ -24,10 +23,8 @@
 
 		public function addSector($param){
 			$this->db->query('INSERT INTO sector_unv (sector_desc) VALUES (:sector_name)');
-
 			# Link values
 			$this->db->bind(':sector_name', $param['sector-name']);
-
 			# Run
 			if($this->db->execute()){
 				return true;
@@ -35,7 +32,6 @@
 			else{
 				return false;
 			}
-
 		}
 
 		public function editSector($param){
@@ -52,7 +48,6 @@
 			else{
 				return false;
 			}
-
 		}
 	}
 ?>

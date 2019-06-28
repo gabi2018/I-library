@@ -1,9 +1,7 @@
 <?php 
-
 	class Users extends Controller{
 		private $userModel;
 		private $userTypeModel;
-
 
 		public function __construct(){
 			$this->userModel = $this->model('User');
@@ -12,17 +10,13 @@
 
 		public function index(){
 			$users = $this->userModel->getUsers();
-			$param = [
-				'users' => $users
-			];
+			$param = [ 'users' => $users ];
 			$this->view('users/index', $param);
 		}
 
 		public function create(){
 			$usertypes = $this->userTypeModel->getUserTypes();
-			$param = [
-				'usertypes' => $usertypes
-			];
+			$param 	   = [ 'usertypes' => $usertypes ];
 			$this->view('users/create', $param);
 		}
 
@@ -50,9 +44,7 @@
 			}
 		}
 
-		public function show(){
-
-		}
+		public function show(){ }
 
 		public function edit(){}
 

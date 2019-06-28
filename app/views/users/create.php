@@ -13,7 +13,6 @@
                 echo '<option value="' . $usertype->user_type_id .'">'. $usertype->user_type_desc .'</option> ';
             endforeach;
         ?>
-        
     </select><br>
 	<button type="submit" name="user-register">Guardar</button>
 </form> 

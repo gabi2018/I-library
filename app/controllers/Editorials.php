@@ -1,64 +1,52 @@
 <?php
-		class Editorials extends Controller{
-	private	$editorialModel;
-#conectar con el model  editorial
+	class Editorials extends Controller{
+		private	$editorialModel;
+		
+		# Conectar con el model  editorial
 		public function __construct(){
 			 $this->editorialModel = $this->model('Editorial');
 			session_start(); 
 		}
 
-#llamar vista de editorial S
+		#Llamar vista de editorial S
 		public function create(){
-
 			$this->view('editorials/create');
 		}
- # almacenar editorial
-
+ 
+		# Almacenar editorial
 		public function store(){
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
 				if(!empty($_POST['editorial-name']) && !empty($_POST['editorial-address'])){
 					$param = [
 						'editorial-name' 	=> trim($_POST['editorial-name']),
-						'editorial-address' 	=> trim($_POST['editorial-address']),
-						
+						'editorial-address' => trim($_POST['editorial-address']),			
 					];
 				
 					if($this->editorialModel->editorialRecord($param)){
-					redirect('editorials/index.php');		
+						redirect('editorials/index.php');		
 						echo 'guardado con exito';		
 					}	
 				}
 			    else{
-					
 					echo 'error';
 				}
 			}
-		
 		}
 
-		public function index(){
-				
-				$editorial=$this->editorialModel->getEditorials();
-				
-				$param=[
-					'editorial' => $editorial,
-				];
-				$this->view('editorials/index',$param);
+		public function index(){ 
+			$editorial = $this->editorialModel->getEditorials();
+
+			$param = [ 'editorial' => $editorial];
+			$this->view('editorials/index',$param);
 		}
 
-
-		
-
-public function edit($id){
+		public function edit($id){
 			$editorial = $this->editorialModel->getEditorial($id);
 			$param = [
 				'editorial' => $editorial,
 			];
 			$this->view('editorials/edit', $param);
 		}
-
-
-
 
 		public function update(){
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editorial-update'])){
@@ -67,7 +55,6 @@ public function edit($id){
 						'editorial-id'	  => trim($_POST['editorial-id']),
 						'editorial-name' => trim($_POST['editorial-name']),
 						'editorial-address' => trim($_POST['editorial-address']),
-
 					];
 
 					if($this->editorialModel->editEditorial($param)){
@@ -76,14 +63,11 @@ public function edit($id){
 					else{
 						die("FATAL ERROR");
 					}
-
 				}
-
 				else{
-
 					echo 'error puto no guardes vacio';
 				}
 			}
 		}
-}
+	}
 ?>

@@ -1,5 +1,4 @@
 <?php 
-
 	class UserTypes extends Controller{
 		private $userTypeModel;
 
