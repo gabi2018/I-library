@@ -37,9 +37,9 @@
        <td><?php echo $book->languaje_desc; ?></td>
         <td><?php echo $book->editorial_name; ?></td>
          <td><?php echo $book->topic_name; ?></td>
-		<td><a href="<?php echo URL_ROUTE ?>book/edit/<?php echo $book->book_isbn ?>">Edit</a></td>
+		<td><a href="<?php echo URL_ROUTE ?>books/edit/<?php echo $book->book_isbn ?>">Edit</a></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
 
-<a href="<?php echo URL_ROUTE ?>book/create">Agregar nuevo usuario</a>
+<a href="<?php echo URL_ROUTE ?>books/create">Agregar nuevo usuario</a>
