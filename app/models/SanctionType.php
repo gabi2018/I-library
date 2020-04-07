@@ -1,5 +1,4 @@
 <?php  
-
 	class SanctionType{
 		private $db;
 
@@ -17,7 +16,6 @@
 
 		public function getSanctionTypes(){
 			$this->db->query('SELECT * FROM  sanction_type');
-
 			$response = $this->db->getRecords();
 			return $response;
 		}
@@ -35,11 +33,12 @@
 			else{
 				return false;
 			}
-
 		}
 
 		public function editSanctionType($param){
-			$this->db->query('UPDATE sanction_type SET sanction_type_measure = :sanction_type_measure WHERE sanction_type_id = :sanction_type_id');
+			$this->db->query('UPDATE sanction_type 
+							  SET sanction_type_measure = :sanction_type_measure 
+							  WHERE sanction_type_id = :sanction_type_id');
 
 			# Link values
 			$this->db->bind(':sanction_type_id', $param['sanctiontype-id']);
@@ -52,7 +51,6 @@
 			else{
 				return false;
 			}
-
 		}
 	}
 ?>

@@ -1,5 +1,4 @@
 <?php 
-
 	class SanctionTypes extends Controller{
 		private $sanctionTypeModel;
 
@@ -67,5 +66,4 @@
 
 		public function delete(){}
 	}
-
 ?>

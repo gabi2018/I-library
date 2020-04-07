@@ -1,7 +1,6 @@
 <?php 
-	
 	class Controller{
-
+		
 		# Load model
 		public function model($model){
 			require_once '../app/models/' . $model . '.php';
@@ -30,8 +29,7 @@
 		}
 
 		# Delete possible injections 
-		public static function deleteSpecialChars($param, $type){
-			
+		public static function deleteSpecialChars($param, $type){		
 			switch ($type) {
 				case 'email':
 					$filter = FILTER_SANITIZE_EMAIL;
@@ -49,5 +47,4 @@
 			return filter_var(htmlspecialchars(trim($param)), $filter);
 		}
 	}
-
 ?>

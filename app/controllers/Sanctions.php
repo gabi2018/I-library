@@ -1,7 +1,5 @@
 <?php 
-
 	class Sanctions extends Controller{
-		 
 
 		public function __construct(){
 			 
@@ -13,9 +11,7 @@
 
 		public function store(){}
 
-		public function show(){
-
-		}
+		public function show(){}
 
 		public function edit(){}
 

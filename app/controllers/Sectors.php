@@ -1,5 +1,4 @@
 <?php 
-
 	class Sectors extends Controller{
 		private $sectorModel;
 
@@ -54,7 +53,7 @@
 						'sector-id'	  => trim($_POST['sector-id']),
 						'sector-name' => trim($_POST['sector-name'])
 					];
-
+					
 					if($this->sectorModel->editSector($param)){
 						redirect('sectors/index');
 					}

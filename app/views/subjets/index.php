@@ -2,7 +2,6 @@
 	<tr>
 		<th>codigo</th>
         <th>nombre</th>
-     
 	</tr>
 	<?php 
 		$subjets = $param['subjet'];

@@ -1,5 +1,4 @@
 <?php 
-
 	class Subjets extends Controller{
 		 
 		private $subjetModel;
@@ -37,50 +36,41 @@
 				}
 
 			    else{
-					
 					echo 'error';
 				}
 			}
-
 		}
 
-		public function show(){
-
-		}
+		public function show(){}
 
 		public function update(){
+			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['subjet-update'])){
+				if(!empty($_POST['subjet-code'])&&!empty($_POST['subjet-name'])){
+					$param = [
+						'subjet-code' => trim($_POST['subjet-code']),
+						'subjet-name' => trim($_POST['subjet-name']),
+					];
 
-				if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['subjet-update'])){
-					if(!empty($_POST['subjet-code'])&&!empty($_POST['subjet-name'])){
-						$param = [
-							'subjet-code' => trim($_POST['subjet-code']),
-							'subjet-name' => trim($_POST['subjet-name']),
-						];
-
-							if ($this->subjetModel->editSubjet($param)) {
-								redirect('subjets/index');
-							}
-							else{
-								die("FATAL ERROR");
-							}
+					if ($this->subjetModel->editSubjet($param)) {
+						redirect('subjets/index');
 					}
 					else{
-
-					echo 'error puto no guardes vacio';
-					}		
+						die("FATAL ERROR");
+					}
 				}
+				else{
+					echo 'error puto no guardes vacio';
+				}		
+			}
 		}
 
-		
 		public function edit($id){
 			$subjet = $this->subjetModel->getSubjet($id); 
-			$param = ['subjet' => $subjet,];
+			$param  = ['subjet' => $subjet,];
 			$this->view('subjets/edit', $param);
 		}
 
-		public function delete(){
-
-		}
+		public function delete(){ }
 	}	
 	
 ?>

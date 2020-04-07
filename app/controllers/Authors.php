@@ -1,10 +1,9 @@
 <?php
-
 	class Authors extends Controller{
 		private $authorModel;
 
 		public function __construct(){
-			//se crea el objeto y se lo asigna al modelo
+			# Se crea el objeto y se lo asigna al modelo
 			$this->authorModel = $this->model('Author');
 			session_start();
 		}
@@ -43,11 +42,8 @@
 		
 		public function edit($id){
 			$author = $this->authorModel->getAuthor($id);
-			$param  = [
-				'author' => $author
-			];
+			$param  = ['author' => $author];
 			$this->view('authors/edit', $param);
-
 		}
 
 		public function update(){

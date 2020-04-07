@@ -1,5 +1,4 @@
 <?php  
-
 	class Auth extends Controller{
 		private $userModel;
 

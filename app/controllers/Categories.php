@@ -1,19 +1,19 @@
 <?php
-	
 	class Categories extends Controller{
 		private $categoryModel;	
 
-		//con el metodo contructor, crea la variable category y se le asigna el modelo de la categoria por parametro
-
+		# Con el metodo contructor, crea la variable category y se le asigna el modelo de la categoria por parametro
 		public function __construct(){
 			$this->categoryModel = $this->model('Category');
 
 		}
+
 		public function index(){
 			$categories = $this->categoryModel->getCategories();
 			$param = ['categories' => $categories];
 			$this->view('categories/index',$param);
-		} 
+		}
+
 		public function create(){
 			$this->view('categories/create');
 		}
@@ -32,12 +32,13 @@
 				}
 			}
 		}
+
 		public function edit($id){
 			$category = $this->categoryModel->getCategory($id); 
 			$param = ['category' => $category];
 			$this->view('categories/edit', $param);
-
 		}
+
 		public function update(){
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['category-update'])){
 				if(isset($_POST['category-name'])){
@@ -56,7 +57,5 @@
 		public function delete(){
 			
 		}
-
 	}
-
 ?>

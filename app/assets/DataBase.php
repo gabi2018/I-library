@@ -1,5 +1,4 @@
 <?php 
-	
 	class DataBase{
 		private $host 	= DB_HOST;
 		private $user 	= DB_USER;
@@ -79,5 +78,4 @@
 			return $this->stmt->rowCount();
 		}
 	}
-	
 ?>
