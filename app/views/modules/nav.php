@@ -8,8 +8,14 @@
 <section class="main">
   <aside class="keep">
     <ul>
+    <li>
+        <a href="<?php echo URL_ROUTE ?>home">
+          <span><i class="material-icons">home</i></span>
+          Inicio 
+        </a>
+      </li> 
       <li>
-        <a href="/">
+        <a href="<?php echo URL_ROUTE ?>loans">
           <span><i class="material-icons">assignment_return</i></span>
           Prestamos
           <span class="notif red">1</span>
@@ -17,15 +23,15 @@
       </li>  
 
       <li>
-        <a href="/">
-          <span><i class="material-icons">collections_bookmark</i></span>
+        <a href="<?php echo URL_ROUTE ?>books">
+          <span><i class="material-icons">book</i></span>
           Libros
           <span class="notif yellow">2</span>
         </a>
       </li>
 
       <li>
-        <a href="/">
+        <a href="<?php echo URL_ROUTE ?>partners">
           <span><i class="material-icons">group</i></span>
           Socios
           <span class="notif green">6</span>
@@ -39,7 +45,7 @@
         </a>
       </li>
       
-      <li>
+      <li id="logout-btn">
         <a href="<?php echo URL_ROUTE ?>auth/logout">
           <span><i class="material-icons">exit_to_app</i></span>
           Salir

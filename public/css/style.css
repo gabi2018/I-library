@@ -21,6 +21,7 @@
     position: fixed;
     top: 50px; 
     padding-top: 20px;
+    z-index: 901;
   }
   aside {
     width: 60px;
@@ -32,7 +33,7 @@
     height: 100%;
     box-shadow: 0px 3px 5px #6d6d6d;
     overflow: hidden;
-    z-index: 99;
+    z-index: 901;
   }
   aside ul {
     list-style: none;
@@ -42,11 +43,11 @@
     border-bottom: 1px solid #ccc;
     padding: 10px 20px;
     position: relative;
-  }
+  } 
   aside ul li a {
     font-size: 14px;
-    color: #4a4a4a;
-    text-decoration: none;
+    color: #2b2b2b;
+    text-decoration: none !important;
     text-transform:uppercase;   
     white-space: nowrap;
     display: inline-block;
@@ -54,7 +55,7 @@
   aside ul li a span {
     display: inline-block;
     vertical-align: middle;
-    color: #000000;
+    color: #424242;
     width: 38px;
   }
   aside ul li:hover {
@@ -138,6 +139,9 @@
       color: #fff;
       box-shadow: 0px 0px 10px transparent;
       top: 8px;
+  }
+  .tiles{
+    margin-top: 10% !important;
   }
   /*  */
   @-webkit-keyframes blinker {

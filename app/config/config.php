@@ -13,6 +13,6 @@
 	define('URL_ROUTE', 'http://localhost/i-library/'); # Put the url route of your site
 
 	# Site name
-	define('SITENAME', '_SITENAME_');  # Put the name of the site
+	define('SITENAME', 'I-Library');  # Put the name of the site
 	
 ?>
