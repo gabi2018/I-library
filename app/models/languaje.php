@@ -20,7 +20,7 @@
 		}
 
 		public function languajeRecord($param){
-			$this->db->deleteSpecialChars($param['languaje_desc'], 'text');
+		//	$this->db->deleteSpecialChars($param['languaje_desc'], 'text');
 			$this->db->query('INSERT INTO languaje(languaje_desc)
 								VALUES (:languaje_desc )');
 			# Link values
