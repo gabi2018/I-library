@@ -2,37 +2,42 @@
 class Subtopic extends Controller{
 		 
          private $subTopicModel;
+         private $categoryModel;
          public function __construct(){
  
             
               
               $subTopicModel = $this->model('Subtopic');
-               session_start(); 
+              $categoryModel = $this->model('category');
          }
  
          public function index(){
-             $subjet=$this->subjetModel->getSubjets();
+             $subTopic=$this->subTopicModel->getSubtopic();
                  
                  $param=[
-                     'subjet' => $subjet,
+                     'subTopic' => $subTopic,
                  ];
-                 $this->view('subjets/index',$param);
+                 $this->view('subtopics/index',$param);
          }
  
          public function create(){
-             $this->view('subjets/create');
+             $category=$this->categoryModel->getCategories();
+             $param 	   = [ 'category' => $category ];
+             $this->view('subtopics/create',$param);
+             
          }
  
          public function store(){
-             if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['subjet-register'])){
-                 if(!empty($_POST['subjet-code'])&& !empty($_POST['subjet-name'])){
+             if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['subtopic-register'])){
+                 if(!empty($_POST['category-name'])&& !empty($_POST['subtopic-name'])){
                      $param = [
-                         'subjet-code' 	=> trim($_POST['subjet-code']),
-                         'subjet-name' 	=> trim($_POST['subjet-name']),
-                     ];
+                        'subtopic-name-' => trim($_POST['subtopic-name']),
+                        'category-name' => trim($_POST['category-name']),
+                    ];
+                     
                  
-                     if($this->subjetModel->subjetRecord($param)){
-                     redirect('subjets/index.php');		
+                     if($this->subTopicModel->addSubtopic($param)){
+                     redirect('subtopics/index.php');		
                          echo 'guardado con exito';		
                      }	
                  }
