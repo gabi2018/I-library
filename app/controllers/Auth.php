@@ -15,25 +15,15 @@
 					$user  = $this->userModel->getByEmail($email);
 					
 					if(!empty($user) && password_verify($pass, $user->user_password)){
-						$_SESSION['user'] = $user->user_nick;
-						
-						switch ($user->role_id){
-							case 1:
-								$_SESSION['role'] = 'admin';
-								redirect('home');
-								break;
-							case 2:
-								$_SESSION['role'] = 'normal';
-								redirect('home');
-								break;
-						}
-					}
-					else{
-						redirect('home');
+						$_SESSION['user'] = $user->user_email;
+						redirect('home');	
+					} 
+					else{ 
+						redirect('login');
 					}
 				}
 				else{
-					redirect('home');
+					redirect('login');
 				}
 			}			
 		}

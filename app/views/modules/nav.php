@@ -1,22 +1,64 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<?php if (Controller::authenticated()) : ?>
+  
+<header>
+  <span class="menu"><i class="material-icons">menu</i></span>
   <a class="navbar-brand" href="<?php echo URL_ROUTE ?>home">Logo</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <?php if (!Controller::authenticated()) : ?>
-          <a class="nav-link" data-toggle="modal" data-target=".login-modal" href="javascript:void(0);">Login</a>
-        <?php else :?>
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?php echo $_SESSION['user'] ?></a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" href="<?php echo URL_ROUTE ?>auth/logout">Logout</a>
-        <?php endif; ?>
+</header>
+
+<section class="main">
+  <aside class="keep">
+    <ul>
+    <li>
+        <a href="<?php echo URL_ROUTE ?>home">
+          <span><i class="material-icons">home</i></span>
+          Inicio 
+        </a>
+      </li> 
+      <li>
+        <a href="<?php echo URL_ROUTE ?>loans">
+          <span><i class="material-icons">assignment_return</i></span>
+          Prestamos
+          <span class="notif red">1</span>
+        </a>
+      </li>  
+
+      <li>
+        <a href="<?php echo URL_ROUTE ?>books">
+          <span><i class="material-icons">book</i></span>
+          Libros
+          <span class="notif yellow">2</span>
+        </a>
       </li>
+
+      <li>
+        <a href="<?php echo URL_ROUTE ?>partners">
+          <span><i class="material-icons">group</i></span>
+          Socios
+          <span class="notif green">6</span>
+        </a>
+      </li>   
+
+      <li>
+        <a href="/">
+          <span><i class="material-icons">local_offer</i></span>
+          Option 4
+        </a>
+      </li>
+      
+      <li id="logout-btn">
+        <a href="<?php echo URL_ROUTE ?>auth/logout">
+          <span><i class="material-icons">exit_to_app</i></span>
+          Salir
+        </a>
+      </li>   
     </ul>
+<<<<<<< HEAD
   </div>
 </nav>
 <?php require_once APP_ROUTE . '/views/modules/login.php'; ?>
 <?php require_once APP_ROUTE . '/views/modules/register.php'; ?>   
+=======
+  </aside> 
+</section>
+<?php endif; ?>
+>>>>>>> master

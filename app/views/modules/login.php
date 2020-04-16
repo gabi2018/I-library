@@ -1,26 +1,30 @@
-<div class="modal fade login-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-sm">
-    <div class="modal-content pt-2 pb-2">
-      <form method="post" action="<?php echo URL_ROUTE ?>auth/login" target="_top" class="px-4 py-3">
-        <div class="form-group">
-          <label for="user-email">Email address</label>
-          <input type="email" class="form-control" id="user-email" name="user-email" placeholder="email@example.com">
+<?php require_once APP_ROUTE . '/views/modules/header.php';?>
+<div class="row justify-content-around mt-5">
+    <div class="col-4 mt-5"> 
+        <div class="card mt-3">
+            <img src="<?php echo URL_ROUTE ?>media/images/loginheader.jpg" class="card-img-top">
+            <div class="card-body">
+                <form action="<?php echo URL_ROUTE ?>auth/login" method="post"> 
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text material-icons">person</div>
+                        </div>
+                        <input type="email" class="form-control" id="username" name="user-email" placeholder="example@email.com">
+                    </div> 
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text material-icons">lock</div>
+                        </div>
+                        <input type="password" class="form-control" id="password" name="user-password" placeholder="********">
+                    </div> 
+                    <button type="submit" class="btn btn-primary btn-block" name="login">Iniciar Sesión</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                 <a class="dropdown-item text-center" href="#">Forgot password?</a>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="user-password">Password</label>
-          <input type="password" class="form-control" id="user-password" name="user-password" placeholder="Password">
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="dropdownCheck">
-            <label class="form-check-label" for="dropdownCheck">Remember me</label>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary" name="login">Sign in</button>
-      </form>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" data-dismiss="modal" data-toggle="modal" data-target=".register-modal" href="javascript:void(0);">New around here? Sign up</a>
-      <a class="dropdown-item" href="#">Forgot password?</a>
-    </div>
-  </div>
+    </div> 
 </div>
+<?php require_once APP_ROUTE . '/views/modules/footer.php';?>
+
