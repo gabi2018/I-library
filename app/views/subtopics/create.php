@@ -1,4 +1,4 @@
-<form method="post" action="<?php echo URL_ROUTE ?>subtopic/store" target="_top">
+<form method="post" action="<?php echo URL_ROUTE ?>subtopics/store" target="_top">
 	<input type="text" name="subtopic-name" placeholder="Nombre del subtema"><br>
     
     <select name="category-name"  >

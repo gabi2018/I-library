@@ -10,7 +10,7 @@
 	<tr>
 		<td><?php echo $subtopic->subtopic_name; ?></td>
         <td><?php echo $subtopic->category_name; ?></td>
-		<td><a href="<?php echo URL_ROUTE ?>subtopics/edit/<?php echo $topic->topic_id ?>">Edit</a></td>
+		<td><a href="<?php echo URL_ROUTE ?>subtopics/edit/<?php echo $subtopics->subtopic_id ?>">Edit</a></td>
 	</tr>
 	<?php endforeach; ?>
 </table>

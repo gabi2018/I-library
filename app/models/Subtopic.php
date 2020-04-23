@@ -1,5 +1,5 @@
 <?
-class Subtopic{
+class Subtopics{
 		private $db;
 		
 		public function __construct(){
@@ -8,7 +8,7 @@ class Subtopic{
 		
 		public function getSubtopics(){
 			$this->db->query('SELECT s.subtopic_name,c.category_name
-							  FROM subtopic s LEFT JOIN category c ON c.category_id = s.category_id
+							  FROM subtopic s JOIN category c ON c.category_id = s.category_id
 							   ORDER BY s.subtopic_name DESC  ');
 
 			$response = $this->db->getRecords();

@@ -14,7 +14,8 @@
 		}
 		
 		public function getTopics(){
-			$this->db-query('SELECT * FROM topic');
+			$this->db->query('SELECT * FROM topic');
+
 			$response = $this->db->getRecords();
 			return $response;
 		}
@@ -77,7 +78,14 @@
 				$this->db->bind(':topic_cdu',$cdu);
 		        $this->db->bind(':topic_name', $value);
 				if($this->db->execute()){
-					return true;
+					$contador=1;
+					if($contador>1){
+					return false;}
+					else{
+						$contador++;
+						return true;
+
+					}
 				}
 			}		
 		}

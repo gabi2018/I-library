@@ -3,11 +3,13 @@ class Subtopics extends Controller{
 		 
          private $subTopicModel;
          private $categoryModel;
+
          public function __construct(){
  
             
-              $subTopicModel = $this->model('Subtopic');
-              $categoryModel = $this->model('Category');
+           $this->subTopicModel = $this->model('Subtopic');
+            $this->categoryModel = $this->model('Category');
+            
          }
  
          public function index(){
@@ -16,6 +18,7 @@ class Subtopics extends Controller{
                  $param=[
                      'subtopics' => $subTopic,
                  ];
+                 
                  $this->view('subtopics/index',$param);
          }
  
