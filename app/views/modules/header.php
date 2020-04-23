@@ -14,4 +14,12 @@
 	</head>
 	<body style="background-color: #f2f7ff;">
 		<?php require_once APP_ROUTE . '/views/modules/nav.php'; ?>
-		<div class="container">
+		
+		<div class="container-fluid">
+			<div class="row" bgcolor="#E2EEF8">
+				<div class="col-2">
+					<?php require_once APP_ROUTE . '/views/modules/nav-lateral.php'; ?>
+				</div>
+				
+		
+		
