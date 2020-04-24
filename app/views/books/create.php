@@ -32,12 +32,33 @@
         ?>
     </select><br>
 
+            
     <select name="topic"  >
         <option value="" selected disabled>Seleccionar tipo de tema</option>
         <?php 
-            $topics = $param['topic']; 
+            $topics = $param['topics']; 
             foreach ($topics as $topic)  :
                 echo '<option value="' . $topic->topic_cdu .'">'. $topic->topic_name .'</option> ';
+            endforeach;
+        ?>
+    </select><br>
+
+    <select name="sub-topic"  >
+        <option value="" selected disabled>Seleccionar tipo de tema</option>
+        <?php 
+            $subtopics = $param['subtopics']; 
+            foreach ($subtopics as $subtopic)  :
+
+                echo '<option value="' . $subtopic->subtopic_id .'">'. $subtopic->topic_name .'</option> ';
+            endforeach;
+        ?>
+    </select><br>
+    <select name="category"  >
+        <option value="" selected disabled>Seleccionar tipo de tema</option>
+        <?php 
+            $categories = $param['category']; 
+            foreach ($categories as $category)  :
+                echo '<option value="' . $category->$category_id .'">'. $category->$category_name .' '.$category->$category_cod.'</option> ';
             endforeach;
         ?>
     </select><br>
