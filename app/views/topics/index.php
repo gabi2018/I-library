@@ -14,4 +14,4 @@
 	<?php endforeach; ?>
 </table>
 
-<a href="<?php echo URL_ROUTE ?>topics/create">Agregar nuevo Tema</a>
+<a href="<?php echo URL_ROUTE ?>topics/create">Agregar Temas</a>
