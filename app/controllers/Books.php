@@ -1,6 +1,7 @@
 <?php  
 	class Books extends Controller{
 		private $booksModel;
+		private $authorModel;
 		private $editorialsModel;
 		private $languajesModel;
 		private $topicModel;
@@ -9,7 +10,8 @@
 			$this->$booksModel = $this->model('book');
 			$this->$editorialsModel = $this->model('editorial');	 	
 			$this->$languajesModel = $this->model('languaje');
-			$this->$topicModel = $this->model('topic');		 
+			$this->$topicModel = $this->model('topic');	
+
 		}
  	}
  ?>

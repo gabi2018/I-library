@@ -24,7 +24,7 @@
 	?>
 	<tr>
 		<td><?php echo $book->book_isbn; ?></td>
-<<<<<<< HEAD
+
        <td><?php echo $book->book_title; ?></td>
        <td><?php echo $book->book_desc; ?></td>
        <td><?php echo $book->book_vol; ?></td>
