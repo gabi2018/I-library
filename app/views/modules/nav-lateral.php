@@ -29,7 +29,7 @@
         <span class="notif yellow">2</span>
       </a>
       <ul>
-        <li><a href="<?php echo URL_ROUTE ?>books">Agregar Libro</a></li>
+        <li><a href="<?php echo URL_ROUTE ?>books\create">Agregar Libro</a></li>
         <li><a href="<?php echo URL_ROUTE ?>books">Dar de Baja</a></li>
         <li><a href="<?php echo URL_ROUTE ?>books">Editar datos</a></li>
       </ul>

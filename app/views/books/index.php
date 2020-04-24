@@ -1,3 +1,7 @@
+
+
+
+<!--
 <table>
 	<tr>
 		<th>isbn</th>
@@ -41,4 +45,4 @@
 	<?php endforeach; ?>
 </table>
 
-<a href="<?php echo URL_ROUTE ?>books/create">Agregar nuevo usuario</a>
+<a href="<?php echo URL_ROUTE ?>books/create">Agregar nuevo usuario</a>-->

@@ -7,10 +7,10 @@
 		private $topicModel;
 
 		public function __construct(){
-			$this->$booksModel = $this->model('book');
+			/*$this->$booksModel = $this->model('book');
 			$this->$editorialsModel = $this->model('editorial');	 	
 			$this->$languajesModel = $this->model('languaje');
-			$this->$topicModel = $this->model('topic');	
+			$this->$topicModel = $this->model('topic');	*/
 
 		}
 		public function index(){

@@ -54,11 +54,35 @@ header .material-icons{
   position: fixed;
   width: 200px;
   z-index: 999;
-
 }
+
 .lateral-menu a {
   text-decoration: none;
 }
+
 .lateral-menu li{
   list-style: none;
+}
+
+.btn-author span.material-icons{
+  right: 5px;
+  position: relative; 
+  top: 5px; 
+} 
+
+#cover-preview{
+	background-image: url("../media/images/system/default-cover-book.png");
+	background-size: cover;
+	border: 1px black solid;
+	height: 200px;
+	width: 150px;
+	
+}
+
+#user-pic{
+	background-image: url("../images/default-user.png");
+	background-size: cover;
+	border: 1px black solid;
+	height: 150px;
+	width: 150px;
 }
