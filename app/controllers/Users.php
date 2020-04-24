@@ -46,7 +46,9 @@
 
 		public function show(){ }
 
-		public function edit(){}
+		public function edit(){
+			$this->view('users/edit');
+		}
 
 		public function update(){}
 

@@ -13,5 +13,24 @@
 			$this->$topicModel = $this->model('topic');	
 
 		}
+		public function index(){
+			$this->view('books/index');
+		}
+
+		public function create(){
+			$this->view('books/create');
+		}
+
+		public function store(){}
+
+		public function show(){}
+
+		public function edit(){
+			$this->view('books/edit');
+		}
+
+		public function update(){}
+
+		public function delete(){}
  	}
  ?>
