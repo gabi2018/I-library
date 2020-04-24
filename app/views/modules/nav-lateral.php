@@ -15,9 +15,9 @@
         <span class="notif red">1</span>
       </a>
       <ul>
-        <li>Realizar prestamo</li>
-        <li>Prestamos activos</li>
-        <li>Prestamos vencidos</li>
+        <li><a href="<?php echo URL_ROUTE ?>loans\create">Realizar prestamo</li>
+        <li><a href="<?php echo URL_ROUTE ?>loans">Prestamos activos</li>
+        <li><a href="<?php echo URL_ROUTE ?>loans">Prestamos vencidos</li>
       </ul>
       
     </li>  
@@ -29,22 +29,22 @@
         <span class="notif yellow">2</span>
       </a>
       <ul>
-        <li>Agregar Libro</li>
-        <li>Dar de Baja</li>
-        <li>Editar datos</li>
+        <li><a href="<?php echo URL_ROUTE ?>books">Agregar Libro</a></li>
+        <li><a href="<?php echo URL_ROUTE ?>books">Dar de Baja</a></li>
+        <li><a href="<?php echo URL_ROUTE ?>books">Editar datos</a></li>
       </ul>
     </li>
 
     <li>
-      <a href="<?php echo URL_ROUTE ?>partners">
+      <a href="<?php echo URL_ROUTE ?>users">
         <span><i class="material-icons">group</i></span>
         Socios
         <span class="notif green">6</span>
       </a>
       <ul>
-        <li>Importar Socios</li>
-        <li>Agregar socio</li>
-        <li>Deshabilitar socio</li>
+        <li><a href="<?php echo URL_ROUTE ?>users">Importar Socios</a></li>
+        <li><a href="<?php echo URL_ROUTE ?>users\create">Agregar socio</a></li>
+        <li><a href="<?php echo URL_ROUTE ?>users">Deshabilitar socio</a></li>
       </ul>
     </li>   
 
