@@ -8,6 +8,9 @@ header .material-icons{
   color: #495057;
   cursor: default;
 }
+.btn-circle{
+  border-radius: 100% 100% !important;
+}
 
 .messages p{
   font-family: inherit;

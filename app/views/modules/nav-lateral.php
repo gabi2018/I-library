@@ -1,3 +1,4 @@
+<?php if (Controller::authenticated()) : ?>
 <aside class="lateral-menu">
   <span class="menu"><i class="material-icons">menu</i></span>
   <ul>
@@ -57,3 +58,4 @@
   
   </ul>
 </aside> 
+<?php endif; ?>
