@@ -1,3 +1,4 @@
+				</div>	
 			</div>	
 		</div>
 		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/jquery-3.3.1.min.js"></script>

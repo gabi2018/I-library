@@ -26,13 +26,10 @@
     <li>
       <a href="<?php echo URL_ROUTE ?>books">
         <span><i class="material-icons">book</i></span>
-        Libros
-        <span class="notif yellow">2</span>
+        Libros 
       </a>
       <ul>
-        <li><a href="<?php echo URL_ROUTE ?>books\create">Agregar Libro</a></li>
-        <li><a href="<?php echo URL_ROUTE ?>books">Dar de Baja</a></li>
-        <li><a href="<?php echo URL_ROUTE ?>books">Editar datos</a></li>
+        <li><a href="<?php echo URL_ROUTE ?>books\create"><span class="material-icons">add</span>Agregar Libro</a></li> 
       </ul>
     </li>
 

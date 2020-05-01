@@ -48,6 +48,13 @@ header .material-icons{
   margin-bottom: 0 !important;
 }
 
+.tile-br{
+  background-color: #3c7d26;
+}
+.tile-bn{
+  background-color: #DF7E2B;
+}
+
 .lateral-menu{
   background-color:  #222325;
   color: aliceblue;
@@ -79,11 +86,10 @@ header .material-icons{
 	border: 1px black solid;
 	height: 200px;
 	width: 150px;
-	
 }
 
 #user-pic{
-	background-image: url("../images/default-user.png");
+	background-image: url("../media/images/system/default-user.png");
 	background-size: cover;
 	border: 1px black solid;
 	height: 150px;
