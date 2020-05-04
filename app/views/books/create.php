@@ -159,11 +159,11 @@
                         </select>
                     </div>
                 </div>
-<<<<<<< HEAD
+
                 <div class="form-group">
                         <label for="code-book">Codigo topolografico</label>
                         <input type="text" name="book-code" class="form-control"   id="code-book" required disabled placeholder="Generacion automatica"> 
-=======
+
                 <div class="row"> 
                     <div class="form-group col-6">
                         <label for="category-book">Categoria</label>
@@ -176,7 +176,7 @@
                         <label for="edition-book">Edición</label>
                         <input type="text" name="book-edition" id="edition-book" class="form-control" placeholder="Ingresar número de edición"> 
                     </div>  
->>>>>>> 89d1d3d70f5a9916aaab35cd854861fa21a9f0eb
+
                 </div>
                 <div class="row">
                     <div class="form-group col-6">
