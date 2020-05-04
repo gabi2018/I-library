@@ -23,7 +23,6 @@
                             <label for="isbn-book">ISBN</label>
                             <input type="text" name="book-isbn" class="form-control" id="isbn-book" required> 
                         </div> 
-                        <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
                             <input type="number" name="book-pages" class="form-control" id="pages-book" required> 
                         </div> 
@@ -31,7 +30,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label class="justify-content-end" id="cover-preview" for="cover-img"></label>
-                            <input name="cover-img" type="file" class="form-control-file" id="cover-img">
+                            <input name="cover-img" type="file" class="form-control-file" id="cover-img" enctype="multipart/form-data">
                         </div>
                     </div>
                 </div> 
@@ -61,7 +60,7 @@
                     </div>
                     <div class="col-6 form-group">
                         <label for="single-book">Copia unica</label>
-                        <select name="single-book" class="form-control" id="single-book">
+                        <select name="book-single" class="form-control" id="single-book">
                             <option value="1" >Si</option>
                             <option value="2" >No</option>
                         </select>
@@ -122,7 +121,7 @@
             <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
                 <div class="form-group">
                     <label for="editorial-book">Editorial</label>
-                    <select name="editorial-book" class="form-control" id="editorial-book">
+                    <select name="book-editorial" class="form-control" id="editorial-book">
                         <option value="1" >editrial_1</option> 
                     </select>
                 </div>
@@ -151,7 +150,7 @@
                 </div>
                 <div class="form-group">
                         <label for="code-book">Codigo topolografico</label>
-                        <input type="text" name="book-code" class="form-control" id="code-book" required disabled placeholder="Generacion automatica"> 
+                        <input type="text" name="book-code" class="form-control"   id="code-book" required disabled placeholder="Generacion automatica"> 
                 </div>
             </div>
  

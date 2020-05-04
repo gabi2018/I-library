@@ -17,23 +17,6 @@ class Subtopics{
 
 		
 
-		public function addSubtopic($param){
-            $subtopicName= /* $this->db->deleteSpecialChars(*/$param['subtopic-name'];//,'char');
-			$this->db->query('INSERT INTO Subtopic (subtopic_name, category_id)
-							  VALUES (:subtopic_name,  :category_id)');
-
-			# Link values
-			$this->db->bind(':subtopic_name', $subtopicName);
-			
-			$this->db->bind(':category_id', $param['category-name']);
-			# Run
-			if($this->db->execute()){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
 
 	/*	public function userRecord($param){
 			$this->db->query('INSERT INTO user (user_nick, user_email, user_password)
