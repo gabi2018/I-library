@@ -119,21 +119,16 @@
                 </div>  	
             </div>
             <!-- Datos de Edición -->
-            <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
+            
+
+                <div class="row">
+                <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
                 <div class="form-group">
                     <label for="editorial-book">Editorial</label>
                     <select name="book-editorial" class="form-control" id="editorial-book">
                         <option value="1" >editorial_1</option> 
                     </select>
                 </div>
-
-                <div class="row">
-                    <div class="form-group col-11">
-                        <label for="editorial-book">Editorial</label>
-                        <select name="editorial-book" class="form-control" id="editorial-book">
-                            <option disabled selected>Selecionar editorial</option>
-                            <option value="1">editrial_1</option> 
-                        </select>
                     </div>
                     <div class="form-group col-1">
                         <a href="javascript:void(0);" class="material-icons mt-4 btn btn-outline-info btn-circle" data-toggle="modal" id="add-new-editorial" data-target="#create-editorial" data-toggle="tooltip" data-placement="bottom" title="Agregar nueva editorial">add</a>

@@ -55,7 +55,7 @@
 						'book-edition'=>trim($_POST['book-edition']),
 						'book-year'=>trim($_POST['book-year']),
 						'book-topo'=>trim($_POST['book-topo']),
-						'book-cata'=>trim($_POST['book-cata']),
+						
 						'book-languaje'=>trim($_POST['book-languaje']),
 						'book-cantiEje'=>trim($_POST['book-cant']),
 					];
