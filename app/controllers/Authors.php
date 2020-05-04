@@ -23,9 +23,8 @@
 
 		public function store(){
 			//el metodo request pregunta qe metodo utilizar, si GET O POST
-			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['author-register'])){
-				if(isset($_POST['author-name']) && 
-					isset($_POST['author-lastname'])){
+			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['register'])){
+				if(isset($_POST['author-name']) && isset($_POST['author-lastname'])){
 					$param = [
 						'author-name' => trim ($_POST['author-name']),
 						'author-lastname' => trim ($_POST['author-lastname'])
@@ -38,6 +37,7 @@
 					}
 				}
 			}
+			echo"perorooroooooaskdoakda";
 		}
 		
 		public function edit($id){

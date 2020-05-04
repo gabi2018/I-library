@@ -8,7 +8,7 @@
 
 		public function editorialRecord($param){
 			$this->db->query('INSERT INTO editorial(editorial_name, editorial_fiscal_address)
-							  VALUES (:editorial_name, :editorial_address )');
+							  VALUES (:editorial_name,:editorial_address )');
 			# Link values
 			$this->db->bind(':editorial_name', $param['editorial-name']);
 			$this->db->bind(':editorial_address', $param['editorial-address']);

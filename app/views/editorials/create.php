@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" id="submit-editorial" name="enviar">Agregar</button>
+          <button type="submit" class="btn btn-primary" id="submit-editorial" name="register">Agregar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         </div>
       </form>
