@@ -1,5 +1,5 @@
 <?php require_once APP_ROUTE . '/views/modules/header.php';?>
-<div class="row justify-content-around mt-5">
+<div class="row justify-content-center mt-5">
     <div class="col-4 mt-5"> 
         <div class="card mt-3">
             <img src="<?php echo URL_ROUTE ?>media/images/system/loginheader.jpg" class="card-img-top">
