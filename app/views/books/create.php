@@ -122,7 +122,7 @@
                 <div class="form-group">
                     <label for="editorial-book">Editorial</label>
                     <select name="book-editorial" class="form-control" id="editorial-book">
-                        <option value="1" >editrial_1</option> 
+                        <option value="1" >editorial_1</option> 
                     </select>
                 </div>
                 <div class="row">
