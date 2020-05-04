@@ -122,15 +122,13 @@
             </div>
             <!-- Datos de Edición -->
             <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
-<<<<<<< HEAD
                 <div class="form-group">
                     <label for="editorial-book">Editorial</label>
                     <select name="book-editorial" class="form-control" id="editorial-book">
                         <option value="1" >editorial_1</option> 
                     </select>
                 </div>
-=======
->>>>>>> 89d1d3d70f5a9916aaab35cd854861fa21a9f0eb
+
                 <div class="row">
                     <div class="form-group col-11">
                         <label for="editorial-book">Editorial</label>
