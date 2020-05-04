@@ -19,7 +19,7 @@
 
         public function addBook($param){
 			$this->db->query('INSERT INTO book( book_isbn, book_title, book_desc, book_vol, book_year, book_num_pages,book_edition, book_single_copy, languaje_id, editorial_id, category_id,book_code,book_img) 
-			VALUES(:book_isbn,:book_title, :book_desc, :book_vol, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_code,:book_img)');
+			VALUES(:book_isbn,:book_title, :book_desc, :book_vol, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_code,:book_img,:book_cata)');
 
 			# Link values
 			$this->db->bind(':book_title', $param['book-title']);
@@ -32,7 +32,9 @@
 			$this->db->bind(':book_vol', $param['book-vol']);
 			$this->db->bind(':book_edition', $param['book-edition']);
 			$this->db->bind(':book_year', $param['book-year']);
-	  		$this->db->bind(':book_code', $param['book-code']);
+			  $this->db->bind(':book_code', $param['book-code']);
+			  $this->db->bind(':book_cata', $param['book-cata']);
+			  
 			$this->db->bind(':languaje_id', $param['book-languaje']);
 			//consultar como guradar el nombre de la imagen eje. "ttiulolibro"
 			$this->db->bind(':book_img', $param['book-title']);

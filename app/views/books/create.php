@@ -52,17 +52,15 @@
                             <option value="1">idioma_1</option> 
                         </select>
                     </div>
-<<<<<<< HEAD
                     <div class="col-6 form-group">
                         <label for="single-book">Copia unica</label>
                         <select name="book-single" class="form-control" id="single-book">
-=======
-                    
+     
                     <div class="col-6 form-group" id="copiaUnica">
                         <label for="single-book">Copia única</label>
-                        <select name="single-book" class="form-control" id="single-book">
+                        <select name="book-single" class="form-control" id="single-book">
                             <option disabled selected >Selecionar una opción</option>
->>>>>>> 89d1d3d70f5a9916aaab35cd854861fa21a9f0eb
+
                             <option value="1" >Si</option>
                             <option value="2" >No</option>
                         </select>
@@ -122,15 +120,13 @@
             </div>
             <!-- Datos de Edición -->
             <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
-<<<<<<< HEAD
                 <div class="form-group">
                     <label for="editorial-book">Editorial</label>
                     <select name="book-editorial" class="form-control" id="editorial-book">
-                        <option value="1" >editrial_1</option> 
+                        <option value="1" >editorial_1</option> 
                     </select>
                 </div>
-=======
->>>>>>> 89d1d3d70f5a9916aaab35cd854861fa21a9f0eb
+
                 <div class="row">
                     <div class="form-group col-11">
                         <label for="editorial-book">Editorial</label>
@@ -161,8 +157,7 @@
                 </div>
 
                 <div class="form-group">
-                        <label for="code-book">Codigo topolografico</label>
-                        <input type="text" name="book-code" class="form-control"   id="code-book" required disabled placeholder="Generacion automatica"> 
+                       
 
                 <div class="row"> 
                     <div class="form-group col-6">

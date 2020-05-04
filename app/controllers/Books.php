@@ -39,7 +39,7 @@
 
 		public function store(){
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){
-				if(isset($_POST['book-title']) && isset($_POST['book-isbn'])&& isset($_POST['book-languaje']) && isset($_POST['category-topic']) && isset($_POST['book-single'])&& isset($_POST['book-editorial'])/*&& isset($_POST['book-code'])*/)
+				if(isset($_POST['book-title']) && isset($_POST['book-isbn'])&& isset($_POST['book-languaje']) && isset($_POST['category-topic']) && isset($_POST['book-single'])&& isset($_POST['book-editorial'])/*&& isset($_POST['book-code'])&&isset($_POST['book-cata'] */)
 				{
 
 					$param = [
@@ -54,8 +54,10 @@
 						'book-vol'=>trim($_POST['book-vol']),
 						'book-edition'=>trim($_POST['book-edition']),
 						'book-year'=>trim($_POST['book-year']),
-						'book-code'=>trim($_POST['book-code']),
+						'book-topo'=>trim($_POST['book-topo']),
+						'book-cata'=>trim($_POST['book-cata']),
 						'book-languaje'=>trim($_POST['book-languaje']),
+						'book-cantiEje'=>trim($_POST['book-cant']),
 					];
 
 				
