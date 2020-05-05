@@ -39,5 +39,54 @@ $(document).ready(function(){
             return true;
         return /\d/.test(String.fromCharCode(keynum));
     }); 
+
+    // Previsualizacion de imagen de portada 
+    function readURL(input, label) {  
+        if (input.files && input.files[0]) {  
+            var reader = new FileReader();  
+            reader.onload = function(e) {  
+                $(label).attr('src', e.target.result);
+            }
+          
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+      
+    $("#cover-img").change(function() {  
+        readURL(this, "#cover-preview");
+    });
+
+    $("#topic-book").change(function(){ 
+        url = $(this).attr('data-url');
+        $("#topic-book option:selected").each(function() {
+            value = $(this).val();
+            url += "/" + value; 
+            $.get(url, { value }, function(data) {
+                $("#subtopic-book").empty().removeAttr("disabled").append("<option disabled selected>Selecionar sub-tema</option>");
+                aux = data.split("."); 
+                for(i=0; i<aux.length-1; i++){
+                    option = (aux[i].split("-"));
+                    $("#subtopic-book").append("<option value="+option[0]+">"+ option[1] +"</option>")
+                } 
+            });
+        });
+    });
+
+    $("#subtopic-book").change(function(){
+        url = $(this).attr('data-url');
+        $("#subtopic-book option:selected").each(function() {
+            value = $(this).val();
+            url += "/" + value; 
+            $.get(url, { value }, function(data) {
+                $("#category-book").empty().removeAttr("disabled").append("<option disabled selected>Selecionar categoria</option>");
+                aux = data.split("."); 
+                for(i=0; i<aux.length-1; i++){
+                    option = (aux[i].split("-"));
+                    option2 = option[1].split("_");
+                    $("#category-book").append("<option value="+option[0]+" data-code='"+ option2[1] +"'>"+ option2[0] +"</option>")
+                } 
+            });
+        });
+    });
 });
 

@@ -13,9 +13,15 @@
 			return $response; 
 		}
 
-		public function getCategories(){
-			$this->db->query('SELECT * FROM category');
-			$response = $this->db->getRecords();
+		public function getCategories($id){ 
+			$this->db->query('SELECT category_name, category_cod, category_id FROM category 
+							  WHERE subtopic_id = :subtopic_id ORDER BY category_name DESC');
+			$this->db->bind(':subtopic_id', $id);
+			$result = $this->db->getRecords(); 
+			$response = array(); 
+			foreach ($result as $key => $value) {
+				$response[$value->category_id] = $value->category_name. "_" . $value->category_cod;
+			}
 			return $response;
 		}
 		

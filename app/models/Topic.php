@@ -15,79 +15,14 @@
 		
 		public function getTopics(){
 			$this->db->query('SELECT * FROM topic');
+			$result = $this->db->getRecords(); 
 
-			$response = $this->db->getRecords();
-			return $response;
+			$response = array(); 
+			foreach ($result as $key => $value) {
+				$response[$value->topic_cdu] = $value->topic_name;
+			}
+			return $response; 
 		}
 
-		public function getInit(){
-			for($i = 0; $i <= 9; $i++){
-				$cdu = 1;
-				switch($i){
-					case 0: 
-						$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Generalidades';
-					break;
-					
-					case 1:
-						$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Filosofia y Psicologia';
-		            break;
-
-		            case 2:
-		            	$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Religion y Teologia';    
-		            break;
-		            
-		            case 3:
-		            	$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Ciencias Sociales y Diciplinas Afines';    
-		            break;
-
-		            case 4:
-		             	$cdu=37;
-		            	$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Educacion';    
-		            break;
-		            
-		            case 5:
-		            	$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Ciencias Puras y Naturales';
-		            break;
-		            
-		            case 6:
-		            	$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Ciencias Aplicadas';
-		            break;
-
-		            case 7:
-		            	$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Bellas Artes';
-		            break;
-		            
-		            case 8:
-		            	$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Linguistica-Filologia-Literatura';
-		            break;
-
-		            case 9:
-		            	$this->db->query('INSERT INTO Topic(topic_cdu, topic_name) VALUES (:topic_cdu,:topic_name)');
-						$value = 'Geografia-Bibliografias-Historia';
-		            break;                      
-				}
-				$this->db->bind(':topic_cdu',$cdu);
-		        $this->db->bind(':topic_name', $value);
-				if($this->db->execute()){
-					$contador=1;
-					if($contador>1){
-					return false;}
-					else{
-						$contador++;
-						return true;
-
-					}
-				}
-			}		
-		}
 	}
 ?>

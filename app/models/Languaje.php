@@ -7,9 +7,13 @@
 		}
 
 		public function getLanguajes(){
-			$this->db->query('SELECT * FROM  languaje');
-			$result=$this->db->getRecords();
-			return $result;
+			$this->db->query('SELECT * FROM languaje');
+			$result = $this->db->getRecords(); 
+			$response = array(); 
+			foreach ($result as $key => $value) {
+				$response[$value->languaje_id] = $value->languaje_desc;
+			}
+			return $response;
 		}
 
 		public function getLanguaje($id){

@@ -1,39 +1,20 @@
-<?
-class Subtopics{
+<?php
+	class Subtopic{
 		private $db;
 		
 		public function __construct(){
 			$this->db = new DataBase;
 		}
 		
-		public function getSubtopics(){
-			$this->db->query('SELECT s.subtopic_name,c.category_name
-							  FROM subtopic s JOIN category c ON c.category_id = s.category_id
-							   ORDER BY s.subtopic_name DESC  ');
-
-			$response = $this->db->getRecords();
+		public function getSubtopics($id){ 
+			$this->db->query('SELECT * FROM subtopic WHERE topic_cdu = :topic_id ORDER BY subtopic_name DESC');
+			$this->db->bind(':topic_id', $id);
+			$result = $this->db->getRecords(); 
+			$response = array(); 
+			foreach ($result as $key => $value) {
+				$response[$value->subtopic_id] = $value->subtopic_name;
+			}
 			return $response;
 		}
-
-		
-
-
-	/*	public function userRecord($param){
-			$this->db->query('INSERT INTO user (user_nick, user_email, user_password)
-							  VALUES (:user_nick, :user_email, :user_password)');
-
-			# Link values
-			$this->db->bind(':user_nick', $param['user-nick']);
-			$this->db->bind(':user_email', $param['user-email']);
-			$this->db->bind(':user_password', $param['user-password']);
-
-			# Run
-			if($this->db->execute()){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}*/
 	}
  ?>

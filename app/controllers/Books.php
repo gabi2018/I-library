@@ -2,26 +2,35 @@
 	class Books extends Controller{
 		private $booksModel;
 		private $authorModel;
-		private $editorialsModel;
-		private $languajesModel;
+		private $authorTypeModel;
+		private $editorialModel;
+		private $languajeModel;
 		private $categoryModel;
 
 		public function __construct(){
-			$this->booksModel = $this->model('Book');
-			/*$this->$editorialsModel = $this->model('editorial');	 	
-			$this->$languajesModel = $this->model('languaje');
-			$this->$topicModel = $this->model('topic');	*/
+			$this->booksModel      = $this->model('Book');
+			$this->authorModel     = $this->model("Author");
+			$this->authorTypeModel = $this->model("AuthorType");
+			$this->editorialModel  = $this->model('Editorial');	 	
+			$this->languajeModel   = $this->model('Languaje');
+			$this->topicModel      = $this->model('Topic');	
 
 		}
 		public function index(){
-			
 			$books = $this->booksModel->getBooks();
 			$param = [ 'books' => $books ];
 			$this->view('books/index', $param);
-		}
+		}  
 
-		public function create(){
-			$this->view('books/create');/*
+		public function create(){  
+			$param = [
+				 "languajes"  => $this->languajeModel->getLanguajes(), 
+				 "authors"	  => $this->authorModel->getAuthors(),
+				 "authortypes" => $this->authorTypeModel->getAuthorTypes(),
+				 "editorials" => $this->editorialModel->getEditorials(),
+				 "topics"	  => $this->topicModel->getTopics()
+ 			];
+			$this->view('books/create', $param);/*
 			$author = $this->authorModel->getAuthor();
 			$param 	   = [ 'ahutor' => $author ];
 			$this->view('authors/create', $param);

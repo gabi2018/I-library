@@ -1,8 +1,7 @@
 <?php require_once APP_ROUTE . '/views/modules/header.php'; ?>
-
 <div class="col-8 mt-3 justify-content-center">
     <h4 class="mt-5 mb-3">Registrar nuevo libro</h4>
-    <form method="post" action="<?php echo URL_ROUTE ?>books/store" target="_top">
+    <form method="post" action="<?php echo URL_ROUTE ?>books/store" target="_top" enctype="multipart/form-data">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="book-tab" data-toggle="tab" href="#nav-book" role="tab">Datos del libro</a>
@@ -23,14 +22,15 @@
                             <label for="isbn-book">ISBN</label>
                             <input type="text" name="book-isbn" class="form-control" id="isbn-book" required placeholder="XXX-X-XX-XXXXXX-X"> 
                         </div> 
+                        <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
                             <input type="number" name="book-pages" class="form-control" id="pages-book" required placeholder="Ingresar cantidad de páginas"> 
                         </div> 
                     </div> 
                     <div class="col-3">
                         <div class="form-group">
-                            <label class="justify-content-end" id="cover-preview" for="cover-img"></label>
-                            <input name="cover-img" type="file" class="form-control-file" id="cover-img" enctype="multipart/form-data">
+                            <img for="cover-img" class="justify-content-end" id="cover-preview" src="<?php echo URL_ROUTE;?>media/images/system/default-cover-book.png""> 
+                            <input name="cover-img" type="file" class="form-control-file" id="cover-img">
                         </div>
                     </div>
                 </div> 
@@ -45,22 +45,21 @@
                     </div> 
                 </div>
                 <div class="row">
-                <div class="form-group col-6">
+                    <div class="form-group col-6">
                         <label for="languaje-book">Idioma</label>
                         <select name="book-languaje"  class="form-control" id="languaje-book">	
                             <option disabled selected >Selecionar idioma</option>
-                            <option value="1">idioma_1</option> 
+                            <?php 
+                                 foreach ($param["languajes"] as $key => $value) {
+                                    echo "<option value='$key'>$value</option>";
+                                 }                          
+                            ?>
                         </select>
-                    </div>
-                    <div class="col-6 form-group">
-                        <label for="single-book">Copia unica</label>
-                        <select name="book-single" class="form-control" id="single-book">
-     
+                    </div> 
                     <div class="col-6 form-group" id="copiaUnica">
                         <label for="single-book">Copia única</label>
                         <select name="book-single" class="form-control" id="single-book">
                             <option disabled selected >Selecionar una opción</option>
-
                             <option value="1" >Si</option>
                             <option value="2" >No</option>
                         </select>
@@ -81,18 +80,22 @@
                     <label for="autor-add">Autor</label>
                     <select name="select-autors" id="autor-select" class="form-control" required>
                         <option value="none" disabled selected>Seleccionar autor</option>
-                        <option value="Robert Resnick">Robert Resnick</option>
-                        <option value="Pablo Risk">Pablo Risk</option>
+                            <?php 
+                                foreach ($param["authors"] as $key => $value) {
+                                echo "<option value='$key'>$value</option>";
+                                }                          
+                            ?> 
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="autor-type">Tipo de autor</label>
                     <select name="select-tipo-autors" id="autor-type" class="form-control" required>
                         <option value="none" disabled selected>Seleccionar tipo autor</option>
-                        <option value="Principal">Principal</option>
-                        <option value="Colaborador">Colaborador</option>
-                        <option value="Ilustrador">Ilustrador</option>
-                        <option value="Traductor">Traductor</option>
+                        <?php 
+                            foreach ($param["authortypes"] as $key => $value) {
+                                echo "<option value='$key'>$value</option>";
+                            }                          
+                            ?>  
                     </select>
                 </div>  
                 <div class="form-group text-center">
@@ -119,63 +122,63 @@
                 </div>  	
             </div>
             <!-- Datos de Edición -->
-            
-
+            <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
                 <div class="row">
-                <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
-                <div class="form-group">
-                    <label for="editorial-book">Editorial</label>
-                    <select name="book-editorial" class="form-control" id="editorial-book">
-                        <option value="1" >editorial_1</option> 
-                    </select>
-                </div>
-                    </div>
+                    <div class="form-group col-11">
+                        <label for="editorial-book">Editorial</label>
+                        <select name="book-editorial" class="form-control" id="editorial-book">
+                            <option disabled selected >Selecionar editorial</option>
+                            <?php 
+                                foreach ($param["editorials"] as $key => $value) {
+                                echo "<option value='$key'>$value</option>";
+                                }                          
+                            ?>
+                        </select>
+                    </div> 
                     <div class="form-group col-1">
                         <a href="javascript:void(0);" class="material-icons mt-4 btn btn-outline-info btn-circle" data-toggle="modal" id="add-new-editorial" data-target="#create-editorial" data-toggle="tooltip" data-placement="bottom" title="Agregar nueva editorial">add</a>
                     </div>
-                </div>
+                </div> 
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="topic-book">Tema</label>
-                        <select name="book-topic"  class="form-control" id="topic-book">	
+                        <select name="book-topic" class="form-control" id="topic-book" data-url="<?php echo URL_ROUTE?>subtopics/show">	
                             <option disabled selected>Selecionar tema</option>
-                            <option value="1">tema_1</option> 
+                            <?php 
+                                foreach ($param["topics"] as $key => $value) {
+                                echo "<option value='$key'>$value</option>";
+                                }                          
+                            ?>
                         </select>
                     </div>
                     <div class="form-group col-6">
                         <label for="subtopic-book">Sub-tema</label>
-                        <select name="book-subtopic"  class="form-control" id="subtopic-book">	
-                            <option disabled selected >Selecionar sub-tema</option>
-                            <option value="1">sub-tema1</option> 
+                        <select name="book-subtopic"  class="form-control" id="subtopic-book" disabled data-url="<?php echo URL_ROUTE?>categories/show">	
+                            <option disabled selected>Selecionar sub-tema</option> 
                         </select>
+                        <div class="result"></div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                       
-
                 <div class="row"> 
                     <div class="form-group col-6">
                         <label for="category-book">Categoria</label>
-                        <select name="category-topic"  class="form-control" id="category-book">	
-                            <option disabled selected>Selecionar categoria</option>
-                            <option value="1">categoria_1</option> 
+                        <select name="category-topic"  class="form-control" id="category-book" disabled>	
+                            <option disabled selected>Selecionar categoria</option> 
                         </select>
                     </div>
                     <div class="form-group col-6">
                         <label for="edition-book">Edición</label>
                         <input type="text" name="book-edition" id="edition-book" class="form-control" placeholder="Ingresar número de edición"> 
                     </div>  
-
                 </div>
                 <div class="row">
                     <div class="form-group col-6">
-                            <label for="topo-book">Código topolografico</label>
-                            <input type="text" name="book-topo" class="form-control" id="topo-book" required disabled placeholder="Generación automática"> 
+                        <label for="topo-book">Código topolografico</label>
+                        <input type="text" name="book-topo" class="form-control" id="topo-book" required disabled placeholder="Generación automática"> 
                     </div>
                     <div class="form-group col-6">
-                            <label for="cata-book">Código catalografico</label>
-                            <input type="text" name="book-cata" class="form-control" id="cata-book" required disabled placeholder="Generacion automática"> 
+                        <label for="cata-book">Código catalografico</label>
+                        <input type="text" name="book-cata" class="form-control" id="cata-book" required disabled placeholder="Generacion automática"> 
                     </div>
                 </div> 
             </div>

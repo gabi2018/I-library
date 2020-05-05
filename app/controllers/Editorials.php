@@ -4,8 +4,14 @@
 		
 		# Conectar con el model  editorial
 		public function __construct(){
-			 $this->editorialModel = $this->model('Editorial');
-			session_start(); 
+			$this->editorialModel = $this->model('Editorial');
+		}
+
+		public function index(){ 
+			$editorial = $this->editorialModel->getEditorials();
+
+			$param = [ 'editorial' => $editorial];
+			$this->view('editorials/index',$param);
 		}
 
 		#Llamar vista de editorial S
@@ -32,14 +38,7 @@
 				}
 			}
 		}
-
-		public function index(){ 
-			$editorial = $this->editorialModel->getEditorials();
-
-			$param = [ 'editorial' => $editorial];
-			$this->view('editorials/index',$param);
-		}
-
+  
 		public function edit($id){
 			$editorial = $this->editorialModel->getEditorial($id);
 			$param = [

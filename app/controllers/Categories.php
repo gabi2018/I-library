@@ -54,8 +54,11 @@
 				}
 			}
 		}
-		public function delete(){
-			
+		public function show($id){
+			$response = $this->categoryModel->getCategories($id);
+            foreach ($response as $key => $value) {
+                echo $key. "-" .$value.".";
+            } 
 		}
 	}
 ?>

@@ -80,8 +80,7 @@ header .material-icons{
   top: 5px; 
 } 
 
-#cover-preview{
-	background-image: url("../media/images/system/default-cover-book.png");
+#cover-preview{ 
 	background-size: cover;
 	border: 1px black solid;
 	height: 200px;

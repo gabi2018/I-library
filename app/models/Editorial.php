@@ -24,9 +24,12 @@
 
 		public function getEditorials(){
 			$this->db->query('SELECT * FROM  editorial');
-			$result=$this->db->getRecords();
-
-			return $result;
+			$result = $this->db->getRecords(); 
+			$response = array(); 
+			foreach ($result as $key => $value) {
+				$response[$value->editorial_id] = $value->editorial_name;
+			}
+			return $response; 
 		}		
 
 		public function getEditorial($id){

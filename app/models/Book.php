@@ -6,7 +6,7 @@
 			$this->db = new DataBase;
         }
 	
-	//por ahora qeda asi esta funcion hhasta q se realice CONSULTAR LIBRO
+		# Por ahora qeda asi esta funcion hhasta q se realice CONSULTAR LIBRO
         public function getBooks(){
 			$this->db->query('SELECT * 
 							  FROM book

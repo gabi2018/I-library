@@ -16,9 +16,11 @@
 
 		public function getAuthors(){
 			$this->db->query('SELECT * FROM author');
-			
-			$response= $this->db->getRecords();
-
+			$result = $this->db->getRecords(); 
+			$response = array(); 
+			foreach ($result as $key => $value) {
+				$response[$value->author_id] = $value->author_name ." ". $value->author_lastname;
+			} 
 			return $response;
 		}
 

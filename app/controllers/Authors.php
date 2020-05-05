@@ -4,8 +4,7 @@
 
 		public function __construct(){
 			# Se crea el objeto y se lo asigna al modelo
-			$this->authorModel = $this->model('Author');
-			session_start();
+			$this->authorModel = $this->model('Author'); 
 		}
 
 		public function index(){
