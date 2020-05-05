@@ -29,14 +29,16 @@
 					];
 				
 					if($this->editorialModel->editorialRecord($param)){
-						redirect('editorials/index.php');		
+						redirect('editorials/index');		
 						echo 'guardado con exito';		
 					}	
 				}
 			    else{
 					echo 'error';
 				}
+				echo"asdas";
 			}
+			
 		}
   
 		public function edit($id){
