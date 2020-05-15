@@ -1,8 +1,9 @@
 <?php
 	class Schools extends Controller{
 		private $schoolModel;
+	
 		public function __construct(){
-				$this->schoolModel = $this->model('school');		
+				$this->schoolModel = $this->model('school');	 	
 		}
 
 		public function index(){
@@ -22,7 +23,7 @@
 						'school_name' 	=> trim($_POST['school_name'])
 					];
 				
-					if($this->schoolModel->schoolRecord($param)){
+					if($this->schoolModel->getInit()){
 						redirect('schools/index.php');		
 						echo 'guardado con exito';		
 					}	
@@ -33,7 +34,7 @@
 			}
 		}
 
-		public function show(){ }
+		public function show(){}
 
 		public function update(){
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['school-update'])){
@@ -50,7 +51,7 @@
 					}
 				}
 				else{
-					echo 'eror puto no guardes vacio';
+					echo 'Error';
 				}		
 			}
 		}
@@ -62,5 +63,10 @@
 		}
 
 		public function delete(){ }
+
+		public function SearchSchollID($id){ 
+			$school = $this->schoolModel->getSchool($id);
+		}
+	 
 	}	
 ?>
