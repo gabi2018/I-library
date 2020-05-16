@@ -1,29 +1,26 @@
 <?php 
 	class Users extends Controller{
 		private $userModel;
-		private $userTypeModel;
-		private $careerModel;
+		private $userTypeModel; 
 		private $schoolModel;
 
 		public function __construct(){
 			$this->userModel = $this->model('User');
-			$this->userTypeModel = $this->model('UserType');
-			$this->careerModel = $this->model('Carrer');
+			$this->userTypeModel = $this->model('UserType'); 
 			$this->schoolModel = $this->model('School');
 		}
 
 		public function index(){
-			
 			$users = $this->userModel->getUsers();
 			$param = [ 'users' => $users ];
 			$this->view('users/index', $param);
 		}
 
 		public function create(){
-			$usertypes = $this->userTypeModel->getUserTypes();
-			$param 	   = [ 
-						   "usertypes" => $usertypes,
-						];
+			$param = [ 
+				'usertypes' => $this->userTypeModel->getUserTypes(),
+				'schools'   => $this->schoolModel->getSchools()
+			];
 			$this->view('users/create', $param);
 		}
 

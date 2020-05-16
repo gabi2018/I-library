@@ -47,19 +47,22 @@
         <div class="row">
             <div class="form-group col-6">
                 <div class="form-group">
-                    <label for="school-user">Escuela</label>
-                    <select name="school-user" id="user-school" class="form-control" required>
-                        <option value="none" disabled selected>Seleccionar escuela</option>
-                        <option value="1">escuela_1</option> 
+                    <label for="user-school">Escuela</label>
+                    <select name="school-user" id="user-school" data-url="<?php echo URL_ROUTE?>careers/show" class="form-control" required>
+                        <option value="none" disabled selected>Seleccionar escuela</option> 
+                        <?php 
+                            foreach ($param["schools"] as $key => $value) {
+                                echo "<option value=$value->school_id>$value->school_name</option>";
+                            }                          
+                            ?>
                     </select>
                 </div>  
             </div> 
             <div class="form-group col-6">
                 <div class="form-group">
-                    <label for="career-type">Carrera</label>
-                    <select name="career-user" id="user-career" class="form-control" required>
-                        <option value="none" disabled selected>Seleccionar carrera</option>
-                        <option value="1">carrera_1</option> 
+                    <label for="user-career">Carrera</label>
+                    <select name="career-user" id="user-career" class="form-control" required disabled>
+                        <option value="none" disabled selected>Seleccionar carrera</option> 
                     </select>
                 </div>  
             </div> 

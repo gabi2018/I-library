@@ -89,17 +89,17 @@ $(document).ready(function() {
         });
     });
 
-    $("#career-user").change(function() {
+    $("#user-school").change(function() {
         url = $(this).attr('data-url');
-        $("#career-user option:selected").each(function() {
+        $("#user-school option:selected").each(function() {
             value = $(this).val();
             url += "/" + value;
             $.get(url, { value }, function(data) {
-                $("#school-user").empty().removeAttr("disabled").append("<option disabled selected>Selecionar Escuela </option>");
+                $("#user-career").empty().removeAttr("disabled").append("<option disabled selected>Seleccionar carrera</option>");
                 aux = data.split(".");
                 for (i = 0; i < aux.length - 1; i++) {
                     option = (aux[i].split("-"));
-                    $("#school-user").append("<option value=" + option[0] + ">" + option[1] + "</option>")
+                    $("#user-career").append("<option value=" + option[0] + ">" + option[1] + "</option>")
                 }
             });
         });

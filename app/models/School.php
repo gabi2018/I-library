@@ -8,8 +8,8 @@
 
 		public function getSchools(){
 			$this->db->query('SELECT * FROM  school');
-			$result=$this->db->getRecords();
-			return $result;
+			$response = $this->db->getRecords();
+			return $response;
 		}
 
 		public function getSchool($id){

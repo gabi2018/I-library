@@ -15,8 +15,9 @@
 			return $response;
 		}
 		
-		public function getCareers(){
-			$this->db->query('SELECT * FROM career');
+		public function getCareers($schoolId){
+			$this->db->query('SELECT * FROM career WHERE school_id = :school_id');
+			$this->db->bind(':school_id', $schoolId);
 			$result = $this->db->getRecords(); 
 
 			$response = array(); 

@@ -35,8 +35,8 @@
             }
         }
 
-        public function show($id){ 
-            $response = $this->careerModel->getCareers($id);
+        public function show($schoolId){ 
+            $response = $this->careerModel->getCareers($schoolId);
             foreach ($response as $key => $value) {
                 echo $key. "-" .$value.".";
             } 
