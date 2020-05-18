@@ -38,7 +38,7 @@ public  static  function create(){
  , ('POLIGRAFIAS INDIVIDUALES Y COLECTIVAS CULTURA PROGRESO ','080','0')
  ");
 
-# Run
+# Run//insert tipo de authores
 			$this->db->execute();
 		
 

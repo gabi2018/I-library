@@ -1,12 +1,18 @@
 <?php
-	class Authors extends Controller{
-		private $authorModel;
+	class AuthorTypes extends Controller{
+		private $authorType;
 
 		public function __construct(){ 
-			$this->authorModel = $this->model('Author'); 
+			$this->authorType = $this->model('AuthorType'); 
 		}
 
 		public function index(){ 
+			$ahutorTypes=$this->authorType->getAuthorTypes();
+				
+			$param=[
+				'authortype' => $ahutorTypes,
+			];
+			$this->view('authortypes/index',$param);
 		}
 
 		public function create(){ 

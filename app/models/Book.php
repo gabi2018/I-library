@@ -17,9 +17,9 @@
 		}
         
 
-        public function addBook($param){
+        public function addBook($param,$paramAuthors){
 			$this->db->query('INSERT INTO book( book_isbn, book_title, book_desc, book_vol, book_year, book_num_pages,book_edition, book_single_copy, languaje_id, editorial_id, category_id,book_code,book_img,book_cantiEje) 
-			VALUES(:book_isbn,:book_title, :book_desc, :book_vol, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_code,:book_img,:,book_cantiEje)');
+			VALUES(:book_isbn,:book_title, :book_desc, :book_vol, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_code,:book_img,:book_cantiEje)');
 
 			# Link values
 			$this->db->bind(':book_title', $param['book-title']);
@@ -32,17 +32,23 @@
 			$this->db->bind(':book_vol', $param['book-vol']);
 			$this->db->bind(':book_edition', $param['book-edition']);
 			$this->db->bind(':book_year', $param['book-year']);
-			  $this->db->bind(':book_code', $param['book-topo']);
-			  
+			  $this->db->bind(':book_code', $param['book-topo']);  
 			  $this->db->bind(':book_cantiEje', $param['book-cantiEje']);
-			  
 			$this->db->bind(':languaje_id', $param['book-languaje']);
 			//consultar como guradar el nombre de la imagen eje. "ttiulolibro"
 			$this->db->bind(':book_img', $param['book-title']);
 			
 			# Run
 			if($this->db->execute()){
+				for ($i=0; $i <sizeof ($paramAuthors) ; $i++) { 
+				$this->db->query('INSERT INTO `author_has_book`(`author_id`, `book_id`) VALUES (:ahuthor_id,:book_id)');
+				$book_id=$this->db->insert_id();
+				$this->db->bind(':book_id',$book_id);
+				$this->db->bind(':author_id', $paramAuthors[$i]);
+				}
+				if($this->db->execute()){
 				return true;
+				}
 			}
 			else{
 				return false;

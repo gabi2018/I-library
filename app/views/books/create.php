@@ -30,7 +30,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <img for="cover-img" class="justify-content-end" id="cover-preview" src="<?php echo URL_ROUTE;?>media/images/system/default-cover-book.png""> 
-                            <input name="cover-img" type="file" class="form-control-file" id="cover-img">
+                            <input name="book-img" type="file" class="form-control-file" id="cover-img">
                         </div>
                     </div>
                 </div> 
@@ -163,7 +163,7 @@
                     <div class="form-group col-6">
                         <label for="category-book">Categoria</label>
                         <select name="category-topic"  class="form-control" id="category-book" disabled>	
-                            <option disabled selected>Selecionar categoria</option> 
+                            <option disabled selected  >Selecionar categoria</option> 
                         </select>
                     </div>
                     <div class="form-group col-6">
@@ -174,7 +174,7 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="topo-book">Código topolografico</label>
-                        <input type="text" name="book-topo" class="form-control" id="topo-book" required disabled placeholder="Generación automática"> 
+                        <input type="text" name="book-topo" class="form-control" value="23" id="topo-book" required  placeholder="Generación automática"> 
                     </div>
                     <div class="form-group col-6">
                         <label for="cata-book">Código catalografico</label>
