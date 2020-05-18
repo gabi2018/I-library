@@ -3,6 +3,7 @@ $(document).ready(function() {
         $(".keep").toggleClass("width");
     });
 
+    // Actuva el input para mas de un ejemplar
     $("#single-book").change(function() {
         if ($(this).val() == 2) {
             $("#copiaUnica").css("display", "none");
@@ -10,24 +11,38 @@ $(document).ready(function() {
         }
     })
 
-    $("#add-autor").click(function() {
-        var autor, tipo;
-        if ($("#autor-select").val() != null && $("#autor-type").val() != null) {
-            autor = $("#autor-select").val();
-            tipo = $("#autor-type").val();
-            $("#list-autors #tbody").append("<tr>" +
-                "<td>" + autor + "</td>" +
-                "<td>" + tipo + "</td>" +
-                "<td><a href='javascript:void(0)' class='delautor material-icons' id='quitar_" + autor.replace(" ", "_") + "_" + tipo + "'>clear</a></td>" +
+    // Codigo para agregar distintos autores
+    $("#add-autor").click(function() { 
+        if ($("#autor-select").val() != null && $("#autor-type").val() != null) { 
+            // Recupero los value para generar un select no visible para enviarlos al controller
+            autorValue = $("#autor-select").val();
+            tipoValue  = $("#autor-type").val();
+            $("#list-author").append(
+                "<option value="+ autorValue + "_" + tipoValue +" id="+ autorValue + "_" + tipoValue +" selected></option>"
+            );
+
+            // Recupero texto del select para mostrar los que se van seleccionanto
+            autorText  = $("#autor-select option:selected").text();
+            typeText   = $("#autor-type option:selected").text();
+            // Muestro los seleccionados
+            $("#list-autors #tbody").append( 
+                "<tr id="+autorValue+"_"+tipoValue+">" +
+                    "<td>" + autorText + "</td>" +
+                    "<td>" + typeText + "</td>" +
+                    "<td><a href='javascript:void(0)' class='delautor material-icons' id='" + autorValue + "." + tipoValue + "'>clear</a></td>" +
                 "</tr>"
             );
         }
+
+        $(".delautor").click(function() {
+            id = ($(this).attr("id")).replace(".", "_"); 
+            $("#list-autors #tbody").remove(id);
+        });
     });
 
-    $(".delautor").click(function() {
-        alert("golo");
-    });
+    
 
+    // Genera la clave copiando el dni ingresado
     $("#doc-user").keyup(function() {
         $('#pass-user').val(($('#doc-user').val()));
     });

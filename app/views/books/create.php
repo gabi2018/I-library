@@ -16,15 +16,15 @@
                     <div class="col-9">
                         <div class="form-group">
                             <label for="title-book">Título</label>
-                            <input type="text" name="book-title" class="form-control" id="title-book" required placeholder="Ingresar título del libro"> 
+                            <input type="text" name="book-title" class="form-control" id="title-book"    placeholder="Ingresar título del libro"> 
                         </div> 
                         <div class="form-group">
                             <label for="isbn-book">ISBN</label>
-                            <input type="text" name="book-isbn" class="form-control" id="isbn-book" required placeholder="XXX-X-XX-XXXXXX-X"> 
+                            <input type="text" name="book-isbn" class="form-control" id="isbn-book"    placeholder="XXX-X-XX-XXXXXX-X"> 
                         </div> 
                         <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
-                            <input type="number" name="book-pages" class="form-control" id="pages-book" required placeholder="Ingresar cantidad de páginas"> 
+                            <input type="number" name="book-pages" class="form-control" id="pages-book"    placeholder="Ingresar cantidad de páginas"> 
                         </div> 
                     </div> 
                     <div class="col-3">
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="year-book">Año de publicación</label>
-                        <input  type="text" name="book-year" id="year-book" class="form-control" placeholder="Ingresar año de publicación" required> 
+                        <input  type="text" name="book-year" id="year-book" class="form-control" placeholder="Ingresar año de publicación"   > 
                     </div>  
                     <div class="form-group col-6">
                         <label for="vol-book">Volumen</label>
@@ -71,14 +71,14 @@
                 </div>                                  
                 <div class="form-group">
                     <label for="desc-book">Descripción</label>
-                    <textarea class="form-control" name="book-desc" id="desc-book" rows="3" required placeholder="Ingresar una descripción del libro"></textarea> 
+                    <textarea class="form-control" name="book-desc" id="desc-book" rows="3"    placeholder="Ingresar una descripción del libro"></textarea> 
                 </div>   
             </div>
             <!-- Datos de Autor -->
             <div class="tab-pane fade" id="nav-author" role="tabpanel">      
                 <div class="form-group">
                     <label for="autor-add">Autor</label>
-                    <select name="select-autors" id="autor-select" class="form-control" required>
+                    <select name="select-autors" id="autor-select" class="form-control"   >
                         <option value="none" disabled selected>Seleccionar autor</option>
                             <?php 
                                 foreach ($param["authors"] as $key => $value) {
@@ -89,7 +89,7 @@
                 </div>
                 <div class="form-group">
                     <label for="autor-type">Tipo de autor</label>
-                    <select name="select-tipo-autors" id="autor-type" class="form-control" required>
+                    <select name="select-tipo-autors" id="autor-type" class="form-control"   >
                         <option value="none" disabled selected>Seleccionar tipo autor</option>
                         <?php 
                             foreach ($param["authortypes"] as $key => $value) {
@@ -111,15 +111,12 @@
                                 <th scope="col">Quitar</th>
                             </tr>
                         </thead>
-                        <tbody id="tbody">
-                            <tr> 
-                                <td>Mark Otto</td>
-                                <td>@mdo</td>
-                                <td><a href="javascript:void(0)" class="material-icons" id="quitar">clear</a></td>
-                            </tr>
-                        </tbody>
+                        <tbody id="tbody"></tbody>
                     </table> 
-                </div>  	
+                </div>
+                <div class="form-group"> 
+                    <select multiple name="author-list[]" id="list-author" style="display:none"></select>
+                </div> 	
             </div>
             <!-- Datos de Edición -->
             <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
@@ -130,7 +127,7 @@
                             <option disabled selected >Selecionar editorial</option>
                             <?php 
                                 foreach ($param["editorials"] as $key => $value) {
-                                echo "<option value='$key'>$value</option>";
+                                    echo "<option value='$key'>$value</option>";
                                 }                          
                             ?>
                         </select>
@@ -174,11 +171,11 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="topo-book">Código topolografico</label>
-                        <input type="text" name="book-topo" class="form-control" value="23" id="topo-book" required  placeholder="Generación automática"> 
+                        <input type="text" name="book-topo" class="form-control" value="23" id="topo-book"     placeholder="Generación automática"> 
                     </div>
                     <div class="form-group col-6">
                         <label for="cata-book">Código catalografico</label>
-                        <input type="text" name="book-cata" class="form-control" id="cata-book" required disabled placeholder="Generacion automática"> 
+                        <input type="text" name="book-cata" class="form-control" id="cata-book"    disabled placeholder="Generacion automática"> 
                     </div>
                 </div> 
             </div>
