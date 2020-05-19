@@ -13,24 +13,24 @@ $(document).ready(function() {
 
     // Codigo para agregar distintos autores
     $("#add-autor").click(function() { 
-        if ($("#autor-select").val() != null && $("#autor-type").val() != null) { 
-            // Recupero los value para generar un select no visible para enviarlos al controller
-            autorValue = $("#autor-select").val();
-            tipoValue  = $("#autor-type").val();
+        // Recupero los value para generar un select no visible para enviarlos al controller
+        autorValue = $("#author-select").val();
+        tipoValue  = $("#author-type").val();
+        if (autorValue!= null && tipoValue != null) { 
+            
             $("#list-author").append(
                 "<option value="+ autorValue + "_" + tipoValue +" id="+ autorValue + "_" + tipoValue +" selected></option>"
             );
 
             // Recupero texto del select para mostrar los que se van seleccionanto
-            autorText  = $("#autor-select option:selected").text();
-            typeText   = $("#autor-type option:selected").text();
+            autorText  = $("#author-select option:selected").text();
+            typeText   = $("#author-type option:selected").text();
             // Muestro los seleccionados
-            $("#list-autors #tbody").append( 
+            $("#list-authors #tbody").append( 
                 "<tr id="+autorValue+"_"+tipoValue+">" +
                     "<td>" + autorText + "</td>" +
                     "<td>" + typeText + "</td>" +
-                    "<td><a href='javascript:void(0)' class='delautor material-icons' id='" + autorValue + "." + tipoValue + "'>clear</a></td>" +
-                "</tr>"
+                    "<td><a href='javascript:void(0)' class='delautor material-icons' id='" + autorValue + "." + tipoValue + "'>clear</a></td></tr>"
             );
         }
 

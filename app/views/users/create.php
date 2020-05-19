@@ -72,5 +72,4 @@
         </div>  
     </form> 
 </div>
-
 <?php require_once APP_ROUTE . '/views/modules/footer.php'; ?>

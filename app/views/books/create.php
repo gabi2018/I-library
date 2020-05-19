@@ -89,7 +89,7 @@
                 </div>
                 <div class="form-group">
                     <label for="autor-type">Tipo de autor</label>
-                    <select name="select-tipo-autors" id="autor-type" class="form-control" required>
+                    <select name="select-tipo-autors" id="author-type" class="form-control" required>
                         <option value="none" disabled selected>Seleccionar tipo autor</option>
                         <?php 
                             foreach ($param["authortypes"] as $key => $value) {
@@ -103,7 +103,7 @@
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#create-autor" class="btn btn-link btn-author"><span class="material-icons">person_add</span>Registrar autor</a>
                 </div> 
                 <div class=" ">
-                    <table id="list-autors" class="table table-striped">
+                    <table id="list-authors" class="table table-striped">
                         <thead class="thead-dark">
                             <tr> 
                                 <th scope="col">Autor</th>
