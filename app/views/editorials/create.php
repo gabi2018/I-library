@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" id="form-add-editorial" action="<?php echo URL_ROUTE ?>editorials/store" target="_top" >
+        <form method="post" id="form-add-editorial" target="_top" >
           <div class="form-group">
             <input name="editorial-name" type="text" class="form-control" id="new-name-editorial" placeholder="Nombre de la editorial" required>
           </div>
@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" id="submit-editorial" name="register">Agregar</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" data-url="<?php echo URL_ROUTE ?>editorials/store" id="save-editorial" name="register">Agregar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         </div>
       </form>

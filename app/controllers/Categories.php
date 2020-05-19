@@ -26,9 +26,7 @@
 					if ($this->categoryModel->addCategory($param)){
 						redirect('categories/index');
 					}
-					else{
-						die('FATAL ERROR');
-					}
+					else{ die('FATAL ERROR'); }
 				}
 			}
 		}

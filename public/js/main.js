@@ -40,8 +40,6 @@ $(document).ready(function() {
         });
     });
 
-    
-
     // Genera la clave copiando el dni ingresado
     $("#doc-user").keyup(function() {
         $('#pass-user').val(($('#doc-user').val()));
@@ -119,4 +117,36 @@ $(document).ready(function() {
             });
         });
     });
+
+    // Funcion para guardado de categoria
+    $("#save-editorial").click(function(event){
+        event.preventDefault();  
+        name    = $("#new-name-editorial" ).val();
+        address = $("#new-address-editorial").val();
+        url     = $(this).attr('data-url');
+        if(name != "" &&  address != "" ){
+            $.post(url, { editorial_name: name, editorial_address: address}, function(data) {  
+                $("#editorial-book").append("<option value="+data+">"+ name+"</option>");
+                $("#new-name-editorial" ).val("");
+                $("#new-address-editorial").val("");
+            });
+        }
+    });
+    
+    // Funcion para guardado de autor
+    $("#save-author").click(function(event){
+        event.preventDefault();  
+        name     = $("#new-name-author").val();
+        lastname = $("#new-lastname-author").val();
+        url      = $(this).attr('data-url');
+        if(name != "" &&  lastname != "" ){
+            $.post(url, { author_name: name, author_lastname: lastname}, function(data) {  
+                $("#author-select").append("<option value="+data+">"+ name + " " + lastname +"</option>");
+                $("#new-name-author" ).val("");
+                $("#new-lastname-author").val("");
+            });
+        }
+    });
+
+
 });

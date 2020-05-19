@@ -78,7 +78,7 @@
             <div class="tab-pane fade" id="nav-author" role="tabpanel">      
                 <div class="form-group">
                     <label for="autor-add">Autor</label>
-                    <select name="select-autors" id="autor-select" class="form-control" required>
+                    <select name="select-autors" id="author-select" class="form-control" required>
                         <option value="none" disabled selected>Seleccionar autor</option>
                             <?php 
                                 foreach ($param["authors"] as $key => $value) {
@@ -159,7 +159,7 @@
                 <div class="row"> 
                     <div class="form-group col-6">
                         <label for="category-book">Categoria</label>
-                        <select name="category-topic"  class="form-control" id="category-book" disabled>	
+                        <select name="category-topic" class="form-control" id="category-book" disabled>	
                             <option disabled selected  >Selecionar categoria</option> 
                         </select>
                     </div>

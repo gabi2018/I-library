@@ -21,25 +21,18 @@
  
 		# Almacenar editorial
 		public function store(){
-			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
-				if(!empty($_POST['editorial-name']) && !empty($_POST['editorial-address'])){
-					$param = [
-						'editorial-name' 	=> trim($_POST['editorial-name']),
-						'editorial-address' => trim($_POST['editorial-address']),			
-					];
-				
-					if($this->editorialModel->editorialRecord($param)){
-						redirect('editorials/index');		
-						echo 'guardado con exito';		
-					}	
-				}
-			    else{
-					echo 'error';
-				}
-				echo"asdas";
-			}
-			
-		}
+			if(!empty($_POST['editorial_name']) && !empty($_POST['editorial_address'])){
+				$param = [
+					'editorial-name' 	=> trim($_POST['editorial_name']),
+					'editorial-address' => trim($_POST['editorial_address']),			
+				];
+
+				$id = $this->editorialModel->addEditorial($param);
+				if($id != null){ 
+					echo $id;		
+				}	
+			} 
+		} 
   
 		public function edit($id){
 			$editorial = $this->editorialModel->getEditorial($id);

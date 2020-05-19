@@ -6,24 +6,8 @@
 			$this->db = new DataBase;
 		}
 
-		public function editorialRecord($param){
-			$this->db->query('INSERT INTO editorial(editorial_name, editorial_fiscal_address)
-							  VALUES (:editorial_name,:editorial_address )');
-			# Link values
-			$this->db->bind(':editorial_name', $param['editorial-name']);
-			$this->db->bind(':editorial_address', $param['editorial-address']);
-			
-			# Run
-			if($this->db->execute()){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-
 		public function getEditorials(){
-			$this->db->query('SELECT * FROM  editorial');
+			$this->db->query('SELECT * FROM  editorial ORDER BY editorial_name');
 			$result = $this->db->getRecords(); 
 			$response = array(); 
 			foreach ($result as $key => $value) {
@@ -38,6 +22,27 @@
 
 			$response = $this->db->getRecord();
 			return $response;
+		}
+
+		public function getEditorialId($name){
+			$this->db->query('SELECT editorial_id FROM editorial WHERE editorial_name = :editorial_name');
+			$this->db->bind(':editorial_name', $name);
+			$response = $this->db-> getRecord();
+			return $response->editorial_id;
+		}
+
+		public function addEditorial($param){
+			$this->db->query('INSERT INTO editorial(editorial_name, editorial_fiscal_address)
+							  VALUES (:editorial_name,:editorial_address )');
+			# Link values
+			$this->db->bind(':editorial_name', $param['editorial-name']);
+			$this->db->bind(':editorial_address', $param['editorial-address']);
+			
+			# Run
+			if($this->db->execute()){
+				return $this->getEditorialId($param['editorial-name']);
+			}
+			else{ return null; }
 		}
 
 		public function editEditorial($param){

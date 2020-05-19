@@ -15,13 +15,21 @@
 		}
 
 		public function getAuthors(){
-			$this->db->query('SELECT * FROM author');
+			$this->db->query('SELECT * FROM author ORDER BY author_name');
 			$result = $this->db->getRecords(); 
 			$response = array(); 
 			foreach ($result as $key => $value) {
 				$response[$value->author_id] = $value->author_name ." ". $value->author_lastname;
 			} 
 			return $response;
+		}
+
+		public function getAuthorId($param){
+			$this->db->query('SELECT author_id FROM author WHERE author_name = :author_name AND author_lastname = :author_lastname');
+			$this->db->bind(':author_name', $param['author-name']);
+			$this->db->bind(':author_lastname', $param['author-lastname']);
+			$response = $this->db-> getRecord();
+			return $response->author_id;
 		}
 
 		public function addAuthor($param){
@@ -32,11 +40,9 @@
 			$this->db->bind(':author_lastname', $param['author-lastname']);
 
 			if($this->db->execute()){
-				return true;
+				return $this->getAuthorId($param);
 			}
-			else{
-				return false;
-			}
+			else{ return null;	}
 		}
 		
 		public function editAuthor($param){
