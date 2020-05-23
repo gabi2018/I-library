@@ -27,7 +27,7 @@
 		public function getEditorialId($name){
 			$this->db->query('SELECT editorial_id FROM editorial WHERE editorial_name = :editorial_name');
 			$this->db->bind(':editorial_name', $name);
-			$response = $this->db-> getRecord();
+			$response = $this->db->getRecord();
 			return $response->editorial_id;
 		}
 

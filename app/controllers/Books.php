@@ -75,14 +75,15 @@
 						'book-year'=>trim($_POST['book-year']),
 						'book-topo'=>trim($_POST['book-topo']),
 						'book-languaje'=>trim($_POST['book-languaje']),
-						'book-cantiEje'=>trim($_POST['book-cant'])
+						'book-cantiEje'=>trim($_POST['book-cant']),
+						'book-authors'=>$_POST['author-list'],
 					];
 
-					$paramAuthors=[
-						'book-authors'=>trim($_POST['list-authors'])
-					];
+					
+						
+					
 				
-					if($this->booksModel->addBook($param,$paramAuthors)){
+					if($this->booksModel->addBook($param)){
 						redirect('books/create');		
 						echo '<p>guardado con exito<p>';		
 					}	

@@ -36,7 +36,9 @@ public  static  function create(){
  , ('MUSEOLOGIA ','069','0')
  , ('PERIODISMO, LIBERTAD DE PRENSA ','070','0')
  , ('POLIGRAFIAS INDIVIDUALES Y COLECTIVAS CULTURA PROGRESO ','080','0')
- ");
+
+ "
+);
 
 # Run//insert tipo de authores
 			$this->db->execute();

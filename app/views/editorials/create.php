@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" id="form-add-editorial" target="_top" >
+        <form method="post" id="form-add-editorial" action="<?php echo URL_ROUTE ?>Editorials/store"" target="_top" >
           <div class="form-group">
             <input name="editorial-name" type="text" class="form-control" id="new-name-editorial" placeholder="Nombre de la editorial" required>
           </div>

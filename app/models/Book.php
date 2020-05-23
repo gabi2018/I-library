@@ -12,16 +12,29 @@
 							  FROM book
 							  ');
 
-			$response = $this->db->getRecords();
+			$response = $this->db->getRecord();
 			return $response;
+		}
+		public function getIds($isbn){
+			$this->db->query('SELECT  book_id
+							  FROM book 
+							WHERE book_isbn=:book_isbn; ');
+					$this->db->bind(':book_isbn', $isbn);		  
+
+			$response = $this->db->getRecord();
+			return $response->book_id;
+			
+			 
+			
 		}
         
 
-        public function addBook($param,$paramAuthors){
+        public function addBook($param){
 			$this->db->query('INSERT INTO book( book_isbn, book_title, book_desc, book_vol, book_year, book_num_pages,book_edition, book_single_copy, languaje_id, editorial_id, category_id,book_code,book_img,book_cantiEje) 
 			VALUES(:book_isbn,:book_title, :book_desc, :book_vol, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_code,:book_img,:book_cantiEje)');
 
-			# Link values
+			$isbn=$param['book-isbn'];
+			$autores=$param['book-authors'];
 			$this->db->bind(':book_title', $param['book-title']);
 			$this->db->bind(':book_isbn', $param['book-isbn']);
 			$this->db->bind(':book_num_pages', $param['book-pages']);
@@ -38,18 +51,25 @@
 			//consultar como guradar el nombre de la imagen eje. "ttiulolibro"
 			$this->db->bind(':book_img', $param['book-title']);
 			
-			# Run
 			if($this->db->execute()){
-				for ($i=0; $i <sizeof ($paramAuthors) ; $i++) { 
-				$this->db->query('INSERT INTO `author_has_book`(`author_id`, `book_id`) VALUES (:ahuthor_id,:book_id)');
-				$book_id=$this->db->insert_id();
-				$this->db->bind(':book_id',$book_id);
-				$this->db->bind(':author_id', $paramAuthors[$i]);
+				$book_id=$this->getIds($isbn);
+				foreach ($autores as $key => $value) {
+					$ids          = explode("_", $value);
+					$authorId     = $ids[0];
+					$typeAuthorId = $ids[1];  
+				
+				$this->db->query('INSERT INTO authors_has_book ( book_id,author_id, author_type_id) VALUES (:book_ids,:author_id,:author_type_id)');
+				
+				$this->db->bind(':book_ids',$book_id);
+				$this->db->bind(':author_id',$authorId);
+				$this->db->bind(':author_type_id',$typeAuthorId);
+				$this->db->execute();
+				
 				}
-				if($this->db->execute()){
+				
 				return true;
 				}
-			}
+			
 			else{
 				return false;
 			}
