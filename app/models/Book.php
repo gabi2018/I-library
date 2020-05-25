@@ -49,8 +49,13 @@
 			  $this->db->bind(':book_cantiEje', $param['book-cantiEje']);
 			$this->db->bind(':languaje_id', $param['book-languaje']);
 			//consultar como guradar el nombre de la imagen eje. "ttiulolibro"
-			$this->db->bind(':book_img', $param['book-title']);
-			
+		
+			 $nombreImg=$param['book-img']['name'];
+			 $file=$param['book-img']['tmp_name'];
+
+			$rut=  URL_ROUTE .'public/media/books/'.$nombreImg;
+			move_uploaded_file($file,$rut);
+			$this->db->bind(':book_img',$rut );
 			if($this->db->execute()){
 				$book_id=$this->getIds($isbn);
 				foreach ($autores as $key => $value) {
