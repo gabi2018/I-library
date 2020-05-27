@@ -45,39 +45,41 @@
 			$this->db->bind(':book_vol', $param['book-vol']);
 			$this->db->bind(':book_edition', $param['book-edition']);
 			$this->db->bind(':book_year', $param['book-year']);
-			  $this->db->bind(':book_code', $param['book-topo']);  
-			  $this->db->bind(':book_cantiEje', $param['book-cantiEje']);
+			$this->db->bind(':book_code', $param['book-topo']);  
+			$this->db->bind(':book_cantiEje', $param['book-cantiEje']);
 			$this->db->bind(':languaje_id', $param['book-languaje']);
-			//consultar como guradar el nombre de la imagen eje. "ttiulolibro"
 		
-			 $nombreImg=$param['book-img']['name'];
-			 $file=$param['book-img']['tmp_name'];
+				$nameImg=$param['book-img']['name'];
+				$file=$param['book-img']['tmp_name'];
 
-			$rut=  URL_ROUTE .'public/media/books/'.$nombreImg;
-			move_uploaded_file($file,$rut);
-			$this->db->bind(':book_img',$rut );
-			if($this->db->execute()){
-				$book_id=$this->getIds($isbn);
-				foreach ($autores as $key => $value) {
-					$ids          = explode("_", $value);
-					$authorId     = $ids[0];
-					$typeAuthorId = $ids[1];  
+				$rut='../public/media/books/'.$nameImg;
+				if( copy($file,$rut)){
+				$this->db->bind(':book_img',$nameImg);
 				
-				$this->db->query('INSERT INTO authors_has_book ( book_id,author_id, author_type_id) VALUES (:book_ids,:author_id,:author_type_id)');
-				
-				$this->db->bind(':book_ids',$book_id);
-				$this->db->bind(':author_id',$authorId);
-				$this->db->bind(':author_type_id',$typeAuthorId);
-				$this->db->execute();
-				
+					if($this->db->execute()){
+						$book_id=$this->getIds($isbn);
+							foreach ($autores as $key => $value) {
+								$ids          = explode("_", $value);
+								$authorId     = $ids[0];
+								$typeAuthorId = $ids[1];  
+							
+							$this->db->query('INSERT INTO authors_has_book ( book_id,author_id, author_type_id) VALUES (:book_ids,:author_id,:author_type_id)');
+							
+							$this->db->bind(':book_ids',$book_id);
+							$this->db->bind(':author_id',$authorId);
+							$this->db->bind(':author_type_id',$typeAuthorId);
+							$this->db->execute();
+							
+							}
+						
+						return true;
+					}
 				}
-				
-				return true;
-				}
-			
+
 			else{
-				return false;
-			}
-		}
+					return false;
+				}
+		
+	}
         
-    }
+}

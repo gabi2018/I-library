@@ -60,7 +60,8 @@
 				   isset($_POST['book-languaje']) && isset($_POST['category-topic']) && 
 				   isset($_POST['book-single']) && isset($_POST['book-editorial'])/*&& 
 				   isset($_POST['book-topo'])&&isset($_POST['book-cata'])*/){
-
+				   				   
+				  
 					$param = [
 						'book-title'=>trim($_POST['book-title']),
 						'book-isbn'=>trim($_POST['book-isbn']),
@@ -87,7 +88,7 @@
 						redirect('books/create');		
 						echo '<p>guardado con exito<p>';		
 					}	
-			
+				
 					else{
 						echo"FATAL ERROR";
 					}
