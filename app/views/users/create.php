@@ -13,8 +13,8 @@
                     <input type="text" name="user-lastname" class="form-control" id="lastname-user" required placeholder="Ingresar apellido"> 
                 </div> 
                 <div class="form-group">
-                    <label for="address-user">Dirección</label>
-                    <input type="texx" name="user-address" class="form-control" id="address-user" required placeholder="Ingresar dirección"> 
+                    <label for="email-user">Email</label>
+                    <input type="email" name="user-email" id="email-user" class="form-control" placeholder="Ingresar dirección de email"> 
                 </div> 
             </div> 
             <div class="col-3">
@@ -24,25 +24,22 @@
                 </div>
             </div>
         </div> 
+        <div class="row"> 
+            <div class="form-group col-12">
+                <label for="address-user">Dirección</label>
+                <input type="texx" name="user-address" class="form-control" id="address-user" required placeholder="Ingresar dirección"> 
+            </div> 
+        </div>
         <div class="row">
             <div class="form-group col-6">
                 <label for="doc-user">Documento</label>
                 <input type="text" name="user-doc" id="doc-user" class="form-control" placeholder="Ingresar número de documento" required onkeyup="copyOnPassword(event);"> 
-            </div>  
-            <div class="form-group col-6">
-                <label for="pass-user">Contraseña</label>
-                <input type="password" name="user-pass" id="pass-user" class="form-control" placeholder="Se generará automaticamente una contraseña"> 
-            </div> 
-        </div>
-         <div class="row">
+                <input type="hidden" name="user-pass" id="pass-user" class="form-control" placeholder="Se generará automaticamente una contraseña"> 
+            </div>   
             <div class="form-group col-6">
                 <label for="phone-user">Teléfono</label>
                 <input type="number" name="phone-doc" id="phone-user" class="form-control" placeholder="Ingresar número de teléfono" required> 
             </div>  
-            <div class="form-group col-6">
-                <label for="email-user">Email</label>
-                <input type="email" name="user-email" id="email-user" class="form-control" placeholder="Ingresar dirección de email"> 
-            </div> 
         </div>
         <div class="row">
             <div class="form-group col-6">
