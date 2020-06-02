@@ -31,7 +31,7 @@
             </div>  
             <div class="form-group col-6">
                 <label for="pass-user">Contraseña</label>
-                <input type="password" name="user-pass" id="pass-user" class="form-control" placeholder="Se generará automaticamente una contraseña" disabled> 
+                <input type="password" name="user-pass" id="pass-user" class="form-control" placeholder="Se generará automaticamente una contraseña"> 
             </div> 
         </div>
          <div class="row">

@@ -25,27 +25,34 @@
 		}
 
 		public function store(){
+
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-register'])){
-				if (isset($_POST['user-password']) && isset($_POST['user-dni'])) {
+				echo"hla";
+				if(isset($_POST['user-pass']) && isset($_POST['user-doc'])) {
+					echo $_POST['user-name'];
+					
+					/*
 					$pass    =  password_hash(trim($_POST['user-password']), PASSWORD_BCRYPT, ['cost' => 12]);
 					$param = [
 						'user-name' 	=> trim($_POST['user-name']),
 						'user-lastname' => trim($_POST['user-lastname']),
 						'user-address' 	=> trim($_POST['user-address']),
-						'user-dni'      => trim($_POST['user-dni']),
+						'user-dni'      => trim($_POST['user-doc']),
 						'user-phone' 	=> trim($_POST['user-phone']),
 						'user-email' 	=> trim($_POST['user-email']),
-						'user-password' => $pass,
-						'user-type' 	=> trim($_POST['user-type'])
+						'user-pass' => $pass
+						//'user-type' 	=> trim($_POST['user-type'])
 					];
-
+                    
 					if($this->userModel->addUser($param)){
 						redirect('users/index');
 					}
 					else{
 						die("FATAL ERROR");
 					}
+				 */	
 				}
+				
 			}
 		}
 
