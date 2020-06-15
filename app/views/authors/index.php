@@ -23,7 +23,6 @@
 <script type="text/javascript">
   //suggetion for finding product names
   
-  
 
   
 
@@ -49,8 +48,6 @@
 				
 
 	};
-
-
 $(document).on('keyup','#sug_input',function(){
 
 	var input=$(this).val();
