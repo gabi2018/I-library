@@ -24,7 +24,7 @@
     </li>  
 
     <li>
-      <a href="<?php echo URL_ROUTE ?>books">
+      <a href="<?php echo URL_ROUTE ?>books\index">
         <span><i class="material-icons">book</i></span>
         Libros 
       </a>

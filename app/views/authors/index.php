@@ -1,18 +1,71 @@
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <table>
 	<tr>
 		<th>Nombre</th>
         <th>Apellido</th>
-	</tr>
-	<?php 
-		$authors = $param['authors'];
-		foreach ($authors as $author) :
-	?>
+	
 	<tr>
-		<td><?php echo $author->author_name; ?></td>
-        <td><?php echo $author->author_lastname; ?></td>
-		<td><a href="<?php echo URL_ROUTE ?>authors/edit/<?php echo $author->author_id ?>">Edit</a></td>
+		
 	</tr>
-	<?php endforeach; ?>
+	>
 </table>
+<div>
+<label for="cata-book">buscar</label>
+       <input type="text" name="author" class="form-control" id="sug_input" required data-url="<?php echo URL_ROUTE?>/authors/search" placeholder="pon nom">
 
-<a href="<?php echo URL_ROUTE ?>authors/create">Agregar nuevo Autor</a>
+
+
+</div>
+<div id="result">
+</div>
+<script type="text/javascript">
+  //suggetion for finding product names
+  
+  
+
+  
+
+      function search(param,url) {
+				
+				
+				// process the form
+				var parame ={
+					'author':param
+				};
+				
+
+				$.ajax({
+					type        : 'POST',
+					data        : parame,
+					url         : url,
+					
+					
+					success:function(data){
+						$('#result').html(data);
+					}
+				})
+				
+
+	};
+
+
+$(document).on('keyup','#sug_input',function(){
+
+	var input=$(this).val();
+	
+		if(input !=""){
+			url = $(this).attr('data-url');
+
+			
+			search(input,url);
+		}
+		else{
+			
+		}
+});					
+				
+</script>
+
+

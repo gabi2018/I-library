@@ -16,9 +16,10 @@
 			$this->topicModel      = $this->model('Topic');	
 
 		}
+	
 		public function index(){
-			$books = $this->booksModel->getBooks();
-			$param = [ 'books' => $books ];
+			
+		$param="";
 			$this->view('books/index', $param);
 		}  
 
@@ -30,37 +31,22 @@
 				 "editorials" => $this->editorialModel->getEditorials(),
 				 "topics"	  => $this->topicModel->getTopics()
  			];
-			$this->view('books/create', $param);/*
-			$author = $this->authorModel->getAuthor();
-			$param 	   = [ 'ahutor' => $author ];
-			$this->view('authors/create', $param);
-			$editorial = $this->editorialsModel->getEditorial();
-			$param 	   = [ 'editorials' => $editorial ];
-			$this->view('editorials/create', $param);
-			$languaje = $this->languajesModel->getLanguajes();
-			$param 	   = [ 'languajes' => $languaje ];
-			$this->view('languajes/create', $param);
-			$category = $this->categoryModel->getCategories();
-			$param 	   = [ 'categories' => $category ];
-			$this->view('categories/create', $param);*/
+			$this->view('books/create', $param);
+		
 
 		}
 
 		public function store(){
-			/* De esta forma se accede a la lista de autores y tipos de autores enviados de la vista. 
-				Ya esta listo para enviarse al model. Hay un error en la base de datos para guardar esto!!!!
-				foreach ($_POST["author-list"] as $key => $value) {
-					$ids          = explode("_", $value);
-					$authorId     = $ids[0];
-					$typeAuthorId = $ids[1];  
-				}	
-			 */
+			
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){
 				if(isset($_POST['book-title']) && isset($_POST['book-isbn'])&& 
 				   isset($_POST['book-languaje']) && isset($_POST['category-topic']) && 
 				   isset($_POST['book-single']) && isset($_POST['book-editorial'])/*&& 
 				   isset($_POST['book-topo'])&&isset($_POST['book-cata'])*/){
-				   				   
+						   
+					
+						$book_avalability=true;
+					
 				  
 					$param = [
 						'book-title'=>trim($_POST['book-title']),
@@ -76,14 +62,12 @@
 						'book-year'=>trim($_POST['book-year']),
 						'book-topo'=>trim($_POST['book-topo']),
 						'book-languaje'=>trim($_POST['book-languaje']),
-						'book-cantiEje'=>trim($_POST['book-cant']),
+						'book-cantiEje'=>trim($_POST['book-cant']),//me da el for para insertar
 						'book-authors'=>$_POST['author-list'],
+						'book-avalability'=>$book_avalability,
 					];
-
 					
-						
-					
-				
+															
 					if($this->booksModel->addBook($param)){
 						redirect('books/create');		
 						echo '<p>guardado con exito<p>';		
@@ -97,7 +81,25 @@
 			}		 
 		}
 
-		public function show(){}
+		public function search(){
+			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){	
+				if(isset($_POST['book-title'])){
+				
+					$title=trim($_POST['book-title']);
+					
+					
+					$books=$this->booksModel->getBooksTitle($title);
+						$param = [ 'books' => $books ,];
+				
+
+						$this->view('books/index', $param);
+					}
+			
+				else{
+					echo"FATAL ERROR";
+				}
+			}
+		}
 
 		public function edit(){
 			$this->view('books/edit');
