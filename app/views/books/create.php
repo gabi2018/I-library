@@ -5,7 +5,7 @@
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="book-tab" data-toggle="tab" href="#nav-book" role="tab">Datos del libro</a>
-                <a class="nav-item nav-link" id="author-tab" data-toggle="tab" href="#nav-author">Datos de autor</a>
+                <a class="nav-item nav-link" id="author-tab" data-toggle="tab" href="#nav-author">Datos de Profesionales </<a>
                 <a class="nav-item nav-link" id="editorial-tab" data-toggle="tab" href="#nav-editorial" role="tab">Datos de edición</a>
             </div>
         </nav>
@@ -88,9 +88,9 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="autor-type">Tipo de autor</label>
+                    <label for="autor-type">Tipo de profesion</label>
                     <select name="select-tipo-autors" id="author-type" class="form-control" required>
-                        <option value="none" disabled selected>Seleccionar tipo autor</option>
+                        <option value="none" disabled selected>Seleccionar tipo de Profesional</option>
                         <?php 
                             foreach ($param["authortypes"] as $key => $value) {
                                 echo "<option value='$key'>$value</option>";
@@ -99,15 +99,15 @@
                     </select>
                 </div>  
                 <div class="form-group text-center">
-                    <a href="javascript:void(0)" id="add-autor" class="btn btn-link btn-author"><span class="material-icons">how_to_reg</span>Confirmar autor</a>    
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#create-autor" class="btn btn-link btn-author"><span class="material-icons">person_add</span>Registrar autor</a>
+                    <a href="javascript:void(0)" id="add-autor" class="btn btn-link btn-author"><span class="material-icons">how_to_reg</span>Confirmar</a>    
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#create-autor" class="btn btn-link btn-author"><span class="material-icons">person_add</span>Registrar Profesional</a>
                 </div> 
                 <div class=" ">
                     <table id="list-authors" class="table table-striped">
                         <thead class="thead-dark">
                             <tr> 
-                                <th scope="col">Autor</th>
-                                <th scope="col">Tipo de autor</th>
+                                <th scope="col">Profesional</th>
+                                <th scope="col">Tipo de Profesional</th>
                                 <th scope="col">Quitar</th>
                             </tr>
                         </thead>
