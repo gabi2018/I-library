@@ -175,7 +175,7 @@
                     </div>
                     <div class="form-group col-6">
                         <label for="cata-book">Código catalografico</label>
-                        <input type="text" name="book-cata" class="form-control" id="cata-book" required disabled placeholder="Generacion automática"> 
+                        <input type="text" name="book-cata" class="form-control" id="cata-book" required placeholder="Generacion automática"> 
                     </div>
                 </div> 
             </div>

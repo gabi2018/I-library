@@ -41,12 +41,14 @@
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){
 				if(isset($_POST['book-title']) && isset($_POST['book-isbn'])&& 
 				   isset($_POST['book-languaje']) && isset($_POST['category-topic']) && 
-				   isset($_POST['book-single']) && isset($_POST['book-editorial'])/*&& 
-				   isset($_POST['book-topo'])&&isset($_POST['book-cata'])*/){
+				   isset($_POST['book-single']) && isset($_POST['book-editorial'])&& 
+				   isset($_POST['book-topo'])&&isset($_POST['book-cata'])){
 						   
-					
-						$book_avalability=true;
-					
+
+						$book_status=1;
+					if ($_POST['book-single']==true){
+						$book_status=2;
+					}
 				  
 					$param = [
 						'book-title'=>trim($_POST['book-title']),
@@ -64,7 +66,8 @@
 						'book-languaje'=>trim($_POST['book-languaje']),
 						'book-cantiEje'=>trim($_POST['book-cant']),//me da el for para insertar
 						'book-authors'=>$_POST['author-list'],
-						'book-avalability'=>$book_avalability,
+						'book-status_id'=>$book_status,
+						'book-cata'=>trim($_POST['book-cata']),
 					];
 					
 															
