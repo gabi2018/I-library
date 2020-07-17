@@ -1,9 +1,4 @@
 <?php
-
-
-
-	
-
 	class Authors extends Controller{
 		private $authorModel;
 
@@ -50,7 +45,7 @@
 				if(isset($_POST['author-name'])){
 					$param = [
 						'author-id' => trim($_POST[	'author-id']), 
-						 'author-name' => trim($_POST['author-name']), 
+						'author-name' => trim($_POST['author-name']), 
 						'author-lastname' => trim($_POST['author-lastname'])
 					];
 					if($this->authorModel->editAuthor($param)){
@@ -62,20 +57,19 @@
 				}
 			}
 		}
-		public function search(){
-			
+
+		public function search(){			
 			if(isset($_POST['author'])){
-					$param=[
-				'author' => trim($_POST['author']), 
-					];
-					$author=$this->authorModel->getAuthorName($param);
-			//	nose a donde mandar la busqueda de autor	
-			foreach ($author as $key => $value) {
-				echo "<br>$value";
+				$param = [
+					'author' => trim($_POST['author']), 
+				];
+				$author=$this->authorModel->getAuthorName($param);
+				//	nose a donde mandar la busqueda de autor	
+				foreach ($author as $key => $value) {
+					echo "<li class='option'><span>$value</span></li>";
 				}   
-			
 			}
-	}
+		}
 		
 
 

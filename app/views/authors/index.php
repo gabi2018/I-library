@@ -13,7 +13,7 @@
 </table>
 <div>
 <label for="cata-book">buscar</label>
-       <input type="text" name="author" class="form-control" id="sug_input" required data-url="<?php echo URL_ROUTE?>/authors/search" placeholder="pon nom">
+       <input type="text" name="author" class="form-control" id="buscar-autor" required data-url="<?php echo URL_ROUTE?>/authors/search" placeholder="pon nom">
 
 
 
@@ -26,41 +26,26 @@
 
   
 
-      function search(param,url) {
-				
-				
-				// process the form
-				var parame ={
-					'author':param
-				};
-				
+function search(param, url) { 
+	// process the form
+	var parame = {'author' : param };
 
-				$.ajax({
-					type        : 'POST',
-					data        : parame,
-					url         : url,
-					
-					
-					success:function(data){
-						$('#result').html(data);
-					}
-				})
-				
-
-	};
-$(document).on('keyup','#sug_input',function(){
-
-	var input=$(this).val();
-	
-		if(input !=""){
-			url = $(this).attr('data-url');
-
-			
-			search(input,url);
+	$.ajax({
+		type : 'POST',
+		data : parame,
+		url  : url,			
+		success:function(data){
+			$('#result').html(data);
 		}
-		else{
-			
-		}
+	})
+}
+$('#buscar-autor').keyup(function(){
+	var input = $(this).val();
+	if(input != ""){
+		url = $(this).attr('data-url');
+		search(input,url);
+	}
+	else{}
 });					
 				
 </script>

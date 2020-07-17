@@ -94,3 +94,84 @@ header .material-icons{
 	height: 150px;
 	width: 150px;
 }
+
+
+/*
+ * Select simulator for search
+ */
+ .container-select-simulator {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25%;
+}
+
+.selected-s {
+  border: thin solid rgb(212, 211, 211); 
+  background: white;
+  border-radius: 4px;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 2.5em;
+  margin-bottom: .2em;
+  padding: .9em;
+  min-width: 150px;
+  position: relative;
+}
+
+.selected-s:after {
+  font-family: FontAwesome;
+  content: "\f0d7";
+  margin-left: 1em;
+  position: absolute;
+  right: .5em;
+}
+
+.container-options {
+  display: none;
+  margin: 0;
+  padding: 0;
+  background: white;
+  border: thin solid rgb(212, 211, 211); 
+  border-radius: 1px;  
+  width: 100%;
+  padding: 0.2em;
+}
+
+.container-options .search {
+  width: 100%;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+}
+
+.container-options .options {
+  padding: 0.3em;
+  max-height: 200px;
+  margin-top: 4px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container-options.open {
+  display: inline-block;
+}
+
+li.option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+li.option:hover {
+  background-color: rgb(94, 94, 252);
+  border: 1px solid rgb(34, 34, 34);
+  color: white; 
+}
+li.search {
+  padding: 0.5rem 0;
+}
+
+li>img {
+  margin-right: 1em;
+}

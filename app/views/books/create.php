@@ -1,4 +1,5 @@
 <?php require_once APP_ROUTE . '/views/modules/header.php'; ?>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <div class="col-8 mt-3 justify-content-center">
     <h4 class="mt-5 mb-3">Registrar nuevo libro</h4>
     <form method="post" action="<?php echo URL_ROUTE ?>books/store" target="_top" enctype="multipart/form-data">
@@ -78,14 +79,14 @@
             <div class="tab-pane fade" id="nav-author" role="tabpanel">      
                 <div class="form-group">
                     <label for="autor-add">Autor</label>
-                    <select name="select-autors" id="author-select" class="form-control" required>
-                        <option value="none" disabled selected>Seleccionar autor</option>
-                            <?php 
-                                foreach ($param["authors"] as $key => $value) {
-                                echo "<option value='$key'>$value</option>";
-                                }                          
-                            ?> 
-                    </select>
+                    <input type="hidden" id="sel">
+                    <div class="container-select">
+                        <div class="selected-s">Seleccionar autor</div>
+                        <div class="container-options">
+                            <input type="text" id="search-author" class="form-control search"  placeholder="Buscar autor" data-url="<?php echo URL_ROUTE?>/authors/search">
+                            <ul class="options" id="fbody"></ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="autor-type">Tipo de profesion</label>

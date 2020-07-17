@@ -147,6 +147,49 @@ $(document).ready(function() {
             });
         }
     });
+    // Search author
+    $('#search-author').keyup(function(){ 
+        var input = $(this).val();
+        if(input != ""){
+            url = $(this).attr('data-url');
+            search(input,url);
+        }
+        else{}
+    });
 
+    function search(param, url) { 
+        // process the form
+        var parame = {'author' : param };
 
+        $.ajax({
+            type : 'POST',
+            data : parame,
+            url  : url,			
+            success:function(data){
+                $('#fbody').html(data);
+
+                $(".option").click(function() {
+                    var value = $(this).find("span").html();
+                    $(".selected-s").html(value);
+                    $("#sel").val(value);
+                    $(".container-options").toggleClass("open");  
+                });  
+            }   
+        })
+    }
+
+    // JS for select simulator
+    $(".selected-s").click(function(event) {
+        event.stopPropagation();
+        $(this).siblings(".container-options").toggleClass("open");  
+    });
+      
+    $(".search").click(function(event) {
+        event.stopPropagation(); 
+    });
+      
+    $("fbody").on("click", function() {
+        $(".container-options").removeClass("open");
+    });
+       
 });

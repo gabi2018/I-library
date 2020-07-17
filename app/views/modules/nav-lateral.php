@@ -12,8 +12,7 @@
     <li>
       <a href="<?php echo URL_ROUTE ?>loans">
         <span><i class="material-icons">assignment_return</i></span>
-        Prestamos
-        <span class="notif red">1</span>
+        Prestamos 
       </a>
       <ul>
         <li><a href="<?php echo URL_ROUTE ?>loans\create">Realizar prestamo</li>
@@ -36,8 +35,7 @@
     <li>
       <a href="<?php echo URL_ROUTE ?>users">
         <span><i class="material-icons">group</i></span>
-        Socios
-        <span class="notif green">6</span>
+        Socios 
       </a>
       <ul>
         <li><a href="<?php echo URL_ROUTE ?>users">Importar Socios</a></li>
