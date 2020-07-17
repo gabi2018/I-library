@@ -2,5 +2,5 @@
  
 
 <?php require_once APP_ROUTE . '/views/books/tiles.php'; ?>
-<?php require_once APP_ROUTE . '/views/books/show.php'; ?>
+
 <?php require_once APP_ROUTE . '/views/modules/footer.php'; ?>

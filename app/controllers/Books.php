@@ -17,6 +17,11 @@
 
 		}
 	
+		public function show(){
+			
+			
+				$this->view('books/show');
+			} 
 		public function index(){
 			
 		$param="";
@@ -46,7 +51,7 @@
 						   
 
 						$book_status=1;
-					if ($_POST['book-single']==true){
+					if ($_POST['book-single']==1){
 						$book_status=2;
 					}
 				  
@@ -84,25 +89,30 @@
 			}		 
 		}
 
+
 		public function search(){
-			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){	
-				if(isset($_POST['book-title'])){
-				
-					$title=trim($_POST['book-title']);
+			
+				if(isset($_POST['book'])){
+					$param=[
+						'book' => trim($_POST['book']), 
+							];
 					
 					
-					$books=$this->booksModel->getBooksTitle($title);
-						$param = [ 'books' => $books ,];
+					
+					$books=$this->booksModel->getBooksTitleOAuthor($param);
+					foreach ($books as $key => $value) {
+						echo "<br>$value";
+						}  
 				
 
-						$this->view('books/index', $param);
+						
 					}
 			
 				else{
 					echo"FATAL ERROR";
 				}
 			}
-		}
+		
 
 		public function edit(){
 			$this->view('books/edit');

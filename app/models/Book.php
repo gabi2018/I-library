@@ -17,30 +17,28 @@
 			$response = $this->db->getRecord();
 			return $response;
 		}
-		public function getBooksTitle($title){//esta funcion trae esos poquitos datos 
+		public function getBooksTitleOAuthor($param){//esta funcion trae esos poquitos datos 
 			// título, autor, edición, volumen y si está disponible.
-					$this->db->query('SELECT b.book_title,a.author_name,b.book_edition,b.book_vol,b.book_avalability,b.book_id,b.book_isbn
-							  FROM book b ,author a ,authors_has_book au ,author_type aut 
-							  WHERE  b.book_title=:book_title
+					$this->db->query('SELECT b.book_title,a.author_name,b.book_edition,b.book_vol,bs.book_status_desc ,b.book_topolographic,b.book_isbn
+							  FROM book b ,author a ,authors_has_book au ,author_type aut ,book_status bs
+							  WHERE  b.book_title LIKE "%" :book_param "%" 
+								
 							  AND b.book_topolographic=au.book_topolographic 
 							  AND au.author_id=a.author_id 
 							  AND aut.author_type_id=au.author_type_id 
 							  AND aut.author_type_id=1
+							  AND b.book_status_id=bs.book_status_id
 							 ORDER BY b.book_title');
 
-					$this->db->bind(':book_title', $title);
-					$result = $this->db->getRecords();
+					$this->db->bind(':book_param', $param['book']);
+					$result = $this->db->getRecord();
 					
 					
 					$response = array(); 
 					foreach ($result as $key => $value) {
-						if($value->book_avalability==1){
-							$avalability='disponible';
-						}
-						else{
-							$avalability=' no disponible';
-						}
-						$response[$value->book_topolographic] =$value->book_isbn."&nbsp&nbsp&nbsp".$value->book_title ." &nbsp&nbsp;".$value->author_name." &nbsp;  ". $value->book_edition." &nbsp&nbsp;". $value->book_vol."&nbsp; ". $avalability;
+						
+												
+						$response[$value->book_topolographic] =$value->book_isbn."&nbsp&nbsp&nbsp".$value->book_title ." &nbsp&nbsp;".$value->author_name." &nbsp;  ". $value->book_edition." &nbsp&nbsp;". $value->book_vol."&nbsp; ". $value->book_status_desc;
 					}
 				
 					
@@ -52,7 +50,7 @@
 		public function getIds($isbn){
 			$this->db->query('SELECT  Max(book_topolographic) AS  book_topolographic
 							  FROM book 
-							WHERE book_isbn=:book_isbn LIMIT 1 ');
+							WHERE book_isbn=:book_isbn LIMITe 1 ');
 					$this->db->bind(':book_isbn', $isbn);		  
 
 			$response = $this->db->getRecord();

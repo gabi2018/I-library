@@ -42,6 +42,7 @@
 			$this->view('editorials/edit', $param);
 		}
 
+
 		public function update(){
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editorial-update'])){
 				if (!empty($_POST['editorial-id'])&&!empty($_POST['editorial-name'])&&!empty($_POST['editorial-address'])) {
@@ -59,9 +60,29 @@
 					}
 				}
 				else{
-					echo 'error puto no guardes vacio';
+					echo 'error';
 				}
 			}
 		}
+
+		public function show(){
+			$this->view('editorials/show');
+		}
+
+		public function search(){
+			
+			
+			if(isset($_POST['editorial'])){
+					$param=[
+				'editorial' => trim($_POST['editorial']), 
+					];
+					$editorial=$this->editorialModel->getEditorialName($param);
+			//	
+			foreach ($editorial as $key => $value) {
+				echo "<br>$value";
+				}   
+			
+			}
 	}
+}
 ?>

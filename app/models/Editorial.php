@@ -31,6 +31,24 @@
 			return $response->editorial_id;
 		}
 
+		public function getEditorialName($param){
+
+			$this->db->query('SELECT *
+								FROM editorial
+								WHERE editorial_name
+								 LIKE "%" :editorial"%"
+								ORDER BY editorial_id');
+
+			$this->db->bind(':editorial', $param['editorial']);
+			$result = $this->db->getRecords(); 
+			$response = array(); 
+
+				foreach ($result as $key => $value) {
+					$response[$value->editorial_id] = "".$value->editorial_name ." ". $value->editorial_fiscal_address."";
+				} 	
+			return $response;
+		}
+
 		public function addEditorial($param){
 			$this->db->query('INSERT INTO editorial(editorial_name, editorial_fiscal_address)
 							  VALUES (:editorial_name,:editorial_address )');

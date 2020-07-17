@@ -1,25 +1,11 @@
 
-<div class="col-8 mt-3 justify-content-center">
-<div class="tab-content mt-3" id="nav-tabContent">
-            <!-- Datos del Libro -->
-            <div class="tab-pane fade show active" id="nav-book" role="tabpanel"> 
-                <div class="row">
-                    <div class="col-9">
-                        <div class="form-group">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<label for="cata-book">buscar</label>
+       <input type="text" name="book" class="form-control" id="sug_input" required data-url="<?php echo URL_ROUTE?>/books/search" placeholder="nombre del libro o autor">
 
-<form method="post" action="<?php echo URL_ROUTE ?>books/search" target="_top" enctype="multipart/form-data">
 
-<div class="form-group">
-                        <label for="cata-book">buscar</label>
-                        <input type="text" name="book-title" class="form-control"  required  placeholder="pon title"> 
-                    
-					
-                <button type="submit" class="form-control btn btn-primary" name="book-search">search</button>
-            
-			
-	
-						</div>
-						</form>	
+
+</div>
 					</div>
 				</div>
 			</div>
@@ -28,8 +14,7 @@
 		<table>
 			<th>
 			<td>         <td> 
-			<td>         <td>
-			
+			<td>         <td>		
 				<td>         <td>
 				<td> Titulo del Libro </td>
 				<td>         <td>
@@ -42,21 +27,53 @@
 				<td> disponibilidad <td>
 				<td>         <td>
 			</th>
-				<tr>
-					<td>         <td> 
-					<td>         <td> 
-					<td>         <td> 
-
-				<?php 
-					if(isset($param['books'])){
+				<div id ="result"> 
 					
-											foreach ($param['books'] as $key => $value) {
-											echo "".$key."<td>".$value."</td>";
-											}                          
-					}                
-				?>
-				<tr>
+
+				
+				</div>
 
 		</table>
 	</div>
 </div>
+
+<script type="text/javascript">
+  //suggetion for finding product names
+  
+
+      function search(param,url) {
+				
+				
+				// process the form
+				var parame ={
+					'book':param
+				};
+				
+
+				$.ajax({
+					type        : 'POST',
+					data        : parame,
+					url         : url,		
+					
+					success:function(data){
+						$('#result').html(data);
+					}
+				})
+				
+
+	};
+$(document).on('keyup','#sug_input',function(){
+
+	var input=$(this).val();
+	
+		if(input !=""){
+			url = $(this).attr('data-url');
+
+			
+			search(input,url);
+		}
+		else{
+			
+		}
+});									
+</script>
