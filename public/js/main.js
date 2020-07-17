@@ -14,7 +14,8 @@ $(document).ready(function() {
     // Codigo para agregar distintos autores
     $("#add-autor").click(function() { 
         // Recupero los value para generar un select no visible para enviarlos al controller
-        autorValue = $("#author-select").val();
+        autorValue = $(".selected-s").attr('id');
+        console.log($(".selected-s"));
         tipoValue  = $("#author-type").val();
         if (autorValue!= null && tipoValue != null) { 
             
@@ -23,7 +24,7 @@ $(document).ready(function() {
             );
 
             // Recupero texto del select para mostrar los que se van seleccionanto
-            autorText  = $("#author-select option:selected").text();
+            autorText  = $(".selected-s").text();
             typeText   = $("#author-type option:selected").text();
             // Muestro los seleccionados
             $("#list-authors #tbody").append( 
@@ -147,6 +148,7 @@ $(document).ready(function() {
             });
         }
     });
+
     // Search author
     $('#search-author').keyup(function(){ 
         var input = $(this).val();
@@ -169,8 +171,9 @@ $(document).ready(function() {
                 $('#fbody').html(data);
 
                 $(".option").click(function() {
-                    var value = $(this).find("span").html();
+                    var value = $(this).find("span").html(); 
                     $(".selected-s").html(value);
+                    $(".selected-s").attr("id", $(this).attr("id"));
                     $("#sel").val(value);
                     $(".container-options").toggleClass("open");  
                 });  

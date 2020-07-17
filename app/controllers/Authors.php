@@ -66,7 +66,7 @@
 				$author=$this->authorModel->getAuthorName($param);
 				//	nose a donde mandar la busqueda de autor	
 				foreach ($author as $key => $value) {
-					echo "<li class='option'><span>$value</span></li>";
+					echo "<li class='option' id=$key><span>$value</span></li>";
 				}   
 			}
 		}
