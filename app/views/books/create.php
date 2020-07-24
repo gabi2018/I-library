@@ -142,6 +142,13 @@
                         <label for="topic-book">Tema</label>
                         <select name="book-topic" class="form-control" id="topic-book" data-url="<?php echo URL_ROUTE?>subtopics/show">	
                             <option disabled selected>Selecionar tema</option>
+
+
+
+
+
+
+
                             <?php 
                                 foreach ($param["topics"] as $key => $value) {
                                 echo "<option value='$key'>$value</option>";

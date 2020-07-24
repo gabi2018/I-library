@@ -21,24 +21,26 @@
 			// título, autor, edición, volumen y si está disponible.
 					$this->db->query('SELECT b.book_title,a.author_name,b.book_edition,b.book_vol,bs.book_status_desc ,b.book_topolographic,b.book_isbn
 							  FROM book b ,author a ,authors_has_book au ,author_type aut ,book_status bs
-							  WHERE  b.book_title LIKE "%" :book_param "%" 
-								
+							  WHERE  b.book_title LIKE "%" :book_param "%" 							
 							  AND b.book_topolographic=au.book_topolographic 
 							  AND au.author_id=a.author_id 
 							  AND aut.author_type_id=au.author_type_id 
-							  AND aut.author_type_id=1
 							  AND b.book_status_id=bs.book_status_id
-							 ORDER BY b.book_title');
+							 ORDER BY b.book_title ');
 
 					$this->db->bind(':book_param', $param['book']);
-					$result = $this->db->getRecord();
+					$result = $this->db->getRecords();
 					
 					
 					$response = array(); 
+					$i=1;	
 					foreach ($result as $key => $value) {
 						
-												
-						$response[$value->book_topolographic] =$value->book_isbn."&nbsp&nbsp&nbsp".$value->book_title ." &nbsp&nbsp;".$value->author_name." &nbsp;  ". $value->book_edition." &nbsp&nbsp;". $value->book_vol."&nbsp; ". $value->book_status_desc;
+						$pos=substr($value->book_topolographic, -1);
+						if($pos==1){					
+						$response[$i] =$value->book_topolographic."&nbsp&nbsp".$value->book_isbn."&nbsp&nbsp".$value->book_title ." &nbsp&nbsp".$value->author_name." &nbsp;  ". $value->book_edition." &nbsp&nbsp;". $value->book_vol."&nbsp; ". $value->book_status_desc;
+						$i++;
+						}
 					}
 				
 					
@@ -46,7 +48,6 @@
 
 		}
 		//crear get bossks por autor
-		
 		public function getIds($isbn){
 			$this->db->query('SELECT  Max(book_topolographic) AS  book_topolographic
 							  FROM book 
@@ -89,7 +90,7 @@
 			$this->db->bind(':book_status_id', $param['book-status_id']);
 				$nameImg='';
 				
-				if(!empty($param['book-img'])&&($i<2)){			
+				if(empty($param['book-img'])&&($i<2)){			
 				$nameImg=$param['book-img']['name'];
 				$file=$param['book-img']['tmp_name'];
 
