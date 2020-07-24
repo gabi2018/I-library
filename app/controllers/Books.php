@@ -51,7 +51,7 @@
 						   
 
 						$book_status=1;
-					if ($_POST['book-single']==1){
+					if ($_POST['book-single']==0){
 						$book_status=2;
 					}
 				  

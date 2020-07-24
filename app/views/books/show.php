@@ -5,11 +5,7 @@
 
 
 
-</div>
-					</div>
-				</div>
-			</div>
-</div>
+
 		<div class="row" >
 		<table>
 			<th>
@@ -27,14 +23,16 @@
 				<td> disponibilidad <td>
 				<td>         <td>
 			</th>
+			</table>
+			
+				
 				<div id ="result"> 
 					
 
 				
-				</div>
+					</div>
+	
 
-		</table>
-	</div>
 </div>
 
 <script type="text/javascript">
