@@ -6,7 +6,7 @@
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="book-tab" data-toggle="tab" href="#nav-book" role="tab">Datos del libro</a>
-                <a class="nav-item nav-link" id="author-tab" data-toggle="tab" href="#nav-author">Datos de Profesionales </<a>
+                <a class="nav-item nav-link" id="author-tab" data-toggle="tab" href="#nav-author">Datos de autor</<a>
                 <a class="nav-item nav-link" id="editorial-tab" data-toggle="tab" href="#nav-editorial" role="tab">Datos de edición</a>
             </div>
         </nav>
@@ -79,19 +79,19 @@
             <div class="tab-pane fade" id="nav-author" role="tabpanel">      
                 <div class="form-group">
                     <label for="autor-add">Autor</label>
-                    <input type="hidden" id="sel">
+                    <input type="hidden" id="selected-author">
                     <div class="container-select">
-                        <div class="selected-s">Seleccionar autor</div>
-                        <div class="container-options">
+                        <div class="selected-s" id="select-author">Seleccionar autor</div>
+                        <div class="container-options" id="container-author">
                             <input type="text" id="search-author" class="form-control search"  placeholder="Buscar autor" data-url="<?php echo URL_ROUTE?>/authors/search">
-                            <ul class="options" id="fbody"></ul>
+                            <ul class="options" id="options-author"></ul>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="autor-type">Tipo de profesion</label>
+                    <label for="autor-type">Tipo de autor</label>
                     <select name="select-tipo-autors" id="author-type" class="form-control" required>
-                        <option value="none" disabled selected>Seleccionar tipo de Profesional</option>
+                        <option value="none" disabled selected>Seleccionar tipo de autor</option>
                         <?php 
                             foreach ($param["authortypes"] as $key => $value) {
                                 echo "<option value='$key'>$value</option>";
@@ -123,15 +123,15 @@
             <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
                 <div class="row">
                     <div class="form-group col-11">
-                        <label for="editorial-book">Editorial</label>
-                        <select name="book-editorial" class="form-control" id="editorial-book">
-                            <option disabled selected >Selecionar editorial</option>
-                            <?php 
-                                foreach ($param["editorials"] as $key => $value) {
-                                    echo "<option value='$key'>$value</option>";
-                                }                          
-                            ?>
-                        </select>
+                        <label for="autor-add">Editorial</label>
+                        <input type="hidden" id="selected-editorial">
+                        <div class="container-select">
+                            <div class="selected-s" id="select-editorial">Seleccionar editorial</div>
+                            <div class="container-options" id="container-editorial">
+                                <input type="text" id="search-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>/editorials/search">
+                                <ul class="options" id="options-editorial"></ul>
+                            </div>
+                        </div>
                     </div> 
                     <div class="form-group col-1">
                         <a href="javascript:void(0);" class="material-icons mt-4 btn btn-outline-info btn-circle" data-toggle="modal" id="add-new-editorial" data-target="#create-editorial" data-toggle="tooltip" data-placement="bottom" title="Agregar nueva editorial">add</a>

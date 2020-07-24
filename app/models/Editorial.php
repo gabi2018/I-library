@@ -32,20 +32,13 @@
 		}
 
 		public function getEditorialName($param){
-
-			$this->db->query('SELECT *
-								FROM editorial
-								WHERE editorial_name
-								 LIKE "%" :editorial"%"
-								ORDER BY editorial_id');
-
+			$this->db->query('SELECT * FROM editorial WHERE editorial_name  LIKE "%" :editorial "%" ORDER BY editorial_name');
 			$this->db->bind(':editorial', $param['editorial']);
 			$result = $this->db->getRecords(); 
 			$response = array(); 
-
-				foreach ($result as $key => $value) {
-					$response[$value->editorial_id] = "".$value->editorial_name ." ". $value->editorial_fiscal_address."";
-				} 	
+			foreach ($result as $key => $value) {
+				$response[$value->editorial_id] =  $value->editorial_name;
+			} 	
 			return $response;
 		}
 

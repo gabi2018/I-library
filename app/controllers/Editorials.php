@@ -70,19 +70,14 @@
 		}
 
 		public function search(){
-			
-			
-			if(isset($_POST['editorial'])){
-					$param=[
-				'editorial' => trim($_POST['editorial']), 
-					];
-					$editorial=$this->editorialModel->getEditorialName($param);
-			//	
-			foreach ($editorial as $key => $value) {
-				echo "<br>$value";
+			if(isset($_POST['search'])){
+				$param     = ['editorial' => trim($_POST['search'])];
+				$editorial = $this->editorialModel->getEditorialName($param);
+
+				foreach ($editorial as $key => $value) {
+					echo "<li class='option' id=$key><span>$value</span></li>";
 				}   
-			
 			}
+		}
 	}
-}
 ?>

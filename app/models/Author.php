@@ -27,23 +27,16 @@
 		}
 
 		public function getAuthorName($param){
-
-			$this->db->query('SELECT *
-								FROM author
-								WHERE author_name
-								 LIKE "%" :author"%"or 
-								 author_lastname LIKE "%" :author"%"
-								ORDER BY author_id');
-
+			$this->db->query('SELECT * FROM author WHERE author_name LIKE "%" :author "%" OR author_lastname LIKE "%" :author "%" ORDER BY author_name');
 			$this->db->bind(':author', $param['author']);
 			$result = $this->db->getRecords(); 
 			$response = array(); 
-
-				foreach ($result as $key => $value) {
-					$response[$value->author_id] = "".$value->author_name ." ". $value->author_lastname."";
-				} 	
+			foreach ($result as $key => $value) {
+				$response[$value->author_id] = "".$value->author_name ." ". $value->author_lastname."";
+			} 	
 			return $response;
 		}
+		
 		public function getAuthorId($param){
 			$this->db->query('SELECT author_id 
 								FROM author 

@@ -17,24 +17,21 @@
 
 		}
 	
-		public function show(){
-			
-			
-				$this->view('books/show');
-			} 
+		public function show(){ 
+			$this->view('books/show');
+		} 
+
 		public function index(){
-			
-		$param="";
-			$this->view('books/index', $param);
+			$this->view('books/index');
 		}  
 
 		public function create(){  
 			$param = [
-				 "languajes"  => $this->languajeModel->getLanguajes(), 
-				 "authors"	  => $this->authorModel->getAuthors(),
-				 "authortypes" => $this->authorTypeModel->getAuthorTypes(),
-				 "editorials" => $this->editorialModel->getEditorials(),
-				 "topics"	  => $this->topicModel->getTopics()
+				"languajes"   => $this->languajeModel->getLanguajes(), 
+				"authors"	  => $this->authorModel->getAuthors(),
+				"authortypes" => $this->authorTypeModel->getAuthorTypes(),
+				"editorials"  => $this->editorialModel->getEditorials(),
+				"topics"	  => $this->topicModel->getTopics()
  			];
 			$this->view('books/create', $param);
 		
@@ -42,16 +39,14 @@
 		}
 
 		public function store(){
-			
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){
 				if(isset($_POST['book-title']) && isset($_POST['book-isbn'])&& 
 				   isset($_POST['book-languaje']) && isset($_POST['category-topic']) && 
 				   isset($_POST['book-single']) && isset($_POST['book-editorial'])&& 
 				   isset($_POST['book-topo'])&&isset($_POST['book-cata'])){
 						   
-
-						$book_status=1;
-					if ($_POST['book-single']==1){
+ 					$book_status = 1;
+					if ($_POST['book-single'] == 1){
 						$book_status=2;
 					}
 				  
@@ -74,7 +69,6 @@
 						'book-status_id'=>$book_status,
 						'book-cata'=>trim($_POST['book-cata']),
 					];
-					
 															
 					if($this->booksModel->addBook($param)){
 						redirect('books/create');		
@@ -91,29 +85,15 @@
 
 
 		public function search(){
-			
-				if(isset($_POST['book'])){
-					$param=[
-						'book' => trim($_POST['book']), 
-							];
-					
-					
-					
-					$books=$this->booksModel->getBooksTitleOAuthor($param);
-					foreach ($books as $key => $value) {
-						echo "<br>$value";
-						}  
-				
-
-						
-					}
-			
-				else{
-					echo"FATAL ERROR";
-				}
+			if(isset($_POST['book'])){
+				$param = ['book' => trim($_POST['book'])];
+				$books = $this->booksModel->getBooksTitleOAuthor($param);
+				foreach ($books as $key => $value) {
+					echo "<li class='option' id=$key><span>$value</span></li>";
+				}   
 			}
+		}
 		
-
 		public function edit(){
 			$this->view('books/edit');
 		}

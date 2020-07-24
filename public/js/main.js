@@ -14,17 +14,15 @@ $(document).ready(function() {
     // Codigo para agregar distintos autores
     $("#add-autor").click(function() { 
         // Recupero los value para generar un select no visible para enviarlos al controller
-        autorValue = $(".selected-s").attr('id');
-        console.log($(".selected-s"));
+        autorValue = $("#select-author").attr('data-id');
         tipoValue  = $("#author-type").val();
-        if (autorValue!= null && tipoValue != null) { 
-            
+        if (autorValue!= null && tipoValue != null) {  
             $("#list-author").append(
                 "<option value="+ autorValue + "_" + tipoValue +" id="+ autorValue + "_" + tipoValue +" selected></option>"
             );
 
             // Recupero texto del select para mostrar los que se van seleccionanto
-            autorText  = $(".selected-s").text();
+            autorText  = $("#select-author").text();
             typeText   = $("#author-type option:selected").text();
             // Muestro los seleccionados
             $("#list-authors #tbody").append( 
@@ -149,50 +147,59 @@ $(document).ready(function() {
         }
     });
 
+     // Search editorial
+     $('#search-editorial').keyup(function(){ 
+        var input = $(this).val();
+        if(input != ""){
+            url = $(this).attr('data-url');
+            search(input, url).done(function(response){
+                $('#options-editorial').html(response);
+                closeSelect("#container-editorial", "#select-editorial", "#options-editorial>li.option", "#selected-editorial"); 
+            }); 
+        } 
+    });
+    $("#select-editorial").click(function(event) {
+        selectSimulator(event, $(this),"#container-editorial"); 
+   });
+
     // Search author
     $('#search-author').keyup(function(){ 
         var input = $(this).val();
         if(input != ""){
             url = $(this).attr('data-url');
-            search(input,url);
-        }
-        else{}
+            search(input, url).done(function(response){
+                $('#options-author').html(response);
+                closeSelect("#container-author", "#select-author", "#options-author>li.option", "#selected-author"); 
+            }); 
+        } 
+    }); 
+    $("#select-author").click(function(event) {
+        selectSimulator(event, $(this), "#container-author"); 
     });
 
+    // Asyncronic search
     function search(param, url) { 
-        // process the form
-        var parame = {'author' : param };
-
-        $.ajax({
-            type : 'POST',
-            data : parame,
-            url  : url,			
-            success:function(data){
-                $('#fbody').html(data);
-
-                $(".option").click(function() {
-                    var value = $(this).find("span").html(); 
-                    $(".selected-s").html(value);
-                    $(".selected-s").attr("id", $(this).attr("id"));
-                    $("#sel").val(value);
-                    $(".container-options").toggleClass("open");  
-                });  
-            }   
-        })
+        return $.post(url, {search : param});
     }
 
     // JS for select simulator
-    $(".selected-s").click(function(event) {
+    function selectSimulator(event, element, container){
         event.stopPropagation();
-        $(this).siblings(".container-options").toggleClass("open");  
-    });
-      
+        element.siblings(container).toggleClass("open");  
+    }
+
+    //Close select from asyncronic search
+    function closeSelect(container, select, options, selected, ){
+        $(options).click(function() {
+            var value = $(this).find("span").html(); 
+            $(select).html(value);
+            $(select).attr("data-id", $(this).attr("id"));
+            $(selected).val(value);
+            $(container).toggleClass("open");
+        }); 
+    } 
     $(".search").click(function(event) {
         event.stopPropagation(); 
     });
-      
-    $("fbody").on("click", function() {
-        $(".container-options").removeClass("open");
-    });
-       
+             
 });

@@ -59,12 +59,9 @@
 		}
 
 		public function search(){			
-			if(isset($_POST['author'])){
-				$param = [
-					'author' => trim($_POST['author']), 
-				];
-				$author=$this->authorModel->getAuthorName($param);
-				//	nose a donde mandar la busqueda de autor	
+			if(isset($_POST['search'])){
+				$param = ['author' => trim($_POST['search'])];
+				$author=$this->authorModel->getAuthorName($param); 
 				foreach ($author as $key => $value) {
 					echo "<li class='option' id=$key><span>$value</span></li>";
 				}   
