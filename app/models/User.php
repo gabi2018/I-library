@@ -32,30 +32,33 @@
 		}
 
 		public function addUser($param){
-			$this->db->query('INSERT INTO user 
-										 (user_dni, user_name, 
-										  user_lastname, 
-										  user_address, 
-										  user_phone, 
-										  user_email, 
-										  user_password) 
-										  
-							    VALUES  (:user_dni,:user_name, 
-								         :user_lastname, 
-										 :user_address, 
-										 :user_phone, 
-										 :user_email, 
-										 :user_password');
 
-			# Link values
+			$this->db->query('INSERT INTO user 
+										 (user_dni, user_name, user_lastname, user_address, user_phone, user_email, user_password, user_type_id, user_img) 
+										  
+							    VALUES  (:user_dni, :user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, 1, :user_img)');
+
+			# Link values 
 			$this->db->bind(':user_name',     $param['user-name']);
 			$this->db->bind(':user_lastname', $param['user-lastname']);
 			$this->db->bind(':user_address',  $param['user-address']);
-			$this->db->bind(':user_dni',      $param['user-doc']);
+			$this->db->bind(':user_dni',      $param['user-dni']);
 			$this->db->bind(':user_phone',    $param['user-phone']);
 			$this->db->bind(':user_email',    $param['user-email']);
-			$this->db->bind(':user_password', $param['user-pass']);
-			//$this->db->bind(':user_type',     $param['user-type']);
+			$this->db->bind(':user_password', $param['user-pass']); 
+			$nameImg='';
+				
+			if(!empty($param['user-img'])){			
+			$nameImg=$param['user-img']['name'];
+			$file=$param['user-img']['tmp_name'];
+			$rut='../public/media/partner/'.$nameImg;
+			
+
+			copy($file,$rut);
+			 
+			}
+
+			$this->db->bind(':user_img',$nameImg);
 			# Run
 			if($this->db->execute()){
 				return true;
@@ -63,6 +66,7 @@
 			else{
 				return false;
 			}
+			
 		}
 
 		public function userRecord($param){

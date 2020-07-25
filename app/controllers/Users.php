@@ -27,12 +27,10 @@
 		public function store(){
 
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-register'])){
-				echo"hla";
+				
 				if(isset($_POST['user-pass']) && isset($_POST['user-doc'])) {
-					echo $_POST['user-name'];
-					
-					/*
-					$pass    =  password_hash(trim($_POST['user-password']), PASSWORD_BCRYPT, ['cost' => 12]);
+				
+					$pass    =  password_hash(trim($_POST['user-pass']), PASSWORD_BCRYPT, ['cost' => 12]);
 					$param = [
 						'user-name' 	=> trim($_POST['user-name']),
 						'user-lastname' => trim($_POST['user-lastname']),
@@ -40,6 +38,7 @@
 						'user-dni'      => trim($_POST['user-doc']),
 						'user-phone' 	=> trim($_POST['user-phone']),
 						'user-email' 	=> trim($_POST['user-email']),
+						'user-img'      =>      $_FILES['user-dni'],
 						'user-pass' => $pass
 						//'user-type' 	=> trim($_POST['user-type'])
 					];
@@ -50,7 +49,7 @@
 					else{
 						die("FATAL ERROR");
 					}
-				 */	
+				 
 				}
 				
 			}
@@ -72,6 +71,3 @@
 	}
 
 ?>
-<html>
-
-</html>
