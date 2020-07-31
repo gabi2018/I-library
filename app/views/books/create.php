@@ -30,7 +30,7 @@
                     </div> 
                     <div class="col-3">
                         <div class="form-group">
-                            <img for="cover-img" class="justify-content-end" id="cover-preview" src="<?php echo URL_ROUTE;?>media/images/system/default-cover-book.png""> 
+                            <img for="cover-img" class="justify-content-end" id="cover-preview" src="<?php echo URL_ROUTE;?>media/images/book/default-cover-book.png""> 
                             <input name="book-img" type="file" class="form-control-file" accept="image/*" id="cover-img">
                         </div>
                     </div>

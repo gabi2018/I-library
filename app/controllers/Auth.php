@@ -15,7 +15,8 @@
 					$user  = $this->userModel->getByEmail($email);
 					
 					if(!empty($user) && password_verify($pass, $user->user_password)){
-						$_SESSION['user'] = $user->user_email;
+						$_SESSION['username'] = "$user->user_name $user->user_lastname";
+						$_SESSION['userpic']  = "$user->user_img";
 						redirect('home');	
 					} 
 					else{ 
