@@ -152,15 +152,15 @@ $(document).ready(function() {
         var input = $(this).val();
         if(input != ""){
             url = $(this).attr('data-url');
-            search(input, url).done(function(response){
-                $('#options-editorial').html(response);
+            search(input, url).done(function(response){ 
+                $('#options-editorial').html(response); 
                 closeSelect("#container-editorial", "#select-editorial", "#options-editorial>li.option", "#selected-editorial"); 
             }); 
         } 
     });
     $("#select-editorial").click(function(event) {
         selectSimulator(event, $(this),"#container-editorial"); 
-   });
+    });
 
     // Search author
     $('#search-author').keyup(function(){ 
@@ -189,13 +189,17 @@ $(document).ready(function() {
     }
 
     //Close select from asyncronic search
-    function closeSelect(container, select, options, selected, ){
+    function closeSelect(container, select, options, selected){
         $(options).click(function() {
-            var value = $(this).find("span").html(); 
+            var value = $(this).find("span").html(),
+                input = $(this).children()[1]; 
             $(select).html(value);
             $(select).attr("data-id", $(this).attr("id"));
             $(selected).val(value);
             $(container).toggleClass("open");
+            if(input != undefined){
+                $("#resutl-editorial").html(input);
+            }
         }); 
     } 
     $(".search").click(function(event) {

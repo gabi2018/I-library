@@ -83,7 +83,7 @@
                     <div class="container-select">
                         <div class="selected-s" id="select-author">Seleccionar autor</div>
                         <div class="container-options" id="container-author">
-                            <input type="text" id="search-author" class="form-control search"  placeholder="Buscar autor" data-url="<?php echo URL_ROUTE?>/authors/search">
+                            <input type="text" id="search-author" class="form-control search"  placeholder="Buscar autor" data-url="<?php echo URL_ROUTE?>authors/search">
                             <ul class="options" id="options-author"></ul>
                         </div>
                     </div>
@@ -123,15 +123,16 @@
             <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
                 <div class="row">
                     <div class="form-group col-11">
-                        <label for="autor-add">Editorial</label>
+                        <label for="editorial-add">Editorial</label>
                         <input type="hidden" id="selected-editorial">
                         <div class="container-select">
                             <div class="selected-s" id="select-editorial">Seleccionar editorial</div>
                             <div class="container-options" id="container-editorial">
-                                <input type="text" id="search-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>/editorials/search">
+                                <input type="text" id="search-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>editorials/search">
                                 <ul class="options" id="options-editorial"></ul>
                             </div>
                         </div>
+                        <div id="resutl-editorial"></div>
                     </div> 
                     <div class="form-group col-1">
                         <a href="javascript:void(0);" class="material-icons mt-4 btn btn-outline-info btn-circle" data-toggle="modal" id="add-new-editorial" data-target="#create-editorial" data-toggle="tooltip" data-placement="bottom" title="Agregar nueva editorial">add</a>
