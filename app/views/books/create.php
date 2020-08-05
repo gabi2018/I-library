@@ -100,7 +100,7 @@
                     </select>
                 </div>  
                 <div class="form-group text-center">
-                    <a href="javascript:void(0)" id="add-autor" class="btn btn-link btn-author"><span class="material-icons">how_to_reg</span>Confirmar</a>    
+                    <a href="javascript:void(0)" id="add-autor" class="btn btn-link btn-author" data-cutter="<?php echo URL_ROUTE?>"><span class="material-icons">how_to_reg</span>Confirmar</a>    
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#create-autor" class="btn btn-link btn-author"><span class="material-icons">person_add</span>Registrar Profesional</a>
                 </div> 
                 <div class=" ">
@@ -143,13 +143,6 @@
                         <label for="topic-book">Tema</label>
                         <select name="book-topic" class="form-control" id="topic-book" data-url="<?php echo URL_ROUTE?>subtopics/show">	
                             <option disabled selected>Selecionar tema</option>
-
-
-
-
-
-
-
                             <?php 
                                 foreach ($param["topics"] as $key => $value) {
                                 echo "<option value='$key'>$value</option>";
