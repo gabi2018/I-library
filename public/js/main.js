@@ -1,4 +1,18 @@
+var table;
+
 $(document).ready(function() {
+    // Variables for book codes
+    var cutterCode;   
+
+    // All Code
+    url = $("#add-autor").attr('data-cutter') + "public/js/tablacutter-js.txt"
+        $.ajax({
+            url: url,
+            success: function(result) {
+            table = result; 
+        }
+    });
+
     $(".menu").click(function() {
         $(".keep").toggleClass("width");
     });
@@ -10,8 +24,8 @@ $(document).ready(function() {
             $("#cantEjemplar").css("display", "initial");
         }
     })
-
-    // Codigo para agregar distintos autores
+    
+    // Codigo para agregar distintos autores    
     $("#add-autor").click(function() { 
         // Recupero los value para generar un select no visible para enviarlos al controller
         autorValue = $("#select-author").attr('data-id');
@@ -31,6 +45,10 @@ $(document).ready(function() {
                     "<td>" + typeText + "</td>" +
                     "<td><a href='javascript:void(0)' class='delautor material-icons' id='" + autorValue + "." + tipoValue + "'>clear</a></td></tr>"
             );
+
+            // Generate cutter code   
+            cutterCode = generateCutterCode(autorText, table);
+            console.log(cutterCode);
         }
 
         $(".delautor").click(function() {
@@ -152,15 +170,15 @@ $(document).ready(function() {
         var input = $(this).val();
         if(input != ""){
             url = $(this).attr('data-url');
-            search(input, url).done(function(response){
-                $('#options-editorial').html(response);
+            search(input, url).done(function(response){ 
+                $('#options-editorial').html(response); 
                 closeSelect("#container-editorial", "#select-editorial", "#options-editorial>li.option", "#selected-editorial"); 
             }); 
         } 
     });
     $("#select-editorial").click(function(event) {
         selectSimulator(event, $(this),"#container-editorial"); 
-   });
+    });
 
     // Search author
     $('#search-author').keyup(function(){ 
@@ -189,17 +207,21 @@ $(document).ready(function() {
     }
 
     //Close select from asyncronic search
-    function closeSelect(container, select, options, selected, ){
+    function closeSelect(container, select, options, selected){
         $(options).click(function() {
-            var value = $(this).find("span").html(); 
+            var value = $(this).find("span").html(),
+                input = $(this).children()[1]; 
             $(select).html(value);
             $(select).attr("data-id", $(this).attr("id"));
             $(selected).val(value);
             $(container).toggleClass("open");
+            if(input != undefined){
+                $("#resutl-editorial").html(input);
+            }
         }); 
     } 
     $(".search").click(function(event) {
         event.stopPropagation(); 
     });
-             
+     
 });

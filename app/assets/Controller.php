@@ -24,7 +24,7 @@
 		}
 
 		public static function authenticated(){
-			return (isset($_SESSION['user']));
+			return (isset($_SESSION['username']));
 		} 
 	}
 ?>

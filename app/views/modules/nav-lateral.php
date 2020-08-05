@@ -1,56 +1,104 @@
 <?php if (Controller::authenticated()) : ?>
-<aside class="lateral-menu">
-  <span class="menu"><i class="material-icons">menu</i></span>
-  <ul>
-    <li>
-      <a href="<?php echo URL_ROUTE ?>home">
-        <span><i class="material-icons">home</i></span>
-        Inicio 
-      </a>
-    </li> 
+<aside class="lateral-menu"> 
+  <div class="lateral-header">
+    <div class="user-pic">
+      <img id="img-profile" src="<?php echo URL_ROUTE."media/images/partner/$_SESSION[userpic]"?>"alt="Admin picture">
+    </div>
+    <div class="user-info">
+      <span class="user-name"><strong><?php echo $_SESSION['username']?></strong></span>
+      <span class="user-role">Administrator</span> 
+    </div>
+  </div> 
 
-    <li>
-      <a href="<?php echo URL_ROUTE ?>loans">
-        <span><i class="material-icons">assignment_return</i></span>
-        Prestamos 
-      </a>
-      <ul>
-        <li><a href="<?php echo URL_ROUTE ?>loans\create">Realizar prestamo</li>
-        <li><a href="<?php echo URL_ROUTE ?>loans">Prestamos activos</li>
-        <li><a href="<?php echo URL_ROUTE ?>loans">Prestamos vencidos</li>
-      </ul>
-      
-    </li>  
-
-    <li>
-      <a href="<?php echo URL_ROUTE ?>books\index">
-        <span><i class="material-icons">book</i></span>
-        Libros 
-      </a>
-      <ul>
-        <li><a href="<?php echo URL_ROUTE ?>books\create"><span class="material-icons">add</span>Agregar Libro</a></li> 
-      </ul>
-    </li>
-
-    <li>
-      <a href="<?php echo URL_ROUTE ?>users">
-        <span><i class="material-icons">group</i></span>
-        Socios 
-      </a>
-      <ul>
-        <li><a href="<?php echo URL_ROUTE ?>users">Importar Socios</a></li>
-        <li><a href="<?php echo URL_ROUTE ?>users\create">Agregar socio</a></li>
-        <li><a href="<?php echo URL_ROUTE ?>users">Deshabilitar socio</a></li>
-      </ul>
-    </li>   
-
-    <li>
-      <a href="/">
-        <span><i class="material-icons">local_offer</i></span>
-        Option 4
-      </a>
-    </li>
-  
-  </ul>
+  <hr>
+  <div class="accordion" id="acordion-menu"> 
+    <ul>
+      <li>
+        <a href="<?php echo URL_ROUTE ?>home">
+          <span><i class="material-icons">home</i></span>
+          <span class="menu-text">Inicio</span>    
+        </a>
+      </li> 
+      <hr>
+      <li>
+        <a href="" data-toggle="collapse" data-target="#loan-collapse">
+          <span><i class="material-icons">assignment_return</i></span>
+          <span class="menu-text">Prestamos</span>
+        </a>
+        <ul id="loan-collapse" class="collapse" data-parent="#acordion-menu">
+          <li>
+            <a href="<?php echo URL_ROUTE ?>loans\create">
+              <span><i class="material-icons">add</i></span> 
+              <span class="menu-text">Realizar prestamo</span>
+            </a>
+          </li> 
+          <li>
+            <a href="<?php echo URL_ROUTE ?>loans">
+              <span><i class="material-icons">assignment_turned_in</i></span> 
+              <span class="menu-text">Prestamos activos</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo URL_ROUTE ?>loans">
+              <span><i class="material-icons">error_outline</i></span>
+              <span class="menu-text">Prestamos vencidos</span>
+            </a>
+          </li>
+        </ul> 
+      </li>  
+      <hr>
+      <li>
+        <a href="" data-toggle="collapse" data-target="#book-collapse">
+          <span><i class="material-icons">book</i></span>
+          <span class="menu-text">Libros</span>
+        </a>
+        <ul id="book-collapse" class="collapse" data-parent="#acordion-menu">
+          <li>
+            <a href="<?php echo URL_ROUTE ?>books\create">
+              <span><i class="material-icons">add</i></span>
+              <span class="menu-text">Agregar Libro</span>
+            </a>
+          </li> 
+        </ul>
+      </li>
+      <hr>
+      <li>
+        <a href="" data-toggle="collapse" data-target="#user-collapse">
+          <span><i class="material-icons">group</i></span>
+          <span class="menu-text">Socios</span>
+        </a>
+        <ul id="user-collapse" class="collapse" data-parent="#acordion-menu">
+          <li>
+            <a href="<?php echo URL_ROUTE ?>users\create">
+              <span><i class="material-icons">add</i></span> 
+              <span class="menu-text">Agregar socio</span> 
+            </a>
+          </li>  
+          <li>
+            <a href="<?php echo URL_ROUTE ?>users">
+              <span><i class="material-icons">move_to_inbox</i></span> 
+              <span class="menu-text">Importar socios</span> 
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo URL_ROUTE ?>users">
+              <span><i class="material-icons">block</i></span> 
+              <span class="menu-text">Deshabilitar socio</span> 
+            </a>
+          </li>
+        </ul>
+      </li>   
+      <hr>
+      <li>
+        <a href="">
+          <span><i class="material-icons">local_offer</i></span>
+          <span class="menu-text">Option 4</span>
+        </a>
+      </li>
+    
+    </ul>
+  </div>
 </aside> 
+
+
 <?php endif; ?>

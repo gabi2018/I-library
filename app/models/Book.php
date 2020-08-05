@@ -66,7 +66,7 @@
 			$numberCopies=$param['book-cantiEje'];
 			for ($i=1;$i<=$numberCopies;$i++){
 				$cod_topolographic=$param['book-topo'].$i;
-			$this->db->query('INSERT INTO book(book_topolographic, book_isbn, book_title,book_desc, book_vol, book_catalographic, book_year, book_num_pages, book_edition, book_single_copy, languaje_id, editorial_id, category_id, book_img, book_cantiEje, book_status_id) 
+			$this->db->query('INSERT INTO book(book_topolographic, book_isbn, book_title,book_desc, book_vol, book_catalographic, book_year, book_num_pages, book_edition, book_single_copy, languaje_id, editorial_id, category_id, book_img, book_num_copies, book_status_id) 
 										VALUES(:book_topo,:book_isbn,:book_title, :book_desc,:book_vol,:book_cata, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_img,:book_cantidad_eje,:book_status_id)');
 
 			$isbn=$param['book-isbn'];

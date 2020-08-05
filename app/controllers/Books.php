@@ -38,7 +38,7 @@
 
 		}
 
-		public function store(){
+		public function store(){ 
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){
 				if(isset($_POST['book-title'])&&isset($_POST['book-isbn'])&& 
 				   isset($_POST['book-languaje'])&&isset($_POST['category-topic'])&& 

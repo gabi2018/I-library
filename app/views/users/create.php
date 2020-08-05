@@ -19,8 +19,8 @@
             </div> 
             <div class="col-3">
                 <div class="form-group">
-                    <label class="justify-content-end" id="user-pic" for="cover-img"></label>
-                    <input name="cover-img" type="file" class="form-control-file" id="cover-img">
+                    <img class="justify-content-end" id="cover-preview" for="cover-img" src="<?php echo URL_ROUTE;?>media/images/partner/default-user.png"></label>
+                    <input name="user-dni" type="file" class="form-control-file"  accept="image/*" id="cover-img">
                 </div>
             </div>
         </div> 
@@ -38,7 +38,7 @@
             </div>   
             <div class="form-group col-6">
                 <label for="phone-user">Teléfono</label>
-                <input type="number" name="phone-doc" id="phone-user" class="form-control" placeholder="Ingresar número de teléfono" required> 
+                <input type="number" name="user-phone" id="phone-user" class="form-control" placeholder="Ingresar número de teléfono" required> 
             </div>  
         </div>
         <div class="row">
