@@ -40,11 +40,11 @@
 
 		public function store(){
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){
-				if(isset($_POST['book-title']) && isset($_POST['book-isbn'])&& 
-				   isset($_POST['book-languaje']) && isset($_POST['category-topic']) && 
-				   isset($_POST['book-single']) && isset($_POST['book-editorial'])&& 
+				if(isset($_POST['book-title'])&&isset($_POST['book-isbn'])&& 
+				   isset($_POST['book-languaje'])&&isset($_POST['category-topic'])&& 
+				   isset($_POST['book-single'])&&isset($_POST['book-editorial'])&& 
 				   isset($_POST['book-topo'])&&isset($_POST['book-cata'])){
-						   
+						   echo $_POST['book-editorial'];
  					$book_status = 1;
 					if ($_POST['book-single'] == 1){
 						$book_status=2;

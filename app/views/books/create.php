@@ -79,7 +79,7 @@
             <div class="tab-pane fade" id="nav-author" role="tabpanel">      
                 <div class="form-group">
                     <label for="autor-add">Autor</label>
-                    <input type="hidden" id="selected-author">
+                    <input type="hidden"  id="selected-author">
                     <div class="container-select">
                         <div class="selected-s" id="select-author">Seleccionar autor</div>
                         <div class="container-options" id="container-author">
@@ -128,7 +128,7 @@
                         <div class="container-select">
                             <div class="selected-s" id="select-editorial">Seleccionar editorial</div>
                             <div class="container-options" id="container-editorial">
-                                <input type="text" id="search-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>/editorials/search">
+                                <input type="text" id="search-editorial" name="book-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>/editorials/search">
                                 <ul class="options" id="options-editorial"></ul>
                             </div>
                         </div>
