@@ -128,11 +128,8 @@
                         <div class="container-select">
                             <div class="selected-s" id="select-editorial">Seleccionar editorial</div>
                             <div class="container-options" id="container-editorial">
-<<<<<<< HEAD
                                 <input type="text" id="search-editorial" name="book-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>/editorials/search">
-=======
-                                <input type="text" id="search-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>editorials/search">
->>>>>>> 959b737a8a6d601f529a03990d3e4e5a54855ee3
+
                                 <ul class="options" id="options-editorial"></ul>
                             </div>
                         </div>
