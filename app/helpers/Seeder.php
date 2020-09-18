@@ -133,6 +133,23 @@ $this->db->query("INSERT INTO `topic`(`topic_cdu`, `topic_name`)
 ");
 
 
+$this->db->query("INSERT INTO `languaje`(`languaje_id,languaje_desc`)
+ VALUES ('0','español'),
+        ('1' ,'ingles'),
+        ('2' ,'portugues'),
+        ('3', 'Chino mandarin'),
+        ('37' ,'frances'),
+
+");
+
+
+$this->db->query("INSERT INTO `book_status`(`book_status_id`, `book_status_desc`)
+ VALUES ('1','DISPONIBLE'),
+        ('2' ,'copia unica),
+        ('3 ,'Reservado'),
+        ('4', 'prestado'),
+        ('5' ,'No disponoble'),
+        ");
 
 			$this->db->execute();
 

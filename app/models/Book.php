@@ -49,13 +49,13 @@
 		}
 		//crear get bossks por autor
 		public function getIds($isbn){
-			$this->db->query('SELECT  Max(book_topolographic) AS  book_topolographic
+			$this->db->query('SELECT  Max(book_id)as  book_id
 							  FROM book 
 							WHERE book_isbn=:book_isbn LIMIT 1 ');
 					$this->db->bind(':book_isbn', $isbn);		  
 
 			$response = $this->db->getRecord();
-			return $response->book_topolographic;
+			return $response->book_id;
 			
 			 
 			
@@ -66,7 +66,7 @@
 			$numberCopies=$param['book-cantiEje'];
 			for ($i=0;$i<$numberCopies;$i++){
 				
-				$cod_topolographic=$i.$param['book-topo'];
+				$cod_topolographic=$param['book-topo'].$i;
 			$this->db->query('INSERT INTO book(book_topolographic, book_isbn, book_title,book_desc, book_vol, book_catalographic, book_year, book_num_pages, book_edition, book_single_copy, languaje_id, editorial_id, category_id, book_img, book_status_id) 
 										VALUES(:book_topo,:book_isbn,:book_title, :book_desc,:book_vol,:book_cata, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_img,:book_status_id)');
 
@@ -102,17 +102,17 @@
 				$this->db->bind(':book_img',$nameImg);
 				
 					if($this->db->execute()){
-						$book_id=$this->db->mysqli_insert_id();
+						$book_id=$this->getIds($isbn);
 							foreach ($autores as $key => $value) {
 								$ids          = explode("_", $value);
 								$authorId     = $ids[0];
 								$typeAuthorId = $ids[1];  
-								echo $book_id;
+								
 							
-							$this->db->query('INSERT INTO authors_has_book(book_topolographic,author_id,author_type_id)
-												 VALUES (:book_topolographic,:author_id,:author_type_id)');
+							$this->db->query('INSERT INTO authors_has_book(book_id,author_id,author_type_id)
+												 VALUES (:book_id,:author_id,:author_type_id)');
 							
-							$this->db->bind(':book_topolographic',$book_id);
+							$this->db->bind(':book_id',$book_id);
 							$this->db->bind(':author_id',$authorId);
 							$this->db->bind(':author_type_id',$typeAuthorId);
 							$this->db->execute();							

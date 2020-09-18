@@ -45,9 +45,9 @@
 				   isset($_POST['book-single'])&&isset($_POST['editorial-id'])&& 
 				   isset($_POST['book-topo'])&&isset($_POST['book-cata'])){
 						   
- 					$book_status = 1;
+ 					$book_status = 1;//disponible
 					if ($_POST['book-single'] == 1){
-						$book_status=2;
+						$book_status=2;//copia unica
 					}
 				  
 					$param = [
@@ -71,8 +71,9 @@
 					];
 															
 					if($this->booksModel->addBook($param)){
+						echo '<p>guardado con exito<p>';	
 						redirect('books/create');		
-						echo '<p>guardado con exito<p>';		
+						
 					}	
 				
 					else{
