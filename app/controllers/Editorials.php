@@ -75,7 +75,7 @@
 				$editorial = $this->editorialModel->getEditorialName($param);
 
 				foreach ($editorial as $key => $value) {
-					echo "<li class='option' id=$key><span>$value</span></li>";
+					echo "<li class='option'><span>$value</span><input type='hidden' value=$key name='editorial-id'></li>";
 				}   
 			}
 		}
