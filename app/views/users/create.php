@@ -19,7 +19,7 @@
             </div> 
             <div class="col-3">
                 <div class="form-group">
-                    <img class="justify-content-end" id="cover-preview" for="cover-img" src="<?php echo URL_ROUTE;?>media/images/system/default-user.png"></label>
+                    <img class="justify-content-end" id="cover-preview" for="cover-img" src="<?php echo URL_ROUTE;?>media/images/system/default-user.png">imagen</label>
                     <input name="user-dni" type="file" class="form-control-file"  accept="image/*" id="cover-img">
                 </div>
             </div>
