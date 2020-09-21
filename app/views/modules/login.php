@@ -1,5 +1,8 @@
-<?php require_once APP_ROUTE . '/views/modules/header.php';?>
-<div class="row col-12 justify-content-center mt-5">
+<?php 
+    require_once APP_ROUTE . '/views/modules/header.php';
+    require_once APP_ROUTE . '/views/modules/footer.php';
+?>
+<div class="row justify-content-center">
     <div class="col-4 mt-5"> 
         <div class="card mt-3">
             <img src="<?php echo URL_ROUTE ?>media/images/system/loginheader.jpg" class="card-img-top">
@@ -21,10 +24,9 @@
                 </form>
                 <div class="dropdown-divider"></div>
                  <a class="dropdown-item text-center" href="#">Forgot password?</a>
-                </div>
             </div>
         </div>
-    </div> 
-</div>
-<?php require_once APP_ROUTE . '/views/modules/footer.php';?>
+    </div>
+</div>  
+<?php ?>
 

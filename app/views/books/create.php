@@ -1,7 +1,7 @@
 <?php require_once APP_ROUTE . '/views/modules/header.php'; ?>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-<div class="col-8 mt-3 justify-content-center">
-    <h4 class="mt-5 mb-3">Registrar nuevo libro</h4>
+<div class="col-10 mt-2">
+    <h4 class="mb-3">Registrar nuevo libro</h4>
     <form method="post" action="<?php echo URL_ROUTE ?>books/store" target="_top" enctype="multipart/form-data">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -128,11 +128,7 @@
                         <div class="container-select">
                             <div class="selected-s" id="select-editorial">Seleccionar editorial</div>
                             <div class="container-options" id="container-editorial">
-<<<<<<< HEAD
                                 <input type="text" id="search-editorial" name="book-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>/editorials/search">
-=======
-                                <input type="text" id="search-editorial" class="form-control search"  placeholder="Buscar editorial" data-url="<?php echo URL_ROUTE?>editorials/search">
->>>>>>> 959b737a8a6d601f529a03990d3e4e5a54855ee3
                                 <ul class="options" id="options-editorial"></ul>
                             </div>
                         </div>

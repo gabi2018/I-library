@@ -13,13 +13,13 @@
 		<link rel="stylesheet" href="<?php echo URL_ROUTE ?>/css/style.css">
 	</head>
 	<body style="background-color: #f2f7ff;">
-		<?php require_once APP_ROUTE . '/views/modules/nav.php'; ?>
-		
+		<?php require_once APP_ROUTE . '/views/modules/nav.php'; ?> 
 		<div class="container-fluid">
 			<div class="row" bgcolor="#E2EEF8">
 				<div class="col-2">
 					<?php require_once APP_ROUTE . '/views/modules/nav-lateral.php'; ?>
 				</div>
+				<div class="col-10 mt-5">
 				
 		
 		

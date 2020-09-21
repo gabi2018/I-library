@@ -1,6 +1,6 @@
 <?php require_once APP_ROUTE . '/views/modules/header.php'; ?>
-<div class="col-8 mt-3 justify-content-center">
-    <h4 class="mt-5 mb-3">Agregar nuevo socio</h4>
+<div class="col-10 mt-2">
+    <h4 class="mb-3">Agregar nuevo socio</h4>
     <form method="post" action="<?php echo URL_ROUTE ?>users/store" target="_top"  enctype="multipart/form-data">
         <div class="row">
             <div class="col-9">
