@@ -1,16 +1,11 @@
 <?php 
 	# Load assets
-	require_once 'config/config.php';
-	require_once 'helpers/url.php';
-	require_once 'helpers/Seeder.php';
+	require_once 'core/config/config.php';
+	require_once 'core/helpers/url.php';
+	require_once 'core/helpers/Seeder.php';
 
 	# Autoload
 	spl_autoload_register(function($className){
-		require_once 'assets/' . $className . '.php';
-	
-		
-	}); 
-	
-
-
-	?>
+		require_once 'core/assets/' . $className . '.php';
+	}); 	
+?>
