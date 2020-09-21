@@ -42,12 +42,12 @@
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book-register'])){
 				if(isset($_POST['book-title'])&&isset($_POST['book-isbn'])&& 
 				   isset($_POST['book-languaje'])&&isset($_POST['category-topic'])&& 
-				   isset($_POST['book-single'])&&isset($_POST['book-editorial'])&& 
+				   isset($_POST['book-single'])&&isset($_POST['editorial-id'])&& 
 				   isset($_POST['book-topo'])&&isset($_POST['book-cata'])){
-						   echo $_POST['book-editorial'];
- 					$book_status = 1;
+						   
+ 					$book_status = 1;//disponible
 					if ($_POST['book-single'] == 1){
-						$book_status=2;
+						$book_status=2;//copia unica
 					}
 				  
 					$param = [
@@ -58,7 +58,7 @@
 						'book-category'=>trim($_POST['category-topic']),
 						'book-single'=>trim($_POST['book-single']),		
 						'book-desc'=>trim($_POST['book-desc']),
-						'book-editorial'=>trim($_POST['book-editorial']),
+						'book-editorial'=>trim($_POST['editorial-id']),
 						'book-vol'=>trim($_POST['book-vol']),
 						'book-edition'=>trim($_POST['book-edition']),
 						'book-year'=>trim($_POST['book-year']),
@@ -71,8 +71,9 @@
 					];
 															
 					if($this->booksModel->addBook($param)){
+						echo '<p>guardado con exito<p>';	
 						redirect('books/create');		
-						echo '<p>guardado con exito<p>';		
+						
 					}	
 				
 					else{

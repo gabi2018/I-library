@@ -49,13 +49,13 @@
 		}
 		//crear get bossks por autor
 		public function getIds($isbn){
-			$this->db->query('SELECT  Max(book_topolographic) AS  book_topolographic
+			$this->db->query('SELECT  Max(book_id)as  book_id
 							  FROM book 
-							WHERE book_isbn=:book_isbn LIMITe 1 ');
+							WHERE book_isbn=:book_isbn LIMIT 1 ');
 					$this->db->bind(':book_isbn', $isbn);		  
 
 			$response = $this->db->getRecord();
-			return $response->book_topolographic;
+			return $response->book_id;
 			
 			 
 			
@@ -64,10 +64,11 @@
 
 		public function addBook($param){//for de acuerdo a cantidad de ejemplares  y book
 			$numberCopies=$param['book-cantiEje'];
-			for ($i=1;$i<=$numberCopies;$i++){
+			for ($i=0;$i<$numberCopies;$i++){
+				
 				$cod_topolographic=$param['book-topo'].$i;
-			$this->db->query('INSERT INTO book(book_topolographic, book_isbn, book_title,book_desc, book_vol, book_catalographic, book_year, book_num_pages, book_edition, book_single_copy, languaje_id, editorial_id, category_id, book_img, book_num_copies, book_status_id) 
-										VALUES(:book_topo,:book_isbn,:book_title, :book_desc,:book_vol,:book_cata, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_img,:book_cantidad_eje,:book_status_id)');
+			$this->db->query('INSERT INTO book(book_topolographic, book_isbn, book_title,book_desc, book_vol, book_catalographic, book_year, book_num_pages, book_edition, book_single_copy, languaje_id, editorial_id, category_id, book_img, book_status_id) 
+										VALUES(:book_topo,:book_isbn,:book_title, :book_desc,:book_vol,:book_cata, :book_year,:book_num_pages,:book_edition, :book_single_copy, :languaje_id, :editorial_id, :category_id,:book_img,:book_status_id)');
 
 			$isbn=$param['book-isbn'];
 			$autores=$param['book-authors'];
@@ -81,7 +82,6 @@
 			$this->db->bind(':book_single_copy', $param['book-single']);
 			$this->db->bind(':book_desc', $param['book-desc']);
 			$this->db->bind(':editorial_id', $param['book-editorial']);
-			$this->db->bind(':book_cantidad_eje', $param['book-cantiEje']);
 			$this->db->bind(':book_vol', $param['book-vol']);
 			$this->db->bind(':book_edition', $param['book-edition']);
 			$this->db->bind(':book_year', $param['book-year']);
@@ -107,11 +107,12 @@
 								$ids          = explode("_", $value);
 								$authorId     = $ids[0];
 								$typeAuthorId = $ids[1];  
+								
 							
-							$this->db->query('INSERT INTO authors_has_book(book_topolographic,author_id,author_type_id)
-												 VALUES (:book_topolographic,:author_id,:author_type_id)');
+							$this->db->query('INSERT INTO authors_has_book(book_id,author_id,author_type_id)
+												 VALUES (:book_id,:author_id,:author_type_id)');
 							
-							$this->db->bind(':book_topolographic',$book_id);
+							$this->db->bind(':book_id',$book_id);
 							$this->db->bind(':author_id',$authorId);
 							$this->db->bind(':author_type_id',$typeAuthorId);
 							$this->db->execute();							
@@ -126,5 +127,15 @@
 		
 
 	}
+
+			//crear get bossks por autor
+			public function getlatestId(){
+				$this->db->query('  SELECT last_insert_id() AS  book_topolographic limit 1');
+							  
+
+				$response = $this->db->getRecord();
+				return $response->book_topolographic;								
+				
+			}
 
 }
