@@ -20,7 +20,7 @@
 			}
 			else{
 				require_once '../app/views/modules/login.php';
-			}
+			} 
 		}
 
 		public static function authenticated(){
