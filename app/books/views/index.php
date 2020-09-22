@@ -1,0 +1,1 @@
+<?php require_once APP_ROUTE . '/views/books/tiles.php'; ?>
