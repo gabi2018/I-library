@@ -4,7 +4,4 @@
 	
 	# Kernel intance
 	$run = new Kernel();
-	
-
-
 ?>
