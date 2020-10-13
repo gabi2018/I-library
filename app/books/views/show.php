@@ -8,30 +8,31 @@
 
 		<div class="row" >
 		<table>
+		
 			<th>
 			<td>         <td> 
-			<td>         <td>		
-				<td>         <td>
+			<td>      cod topolgraphico   <td>		
+				<td>    ibsbn     <td>
 				<td> Titulo del Libro </td>
+				<td> autor </td>
 				<td>         <td>
 				<td> edicion </td>
 				<td>         <td>
 				<td> volumen </td>
 				<td>         <td>
-				<td> autor </td>
+				
 				<td>         <td>
 				<td> disponibilidad <td>
 				<td>         <td>
 			</th>
-			</table>
-			
-				
-				<div id ="result"> 
-					
-
-				
-					</div>
+		
+			<tr>
+			<td>         <td> 
+			<td id ="result"> <td></tr> 
 	
+				
+				
+					</table>
 
 </div>
 
