@@ -1,3 +1,3 @@
 <?php  
-	require_once APP_ROUTE . '/views/modules/home.php';  
+	require_once APP_ROUTE . 'home.php';  
 ?>

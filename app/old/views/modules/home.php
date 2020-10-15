@@ -1,5 +1,5 @@
 <?php 
-    require_once APP_ROUTE . '/views/modules/header.php';
-    require_once APP_ROUTE . '/views/modules/welcome.php';  
-    require_once APP_ROUTE . '/views/modules/footer.php';
+    require_once APP_ROUTE . 'header.php';
+    require_once APP_ROUTE . 'welcome.php';  
+    require_once APP_ROUTE . 'footer.php';
  ?>
