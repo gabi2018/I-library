@@ -1,7 +1,7 @@
 
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <label for="cata-book">buscar</label>
-       <input type="text" name="book" class="form-control" id="sug_input" required data-url="<?php echo URL_ROUTE?>/books/search" placeholder="nombre del libro o autor">
+       <input type="text" name="book" class="form-control" id="search_book" required data-url="<?php echo URL_ROUTE?>/books/search" placeholder="nombre del libro o autor">
 
 
 
@@ -35,44 +35,4 @@
 					</table>
 
 </div>
-
-<script type="text/javascript">
-  //suggetion for finding product names
-  
-
-      function search(param,url) {
-				
-				
-				// process the form
-				var parame ={
-					'book':param
-				};
-				
-
-				$.ajax({
-					type        : 'POST',
-					data        : parame,
-					url         : url,		
-					
-					success:function(data){
-						$('#result').html(data);
-					}
-				})
-				
-
-	};
-$(document).on('keyup','#sug_input',function(){
-
-	var input=$(this).val();
-	
-		if(input !=""){
-			url = $(this).attr('data-url');
-
-			
-			search(input,url);
-		}
-		else{
-			
-		}
-});									
-</script>
+		

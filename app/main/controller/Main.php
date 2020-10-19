@@ -19,17 +19,26 @@
 		}
 
 		public function searchGeneral(){
-			if(isset($_POST['search-main'])){
+			if(isset($_POST['search'])){
+					
+				$date=[
+						   'book'=>trim($_POST['search']),
+						   'author'=>trim($_POST['search']),
+						   'editorial'=>trim($_POST['search']),
+				];
 
-				$date=trim($_POST['search-main']);
 			$param = [
-					"book"=>$this->booksModel->getBooksTitle($date), 
-				 "authors"=> $this->authorModel->getAuthorsName($date),
-			  "editorials"=> $this->editorialModel->getEditorialName($date),
+					'book'=>$this->booksModel->getBooksTitle($date), 
+				'authors'=> $this->authorModel->getAuthorName($date),
+			  'editorials'=> $this->editorialModel->getEditorialName($date),
 			 ];
 			 
 
-			$this->view('', $param);//NOSE A Q VISTA IRIA DIRIGIDA
+			   foreach ($param as $search ){
+				 	foreach($search as $key =>$value) {
+						 echo "<li id=$key><span>$value</span></li>";
+					 }
+				}  
 			}
 
 		}
