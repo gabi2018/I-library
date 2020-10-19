@@ -86,7 +86,7 @@
 		public function search(){
 			if(isset($_POST['book'])){
 				$param = ['book' => trim($_POST['book'])];
-				$books = $this->booksModel->getBooksTitleOAuthor($param);
+				$books = $this->booksModel->getBooksTitle($param);
 				foreach ($books as $key => $value) {
 					echo "<li class='option' id=$key><span>$value</span></li>";
 				}   
