@@ -9,9 +9,8 @@
 		<div class="row" >
 		<table>
 		
-			<th>
-			<td>         <td> 
-			<td>      cod topolgraphico   <td>		
+				<td>         <td> 
+				<td> cod topolgraphico  </td>		
 				<td>    ibsbn     <td>
 				<td> Titulo del Libro </td>
 				<td> autor </td>
@@ -24,7 +23,7 @@
 				<td>         <td>
 				<td> disponibilidad <td>
 				<td>         <td>
-			</th>
+			
 		
 			<tr>
 			<td>         <td> 
@@ -35,4 +34,3 @@
 					</table>
 
 </div>
-		

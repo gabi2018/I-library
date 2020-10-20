@@ -253,7 +253,11 @@ $(document).ready(function() {
     }); 
 
 
+        $('.option').click(function(){
+            alert('adajskjd');
+        $('href=/books/edit').attr('target','self_');
 
+        });
 
 });
 

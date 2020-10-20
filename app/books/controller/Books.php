@@ -88,7 +88,7 @@
 				$param = ['book' => trim($_POST['search'])];
 				$books = $this->booksModel->getBooksTitle($param);
 				foreach ($books as $key => $value) {
-					echo "<li class='option' id=$key><span>$value</span></li>";
+					echo "<li class='option' id=$key><span>$value</span> <a href='<?php echo URL_ROUTE ?> edit/$key'>Edit</a></li> ";
 				}   
 			}
 		}

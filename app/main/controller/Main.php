@@ -36,7 +36,7 @@
 
 			   foreach ($param as $search ){
 				 	foreach($search as $key =>$value) {
-						 echo "<li id=$key><span>$value</span></li>";
+						 echo "<li class='option' id=$key><span>$value</span></li>";
 					 }
 				}  
 			}
