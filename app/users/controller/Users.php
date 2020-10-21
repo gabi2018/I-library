@@ -48,23 +48,79 @@
 					else{
 						die("FATAL ERROR");
 					}
-				}
+				};
+		 	
 			}
+		}	
+		/*
+		public function edit($dni){
+			$users = $this->userModel->getUser($dni);
+				$param = [
+					'user_dni'=>$users->user_dni,
+					'user_phone'=>$users->user_phone,
+					'user_address'=>$users->user_address,
+					'user_email'=>$users->user_email,
+					
+				];
+				$this->view('edit', $param);
 		}
+		*/
+		public function edit($dni){
+			$users = $this->userModel->getUser($dni);
+			$param = [
+				'users' => $users,
+			];
+			$this->view('edit',$param);
 
-		public function show(){ }
+		}
+		public function update(){		
 
-		public function edit($id){
-			$users = $this->userModel->getUsers($id);
+			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-update'])){
+				if (!empty($_POST['user-dni'])&&!empty($_POST['user-phone'])&&!empty($_POST['user-address'])&&!empty($_POST['user-email'])) {
+					$param = [
+						'user-dni'=>($_POST['user-dni']),
+						'user-phone'=>trim($_POST['user-phone']),
+						'user-address'=>trim($_POST['user-address']),
+						'user-email'=>trim($_POST['user-email']),
+						
+					];
+					if($this->userModel->editUsers($param)){
+						redirect('edit');
+					}else{
+						die('Error locooo');
+					}
+				}else{
+				echo "error";
+				}
+				//obtiene la informacion del usuario desde el modelo
+				
+			}	
+			
+		}
+		
+		/*Deshactivar un Usuario */
+		public function disable($dni){
+			
+			$this->userModel->disableUser($dni);
+			redirect('users/index');
+					
+		}	
+		
+
+		public function delete(){}
+
+		public function verify($email){
+			$users = $this->userModel->getByEmail($email);
 			$param = [
 				'users' => $users
 			];
-			$this->view('edit');
+			$this->view('user-email');
 		}
-
-		public function update(){}
-
-		public function delete(){}
+		public function show(){ 
+			$this->view;
+		}
+		
+		
 	}
 
 ?>

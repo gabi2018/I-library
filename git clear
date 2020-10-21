@@ -1,0 +1,113 @@
+[33m0c943e9[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m agregue dashabilitar a la base de datos
+[33m1f1e068[m resfres
+[33m4aa0a68[m refresh
+[33m8dacdc6[m agregue desactivar usuario
+[33m949691a[m[33m ([m[1;32ml[m[33m)[m agregue desactivar
+[33m250c080[m add book
+[33me109dae[m trabajando en libro
+[33m933f1c1[m añadiendo cosas al seeder
+[33m55245b6[m añadiendo cosas al seeder
+[33m959b737[m cutter code generator
+[33meac0f64[m Fix: editorial id not found
+[33m8201c0a[m Correcciones en bd, nombre, ubicacion de carpetas. UI menu lateral
+[33mc6408df[m modifique error en la imagen del alta de socio
+[33m00c1c8e[m Cambios de busquedad autor/editorial
+[33m0bf583c[m Commit de search
+[33m3e2c333[m trabajando en show books
+[33m0c85006[m Ajax search author/editorial
+[33mbff8e99[m editorial search definido
+[33m7430bb0[m Select autor update
+[33m1f42ea4[m Search author with ajax done
+[33md8010d2[m Merge branch 'master' of https://github.com/gabi2018/I-library
+[33m6dfbd3a[m reformacion de insertar libro cambiando el id  de libro
+[33m335a0d3[m modificaciones
+[33m50b4f9a[m Merge branch 'gabi'
+[33ma3cc565[m[33m ([m[1;31morigin/gabi[m[33m)[m busqueda de autor definida
+[33mc165ce8[m busqueda de autor definida
+[33ma0219b4[m busqueda de autor definida
+[33m6f30730[m definida la busqueda de autores(en el index de auothors) , definida el agregado de imagenes de book
+[33me6093be[m Modificacion de base datos
+[33m4bfc42c[m Actualizacion de vista de usuario, se oculta el password
+[33mfc76016[m prueba
+[33me30ddeb[m  insertar imagen de libro  terminada
+[33m1835ea1[m insert en autor has book terminada
+[33mbffe56f[m insertar en autor_has_book termiado
+[33mfc6e23e[m Fixed array unset
+[33m13a105b[m Guardado asincronico de autor y editorial
+[33mc4407e0[m Modifico la base de datos: tablas foraneas autor, libro y tipo autor unificadas
+[33m1555a0a[m Required on inputs
+[33m96ae69c[m Create author/type list
+[33m93abe67[m trabajo en authors y tipo de authors
+[33mdd50219[m User view revision
+[33md1fb450[m agregue carrera en controllers y model y modifique cambios en school
+[33m1529712[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33ma9dc3d0[m UI function, ajax request
+[33m2ba4084[m perfeccione ahutor, editorial
+[33mcbf75dd[m modifique el deer agregando boo_img , book_cantEje,book_code
+[33m3f47904[m trabajo en  insertar  book
+[33m1b9c609[m Merge branch 'master' into gabi
+[33m56fe5d9[m trabajo en  insertar libro , en create y store de book
+[33m1de0ea2[m trabajo en  insertar libro , en create y store de book
+[33m1b7de14[m Merge branch 'master' into gabi
+[33mc3377b9[m trabajo en  insertar libro , en create y store de book
+[33m51cc2c1[m trabajo en  insertar libro , en create y store de book
+[33m05874e7[m trabajo en  insertar libro , en create y store de book
+[33m4636f0d[m insert de un libro terminado
+[33m89d1d3d[m Create user UI
+[33m6bdd90f[m UI create book
+[33m4e3904c[m UI Create book
+[33me8679dd[m Rutas
+[33m0e5dd07[m rutas para vistas
+[33m888462a[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33md751f0f[m Solving!
+[33m172e4b0[m vistas  de book, create  y index
+[33mc7ad778[m UI home
+[33m02841e8[m trabbajando en suptopic
+[33m031d47e[m rabajando en subtopic modelo y contro..
+[33m7651208[m rabajando en subtopic modelo y contro..
+[33mc0eb464[m empesando  crear controlador de subtopic
+[33mc1815b2[m empesando  crear controlador de subtopic
+[33mb5f499a[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33m2c94f91[m GUI Home: tiles
+[33m5bd6f74[m base de datos corregida
+[33m193f760[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33mfe6f21b[m Creacion de login y menu lateral
+[33md5b3ef9[m ACTUALIZAR
+[33mcf6972e[m le agrge la s a books
+[33m5e9e7c4[m Agrego IDENTACION!
+[33m2c87beb[m Agrego documentos de analisis
+[33m4031519[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33m7d53c5c[m Merge branch 'master' of https://github.com/gabi2018/I-library
+[33m9c23112[m vistas , controlador y modelo definido de las funciones de School
+[33m6cdec3e[m Modifico el deer y el controllador al metodo deletespecialchars
+[33mfca3fa1[m termine la tabla author
+[33m17b6a7e[m correciones de lenguaje y editorial y empesando vista y controlador de libro
+[33m82021a8[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33m2643953[m cree autor, controller, models y view
+[33m2cc4c21[m cree author controller, models y la vista
+[33m8977d59[m funciones terminadas de la tabla subjet
+[33mbe3accb[m cree el controlers de author
+[33maf3d65c[m termnadas las funciones de languaje
+[33m968210c[m cree el modelo, controler y vista de author
+[33m056582d[m Agrego el deer
+[33m26352f9[m estoy crendo author del cpntroller
+[33mab481f5[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33me62f523[m Agrego crud de sanction type, user type, user
+[33mdc48831[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33m1fcda3d[m termine la vista, modelo, controller de category
+[33m89ecf10[m  a
+[33m12ae01f[m prueba de promise, conexiones asincronica con ajax
+[33m3f38723[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33m862985f[m hice el codigo de controller category
+[33m3ed2243[m Merge branch 'master' of https://github.com/gabi2018/I-library
+[33m1dc126f[m terminado  funciones store edit index update de EDITORIALS
+[33m20c5edf[m Modificacion de controller y model de la tabla topic
+[33md5fbb8f[m Merge branch 'master' of https://github.com/gabi2018/i-library
+[33mc3755b0[m cree el archivo Topic(tema) de controlador y models
+[33m29cd853[m Merge branch 'master' of https://github.com/gabi2018/I-library
+[33mbf19b54[m FUNCION SHOW en editorial
+[33mac3a28d[m Correccion de los archivos de configuracion, Creacion de crud de sectores
+[33m7237db2[m funcion store terminada y comienzo de funcion store en controller y models
+[33m94fb551[m controller funcion store ,models de editorial y vista
+[33m371b02c[m modificacion en config y htacces agregando el nombre del proyecto
+[33m45789c5[m creando
