@@ -3,7 +3,7 @@
 <header class="container-fluid"> 
   <div class="row d-flex justify-content-between align-items-center p-1"">
     <div class="col-2 ml-1">
-      <a class="navbar-brand" href="<?php echo URL_ROUTE ?>home">
+      <a class="navbar-brand" href="<?php echo URL_ROUTE ?>">
         <img src="<?php echo URL_ROUTE ?>/media/images/system/favicon.png">
         I-Library
       </a>

@@ -27,6 +27,12 @@
         </a>
         <ul id="loan-collapse" class="collapse" data-parent="#acordion-menu">
           <li>
+            <a href="<?php echo URL_ROUTE ?>loans\index">
+              <span><i class="material-icons">visibility</i></span> 
+              <span class="menu-text">Ver prestamos</span>
+            </a>
+          </li> 
+          <li>
             <a href="<?php echo URL_ROUTE ?>loans\create">
               <span><i class="material-icons">add</i></span> 
               <span class="menu-text">Realizar prestamo</span>
@@ -54,6 +60,12 @@
         </a>
         <ul id="book-collapse" class="collapse" data-parent="#acordion-menu">
           <li>
+            <a href="<?php echo URL_ROUTE ?>books\index">
+              <span><i class="material-icons">visibility</i></span> 
+              <span class="menu-text">Ver libros</span>
+            </a>
+          </li> 
+          <li>
             <a href="<?php echo URL_ROUTE ?>books\create">
               <span><i class="material-icons">add</i></span>
               <span class="menu-text">Agregar Libro</span>
@@ -68,6 +80,12 @@
           <span class="menu-text">Socios</span>
         </a>
         <ul id="user-collapse" class="collapse" data-parent="#acordion-menu">
+          <li>
+            <a href="<?php echo URL_ROUTE ?>users\index">
+              <span><i class="material-icons">visibility</i></span> 
+              <span class="menu-text">Ver socios</span>
+            </a>
+          </li> 
           <li>
             <a href="<?php echo URL_ROUTE ?>users\create">
               <span><i class="material-icons">add</i></span> 
