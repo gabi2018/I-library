@@ -34,9 +34,7 @@
 				"editorials"  => $this->editorialModel->getEditorials(),
 				"topics"	  => $this->topicModel->getTopics()
  			];
-			$this->view('create', $param);
-		
-
+			$this->view('create', $param); 
 		}
 
 		public function store(){ 
@@ -93,6 +91,9 @@
 			}
 		}
 		
+		public function read(){
+			$this->view('book');
+		}
 		public function edit(){
 			$this->view('edit');
 		}
