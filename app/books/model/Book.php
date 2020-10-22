@@ -30,11 +30,10 @@
 			$result   = $this->db->getRecords(); 
 			$response = array(); 
 			$i = 1;	
-			
 			foreach ($result as $key => $value) {	
 				$pos = substr($value->book_topolographic, -2);
 				if($pos == '-1'){					
-					$response[$i] = $value->book_topolographic."&nbsp&nbsp".$value->book_isbn."&nbsp&nbsp".$value->book_title ." &nbsp&nbsp".$value->author_name." &nbsp;  ". $value->book_edition." &nbsp&nbsp;". $value->book_vol."&nbsp; ". $value->book_status_desc;
+					$response[$i] = $value->book_topolographic."&nbsp&nbsp".$value->book_isbn."&nbsp&nbsp".$value->book_title ." &nbsp&nbsp".$value->author_name." &nbsp;". $value->book_edition." &nbsp&nbsp;". $value->book_vol."&nbsp; ". $value->book_status_desc;
 					$i++;
 				}
 			} 

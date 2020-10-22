@@ -88,16 +88,56 @@
 				$param = ['book' => trim($_POST['search'])];
 				$books = $this->booksModel->getBooksTitle($param);
 				foreach ($books as $key => $value) {
-					echo "<li class='option' id=$key><span>$value</span> <a href='<?php echo URL_ROUTE ?> edit/$key'>Edit</a></li> ";
+					echo "<li class='option' id=$key><span>$value</span></li> ";
 				}   
 			}
 		}
 		
-		public function edit(){
-			$this->view('edit');
+		public function edit($topolographic){
+			$book = $this->bookModel->getBook($topolographic);
+			$param  = ['book' => $book];
+			$this->view('edit', $param);
+			
 		}
 
-		public function update(){}
+		public function update(){
+
+			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['book-update'])){
+				if(isset($_POST['book-title']) && isset($_POST['book-isbn']) && 
+				isset($_POST['book-languaje']) && isset($_POST['category-topic']) && 
+				isset($_POST['book-single']) && isset($_POST['editorial-id']) && 
+				isset($_POST['book-topo']) && isset($_POST['book-cata'])){
+					$param = [
+						'book-id' 	  => trim($_POST['book-id']), 
+						'book-title'	 => trim($_POST['book-title']),
+						'book-isbn'		 => trim($_POST['book-isbn']),
+						'book-img'		 => $_FILES['book-img'],
+						'book-pages'	 => trim($_POST['book-pages']),
+						'book-category'  => trim($_POST['category-topic']),
+						'book-single'	 => trim($_POST['book-single']),		
+						'book-desc'		 => trim($_POST['book-desc']),
+						'book-editorial' => trim($_POST['editorial-id']),
+						'book-vol'		 => trim($_POST['book-vol']),
+						'book-edition'	 => trim($_POST['book-edition']),
+						'book-year'		 => trim($_POST['book-year']),
+						'book-topo'		 => trim($_POST['book-topo']),
+						'book-languaje'  => trim($_POST['book-languaje']),
+						'book-cantiEje'	 => trim($_POST['book-cant']),//me da el for para insertar
+						'book-authors'	 => $_POST['author-list'],
+						'book-status_id' => $book_status,
+						'book-cata'		 => trim($_POST['book-cata']),
+					];
+					if($this->bookModel->editBook($param)){
+						redirect('books/index');
+					}
+					else{
+						die("FATAL ERROR");
+					}
+				}
+			}
+
+
+		}
 
 		public function delete(){}
  	}

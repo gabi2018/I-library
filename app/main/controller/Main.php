@@ -1,7 +1,6 @@
 <?php   
 	class Main extends Controller{
 		
-
 		private $booksModel;
 		private $authorModel;
 		private $editorialModel;

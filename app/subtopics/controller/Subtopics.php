@@ -3,6 +3,7 @@
         private $subTopicModel; 
 
         public function __construct(){ 
+            parent::__construct();
             $this->subTopicModel = $this->model('Subtopic');  
         }
 

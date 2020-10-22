@@ -8,6 +8,22 @@ header .material-icons{
   color: #495057;
   cursor: default;
 }
+
+#p404{
+  
+  color: #fafafa;
+  font-weight: bold;
+  font-size: 2em;
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  text-shadow: 4px 4px 4px #000000;
+} 
+#img404{
+  background-image: url("../media/images/system/404.png");
+  background-size: contain ;
+  background-repeat: no-repeat; 
+  background-position: center;
+  height: 600px;
+}
 .btn-circle{
   border-radius: 100% 100% !important;
 }
@@ -230,4 +246,27 @@ li.search {
 
 li>img {
   margin-right: 1em;
+}
+.img-banner{
+  background-size: contain ;
+  background-repeat: no-repeat; 
+  background-position: right;
+  height: 180px;
+}
+#main-img{
+  background-image: url("../media/images/system/index.png");
+ 
+}
+#books-img{
+  background-image: url("../media/images/system/book.png");
+}
+#loans-img{
+  background-image: url("../media/images/system/loan.png");
+}
+#users-img{
+  background-image: url("../media/images/system/users.png");
+}
+#main-news{
+  background-color: #eeeeee;
+  border-radius: 10px;
 }
