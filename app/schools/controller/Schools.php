@@ -57,12 +57,6 @@
 			}
 		}
 		
-		public function edit($id){
-			$school = $this->schoolModel->getSchool($id); 
-			$param  = ['school' => $school,];
-			$this->view('schools/edit', $param);
-		}
-
 		public function delete(){ }
 
 		public function SearchSchollID($id){ 

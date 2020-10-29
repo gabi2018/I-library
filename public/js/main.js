@@ -125,6 +125,7 @@ $(document).ready(function() {
         if(input != ""){
             url = $(this).attr('data-url');
             search(input, url).done(function(response){ 
+            
                 $('#result').html(response); 
                
             }); 

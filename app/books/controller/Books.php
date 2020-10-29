@@ -15,7 +15,7 @@
 			$this->editorialModel  = $this->model('Editorial', 'editorials');	 	
 			$this->languajeModel   = $this->model('Languaje', 'languajes');
 			$this->topicModel      = $this->model('Topic', 'topics');	
-
+			$this->categoryModel= $this->model('Category','categories');
 		}
 	
 		public function show(){ 
@@ -34,9 +34,7 @@
 				"editorials"  => $this->editorialModel->getEditorials(),
 				"topics"	  => $this->topicModel->getTopics()
  			];
-			$this->view('create', $param);
-		
-
+			$this->view('create', $param); 
 		}
 
 		public function store(){ 
@@ -50,6 +48,7 @@
 					if ($_POST['book-single'] == 1){
 						$book_status = 2;//copia unica
 					}
+					
 				  
 					$param = [
 						'book-title'	 => trim($_POST['book-title']),
@@ -87,17 +86,36 @@
 			if(isset($_POST['search'])){
 				$param = ['book' => trim($_POST['search'])];
 				$books = $this->booksModel->getBooksTitle($param);
-				foreach ($books as $key => $value) {
-					echo "<li class='option' id=$key><span>$value</span></li> ";
-				}   
+				foreach ($books as $book) {
+					echo "<div class='card book-list col-2 mr-3 mb-3'>
+					<a href='" .URL_ROUTE ."books/read/$book->book_topolographic '><img class='card-img-top' src=' " .URL_ROUTE."media/images/book/$book->book_img'style='width:100%'>
+					<p>$book->book_title </p></a><p> $book->author_name</p></div></tr>";
+				;}   
 			}
 		}
-		
-		public function edit($topolographic){
+	/*	public function editar($topolographic){
 			$book = $this->bookModel->getBook($topolographic);
 			$param  = ['book' => $book];
 			$this->view('edit', $param);
+		}
+*/
+		public function read($topolographic){
+			//consultar book
+			$books = $this->booksModel->getBook($topolographic);
+			$author=$this->authorModel->getAhutoresBook($topolographic);
+			$categoryTemaSubtema=$this->categoryModel->getCategoSubteTema($topolographic);
 			
+			$param=[
+				'book'=> $books,
+				'author'=> $author,
+				'category'=>$categoryTemaSubtema,
+			];
+
+			$this->view('book',$param);
+		}
+		public function edit(){
+			$this->view('edit');
+
 		}
 
 		public function update(){

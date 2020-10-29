@@ -251,7 +251,7 @@ li>img {
   background-size: contain ;
   background-repeat: no-repeat; 
   background-position: right;
-  height: 180px;
+  height: 150px;
 }
 #main-img{
   background-image: url("../media/images/system/index.png");
@@ -269,4 +269,15 @@ li>img {
 #main-news{
   background-color: #eeeeee;
   border-radius: 10px;
+}
+.book-list{
+  padding: 0 !important;
+}
+.book-list p { 
+  font-size: 14px;
+  margin-bottom: 0 !important;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
