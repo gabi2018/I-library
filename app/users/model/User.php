@@ -81,11 +81,12 @@
 		public function getUser($dni){
 			$this->db->query('SELECT *
 								FROM user 
-								WHERE user_dni = :user_dni');
+								WHERE user_dni = user_dni');
 			$this->db->bind(':user_dni', $dni);		  
 			$response = $this->db->getRecord();
 			return $response;
 		}
+		/*funcion que edita los usuarios y recibe un arreglo como parametro */
 		public function editUsers($param){		
 			$this->db->query('UPDATE user 
 								 SET user.user_address = :user.user_address, 
@@ -94,7 +95,7 @@
 							   WHERE user.user_dni = :user_dni');
 			
 			# Link values
-			$this->db->bind(':user_dni,',     $param['user-dni']);
+			$this->db->bind(':user_dni',     $param['user-dni']);
 			$this->db->bind(':user_phone',    $param['user-phone']);
 			$this->db->bind(':user_address',  $param['user-address']);
 			$this->db->bind(':user_email',    $param['user-email']);
@@ -105,7 +106,7 @@
 			return $this->db->execute();
 		}
 
-		
+		/**Funcion deshactiva un usuario */
 		public function disableUser($dni){
 			$value = !$this->isDefaulter($dni);
 			$this->db->query('UPDATE user 
@@ -116,8 +117,19 @@
 
 			return ($this->db->execute());		
 		}
+
 		public function isDefaulter($dni){
 			return($this->getUser($dni))->user_defaulter;
+		}
+		/** 
+		 * Los datos que se mostrarán en una consulta de socio son: 
+		 * nombre, apellido, dirección, teléfono, tipo de socio y si es moroso. 
+		 * En caso de ser moroso se mostrará un campo con la leyenda “moroso”, 
+		 * de lo contrario no mostrará nada.
+		*/
+		public function getUsersSearch($param){
+
+
 		}
 
 	}

@@ -9,7 +9,7 @@
             </div> 
             <div class="form-group col-6">
                 <label for="address-user">Dirección</label>
-                <input type="text" name="user-address" class="form-control" id="address-user" required placeholder="Ingresar dirección" value="<?php echo $users->user_address;?>" require> 
+                <input type="text" name="user-address" class="form-control" id="address-user" placeholder="Ingresar dirección" value="<?php echo $users->user_address;?>" require> 
             </div>  
             <div class="col-6">
                 <div class="form-group">
