@@ -7,7 +7,10 @@
 		}
 		
 		public function getSubtopics($id){ 
-			$this->db->query('SELECT * FROM subtopic WHERE topic_cdu = :topic_id ORDER BY subtopic_name DESC');
+			$this->db->query('SELECT *
+			 FROM subtopic
+			  WHERE topic_cdu = :topic_id
+			   ORDER BY subtopic_name DESC');
 			$this->db->bind(':topic_id', $id);
 			$result = $this->db->getRecords(); 
 			$response = array(); 

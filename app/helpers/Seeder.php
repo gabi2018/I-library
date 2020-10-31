@@ -646,7 +646,7 @@ INSERT INTO `user_type`(`user_type_id`, `user_type_desc`)
 
 
 
-
+b
 ;
 
 

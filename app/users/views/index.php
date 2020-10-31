@@ -1,92 +1,29 @@
-<<<<<<< HEAD
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-<table class="table">
-=======
-<div class="row mt-3 justify-content-around">
-	<div class="col-7">
-		<div class="row alert alert-primary mb-4sssssss">
-			<div class="col-8 mt-2">
-				<h3 class="mb-4">Administra los <strong>socios</strong>!</h3>
-				<p>Importa o registra nuevos socios, deshabilita o actualiza su informacion .</p>
-			</div> 
-			<div class="col-4 img-banner" id="users-img"></div>
-		</div>
-		<h5>Estadistcas de uso</h5>
-		<div class="col-12">
-			<h6>Prestamos realizados</h6>
-			<canvas id="statistics-loan"></canvas>
-		</div>
-		<div class="col-12">
-			<h6>Temas populares</h6>
-			<canvas id="statistics-book"></canvas>
-		</div>
-	</div> 
-	<div class="col-4" id="main-news">
-		<p class="mt-3 "><strong>Ultimos estados</strong></p> 
-		 
-		<div class="alert alert-info" role="alert">
-			<div class="row">
-				<div class="col-2">
-					<i class="material-icons" style="font-size: 50px;">books</i>
-				</div>
-				<div class="col-10">
-					<span>Se agregaron 500 libros de ciencias y macumba</span>
-					<p><small>Ignacio Morinigo - hace 4 horas</small></p>
-				</div> 
-			</div> 
-		</div>
-		<hr>
-		<div class="alert alert-success" role="alert">
-			<div class="row">
-				<div class="col-2">
-					<i class="material-icons" style="font-size: 50px;">people</i>
-				</div>
-				<div class="col-10">
-					<span>Se agregaron 500 libros de ciencias y macumba</span>
-					<p><small>Ignacio Morinigo - hace 4 horas</small></p>
-				</div> 
-			</div>
-		</div>
-		<hr>
-		<div class="alert alert-secondary" role="alert">
-			<div class="row">
-				<div class="col-2">
-					<i class="material-icons" style="font-size: 50px;">assignment_return</i>
-				</div>
-				<div class="col-10">
-					<span>Se agregaron 500 libros de ciencias y macumba</span>
-					<p><small>Ignacio Morinigo - hace 4 horas</small></p>
-				</div> 
-			</div>
-		</div>
-		<hr>
-		<div class="alert alert-warning" role="alert">
-			<div class="row">
-				<div class="col-2">
-					<i class="material-icons" style="font-size: 50px;">warning</i>
-				</div>
-				<div class="col-10">
-					<span>Se agregaron 500 libros de ciencias y macumba</span>
-					<p><small>Ignacio Morinigo - hace 4 horas</small></p>
-				</div> 
-			</div>
-		</div>
-		<hr>
-		<div class="alert alert-danger" role="alert">
-			<div class="row">
-				<div class="col-2">
-					<i class="material-icons" style="font-size: 50px;">error</i>
-				</div>
-				<div class="col-10">
-					<span>Se agregaron 500 libros de ciencias y macumba</span>
-					<p><small>Ignacio Morinigo - hace 4 horas</small></p>
-				</div> 
-			</div>
-		</div>
+ <div class="mt-3 col-12 row alert alert-primary mb-4"> 
+	<div class="col-8 mt-2">
+		<h3 class="mb-4">Administra los <strong>socios</strong>!</h3>
+		<p>Importa o registra nuevos socios, deshabilita o actualiza su informacion .</p>
+	</div>
+	<div class="col-4 img-banner" id="users-img"></div>
+</div> 
+
+<div class="col-12 row">
+	<div class="col-6">
+		<a href=""><span class="material-icons">filter_list</span></a>
+		<a href=""><span class="material-icons">sort</span></a>
+		<a href=""><span class="material-icons">swap_vert</span></a> 
+		<a href=""><span class="material-icons">view_module</span></a>
+		<a href=""><span class="material-icons">view_list</span></a>
+	</div>
+	<div class="col-6">
+		<?php require_once "search.php"?>
 	</div>
 </div>
-<table>
->>>>>>> 65f954655cfcb23374bc167d7a4033d032263cfe
+
+<div class="col-12 mt-4">
+	<?php require_once "partner.php"?>
+</div>
+
+ 
 	<tr>
 		<th>Nombre</th>
         <th>Apellido</th>

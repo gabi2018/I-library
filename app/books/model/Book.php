@@ -6,9 +6,19 @@
 			$this->db = new DataBase;
         }
 	
-		# getbook($id)
+		# getbook($id) todos los datos de book
        public function getBook($id){
-			$this->db->query('SELECT * FROM book WHERE book_topolographic = :book_topolographic');
+			$this->db->query('SELECT * 
+							FROM book b ,author a ,authors_has_book au ,author_type aut ,book_status bs,languaje l,editorial e
+							WHERE book_topolographic = :book_topolographic
+							AND b.book_id = au.book_id 
+							AND au.author_id 		 = a.author_id 
+							AND aut.author_type_id	 = au.author_type_id 
+							AND b.book_status_id	 = bs.book_status_id
+							AND b.languaje_id = l.languaje_id 
+							AND b.editorial_id	 = e.editorial_id
+							
+							');
 			$this->db->bind(':book_topolographic', $id);		  
 			$response = $this->db->getRecord();
 			return $response;
@@ -17,24 +27,24 @@
 		public function getBooksTitle($param){
 			//esta funcion trae esos poquitos datos 
 			// título, autor, edición, volumen y si está disponible.
-			$this->db->query('SELECT b.book_title,a.author_name,b.book_edition,b.book_vol,bs.book_status_desc ,b.book_topolographic,b.book_isbn
+			$this->db->query('SELECT b.book_title,a.author_name,a.author_lastname,b.book_edition,b.book_vol,bs.book_status_desc ,b.book_topolographic,b.book_isbn,b.book_img,b.book_id
 							FROM book b ,author a ,authors_has_book au ,author_type aut ,book_status bs
 							WHERE  b.book_title LIKE "%" :book_param "%" 							
 							AND b.book_id = au.book_id 
 							AND au.author_id 		 = a.author_id 
 							AND aut.author_type_id	 = au.author_type_id 
 							AND b.book_status_id	 = bs.book_status_id
+							AND aut.author_type_identifier="narrador"
 							ORDER BY b.book_title');
 
 			$this->db->bind(':book_param', $param['book']);
 			$result   = $this->db->getRecords(); 
 			$response = array(); 
 			$i = 1;	
-			
 			foreach ($result as $key => $value) {	
 				$pos = substr($value->book_topolographic, -2);
 				if($pos == '-1'){					
-					$response[$i] = $value->book_topolographic."&nbsp&nbsp".$value->book_isbn."&nbsp&nbsp".$value->book_title ." &nbsp&nbsp".$value->author_name." &nbsp;  ". $value->book_edition." &nbsp&nbsp;". $value->book_vol."&nbsp; ". $value->book_status_desc;
+					$response[$i] = $value;//->book_topolographic."&nbsp&nbsp".$value->book_isbn."&nbsp&nbsp".$value->book_title ." &nbsp&nbsp".$value->author_name." &nbsp;". $value->book_edition." &nbsp&nbsp;". $value->book_vol."&nbsp; ". $value->book_status_desc;
 					$i++;
 				}
 			} 
@@ -80,13 +90,19 @@
 				$nameImg = '';
 				
 				if(empty($param['book-img']) && ($i < 2)){			
-					$nameImg = $param['book-img']['name'];
+					
 					$file 	 = $param['book-img']['tmp_name']; 
-					$rut 	 = '../public/media/books/'.$nameImg;
-				 	copy($file,$rut);
+					$rut 	 = '../public/media/images/books/'.$isbn;
+					 copy($file,$rut);
+					 $this->db->bind(':book_img', $isbn);
+				}
+				else{
+					$default='default-cover-book.png';
+					$this->db->bind(':book_img', $default);
+
 				}
 
-				$this->db->bind(':book_img', $nameImg);
+				
 				if($this->db->execute()){
 					$book_id = $this->getIds($isbn);
 					foreach ($autores as $key => $value) {
@@ -107,6 +123,49 @@
 		}
 
 		//crear get bossks por autor
+
+
+
+
+		//editar book
+		public function editBook($param){
+			$this->db->query('UPDATE book
+							  SET author_name = :author_name, author_lastname = :author_lastname 
+							  WHERE author_id = :author_id');
+
+
+				$this->db->bind(':book_title', $param['book-title']);
+				$this->db->bind(':book_isbn', $param['book-isbn']);
+				$this->db->bind(':book_num_pages', $param['book-pages']);
+				$this->db->bind(':category_id', $param['book-category']);
+				$this->db->bind(':book_single_copy', $param['book-single']);
+				$this->db->bind(':book_desc', $param['book-desc']);
+				$this->db->bind(':editorial_id', $param['book-editorial']);
+				$this->db->bind(':book_vol', $param['book-vol']);
+				$this->db->bind(':book_edition', $param['book-edition']);
+				$this->db->bind(':book_year', $param['book-year']);
+				
+				$this->db->bind(':languaje_id', $param['book-languaje']);
+				$this->db->bind(':book_status_id', $param['book-status_id']);
+				$nameImg = '';
+
+			if(empty($param['book-img']) && ($i < 2)){			
+				$nameImg = $param['book-img']['name'];
+				$file 	 = $param['book-img']['tmp_name']; 
+				$rut 	 = '../public/media/books/'.$nameImg;
+				copy($file,$rut);
+			}
+
+		$this->db->bind(':book_img', $nameImg);
+			
+
+			if($this->db->execute()){
+				return true;
+			}
+			else{
+				return false;
+			}
+	}
 		
 }
 ?>
