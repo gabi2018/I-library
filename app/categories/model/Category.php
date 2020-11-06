@@ -39,7 +39,7 @@
 
 //funcion q me muestra tema subtema y categoria de un libro 
 		public function getCategoSubteTema($topolographic){
-			$this->db->query('SELECT category_name,topic_name,subtopic_name,category_cod
+			$this->db->query('SELECT c.category_name,t.topic_name,s.subtopic_name,c.category_cod,s.subtopic_id,t.topic_cdu,c.category_id
 				FROM book b,category c,subtopic s,topic t
 				WHERE b.book_topolographic = :topolographic
 				and b.category_id=c.category_id

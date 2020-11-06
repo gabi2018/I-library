@@ -87,22 +87,24 @@
 				$this->db->bind(':book_cata', $param['book-cata']);  //este es para el catalografico			
 				$this->db->bind(':languaje_id', $param['book-languaje']);
 				$this->db->bind(':book_status_id', $param['book-status_id']);
-				$nameImg = '';
-				
-				if(empty($param['book-img']) && ($i < 2)){			
-					
-					$file 	 = $param['book-img']['tmp_name']; 
-					$rut 	 = '../public/media/images/books/'.$isbn;
-					 copy($file,$rut);
-					 $this->db->bind(':book_img', $isbn);
-				}
+				$nameImg = '';				
+				if($i ==1) {
+					if(!empty($param['book-img']['name']) ){																
+					$file 	 = $param['book-img']['tmp_name']; 		
+					echo "asa".$param['book-img']['name'];
+					$info = new SplFileInfo($file);
+					$ext=$info->getExtension();													
+					$nameImg=$isbn.$ext;										
+						$rut = 'media/images/book/'.$nameImg;
+						copy($file,$rut);								
+					}
 				else{
-					$default='default-cover-book.png';
-					$this->db->bind(':book_img', $default);
-
-				}
-
-				
+						$nameImg='default-cover-book.png';
+					}
+				$this->db->bind(':book_img', $nameImg);
+			}				
+					$this->db->bind(':book_img', $nameImg);
+						
 				if($this->db->execute()){
 					$book_id = $this->getIds($isbn);
 					foreach ($autores as $key => $value) {
@@ -119,52 +121,98 @@
 					}
 				}
 			}
+		
 			return true;
 		}
 
-		//crear get bossks por autor
-
-
-
-
+		
 		//editar book
 		public function editBook($param){
+			$numberCopies = $param['book-cantiEje'];
+			if($numberCopies){
+			for ($i = 1; $i <= $numberCopies; $i++){ 
+
+				$j=0;
+				$bookid=$j+$param['book-id'];
+				$cod_topolographic = $param['book-topo'].'-'.$i;
 			$this->db->query('UPDATE book
-							  SET author_name = :author_name, author_lastname = :author_lastname 
-							  WHERE author_id = :author_id');
+							  SET  book_topolographic =:book_topo, book_isbn=book_isbn,book_title=:book_title,
+							  book_desc=:book_desc, book_vol=:book_vol,book_catalographic=:book_cata,
+							  book_year=:book_year,book_num_pages=:book_num_pages,book_edition=:book_edition,
+							  book_img=:book_img, languaje_id=:languaje_id,editorial_id=:editorial_id,category_id=:category_id,book_status_id=:book_status_id 
+							  WHERE book_id = :book_id');
 
-
+				$isbn 	 = $param['book-isbn'];
+				$autores = $param['book-authors'];
+				$this->db->bind(':book_topo', $cod_topolographic);				
+				$this->db->bind(':book_id', $bookid);
 				$this->db->bind(':book_title', $param['book-title']);
 				$this->db->bind(':book_isbn', $param['book-isbn']);
 				$this->db->bind(':book_num_pages', $param['book-pages']);
 				$this->db->bind(':category_id', $param['book-category']);
-				$this->db->bind(':book_single_copy', $param['book-single']);
+			#	$this->db->bind(':book_single_copy', $param['book-single']);
 				$this->db->bind(':book_desc', $param['book-desc']);
 				$this->db->bind(':editorial_id', $param['book-editorial']);
 				$this->db->bind(':book_vol', $param['book-vol']);
 				$this->db->bind(':book_edition', $param['book-edition']);
-				$this->db->bind(':book_year', $param['book-year']);
-				
+				$this->db->bind(':book_year', $param['book-year']);				
 				$this->db->bind(':languaje_id', $param['book-languaje']);
 				$this->db->bind(':book_status_id', $param['book-status_id']);
-				$nameImg = '';
+				$this->db->bind(':book_cata', $param['book-cata']);  //este es para el catalografico	
+				$nameImg = '';				
+					if($i ==1) {
+							if(!empty($param['book-img']['name']) ){																
+							$file 	 = $param['book-img']['tmp_name']; 		
+							echo "asa".$param['book-img']['name'];
+							$info = new SplFileInfo($file);
+							$ext=$info->getExtension();													
+							$nameImg=$isbn.$ext;										
+								$rut = 'media/images/book/'.$nameImg;
+								copy($file,$rut);								
+							}
+						else{
+								$nameImg='default-cover-book.png';
+							}
+						$this->db->bind(':book_img', $nameImg);
+					}				
+				if($this->db->execute()){
+					
+					
+					foreach ($autores as $key => $value) {
+						   
+							$ids          = explode("_", $value);
+							$authorId     = $ids[0];
+							$typeAuthorId = $ids[1];   
 
-			if(empty($param['book-img']) && ($i < 2)){			
-				$nameImg = $param['book-img']['name'];
-				$file 	 = $param['book-img']['tmp_name']; 
-				$rut 	 = '../public/media/books/'.$nameImg;
-				copy($file,$rut);
-			}
+							if(existeAuthor($param['book_id'],$authorId,$typeAuthorId)){
+							$this->db->query('UPDATE authors_has_book
+											SET  book_id=:book_id,author_id=:author_id,author_type_id=:author_type_id
+											Where authors_has_book.author_id = 1 AND authors_has_book.author_type_id = 1 AND authors_has_book.book_id = 6');
+						
+							$this->db->bind(':book_id',$param['book_id']);
+							$this->db->bind(':author_id',$authorId);
+							$this->db->bind(':author_type_id',$typeAuthorId);
+							$this->db->execute();							
+						}
+					}		
+				}
+				$j++;
+		}
+		return true;
+		}
+	}
 
-		$this->db->bind(':book_img', $nameImg);
-			
 
-			if($this->db->execute()){
-				return true;
-			}
-			else{
-				return false;
-			}
+
+
+
+	public function countBook($isbn){
+		$this->db->query('SELECT  COUNT( :book_isbn ) AS book_cantidad
+							FROM book	
+							WHERE book_isbn =:book_isbn ');
+		$this->db->bind(':book_isbn', $isbn);		   
+		$response = $this->db->getRecord();
+		return $response; 
 	}
 		
 }

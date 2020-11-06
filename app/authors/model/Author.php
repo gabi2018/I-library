@@ -67,7 +67,7 @@
 		
 		public function getAhutoresBook($topolographic){
 
-		$this->db->query('SELECT a.author_name,a.author_lastname,aut.author_type_identifier
+		$this->db->query('SELECT a.author_name,a.author_lastname,aut.author_type_identifier,a.author_id,aut.author_type_id
 							FROM book b ,author a ,authors_has_book au ,author_type aut 
 							WHERE book_topolographic = :book_topolographic
 							AND b.book_id = au.book_id 
