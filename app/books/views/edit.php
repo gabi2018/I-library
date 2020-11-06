@@ -116,7 +116,7 @@
                         <tr id=" <?php echo  $author->author_id."_".$author->author_type_id?>" ><td>   <?php echo  $author->author_name."  ".$author->author_lastname ?></td> 
                         <td><?php echo$author->author_type_identifier?></td> 
                         <td>
-                        <a href="javascript:void(0)" class="delautor material-icons" id="">clear</a>
+                        <a href="javascript:void(0)" class="delautor material-icons" id="<?php echo  $author->author_id.".".$author->author_type_id?>">clear</a>
                         </td>
                             </tr>    
                                 <?php endforeach; ?>

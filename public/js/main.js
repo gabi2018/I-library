@@ -51,9 +51,11 @@ $(document).ready(function() {
             console.log(cutterCode);
         }
 
-        $(".delautor").click(function() {
+        $(".delautor ").click(function() {
+            
             id = ($(this).attr("id")).replace(".", "_"); 
-            $("#list-autors #tbody").remove(id);
+    
+            $('#'+id+'').remove();
         });
     });
 
