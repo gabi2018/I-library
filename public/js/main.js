@@ -1,8 +1,8 @@
 var table;
+var cutterCode = "";   
 
 $(document).ready(function() {
     // Variables for book codes
-    var cutterCode;   
 
     // All Code
     url = $("#add-autor").attr('data-cutter') + "public/js/tablacutter-js.txt"
@@ -30,7 +30,7 @@ $(document).ready(function() {
         // Recupero los value para generar un select no visible para enviarlos al controller
         autorValue = $("#select-author").attr('data-id');
         tipoValue  = $("#author-type").val();
-        if (autorValue!= null && tipoValue != null) {  
+        if (autorValue != null && tipoValue != null) {  
             $("#list-author").append(
                 "<option value="+ autorValue + "_" + tipoValue +" id="+ autorValue + "_" + tipoValue +" selected></option>"
             );
@@ -47,16 +47,23 @@ $(document).ready(function() {
             );
 
             // Generate cutter code   
-            cutterCode = generateCutterCode(autorText, table);
-            console.log(cutterCode);
+            if(typeText == "Principal" && cutterCode == ""){ 
+                cutterCode = generateCutterCode(autorText, table);
+                console.log(autorValue);
+            } 
         }
 
-        $(".delautor").click(function() {
-            id = ($(this).attr("id")).replace(".", "_"); 
-            $("#list-autors #tbody").remove(id);
+        $(".delautor").click(function(event) { 
+            event.preventDefault();
+            $(this).closest('tr').remove();
         });
     });
+    
+    //Genera codigo catalografico
+    $("#title-book").change(function(){
 
+    });
+    
     // Genera la clave copiando el dni ingresado
     $("#doc-user").keyup(function() {
         $('#pass-user').val(($('#doc-user').val()));
@@ -300,4 +307,5 @@ $(document).ready(function() {
             }
         }
     });
+    
 });
