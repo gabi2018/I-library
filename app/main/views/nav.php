@@ -10,11 +10,11 @@
     </div>
     
     <div class="col-6">
-      <form>
+      <form metodo="post" action="<?php echo URL_ROUTE?>Main/searchGenera" >
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscador">
+          <input type="text" name="search-main" id ="search-general"  class="form-control" placeholder="Buscador" data-url="<?php echo URL_ROUTE?>Main/searchGeneral">
           <div class="input-group-append">
-            <span class="input-group-text material-icons">search</span>
+            <span  class="input-group-text material-icons">search</span>
           </div>
         </div>
       </form>

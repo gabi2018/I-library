@@ -126,6 +126,19 @@ $(document).ready(function() {
         });
     });
 
+    //busqueda book por titulo
+    $('#search_book').keyup(function(){ 
+        var input = $(this).val();
+        if(input != ""){
+            url = $(this).attr('data-url');
+            search(input, url).done(function(response){ 
+            
+                $('#result').html(response); 
+               
+            }); 
+        }
+    });    
+
     $("#user-school").change(function() {
         url = $(this).attr('data-url');
         $("#user-school option:selected").each(function() {
@@ -231,6 +244,27 @@ $(document).ready(function() {
         event.stopPropagation(); 
     });
      
+
+    // Search general de autor , book , editorial
+    $('#search-general').keyup(function(){ 
+        
+        var input = $(this).val();
+        
+        if(input != " "){
+            url = $(this).attr('data-url');
+            
+            search(input, url).done(function(response){
+                
+                $('#ver').html(response);
+                
+            }); 
+        } 
+    }); 
+
+
+
+
+
     // Graphs
     var ctx = document.getElementById('statistics-loan').getContext('2d');
     var ctx =  new Chart(ctx, {

@@ -1,3 +1,8 @@
+
+<?php  
+	require_once APP_ROUTE.'\main\views\home.php';  
+?>
+
 <div class="row mt-3 justify-content-around">
 	<div class="col-8">
 		<div class="row alert alert-primary mb-4sssssss">
@@ -80,3 +85,4 @@
 		</div>
 	</div>
 </div>
+>>>>>>> 65f954655cfcb23374bc167d7a4033d032263cfe

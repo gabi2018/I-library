@@ -65,6 +65,28 @@
 			else{ return null;	}
 		}
 		
+		public function getAhutoresBook($topolographic){
+
+		$this->db->query('SELECT a.author_name,a.author_lastname,aut.author_type_identifier,a.author_id,aut.author_type_id
+							FROM book b ,author a ,authors_has_book au ,author_type aut 
+							WHERE book_topolographic = :book_topolographic
+							AND b.book_id = au.book_id 
+							AND au.author_id 		 = a.author_id 
+							AND aut.author_type_id	 = au.author_type_id 
+							ORDER BY aut.author_type_id
+							');
+
+		$this->db->bind(':book_topolographic', $topolographic);
+	
+		$result = $this->db-> getRecords();
+			$response=array();
+			foreach ($result as $key => $value) {
+				$response[$key]=$value ;
+			} 	
+		return $response;
+
+
+		}
 		public function editAuthor($param){
 			$this->db->query('UPDATE author 
 							  SET author_name = :author_name, author_lastname = :author_lastname 
