@@ -50,36 +50,28 @@ $(document).ready(function() {
             if(typeText == "Principal" && cutterCode == ""){ 
                 cutterCode = generateCutterCode(autorText, table);
                 console.log(autorValue);
-            } 
-        }
+            }
 
-    });
-      $(".delautor").click(function() {
-            
-            id = ($(this).attr("id")).replace(".", "_"); 
-            url = $(this).attr('data-url'); 
-            alert(id);
-            $('#'+id+'').remove();
-            
-            
-            // segir aca ruta para qe se active la funcion ara borrra autor has book
-            
-                 deletAutor(id,url).done(function(response){
+            $(".delautor").click(function() { 
+                id = ($(this).attr("id")).replace(".", "_"); 
+                url = $(this).attr('data-url'); 
+                alert(id);
+                $('#'+id+'').remove(); 
+                
+                // segir aca ruta para qe se active la funcion ara borrra autor has book
+                deletAutor(id,url).done(function(response){
                     alert(response);
                     if(response=='true'){
-                    alert("se elimino autor");
+                        alert("se elimino autor");
                     }
-                });
-            
-         });
-    
-
-        function deletAutor(id,url){
-        return  $.post(url,{delet : id});
-        
-            
-         }
-
+                }); 
+             });
+         
+            function deletAutor(id,url){
+                return  $.post(url,{delet : id}); 
+             }
+        } 
+    }); 
     
     //Genera codigo catalografico
     $("#title-book").change(function(){
