@@ -69,10 +69,9 @@
 			}
 		}
 		
-		public function delete(){}	
-	}
+		public function delete(){}		
 
 
 	
-
+}
 ?>

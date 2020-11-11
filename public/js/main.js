@@ -50,14 +50,29 @@ $(document).ready(function() {
             cutterCode = generateCutterCode(autorText, table);
             console.log(cutterCode);
         }
-
-        $(".delautor ").click(function() {
+    });
+      $(".delautor").click(function() {
             
             id = ($(this).attr("id")).replace(".", "_"); 
-    
+            url = $(this).attr('data-url'); 
             $('#'+id+'').remove();
-        });
-    });
+            
+            // segir aca ruta para qe se active la funcion ara borrra autor has book
+                 deletAutor(id,url).done(function(response){
+                    
+                    if(response=='true'){
+                    alert("se elimino autor");
+                    }
+                });
+            
+         });
+    
+
+        function deletAutor(id,url){
+        return  $.post(url,{delet : id});
+        
+            
+         }
 
     // Genera la clave copiando el dni ingresado
     $("#doc-user").keyup(function() {
@@ -127,7 +142,7 @@ $(document).ready(function() {
         if(input != ""){
             url = $(this).attr('data-url');
             search(input, url).done(function(response){ 
-            
+                
                 $('#result').html(response); 
                
             }); 

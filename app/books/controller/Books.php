@@ -6,6 +6,7 @@
 		private $editorialModel;
 		private $languajeModel;
 		private $categoryModel;
+		private $autHasBookModel;
 
 		public function __construct(){
 			parent::__construct();
@@ -16,6 +17,7 @@
 			$this->languajeModel   = $this->model('Languaje', 'languajes');
 			$this->topicModel      = $this->model('Topic', 'topics');	
 			$this->categoryModel= $this->model('Category','categories');
+			$this->autHasBookModel = $this->model('AuthorHasBook','authorhasbook'); 
 		}
 	
 		public function show(){ 
@@ -72,6 +74,7 @@
 						'book-cata'		 => trim($_POST['book-cata']),
 					];
 															
+
 					if($this->booksModel->addBook($param)){
 						echo '<p>guardado con exito<p>';	
 						redirect('books/index');		
@@ -88,13 +91,20 @@
 			if(isset($_POST['search'])){
 				$param = ['book' => trim($_POST['search'])];
 				$books = $this->booksModel->getBooksTitle($param);
+
 				foreach ($books as $book) {
 					echo "<div class='card book-list col-2 mr-3 mb-3'>
 					<a href='" .URL_ROUTE ."books/read/$book->book_topolographic '><img class='card-img-top' src=' " .URL_ROUTE."media/images/book/$book->book_img'style='width:100%'>
-					<p>$book->book_title </p></a><p> $book->author_name</p></div></tr>";
-				;}   
+					<p>$book->book_title </p></a>";
+					$AHB=$this->autHasBookModel->getAutorTipe($book->book_id);
+					foreach ($AHB as $AHBS) {
+					
+					echo"<p> $AHBS->author_name  $AHBS->author_lastname   </p>";
+					}
+					echo"</div></tr>";
+				}
 			}
-		}
+	}
 	/*	public function editar($topolographic){
 			$book = $this->bookModel->getBook($topolographic);
 			$param  = ['book' => $book];
@@ -159,6 +169,7 @@
 						'book-title'	 => trim($_POST['book-title']),
 						'book-isbn'		 => trim($_POST['book-isbn']),
 						'book-img'		 => $_FILES['book-img'],
+						'ext-img-vieja'=> trim($_POST['ext-vieja']),
 						'book-pages'	 => trim($_POST['book-pages']),
 						'book-category'  => trim($_POST['category-topic']),
 					#	'book-single'	 => trim($_POST['book-single']),		

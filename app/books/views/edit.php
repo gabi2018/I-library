@@ -36,12 +36,15 @@
                     </div> 
                     <div class="col-3">
                         <div class="form-group">
-                            <img for="cover-img" class="justify-content-end" id="cover-preview" selected src="<?php echo URL_ROUTE;?>media/images/book/<?php echo $book->book_img?>"> 
-                            <input name="book-img" type="file" class="form-control-file" accept="image/*" id="cover-img">
+                            <img for="cover-img" class="justify-content-end" id="cover-preview"  src="<?php echo URL_ROUTE;?>media/images/book/<?php echo $book->book_img?>"> 
+                            <?php $partes_ruta = pathinfo( URL_ROUTE.'media/images/book/'. $book->book_img);
+                                $ext='.'.$partes_ruta['extension'];
+                            ?>
+                            <input name='ext-vieja' type='hidden' value='<?php echo $ext?>'>
+                            <input name="book-img" type="file" class="form-control-file"  accept="image/*" id="cover-img">
                         </div>
                     </div>
-                </div> 
-                <div class="row">
+                </div>       <div class="row">
                     <div class="form-group col-6">
                         <label for="year-book">Año de publicación</label>
                         <input  type="text" name="book-year" id="year-book" class="form-control" value="<?php echo $book->book_year?>"> 
@@ -113,10 +116,10 @@
                         </thead>
                         <tbody id="tbody">
                                     <?php foreach ($authors as $author) :?>
-                        <tr id=" <?php echo  $author->author_id."_".$author->author_type_id?>" ><td>   <?php echo  $author->author_name."  ".$author->author_lastname ?></td> 
+                        <tr id="<?php echo$author->author_id."_".$author->author_type_id?>" ><td>   <?php echo $author->author_name." ".$author->author_lastname ?></td> 
                         <td><?php echo$author->author_type_identifier?></td> 
                         <td>
-                        <a href="javascript:void(0)" class="delautor material-icons" id="<?php echo  $author->author_id.".".$author->author_type_id?>">clear</a>
+                        <a href="javascript:void(0)" class="delautor material-icons" id="<?php echo  $author->author_id.".".$author->author_type_id?>" data-url="<?php echo URL_ROUTE?>AuthorsHasBooks/deleteAutorHasBook/<?php echo$book->book_id?>">clear</a>
                         </td>
                             </tr>    
                                 <?php endforeach; ?>
@@ -128,7 +131,7 @@
                                         
                     <select multiple name="author-list[]" id="list-author" style="display:none">
                     <?php foreach ($authors as $author) :?>
-                    <option value="<?php echo  $author->author_id."_".$author->author_type_id?>" id="<?php echo  $author->author_id."_".$author->author_type_id?>" selected=""></option>
+                    <option value="<?php echo$author->author_id."_".$author->author_type_id?>" id="<?php echo  $author->author_id."_".$author->author_type_id?>" selected></option>
                     <?php endforeach; ?>
                     </select>
                 </div> 	

@@ -103,5 +103,27 @@
 				return false;
 			}
 		}
+
+
+		public function deleteAHB($idAutorTipo,$id_book){
+			if (isset($id_book) && isset($idAutorTipo)){
+			$ids= explode("_",$idAutorTipo);
+			$authorId     = $ids[0];
+			$typeAuthorId = $ids[1];   
+			$this->db->query('DELETE FROM authors_has_book
+								 WHERE authors_has_book.author_id =  :author_id AND 
+								 authors_has_book.author_type_id = :author_type_id AND
+								  authors_has_book.book_id = :book_id');
+
+			$this->db->bind(':author_id',$authorId  );
+			$this->db->bind(':author_type_id', $typeAuthorId);
+			$this->db->bind(':book_id', $id_book);
+				if($this->db->execute()){
+
+				return true;
+				}
+				return false;
+			}
+		}
 	}
 ?>
