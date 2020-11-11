@@ -43,7 +43,7 @@ $(document).ready(function() {
                 "<tr id="+autorValue+"_"+tipoValue+">" +
                     "<td>" + autorText + "</td>" +
                     "<td>" + typeText + "</td>" +
-                    "<td><a href='javascript:void(0)' class='delautor material-icons' id='" + autorValue + "." + tipoValue + "'>clear</a></td></tr>"
+                    "<td><a href='javascript:void(0)' class='delautor material-icons' id='"+autorValue+"."+tipoValue+"'>clear</a></td></tr>"
             );
 
             // Generate cutter code   
@@ -54,16 +54,18 @@ $(document).ready(function() {
         }
 
     });
-      $(".delautor").click(function(event) {
+      $(".delautor").click(function() {
             
             id = ($(this).attr("id")).replace(".", "_"); 
             url = $(this).attr('data-url'); 
-            event.preventDefault();
-            $(this).closest('tr').remove();
+            alert(id);
+            $('#'+id+'').remove();
+            
             
             // segir aca ruta para qe se active la funcion ara borrra autor has book
+            
                  deletAutor(id,url).done(function(response){
-                    
+                    alert(response);
                     if(response=='true'){
                     alert("se elimino autor");
                     }
@@ -77,7 +79,6 @@ $(document).ready(function() {
         
             
          }
-
 
     
     //Genera codigo catalografico
