@@ -17,7 +17,7 @@
 			$this->languajeModel   = $this->model('Languaje', 'languajes');
 			$this->topicModel      = $this->model('Topic', 'topics');	
 			$this->categoryModel= $this->model('Category','categories');
-			$this->autHasBookModel = $this->model('AuthorHasBook','authorhasbook'); 
+			$this->autHasBookModel = $this->model('AuthorHasBook','authorshasbooks'); 
 		}
 	
 		public function show(){ 

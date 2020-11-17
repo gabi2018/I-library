@@ -13,7 +13,7 @@
 											  VALUES (:book_id,:author_id,:author_type_id)');
 						
 							$this->db->bind(':book_id',$book_id);
-							$this->db->bind(':author_id',$author_Id);
+							$this->db->bind(':author_id',$author_id);
 							$this->db->bind(':author_type_id',$typeAuthorId);
 							$this->db->execute();					
 						
@@ -30,7 +30,7 @@
 									book_id=:book_id');
 
 			$this->db->bind(':book_id',$book_id);
-			$this->db->bind(':author_id',$author_Id);
+			$this->db->bind(':author_id',$author_id);
 			$this->db->bind(':author_type_id',$typeAuthorId);		
 
 				$value = $this->db->getRecord();					

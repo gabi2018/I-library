@@ -51,27 +51,32 @@ $(document).ready(function() {
                 cutterCode = generateCutterCode(autorText, table);
                 console.log(autorValue);
             }
+        }    
+    });
 
-            $(".delautor").click(function() { 
-                id = ($(this).attr("id")).replace(".", "_"); 
+        $(".delautor").click(function() { 
+                id = ($(this).attr('id')).replace(".", "_"); 
                 url = $(this).attr('data-url'); 
-                alert(id);
-                $('#'+id+'').remove(); 
                 
+                $('#'+id+'').remove(); 
+                $('#list-author #'+id).remove();
                 // segir aca ruta para qe se active la funcion ara borrra autor has book
-                deletAutor(id,url).done(function(response){
-                    alert(response);
-                    if(response=='true'){
+                deletAutor(id,url).done(function(response){  
+                                  
+                    if(response){
                         alert("se elimino autor");
                     }
                 }); 
-             });
+        });
          
             function deletAutor(id,url){
-                return  $.post(url,{delet : id}); 
+                
+                response=$.post(url,{idtipo: id}); 
+                console.log(response);
+                return response;
              }
-        } 
-    }); 
+         
+    
     
     //Genera codigo catalografico
     $("#title-book").change(function(){

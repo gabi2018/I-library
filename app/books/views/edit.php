@@ -119,7 +119,7 @@
                         <tr id="<?php echo$author->author_id."_".$author->author_type_id?>" ><td>   <?php echo $author->author_name." ".$author->author_lastname ?></td> 
                         <td><?php echo$author->author_type_identifier?></td> 
                         <td>
-                        <a href="javascript:void(0)" class="delautor material-icons" id="<?php echo  $author->author_id.".".$author->author_type_id?>" data-url="<?php echo URL_ROUTE?>AuthorsHasBooks/deleteAutorHasBook/<?php echo$book->book_id?>">clear</a>
+                        <a href="javascript:void(0)" class="delautor material-icons" id="<?php echo  $author->author_id.".".$author->author_type_id?>" data-url="<?php echo URL_ROUTE?>authorshasbooks/delete/<?php echo $book->book_id;?>">clear</a>
                         </td>
                             </tr>    
                                 <?php endforeach; ?>
@@ -129,7 +129,7 @@
                 </div>
                 <div class="form-group"> 
                                         
-                    <select multiple name="author-list[]" id="list-author" style="display:none">
+                    <select multiple name="author-list[]" id="list-author" style="display">
                     <?php foreach ($authors as $author) :?>
                     <option value="<?php echo$author->author_id."_".$author->author_type_id?>" id="<?php echo  $author->author_id."_".$author->author_type_id?>" selected></option>
                     <?php endforeach; ?>
