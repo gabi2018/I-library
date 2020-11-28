@@ -60,7 +60,7 @@
 						'book-img'		 => $_FILES['book-img'],
 						'book-pages'	 => trim($_POST['book-pages']),
 						'book-category'  => trim($_POST['category-topic']),
-						'book-single'	 => trim($_POST['book-single']),		
+		
 						'book-desc'		 => trim($_POST['book-desc']),
 						'book-editorial' => trim($_POST['editorial-id']),
 						'book-vol'		 => trim($_POST['book-vol']),
@@ -68,14 +68,14 @@
 						'book-year'		 => trim($_POST['book-year']),
 						'book-topo'		 => trim($_POST['book-topo']),
 						'book-languaje'  => trim($_POST['book-languaje']),
-						'book-cantiEje'	 => trim($cantidadBook),//me da el for para insertar
+					
 						'book-authors'	 => $_POST['author-list'],
 						'book-status_id' => $book_status,
 						'book-cata'		 => trim($_POST['book-cata']),
 					];
 															
 
-					if($this->booksModel->addBook($param)){
+					if($this->booksModel->addBook($param,1,$cantidadBook)){
 						echo '<p>guardado con exito<p>';	
 						redirect('books/index');		
 					}	
@@ -104,13 +104,9 @@
 					echo"</div></tr>";
 				}
 			}
-	}
-	/*	public function editar($topolographic){
-			$book = $this->bookModel->getBook($topolographic);
-			$param  = ['book' => $book];
-			$this->view('edit', $param);
 		}
-*/
+	
+
 		public function read($topolographic){
 			//consultar book
 			$books = $this->booksModel->getBook($topolographic);
@@ -121,8 +117,11 @@
 				'book'=> $books,
 				'author'=> $author,
 				'category'=>$categoryTemaSubtema,
-				'cantidad-ejemplares'=> $this->booksModel->countBook($books->book_isbn),
-				
+				'cantidad-ejemplares-disponi'=> $this->booksModel->countBookAvailability($books->book_isbn,'Disponible'),
+				'cantidad-ejemplares-noDispo'=>$this->booksModel->countBookAvailability($books->book_isbn,'No disponible'),
+				'cantidad-ejemplares-prestados'=>$this->booksModel->countBookAvailability($books->book_isbn,'Prestado'),
+				'cantidad-ejemplares-reservados'=>$this->booksModel->countBookAvailability($books->book_isbn,'Reservado'),
+				'cantidad-ejemplares-copiaUnica'=>$this->booksModel->countBookAvailability($books->book_isbn,'Copia unica'),							
 			];
 
 			$this->view('book',$param);
@@ -151,51 +150,81 @@
 		}
 
 		public function update(){
-
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['book-update'])){
-			if(isset($_POST['book-title']) && isset($_POST['book-isbn'])
-				&& isset($_POST['book-languaje']) && isset($_POST['category-topic'])&&
-				isset($_POST['editorial-id'])&& isset($_POST['book-topo']) && isset($_POST['book-cata'])){
+				if(isset($_POST['book-title']) && isset($_POST['book-isbn'])
+					&& isset($_POST['book-languaje']) && isset($_POST['category-topic'])
+					&&isset($_POST['editorial-id'])&& isset($_POST['book-topo']) && isset($_POST['book-cata'])){
 					
-					$book_status = 1;//disponible
-					$cantidadBook=$_POST['book-cantidad'];
-				 	if ($cantidadBook == 1){
-					   $book_status = 2;//copia unica
-					   $cantidadBook=1;
-				   }
-				   
-					$param = [
-						'book-id' 	  => trim($_POST['book-id']), 
-						'book-title'	 => trim($_POST['book-title']),
-						'book-isbn'		 => trim($_POST['book-isbn']),
-						'book-img'		 => $_FILES['book-img'],
-						'ext-img-vieja'=> trim($_POST['ext-vieja']),
-						'book-pages'	 => trim($_POST['book-pages']),
-						'book-category'  => trim($_POST['category-topic']),
-					#	'book-single'	 => trim($_POST['book-single']),		
-						'book-desc'		 => trim($_POST['book-desc']),
-						'book-editorial' => trim($_POST['editorial-id']),
-						'book-vol'		 => trim($_POST['book-vol']),
-						'book-edition'	 => trim($_POST['book-edition']),
-						'book-year'		 => trim($_POST['book-year']),
-						'book-topo'		 => trim($_POST['book-topo']),
-						'book-languaje'  => trim($_POST['book-languaje']),
-						'book-cantiEje'	 => $cantidadBook,//me da el for para actualizar la cantidad de libros
-						'book-authors'	 => $_POST['author-list'],
-						'book-status_id' => $book_status,
-						'book-cata'		 => trim($_POST['book-cata']),
-					];
-					if($this->booksModel->editBook($param)){
-						redirect('books/index');
-					}
-					else{
-						die("FATAL ERROR");
-					}
-				}
-			}
+									$isbnViejo=$_POST['book-isbn-viejo'];
+									$Ids=$this->booksModel->getIdsBooks($isbnViejo);
+									$book_status = 1;//disponible
+									$cantidadBook=$_POST['book-cantidad'];
+									$cantidadVieja=$_POST['book-cantidad-vieja'];
+									if ($cantidadBook == 1){
+									$book_status = 2;//copia unica
+									$cantidadBook=1;
+								}
+							
+							$i=1;
+								foreach ($Ids as $id) {																							
+												$param = [
+													'book-id' 	  => $id->book_id, 
+													'book-title'	 => trim($_POST['book-title']),
+													'book-isbn'		 => trim($_POST['book-isbn']),
+													'book-img'		 => $_FILES['book-img'],
+													'ext-img-vieja'=> trim($_POST['ext-vieja']),
+													'book-pages'	 => trim($_POST['book-pages']),
+													'book-category'  => trim($_POST['category-topic']),
+												
+													'book-desc'		 => trim($_POST['book-desc']),
+													'book-editorial' => trim($_POST['editorial-id']),
+													'book-vol'		 => trim($_POST['book-vol']),
+													'book-edition'	 => trim($_POST['book-edition']),
+													'book-year'		 => trim($_POST['book-year']),
+													'book-topo'		 => trim($_POST['book-topo']).'-'.$i,
+													'book-languaje'  => trim($_POST['book-languaje']),
+											
+													'book-authors'	 => $_POST['author-list'],
+													'book-status_id' => $book_status,
+													'book-cata'		 => trim($_POST['book-cata']),
+												];
 
+												$this->booksModel->editBook($param,$i);
+												$i++;
+								}
+																	 							
+							if($cantidadBook>$cantidadVieja){
+								$param = [
+													'book-title'	 => trim($_POST['book-title']),
+													'book-isbn'		 => trim($_POST['book-isbn']),
+													'book-img'		 => $_FILES['book-img'],
+													'ext-img-vieja'=> trim($_POST['ext-vieja']),
+													'book-pages'	 => trim($_POST['book-pages']),
+													'book-category'  => trim($_POST['category-topic']),											
+													'book-desc'		 => trim($_POST['book-desc']),
+													'book-editorial' => trim($_POST['editorial-id']),
+													'book-vol'		 => trim($_POST['book-vol']),
+													'book-edition'	 => trim($_POST['book-edition']),
+													'book-year'		 => trim($_POST['book-year']),
+													'book-topo'		 => trim($_POST['book-topo']),
+													'book-languaje'  => trim($_POST['book-languaje']),											
+													'book-authors'	 => $_POST['author-list'],
+													'book-status_id' => $book_status,
+													'book-cata'		 => trim($_POST['book-cata']),
+												];
+								
+								$this->booksModel->addBook($param,$cantidadVieja+1,$cantidadBook);																																
+							}
+							redirect('books/index');							
+				}	
 
+			}									
+			
+				
 		}
+
+
+		
 
 		public function delete(){}
  	}

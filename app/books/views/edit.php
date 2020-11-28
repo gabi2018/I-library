@@ -27,6 +27,7 @@
                         <div class="form-group">
                             <label for="isbn-book">ISBN</label>
                             <input type="text" name="book-isbn" class="form-control" id="isbn-book" required value="<?php echo $book->book_isbn?>" > 
+                            <input type="hidden" name="book-isbn-viejo" class="form-control"  required value="<?php echo $book->book_isbn?>"> 
                             <input type="hidden" name="book-id" class="form-control"  required value="<?php echo $book->book_id?>"> 
                         </div> 
                         <div class="form-group">
@@ -69,12 +70,14 @@
                   
                     <div class="col-6 form-group" id="cantEjemplar" style="display">
                         <label for="cant-book">Cantidad de ejemplares</label>
-                        <input type="num" name="book-cantidad" selected id="cant-book"value="<?php echo $cantidad->book_cantidad?>" class="form-control"  "> 
+                <input type="num" name="book-cantidad"   id="cant-book"value="<?php echo$cantidad->book_cantidad?>" class="form-control"  ">
+                <input name='book-cantidad-vieja' type='hidden' value='<?php echo $cantidad->book_cantidad?>'>
+                
                     </div>
                 </div>                                  
                 <div class="form-group">
                     <label for="desc-book">Descripción</label>
-                    <textarea class="form-control" name="book-desc" id="desc-book" rows="3" required  value =''><?php echo$book->book_desc?></textarea> 
+                    <textarea class="form-control" name="book-desc" id="desc-book" rows="3" required  value ='<?php echo$book->book_desc?>'><?php echo$book->book_desc?></textarea> 
                 </div>   
             </div>
             <!-- Datos de Autor -->
@@ -129,7 +132,7 @@
                 </div>
                 <div class="form-group"> 
                                         
-                    <select multiple name="author-list[]" id="list-author" style="display">
+                    <select multiple name="author-list[]" id="list-author" style="display:none">
                     <?php foreach ($authors as $author) :?>
                     <option value="<?php echo$author->author_id."_".$author->author_type_id?>" id="<?php echo  $author->author_id."_".$author->author_type_id?>" selected></option>
                     <?php endforeach; ?>
