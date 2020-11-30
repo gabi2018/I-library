@@ -215,6 +215,25 @@
 								
 								$this->booksModel->addBook($param,$cantidadVieja+1,$cantidadBook);																																
 							}
+
+							elseif($cantidadBook<$cantidadVieja){
+								$Ids=$this->booksModel->getIdsBooks($isbnViejo);
+								$cantidadVieja=$cantidadVieja-1;
+								for ($i=$cantidadVieja; $i>=$cantidadBook;$i--) {	
+									
+									$param = [
+										'book_id' 	  => $Ids[$i]->book_id, 
+										'category_id'  => $Ids[$i]->category_id	,																				
+										'editorial_id' => $Ids[$i]->editorial_id,										
+										'languaje_id'  => $Ids[$i]->languaje_id,																					
+										'book_status_id' =>$Ids[$i]->book_status_id,
+										
+									];
+								$this->booksModel->deletBook($param);
+								}
+							}
+
+
 							redirect('books/index');							
 				}	
 

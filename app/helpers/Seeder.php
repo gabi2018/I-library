@@ -637,8 +637,8 @@ INSERT INTO `user_type`(`user_type_id`, `user_type_desc`)
 
 
 
-
-
+#consulta para poner en cascada a book
+#ALTER TABLE `book` DROP FOREIGN KEY `fk_book_book_status1`; ALTER TABLE `book` ADD CONSTRAINT `fk_book_book_status1` FOREIGN KEY (`book_status_id`) REFERENCES `book_status`(`book_status_id`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `book` DROP FOREIGN KEY `fk_book_category1`; ALTER TABLE `book` ADD CONSTRAINT `fk_book_category1` FOREIGN KEY (`category_id`) REFERENCES `category`(`category_id`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `book` DROP FOREIGN KEY `fk_book_languaje1`; ALTER TABLE `book` ADD CONSTRAINT `fk_book_languaje1` FOREIGN KEY (`languaje_id`) REFERENCES `languaje`(`languaje_id`) ON DELETE CASCADE ON UPDATE CAS
 
 
 

@@ -10,7 +10,9 @@
 		}
 		
 		public  function getIdsBooks($isbn){
-			$this->db->query('SELECT book_id FROM book WHERE book_isbn=:book_isbn');
+			$this->db->query('SELECT b.book_id ,b.editorial_id,b.languaje_id,b.book_status_id,b.category_id 
+			FROM book b 
+			WHERE b.book_isbn=:book_isbn');
 			$this->db->bind(':book_isbn', $isbn);		   
 			$response = $this->db->getRecords();
 			return $response; 
@@ -162,7 +164,7 @@
 							  editorial_id=:editorial_id,
 							  category_id=:category_id,
 							  book_status_id=:book_status_id 
-							  
+
 							  WHERE book_id = :book_id');
 
 				$this->db->bind(':book_id', $book_id);
@@ -282,6 +284,22 @@
 
 	}
 
+public function deletBook($param){
+		$this->db->query('DELETE FROM book 
+		WHERE book.book_id = :book_id AND
+		book.languaje_id = :book_languaje_id AND
+		book.editorial_id = :book_editorial_id AND
+		book.category_id = :book_category_id AND
+		book.book_status_id = :book_status_id');
+		$this->db->bind(':book_id', $param['book_id']);	
+		$this->db->bind(':book_languaje_id', $param['languaje_id']);	
+		$this->db->bind(':book_editorial_id', $param['editorial_id']);
+		$this->db->bind(':book_status_id', $param['book_status_id']);		
+		$this->db->bind(':book_category_id',$param['category_id']);
+		
+		 $this->db->execute();
+		return true;
+	}
 
 
 
