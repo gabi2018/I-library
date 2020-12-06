@@ -1,8 +1,8 @@
 var table;
 var cutterCode = "";   
+var author_id = "";
 
-$(document).ready(function() {
-    // Variables for book codes
+$(document).ready(function() { 
 
     // All Code
     url = $("#add-autor").attr('data-cutter') + "public/js/tablacutter-js.txt"
@@ -49,7 +49,7 @@ $(document).ready(function() {
             // Generate cutter code   
             if(typeText == "Principal" && cutterCode == ""){ 
                 cutterCode = generateCutterCode(autorText, table);
-                console.log(autorValue);
+                author_id = autorValue;
             }
         }    
     });
@@ -280,7 +280,26 @@ $(document).ready(function() {
         } 
     }); 
 
+    // Catalografic code
+    $('#generate-catolografic-code').click(function(){
+        edition   = $("#edition-book").val();
+        bookTitle = $("#title-book").val();
+        url       = $(this).attr('data-url');
+        param     = {bookTitle, author_id};
 
+
+        search(param, url).done(function(response){
+            let titleCode = "";
+            for(i=0; i<=response; i++){
+                titleCode += bookTitle[i]; 
+            } 
+            $('#cata-book').val(cutterCode+titleCode+edition);
+        });
+         
+        subtopic = $("#subtopic-book").val();
+        category    = $("#category-book").val();
+         $("#topo-book").val(subtopic+category);
+    });
 
 
 

@@ -36,7 +36,7 @@
 			$response = array(); 
 			
 			foreach ($result as $key => $value) {
-				$response[$value->author_id] = "".$value->author_name ." ". $value->author_lastname."";
+				$response[$value->author_id] = "".$value->author_lastname ." ". $value->author_name."";
 			} 	
 			return $response;
 		}
