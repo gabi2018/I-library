@@ -172,11 +172,11 @@
                 <div class="row"> 
                     <div class="form-group col-6">
                         <label for="cata-book">Código catalografico</label>
-                        <input type="text" name="book-cata" class="form-control" id="cata-book" required placeholder="Generacion automática" disabled> 
+                        <input type="text" name="book-cata" class="form-control" id="cata-book" required placeholder="Generacion automática" ><!-- si se deja el disabled no envia los datos atraves de post--> 
                     </div> 
                     <div class="form-group col-5">
                         <label for="topo-book">Código topolografico</label>
-                        <input type="text" name="book-topo" class="form-control"  id="topo-book" required  placeholder="Generación automática" disabled> 
+                        <input type="text" name="book-topo" class="form-control"  id="topo-book" required  placeholder="Generación automática" > 
                     </div> 
                     <div class="col-1 align-self-center">
                         <button type="button" id="generate-catolografic-code" data-url="<?php echo URL_ROUTE?>/AuthorsHasBooks/getbooksofauthor" class="material-icons btn btn-outline-dark">cached</button>

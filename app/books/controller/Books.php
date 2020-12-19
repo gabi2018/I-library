@@ -245,6 +245,19 @@
 
 		
 
-		public function delete(){}
+		public function delete($book_id){
+			$book=$this->booksModel->getBook($book_id);
+			$param = [
+				'book_id' 	  => $book->book_id, 
+				'category_id'  => $book->category_id	,																				
+				'editorial_id' => $book->editorial_id,										
+				'languaje_id'  => $book->languaje_id,																					
+				'book_status_id' =>$book->book_status_id,
+				
+			];
+		$this->booksModel->deletBook($param);
+		}
+
+		
  	}
 ?>
