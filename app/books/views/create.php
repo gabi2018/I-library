@@ -134,7 +134,7 @@
                         <div id="resutl-editorial"></div>
                     </div> 
                     <div class="form-group col-1">
-                        <a href="javascript:void(0);" class="material-icons mt-4 btn btn-outline-info btn-circle" data-toggle="modal" id="add-new-editorial" data-target="#create-editorial" data-toggle="tooltip" data-placement="bottom" title="Agregar nueva editorial">add</a>
+                        <a href="javascript:void(0);" class="material-icons mt-4 btn btn-outline-dark" data-toggle="modal" id="add-new-editorial" data-target="#create-editorial" data-toggle="tooltip" data-placement="bottom" title="Agregar nueva editorial">add</a>
                     </div>
                 </div> 
                 <div class="row">
@@ -169,15 +169,19 @@
                         <input type="text" name="book-edition" id="edition-book" class="form-control" placeholder="Ingresar número de edición"> 
                     </div>  
                 </div>
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label for="topo-book">Código topolografico</label>
-                        <input type="text" name="book-topo" class="form-control"  id="topo-book" required  placeholder="Generación automática"> 
-                    </div>
+                <div class="row"> 
                     <div class="form-group col-6">
                         <label for="cata-book">Código catalografico</label>
-                        <input type="text" name="book-cata" class="form-control" id="cata-book" required placeholder="Generacion automática"> 
+                        <input type="text" name="book-cata" class="form-control" id="cata-book" required placeholder="Generacion automática" ><!-- si se deja el disabled no envia los datos atraves de post--> 
+                    </div> 
+                    <div class="form-group col-5">
+                        <label for="topo-book">Código topolografico</label>
+                        <input type="text" name="book-topo" class="form-control"  id="topo-book" required  placeholder="Generación automática" > 
+                    </div> 
+                    <div class="col-1 align-self-center">
+                        <button type="button" id="generate-catolografic-code" data-url="<?php echo URL_ROUTE?>/AuthorsHasBooks/getbooksofauthor" class="material-icons btn btn-outline-dark">cached</button>
                     </div>
+                    
                 </div> 
             </div>
             <div class="form-group">

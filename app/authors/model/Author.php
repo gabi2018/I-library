@@ -36,7 +36,7 @@
 			$response = array(); 
 			
 			foreach ($result as $key => $value) {
-				$response[$value->author_id] = "".$value->author_name ." ". $value->author_lastname."";
+				$response[$value->author_id] = "".$value->author_lastname ." ". $value->author_name."";
 			} 	
 			return $response;
 		}
@@ -67,7 +67,7 @@
 		
 		public function getAhutoresBook($topolographic){
 
-		$this->db->query('SELECT a.author_name,a.author_lastname,aut.author_type_identifier
+		$this->db->query('SELECT a.author_name,a.author_lastname,aut.author_type_identifier,a.author_id,aut.author_type_id
 							FROM book b ,author a ,authors_has_book au ,author_type aut 
 							WHERE book_topolographic = :book_topolographic
 							AND b.book_id = au.book_id 
@@ -100,6 +100,28 @@
 				return true;
 			}
 			else{
+				return false;
+			}
+		}
+
+
+		public function deleteAHB($idAutorTipo,$id_book){
+			if (isset($id_book) && isset($idAutorTipo)){
+			$ids= explode("_",$idAutorTipo);
+			$authorId     = $ids[0];
+			$typeAuthorId = $ids[1];   
+			$this->db->query('DELETE FROM authors_has_book
+								 WHERE authors_has_book.author_id =  :author_id AND 
+								 authors_has_book.author_type_id = :author_type_id AND
+								  authors_has_book.book_id = :book_id');
+
+			$this->db->bind(':author_id',$authorId  );
+			$this->db->bind(':author_type_id', $typeAuthorId);
+			$this->db->bind(':book_id', $id_book);
+				if($this->db->execute()){
+
+				return true;
+				}
 				return false;
 			}
 		}

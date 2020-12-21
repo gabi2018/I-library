@@ -1,8 +1,8 @@
 var table;
+var cutterCode = "";   
+var author_id = "";
 
-$(document).ready(function() {
-    // Variables for book codes
-    var cutterCode;   
+$(document).ready(function() { 
 
     // All Code
     url = $("#add-autor").attr('data-cutter') + "public/js/tablacutter-js.txt"
@@ -30,7 +30,7 @@ $(document).ready(function() {
         // Recupero los value para generar un select no visible para enviarlos al controller
         autorValue = $("#select-author").attr('data-id');
         tipoValue  = $("#author-type").val();
-        if (autorValue!= null && tipoValue != null) {  
+        if (autorValue != null && tipoValue != null) {  
             $("#list-author").append(
                 "<option value="+ autorValue + "_" + tipoValue +" id="+ autorValue + "_" + tipoValue +" selected></option>"
             );
@@ -43,20 +43,46 @@ $(document).ready(function() {
                 "<tr id="+autorValue+"_"+tipoValue+">" +
                     "<td>" + autorText + "</td>" +
                     "<td>" + typeText + "</td>" +
-                    "<td><a href='javascript:void(0)' class='delautor material-icons' id='" + autorValue + "." + tipoValue + "'>clear</a></td></tr>"
+                    "<td><a href='javascript:void(0)' class='delautor material-icons' id='"+autorValue+"."+tipoValue+"'>clear</a></td></tr>"
             );
 
             // Generate cutter code   
-            cutterCode = generateCutterCode(autorText, table);
-            console.log(cutterCode);
-        }
-
-        $(".delautor").click(function() {
-            id = ($(this).attr("id")).replace(".", "_"); 
-            $("#list-autors #tbody").remove(id);
-        });
+            if(typeText == "Principal" && cutterCode == ""){ 
+                cutterCode = generateCutterCode(autorText, table);
+                author_id = autorValue;
+            }
+        }    
     });
 
+        $(".delautor").click(function() { 
+                id = ($(this).attr('id')).replace(".", "_"); 
+                url = $(this).attr('data-url'); 
+                
+                $('#'+id+'').remove(); 
+                $('#list-author #'+id).remove();
+                // segir aca ruta para qe se active la funcion ara borrra autor has book
+                deletAutor(id,url).done(function(response){  
+                                  
+                    if(response){
+                        alert("se elimino autor");
+                    }
+                }); 
+        });
+         
+            function deletAutor(id,url){
+                
+                response=$.post(url,{idtipo: id}); 
+                console.log(response);
+                return response;
+             }
+         
+    
+    
+    //Genera codigo catalografico
+    $("#title-book").change(function(){
+
+    });
+    
     // Genera la clave copiando el dni ingresado
     $("#doc-user").keyup(function() {
         $('#pass-user').val(($('#doc-user').val()));
@@ -125,7 +151,7 @@ $(document).ready(function() {
         if(input != ""){
             url = $(this).attr('data-url');
             search(input, url).done(function(response){ 
-            
+                
                 $('#result').html(response); 
                
             }); 
@@ -268,7 +294,26 @@ $(document).ready(function() {
         } 
     }); 
 
+    // Catalografic code
+    $('#generate-catolografic-code').click(function(){
+        edition   = $("#edition-book").val();
+        bookTitle = $("#title-book").val();
+        url       = $(this).attr('data-url');
+        param     = {bookTitle, author_id};
 
+
+        search(param, url).done(function(response){
+            let titleCode = "";
+            for(i=0; i<=response; i++){
+                titleCode += bookTitle[i]; 
+            } 
+            $('#cata-book').val(cutterCode+titleCode+edition);
+        });
+         
+        subtopic = $("#subtopic-book").val();
+        category    = $("#category-book").val();
+         $("#topo-book").val(subtopic+category);
+    });
 
 
 
@@ -348,4 +393,5 @@ $(document).ready(function() {
             }
         }
     });
+    
 });
