@@ -36,7 +36,18 @@
 			$this->db->query('INSERT INTO user 
 										 (user_dni, user_name, user_lastname, user_address, user_phone, user_email, user_password, user_type_id, user_img) 
 							    VALUES  (:user_dni, :user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, 1, :user_img)');
+			
+			
+			if(!empty ($param['user-img']['name'])){	
+				$nameImg = $param['user-dni'];
+				$file 	 = $param['user-img']['tmp_name'];
+				$rut 	 = '../../../public/media/images/partner/'.$nameImg; 
+				copy($file,$rut);
 
+			}else{
+				$nameImg = 'default-user.png';
+			}
+			
 			# Link values 
 			$this->db->bind(':user_name',     $param['user-name']);
 			$this->db->bind(':user_lastname', $param['user-lastname']);
@@ -45,18 +56,6 @@
 			$this->db->bind(':user_phone',    $param['user-phone']);
 			$this->db->bind(':user_email',    $param['user-email']);
 			$this->db->bind(':user_password', $param['user-pass']); 
-			$nameImg='';
-				
-			if(!empty($param['user-img'])){			
-				$nameImg = $param['user-dni'];
-				$file 	 = $param['user-img']['tmp_name'];
-				$rut 	 = '../public/media/partner/'.$nameImg; 
-				copy($file,$rut);
-
-			}else{
-				$nameImg = 'default-user.png';
-			}
-			
 			$this->db->bind(':user_img',$nameImg);
 			
 			# Run
@@ -89,21 +88,69 @@
 		/*funcion que edita los usuarios y recibe un arreglo como parametro */
 		public function editUsers($param){		
 			$this->db->query('UPDATE user 
-								 SET user.user_address = :user.user_address, 
-								     user.user_phone = :user.user_phone, 
-									 user.user_email = :user.user_email, 
-							   WHERE user.user_dni = :user_dni');
+								 SET user_name = :user_name,
+								 	 user_lastname = :user_lastname,
+								 	 user_address = :user_address, 
+								     user_phone = :user_phone, 
+									 user_email = :user_email,
+									 user_defaulter = 1,
+									 user_img = :user_img, 
+							   WHERE user_dni = :user_dni');
 			
 			# Link values
-			$this->db->bind(':user_dni',     $param['user-dni']);
-			$this->db->bind(':user_phone',    $param['user-phone']);
-			$this->db->bind(':user_address',  $param['user-address']);
-			$this->db->bind(':user_email',    $param['user-email']);
-			//$this->db->bind(':user_password', $param['user-pass']);
-			  
+			$this->db->bind(':user_name',      $param['user-name']);
+			$this->db->bind(':user_lastname',  $param['user-lastname']);
+			$this->db->bind(':user_phone',     $param['user-phone']);
+			$this->db->bind(':user_address',   $param['user-address']);
+			$this->db->bind(':user_email',     $param['user-email']);
+			$this->db->bind(':user_defaulter', $param['user-defaulter']);
 
+			$nameImg='';
+				
+			if(!empty($param['user-img'])){			
+				$nameImg = $param['user-dni'];
+				$file 	 = $param['user-img']['tmp_name'];
+				$rut 	 = '../public/media/partner/'.$nameImg; 
+				copy($file,$rut);
+
+			}else{
+				$nameImg = 'default-user.png';
+			}
+			
+			$this->db->bind(':user_img',$nameImg);
+			
 			# Run
 			return $this->db->execute();
+			
+		}
+
+		/** Funcion que trae los datos del ususario para ser buscados*/
+		/**Los datos del ususario son: nombre, apellido, direccion, telefono, tipo de socio, y si es moroso
+		 * en el caso de serlo muestra un mensaje como moroso, si no nada.
+		 */
+		public function getUsersSearch($param){
+			$this->db->query('SELECT U.user_dni,
+									 U.user_name, 
+									 U.user_lastname, 
+									 U.user_address, 
+									 U.user_email ,
+									 U.user_phone , 
+									 U.user_img,
+									 UT.user_type_desc 
+							  FROM   user U 
+							  INNER JOIN user_type UT ON U.user_type_id = UT.user_type_id 
+							  WHERE U.user_name LIKE "%":user_param"%" 
+							  ORDER BY U.user_name,U.user_lastname');
+			$this->db->bind(':user_param', $param['user']);
+			$result = $this->db->getRecords();
+			$response = array();
+			foreach($result as $Key => $value){
+				
+				$response[$Key] = $value;
+					
+			}							  
+			return $response;
+
 		}
 
 		/**Funcion deshactiva un usuario */
@@ -127,10 +174,6 @@
 		 * En caso de ser moroso se mostrará un campo con la leyenda “moroso”, 
 		 * de lo contrario no mostrará nada.
 		*/
-		public function getUsersSearch($param){
-
-
-		}
-
+	
 	}
  ?>

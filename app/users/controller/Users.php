@@ -64,16 +64,21 @@
 		public function update(){		
 
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-update'])){
-				if (!empty($_POST['user-dni'])&&!empty($_POST['user-phone'])&&!empty($_POST['user-address'])&&!empty($_POST['user-email'])) {
+				if (isset($_POST['user-name'])&& isset($_POST['user-lastname'])&&
+					isset($_POST['user-phone'])&&isset($_POST['user-address'])&&
+					isset($_POST['user-email'])) {
 					$param = [
-						'user-dni'=>$_POST['user-dni'],
+					
+						'user-name'=>trim($_POST['user-name']),
+						'user-lastname'=>trim($_POST['user-lastname']),
 						'user-phone'=>trim($_POST['user-phone']),
 						'user-address'=>trim($_POST['user-address']),
 						'user-email'=>trim($_POST['user-email']),
+						'user-img'=>trim($_POST['user-img']),
 						
 					];
 					if($this->userModel->editUsers($param)){
-						redirect('edit');
+						redirect('users/index');
 					}else{
 						die('Error locooo');
 					}
@@ -96,7 +101,7 @@
 		
 
 		public function delete(){}
-
+		// Funcion verifica que el email, sea unico y no se repita
 		public function verify($email){
 			$users = $this->userModel->getByEmail($email);
 			$param = [
@@ -106,6 +111,40 @@
 		}
 		public function show(){ 
 			$this->view;
+		}
+		public function search(){
+			if(isset($_POST['search'])){
+				$param = ['user'=>trim($_POST['search'])];
+				$users = $this->userModel->getUsersSearch($param);
+				foreach($users as $user){
+					echo "<div class='media mt-2'>
+					<img class='mr-3' src='" .URL_ROUTE. "media/images/partner/$user->user_img' alt='Foto_Socio' style='width: 90px'>
+					
+						<div class='media-body'>
+							<div class='row'>
+								<div class='col-10'>
+									
+									<h5 class='mt-0'><a href=''> $user->user_name $user->user_lastname</a></h5>
+								
+									<span>Direccion:<a href=''> $user->user_address</a></span><br>
+									<span>Telefono:<a href=''> $user->user_phone</a></span>
+								</div>
+								
+							</div> 
+						</div> 
+					</div>";
+				}
+			}
+
+		}
+		
+		public function read($dni){
+			$users = $this->userModel->getUser($dni);
+			$param = [
+					'user'=>$users
+			];
+			$this->view('user',$param);
+
 		}
 		
 		

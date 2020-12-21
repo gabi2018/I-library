@@ -130,8 +130,22 @@ $(document).ready(function() {
                
             }); 
         }
-    });    
+    });  
 
+    //busqueda de socios por nombre o apellido
+    $('#search_user').keyup(function(){
+        var input = $(this).val();
+        if(input != "" ){
+            url= $(this).attr('data-url');
+            search(input, url).done(function(response){
+
+                $('#search_result_user').html(response);
+            });
+
+        }
+    }); 
+
+    //funcion para el registro de escuelas y carreras del usuario
     $("#user-school").change(function() {
         url = $(this).attr('data-url');
         $("#user-school option:selected").each(function() {
