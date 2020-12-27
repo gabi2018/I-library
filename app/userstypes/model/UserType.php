@@ -25,12 +25,7 @@
 			# Link values
 			$this->db->bind(':user_type_name', $param['usertype-name']);
 			# Run
-			if($this->db->execute()){
-				return true;
-			}
-			else{
-				return false;
-			}
+			return $this->db->execute();
 		}
 
 		public function editUserType($param){
@@ -42,12 +37,7 @@
 			$this->db->bind(':user_type_name', $param['usertype-name']);
 
 			# Run
-			if($this->db->execute()){
-				return true;
-			}
-			else{
-				return false;
-			}
+			return $this->db->execute();
 		}
 	}
 ?>

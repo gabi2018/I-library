@@ -9,9 +9,7 @@
 
 		public function index(){
 			$usertypes = $this->userTypeModel->getUserTypes();
-			$param = [
-				'usertypes' => $usertypes
-			];
+			$param = ['usertypes' => $usertypes];
 			$this->view('usertypes/index', $param);
 		}
 
@@ -22,9 +20,7 @@
 		public function store(){
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['usertype-register'])){
 				if (isset($_POST['usertype-name'])) {
-					$param = [
-						'usertype-name' => trim($_POST['usertype-name'])
-					];
+					$param = ['usertype-name' => trim($_POST['usertype-name'])];
 
 					if($this->userTypeModel->addUserType($param)){
 						redirect('userTypes/index');
@@ -36,14 +32,11 @@
 			}
 		}
 
-		public function show(){
-		}
+		public function show(){}
 
 		public function edit($id){ 
 			$usertype = $this->userTypeModel->getUserType($id);
-			$param = [
-				'usertype' => $usertype
-			];
+			$param = ['usertype' => $usertype];
 			$this->view('usertypes/edit', $param);
 		}
 
@@ -67,5 +60,4 @@
 
 		public function delete(){}
 	}
-
 ?>

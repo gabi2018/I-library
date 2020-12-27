@@ -1,5 +1,5 @@
 <?php 
-		$users = $param['users'];
+	$users = $param['users'];
 ?>
 <div class="col-10 mt-2">
     <h4 class="mb-3">Editar socio</h4>
@@ -53,7 +53,7 @@
                             foreach ($param["schools"] as $key => $value) {
                                 echo "<option value=$value->school_id>$value->school_name</option>";
                             }                          
-                            ?>
+                        ?>
                     </select>
                 </div>  
             </div> 

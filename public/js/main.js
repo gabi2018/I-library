@@ -1,6 +1,6 @@
 var table;
 var cutterCode = "";   
-var author_id = "";
+var author_id  = "";
 
 $(document).ready(function() { 
 
@@ -54,30 +54,26 @@ $(document).ready(function() {
         }    
     });
 
-        $(".delautor").click(function() { 
-                id = ($(this).attr('id')).replace(".", "_"); 
-                url = $(this).attr('data-url'); 
-                
-                $('#'+id+'').remove(); 
-                $('#list-author #'+id).remove();
-                // segir aca ruta para qe se active la funcion ara borrra autor has book
-                deletAutor(id,url).done(function(response){  
-                                  
-                    if(response){
-                        alert("se elimino autor");
-                    }
-                }); 
-        });
+    $(".delautor").click(function() { 
+        id  = ($(this).attr('id')).replace(".", "_"); 
+        url = $(this).attr('data-url'); 
+        
+        $('#'+id+'').remove(); 
+        $('#list-author #'+id).remove();
+        // segir aca ruta para qe se active la funcion ara borrra autor has book
+        deletAutor(id,url).done(function(response){         
+            if(response){
+                alert("se elimino autor");
+            }
+        }); 
+    });
          
-            function deletAutor(id,url){
-                
-                response=$.post(url,{idtipo: id}); 
-                console.log(response);
-                return response;
-             }
-         
-    
-    
+    function deletAutor(id, url){ 
+        response = $.post(url,{idtipo: id}); 
+        console.log(response);
+        return response;
+    } 
+
     //Genera codigo catalografico
     $("#title-book").change(function(){
 
@@ -102,8 +98,7 @@ $(document).ready(function() {
             var reader = new FileReader();
             reader.onload = function(e) {
                 $(label).attr('src', e.target.result);
-            }
-
+            } 
             reader.readAsDataURL(input.files[0]);
         }
     }
@@ -150,24 +145,27 @@ $(document).ready(function() {
         var input = $(this).val();
         if(input != ""){
             url = $(this).attr('data-url');
-            search(input, url).done(function(response){ 
-                
-                $('#result').html(response); 
-               
+            search(input, url).done(function(response){  
+                $('#result').html(response);  
             }); 
         }
     });  
 
     //busqueda de socios por nombre o apellido
     $('#search_user').keyup(function(){
-        var input = $(this).val();
+        var input = $(this).val(); 
         if(input != "" ){
-            url= $(this).attr('data-url');
-            search(input, url).done(function(response){
-
+            url = $(this).attr('data-url');
+            search(input, url).done(function(response){ 
                 $('#search_result_user').html(response);
-            });
-
+                $("#search_result_user").css("display","initial");
+                $("#user_list").css("display","none");
+                
+            }); 
+        }
+        else{
+            $("#user_list").css("display","initial");
+            $("#search_result_user").css("display","none");
         }
     }); 
 
@@ -218,8 +216,8 @@ $(document).ready(function() {
         }
     });
 
-     // Search editorial
-     $('#search-editorial').keyup(function(){ 
+    // Search editorial
+    $('#search-editorial').keyup(function(){ 
         var input = $(this).val();
         if(input != ""){
             url = $(this).attr('data-url');
@@ -277,19 +275,13 @@ $(document).ready(function() {
         event.stopPropagation(); 
     });
      
-
     // Search general de autor , book , editorial
     $('#search-general').keyup(function(){ 
-        
         var input = $(this).val();
-        
         if(input != " "){
             url = $(this).attr('data-url');
-            
             search(input, url).done(function(response){
-                
                 $('#ver').html(response);
-                
             }); 
         } 
     }); 
@@ -304,18 +296,16 @@ $(document).ready(function() {
 
         search(param, url).done(function(response){
             let titleCode = "";
-            for(i=0; i<=response; i++){
+            for(i = 0; i <= response; i++){
                 titleCode += bookTitle[i]; 
             } 
             $('#cata-book').val(cutterCode+titleCode+edition);
         });
          
-        subtopic = $("#subtopic-book").val();
+        subtopic    = $("#subtopic-book").val();
         category    = $("#category-book").val();
-         $("#topo-book").val(subtopic+category);
+        $("#topo-book").val(subtopic+category);
     });
-
-
 
     // Graphs
     var ctx = document.getElementById('statistics-loan').getContext('2d');

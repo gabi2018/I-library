@@ -281,3 +281,15 @@ li>img {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.icons-users{
+  color: #6b6a6a; 
+}
+.icons-users p{
+  margin-bottom: 0 !important;
+}
+.icons-users .material-icons{
+  font-size: 15px; 
+  position: relative;
+  right: 2px;
+  top: 2px;
+}

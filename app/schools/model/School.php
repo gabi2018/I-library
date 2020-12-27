@@ -25,12 +25,7 @@
 			# Link values
 			$this->db->bind(':school_name', $param['school_name']);	
 			# Run
-			if($this->db->execute()){
-				return true;
-			}
-			else{
-				return false;
-			}
+			return $this->db->execute();
 		}
 		
 		public function editSchool($param){		
@@ -39,12 +34,7 @@
 			$this->db->bind(':school_id', $param['school-id']);
 			$this->db->bind(':school_name', $param['school_name']);
 			# Run
-			if($this->db->execute()){
-				return true;
-			}
-			else{
-				return false;
-			}
+			return $this->db->execute();
 		}
 	}
 ?>

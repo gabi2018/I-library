@@ -6,4 +6,3 @@
         </div>
     </div>
 </form> 
-<div id="search_result_user" class="row justify-content-star mt-4"></div>

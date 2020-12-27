@@ -1,4 +1,4 @@
- <div class="mt-3 col-12 row alert alert-primary mb-4"> 
+<div class="mt-3 col-12 row alert alert-primary mb-4"> 
 	<div class="col-8 mt-2">
 		<h3 class="mb-4">Administra los <strong>socios</strong>!</h3>
 		<p>Importa o registra nuevos socios, deshabilita o actualiza su informacion .</p>
@@ -19,40 +19,11 @@
 	</div>
 </div>
 
-<div class="col-12 mt-4">
-	<?php require_once "partner.php"?>
-</div>
-	<tr>
-		<th>Nombre</th>
-        <th>Apellido</th>
-        <th>Direccion</th>
-        <th>Telefono</th>
-        <th>Email</th>  
-        <th>Tipo</th>
-		<th>Editar</th>
-		<th>Deshactivar</th>
-	</tr>
-
+<div class="col-12 mt-4" id="user_list">
 	<?php 
-		$users = $param['users'];
-		foreach ($users as $user) :
+		$users = $param['users']; 
+		foreach ($users as $user){ require "partner.php"; }
 	?>
-	<tr>
-		<td><?php echo $user->user_name; ?></td>
-        <td><?php echo $user->user_lastname; ?></td>
-        <td><?php echo $user->user_address; ?></td>
-        <td><?php echo $user->user_phone; ?></td>
-        <td><?php echo $user->user_email; ?></td> 
-        <td><?php echo $user->user_type_desc; ?></td>
-		<td><a href="<?php echo URL_ROUTE  ?>users/edit/<?php echo $user->user_dni ?>"></a></td>
-		<td><a href="<?php echo URL_ROUTE ?>users/disable/<?php echo $user->user_dni ?>">
-		<?php echo($user->user_defaulter)?'Disable':'Enable' ; ?>
-		</a></td>
+</div>
 
-	</tr>
-	<?php endforeach; ?>
-</table>
-
-<a href="<?php echo URL_ROUTE ?>users/create" class="btn btn-success">Agregar nuevo usuario</a> 
-
-
+<div class="col-12 mt-4" id="search_result_user" style="display: none;"></div>
