@@ -307,6 +307,25 @@ $(document).ready(function() {
         $("#topo-book").val(subtopic+category);
     });
 
+    //ISOTOPE
+    $("#user_list").isotope({
+        filter: '.list'
+    });
+
+    $('.view-type').click(function() {
+        var filterValue = $(this).attr('data-filter'); 
+        id = filterValue.substr(1);
+        $('#'+id).css('display', 'none');   
+        if(id == 'list'){
+            $('#card').css('display', 'initial');
+        }      
+        else{
+            $('#list').css('display', 'initial');
+        }   
+        
+        $("#user_list").isotope({ filter: filterValue });
+    });
+    /*
     // Graphs
     var ctx = document.getElementById('statistics-loan').getContext('2d');
     var ctx =  new Chart(ctx, {
@@ -382,6 +401,6 @@ $(document).ready(function() {
                 }]
             }
         }
-    });
+    });*/
     
 });

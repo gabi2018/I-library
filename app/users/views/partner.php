@@ -1,4 +1,4 @@
-<div class="media mt-2">
+<div class="media list mt-2 col-12">
     <img class="mr-3" src="<?php echo URL_ROUTE . "media/images/partner/$user->user_img";?>" alt="Foto_Socio" style="width: 100px;">
     <div class="media-body">
         <div class="row">
@@ -13,6 +13,13 @@
                 <span class="material-icons"><a href="<?php echo URL_ROUTE . "users/disable/$user->user_dni";?>" class="text-danger"><?php echo($user->user_defaulter)?'close':'check' ; ?></a></span>
             </div>
         </div> 
-    </div> 
+    </div>
 </div> 
-<hr>
+<hr class="col-12">
+
+<div class="card book-list col-2 mr-3 mb-3">
+    <a href="<?php echo URL_ROUTE?>users/read">
+        <img class="card-img-top" src="<?php echo URL_ROUTE . "media/images/partner/$user->user_img";?>" alt="profile" style="width: 100%;">
+        <p><a href=""><?php echo "$user->user_name $user->user_lastname";?></a></p>  
+    </a> 
+</div>
