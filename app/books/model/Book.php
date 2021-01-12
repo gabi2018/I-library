@@ -223,7 +223,7 @@
 
 
 
-#pensando como hacomo hacer q se vea la disponibilidad
+# la disponibilidad
 	public function countBookAvailability($isbn,$status){
 		$this->db->query('SELECT  COUNT(b.book_isbn) AS book_cantidad,bs.book_status_desc
 		FROM book b,book_status bs
@@ -236,12 +236,26 @@
 		return $response; 
 	}
 
+#traer el primer  book disponible
+public function first_book_availability($isbn){
+	$this->db->query('SELECT b.book_id ,b.book_topolographic	
+	FROM book b,book_status bs
+	WHERE  b.book_isbn =:book_isbn AND
+	b.book_status_id=bs.book_status_id AND
+	bs.book_status_desc="Disponible"
+	limit 1 ');
+	$this->db->bind(':book_isbn', $isbn);
+		   
+	$response = $this->db->getRecord();
+	return $response; 
+}
+
 
 
 	
 
 
-
+#contar book
 
 	public function countBook($isbn){
 		$this->db->query('SELECT  COUNT(:book_isbn) AS book_cantidad
@@ -252,7 +266,7 @@
 		return $response; 
 	}
 
-
+#existencia de autor_has_book
 	public function exists($book_id,$author_id,$typeAuthorId){
 
 		$this->db->query('SELECT true as valor
@@ -269,7 +283,7 @@
 
 		return $value->valor;
 	}
-
+#agregar en author has book
 	public function addAHB($book_id,$author_id,$typeAuthorId){
 
 		$this->db->query('INSERT INTO authors_has_book(book_id,author_id,author_type_id)

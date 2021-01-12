@@ -11,7 +11,11 @@
             $this->view('create');
         }
 
-		public function store(){}
+		public function store(){
+
+
+            
+        }
 
 		public function show(){}
 
