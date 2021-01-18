@@ -165,6 +165,48 @@ $('#search_book_loan').keyup(function(){
         }
        
     });
+
+//bysqueda user en loan
+$('#search_user_loan').keyup(function(){
+    var input = $(this).val(); 
+    if(input != "" ){
+        url = $(this).attr('data-url');
+        search(input, url).done(function(response){ 
+            $('#options-user').html(response);
+            closeSelectUser("#container-user", "#select-user", "#options-user>li.option", "#selected-user");    
+            
+        }); 
+    }
+    
+
+});
+
+//closet select user
+
+function closeSelectUser(container, select, options, selected){
+    $(options).click(function() {
+        
+        var value = $(this).find("h5").html();
+        
+        url=$('#book_media').attr('data-url');
+        
+        input = $(this).html();
+        
+        $(select).html(value);
+        $(select).attr("data-id", $(this).attr("id"));
+        $(selected).val(value);
+        $(container).toggleClass("open");                      
+        $("#user_media").html(input);
+
+        
+            
+        
+        
+    }); 
+    
+} 
+
+    //closet select de search boook en loan 
     function closeSelectBook(container, select, options, selected){
         $(options).click(function() {
             
@@ -192,7 +234,10 @@ $('#search_book_loan').keyup(function(){
     return $.post(url, {book_isbn : isbn});
 }
 
-    
+$("#select-user").click(function(event) {
+    selectSimulator(event, $(this), "#container-user"); 
+});
+
     
     $("#select-book").click(function(event) {
         selectSimulator(event, $(this), "#container-book"); 

@@ -84,6 +84,19 @@
 			$response = $this->db->getRecord();
 			return $response;
 		}
+//		funcion q busca usuario por su dni
+		public function searchGetUser($dni){
+			$this->db->query('SELECT *
+								FROM user 
+								INNER JOIN user_type UT ON user.user_type_id = UT.user_type_id 
+							  WHERE user.user_dni LIKE "%":user_dni"%" 
+							  ORDER BY user.user_name,user.user_lastname');
+			$this->db->bind(':user_dni', $dni);		  
+			$result = $this->db->getRecords();
+			
+			return $result;
+		}
+
 
 		/*funcion que edita los usuarios y recibe un arreglo como parametro */
 		public function editUsers($param){		
@@ -147,8 +160,8 @@
 			foreach($result as $Key => $value){
 				
 				$response[$Key] = $value;
-					
-			}							  
+										  		
+			}
 			return $response;
 
 		}

@@ -252,10 +252,12 @@
 			$book_availability=$this->booksModel->countBookAvailability($isbn,'Disponible');
 				$quantity=$book_availability->book_cantidad;	
 			if($quantity>0){
-					echo $quantity;
-					$book=$this->booksModel->first_book_availability($isbn);
-					echo "<input type=hidden name=book_id value='$book->book_id' >
-					<p>topologrphic code $book->book_topolographic<p>";				}
+				$book=$this->booksModel->first_book_availability($isbn);
+				echo "<input type=hidden name=book_id value='$book->book_id' >
+					<p>topolographic code :$book->book_topolographic<p>";	
+
+					echo "<h6>disponibilidad de libros para prestar</h6>".$quantity;
+								}
 				else{
 					echo "no hay libro disponible";
 				}
