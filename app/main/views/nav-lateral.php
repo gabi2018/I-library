@@ -98,22 +98,9 @@
               <span class="menu-text">Importar socios</span> 
             </a>
           </li>
-          <li>
-            <a href="<?php echo URL_ROUTE ?>users">
-              <span><i class="material-icons">block</i></span> 
-              <span class="menu-text">Deshabilitar socio</span> 
-            </a>
-          </li>
         </ul>
       </li>   
-      <hr>
-      <li>
-        <a href="">
-          <span><i class="material-icons">local_offer</i></span>
-          <span class="menu-text">Option 4</span>
-        </a>
-      </li>
-    
+      <hr>    
     </ul>
   </div>
 </aside> 

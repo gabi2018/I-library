@@ -80,8 +80,7 @@ header .material-icons{
   display: block;
   margin: 50px 0 0 -15px; 
   position: fixed; 
-  width: 220px;
-  z-index: 999;
+  width: 210px;
 }  
 
 .lateral-menu hr{

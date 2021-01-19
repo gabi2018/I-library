@@ -108,7 +108,7 @@
 				$users = $this->userModel->getUsersSearch($param);
 				foreach($users as $user){
 					echo "
-						<div class='media mt-2'>
+						<div class='media list mt-2 col-12'>
 							<img class='mr-3' src='" .URL_ROUTE. "media/images/partner/$user->user_img' alt='Foto_Socio' style='width: 100px'>
 							<div class='media-body'>
 								<div class='row'>
@@ -126,7 +126,7 @@
 									</div>
 								</div> 
 							</div> 
-						</div><hr>
+						</div>
 					";
 				}
 			}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="es">
 	<head>
 		<meta charset="utf_8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -20,6 +20,3 @@
 					<?php require_once APP_ROUTE . '/main/views/nav-lateral.php'; ?>
 				</div>
 				<div class="col-10 mt-5">
-				
-		
-		

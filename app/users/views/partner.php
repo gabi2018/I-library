@@ -15,11 +15,9 @@
         </div> 
     </div>
 </div> 
-<hr class="col-12">
-
 <div class="card book-list col-2 mr-3 mb-3">
     <a href="<?php echo URL_ROUTE?>users/read">
         <img class="card-img-top" src="<?php echo URL_ROUTE . "media/images/partner/$user->user_img";?>" alt="profile" style="width: 100%;">
         <p><a href=""><?php echo "$user->user_name $user->user_lastname";?></a></p>  
     </a> 
-</div>
+</div> 

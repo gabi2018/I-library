@@ -1,4 +1,4 @@
-<div class="row justify-content-end">
+<div class="col-12 row justify-content-end">
     <div class="col-6">
         <form>
             <div class="input-group">
@@ -13,6 +13,4 @@
 </div> 
 
 
-<div id ="result"class="row justify-content-star mt-4"> 
-        
-    </div>
+<div id ="result"class="row justify-content-star mt-4"></div>

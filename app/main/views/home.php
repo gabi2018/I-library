@@ -1,9 +1,1 @@
-<?php 
-
-    
-    ?>
-    <div id='ver'>
-
- </div>
-
-
+<div id='ver'></div> 
