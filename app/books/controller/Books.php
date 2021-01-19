@@ -93,15 +93,17 @@
 				$books = $this->booksModel->getBooksTitle($param);
 
 				foreach ($books as $book) {
-					echo "<div class='card book-list col-2 mr-3 mb-3'>
+					echo "<li class='option'><div class='card book-list col-2 mr-3 mb-3'>
 					<a href='" .URL_ROUTE ."books/read/$book->book_topolographic '><img class='card-img-top' src=' " .URL_ROUTE."media/images/book/$book->book_img'style='width:100%'>
 					<p>$book->book_title </p></a>";
+					
 					$AHB=$this->autHasBookModel->getAutorTipe($book->book_id);
 					foreach ($AHB as $AHBS) {
 					
 					echo"<p> $AHBS->author_name  $AHBS->author_lastname   </p>";
 					}
-					echo"</div></tr>";
+					echo "<input type='hidden'name ='isbn' value='$book->book_isbn '>";
+					echo"</div></li></tr>";
 				}
 			}
 		}
@@ -242,8 +244,32 @@
 				
 		}
 
+//book habilitacion para prestamo
+	public function getsStatusBook(){
+		if(isset($_POST['book_isbn'])){
+			$isbn=$_POST['book_isbn'];
+			
+			$book_availability=$this->booksModel->countBookAvailability($isbn,'Disponible');
+				$quantity=$book_availability->book_cantidad;	
+			if($quantity>0){
+				$book=$this->booksModel->first_book_availability($isbn);
+				echo "<input type=hidden name=book_id value='$book->book_id' >
+					<p>topolographic code :$book->book_topolographic<p>";	
+
+					echo "<h6>disponibilidad de libros para prestar</h6>".$quantity;
+								}
+				else{
+					echo "no hay libro disponible";
+				}
+		}
 
 		
+	}
+		
+
+
+
+
 
 		public function delete($book_id){
 			$book=$this->booksModel->getBook($book_id);

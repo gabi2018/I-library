@@ -136,6 +136,45 @@
 			$users = $this->userModel->getUser($dni);
 			$param = ['user' => $users];
 			$this->view('user', $param);
+
 		}
+
+		//FUnCION QUE BUSCA POR DNI AL USUARIO PARA PRESTAMO
+		public functIon searchUserDni(){
+			if(isset($_POST['search'])){
+				$param = $_POST['search'];
+				$users = $this->userModel->searchGetUser($param);
+				
+				foreach ($users as $user) {
+					
+					echo "<li class='option'><div class='card book-list col-2 mr-3 mb-3'>
+					<img class='mr-1' src=' " .URL_ROUTE."media/images/partner/$user->user_img' alt ='Foto_Socio' style='width:100%'></div>";
+					
+					echo "<div class='col-6 mb-3 mr-3 '>";
+					echo"<p>$user->user_name $user->user_lastname </p>";
+					if($user->user_defaulter==1){
+						echo"<font color='red'>Socio con  morosidad</font>";
+					}
+					
+
+					if($user->user_status==1){
+						echo"<p><font color='red'>Socio desabilitado </font></p>";
+					}
+					else{
+					echo"<p>habilitado</p>";
+					}
+					
+					echo"</div>
+					<input type='hidden' name='user_dni' value='$user->user_dni'>
+ 					     </li>";
+				}
+
+
+			}
+
+
+
+		}
+ 
 	}
 ?>

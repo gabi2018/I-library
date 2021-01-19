@@ -11,7 +11,16 @@
             $this->view('create');
         }
 
-		public function store(){}
+		public function store(){
+
+
+            
+        }
+        public function loan_date_server(){
+            
+
+
+        }
 
 		public function show(){}
 
