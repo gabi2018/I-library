@@ -421,6 +421,11 @@ $("#select-user").click(function(event) {
         
         $("#user_list").isotope({ filter: filterValue });
     });
+
+//fechas de pestamo
+
+
+
     /*
     // Graphs
     var ctx = document.getElementById('statistics-loan').getContext('2d');

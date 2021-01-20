@@ -1,3 +1,6 @@
+<?php $DateCurrent =  $param['date-current']; 
+    
+        ?>
 <div class="col-10 mt-2">
     <h4 class="mb-3">Registrar Prestamo</h4>
     <form method="post" action="<?php echo URL_ROUTE ?>loans/store" target="_top">
@@ -9,7 +12,7 @@
                         <div class="container-select">  
                         <div class="selected-s" id="select-user">Seleccionar usuario</div>
                         <div class="container-options" id="container-user">
-                            <input type="text" name="user-name" class="form-control" id="search_user_loan" required placeholder="Buscar socio" data-url="<?php echo URL_ROUTE?>Users/searchUserDni "> 
+                            <input type="text" name="user-name" class="form-control" id="search_user_loan" required placeholder="Buscar socio por DNI" data-url="<?php echo URL_ROUTE?>Users/searchUserDni "> 
                             <ul class="options" id="options-user" ></ul>
                         </div>
                         </div>
@@ -48,13 +51,13 @@
             
         </div> 
         <div class="form-group row">
-            <label for="example-datetime-local-input" class="col-2 col-form-label">fecha y hora</label>
+            <label for="example-datetime-local-input" class="col-2 col-form-label">fecha actual</label>
             <div class="col-10">
-            <input class="form-control" type="datetime-local" name="datetime-loan" value="" id="datetime-loan">
+            <input class="form-control" type="text" name="datetime-loan" value='<?php echo $DateCurrent;?>' disabled id="datetime-loan-current">
             </div> 
-            <label for="example-datetime-local-input" class="col-2 col-form-label">fecha y hora</label>
+            <label for="example-datetime-local-input" class="col-2 col-form-label">fecha devolucion</label>
             <div class="col-10">
-            <input class="form-control" type="datetime-local" name="datetime-retur-loan" value="" id="datetime-loan">
+            <input class="form-control" type="date" name="datetime-retur-loan" value="" id="datetime-loan">
             </div> 
              
 
