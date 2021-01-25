@@ -314,8 +314,17 @@ public function deletBook($param){
 		 $this->db->execute();
 		return true;
 	}
+	public function updateStatusBook($param){
 
+		$this->db->query('UPDATE book
+		SET   
+		book_status_id=:book_status_id 
 
+		WHERE book_id = :book_id');
+		$this->db->bind(':book_id', $param['book-id']);	
+		$this->db->bind(':book_status_id', $param['book-status-id']);	
+		$this->db->execute();
+		}
 
 
 	
