@@ -43,7 +43,7 @@
 				$type=$param['user-img']['type'];
 				$ext=explode( '/', $type);
 							$nameImg=$nameImg.'.'.$ext[1];	
-				$rut 	 = '../../../public/media/images/partner/'.$nameImg; 
+				$rut 	 = 'media/images/partner/'.$nameImg; 
 				copy($file,$rut);
 
 			}else{
