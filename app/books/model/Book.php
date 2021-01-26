@@ -84,14 +84,12 @@
 
 				$isbn 	 = $param['book-isbn'];
 				$autores = $param['book-authors'];
-				
-							
+											
 				$this->db->bind(':book_topo', $cod_topolographic);
 				$this->db->bind(':book_title', $param['book-title']);
 				$this->db->bind(':book_isbn', $param['book-isbn']);
 				$this->db->bind(':book_num_pages', $param['book-pages']);
-				$this->db->bind(':category_id', $param['book-category']);
-				
+				$this->db->bind(':category_id', $param['book-category']);				
 				$this->db->bind(':book_desc', $param['book-desc']);
 				$this->db->bind(':editorial_id', $param['book-editorial']);
 				$this->db->bind(':book_vol', $param['book-vol']);
@@ -136,9 +134,7 @@
 		
 		//editar book
 		public function editBook($param,$i){
-			
-			
-			
+									
 				$book_status=$param['book-status_id'];
 				$isbn 	 = $param['book-isbn'];
 				$autores = $param['book-authors'];

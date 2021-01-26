@@ -40,6 +40,9 @@
 			if(!empty ($param['user-img']['name'])){	
 				$nameImg = $param['user-dni'];
 				$file 	 = $param['user-img']['tmp_name'];
+				$type=$param['user-img']['type'];
+				$ext=explode( '/', $type);
+							$nameImg=$nameImg.'.'.$ext[1];	
 				$rut 	 = '../../../public/media/images/partner/'.$nameImg; 
 				copy($file,$rut);
 
