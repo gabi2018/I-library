@@ -132,7 +132,7 @@
                 </div>
                 <div class="form-group"> 
                                         
-                    <select multiple name="author-list[]" id="list-author" style="display:none">
+                    <select multiple name="author-list[]" id="list-author" style="display: none">
                     <?php foreach ($authors as $author) :?>
                     <option value="<?php echo$author->author_id."_".$author->author_type_id?>" id="<?php echo  $author->author_id."_".$author->author_type_id?>" selected></option>
                     <?php endforeach; ?>
@@ -195,11 +195,11 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="topo-book">Código topolografico</label>
-                        <input type="text" name="book-topo" class="form-control"  id="topo-book"  value="<?php echo$book->book_topolographic?>" required  placeholder="Generación automática"> 
+                        <input type="text" name="book-topo" class="form-control"  id="topo-book"  value="<?php echo $book->book_topolographic?>" required  placeholder="Generación automática"> 
                     </div>
                     <div class="form-group col-6">
                         <label for="cata-book">Código catalografico</label>
-                        <input type="text" name="book-cata" class="form-control" id="cata-book" value="<?php echo$book->book_catalographic?>" required placeholder="Generacion automática"> 
+                        <input type="text" name="book-cata" class="form-control" id="cata-book" value="<?php echo $book->book_catalographic?>" required placeholder="Generacion automática"> 
                     </div>
                 </div> 
             </div>

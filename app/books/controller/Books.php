@@ -6,7 +6,7 @@
 		private $editorialModel;
 		private $languajeModel;
 		private $categoryModel;
-		private $autHasBookModel;
+		private $authorHasBookModel;
 
 		public function __construct(){
 			parent::__construct();
@@ -16,8 +16,8 @@
 			$this->editorialModel  = $this->model('Editorial', 'editorials');	 	
 			$this->languajeModel   = $this->model('Languaje', 'languajes');
 			$this->topicModel      = $this->model('Topic', 'topics');	
-			$this->categoryModel= $this->model('Category','categories');
-			$this->autHasBookModel = $this->model('AuthorHasBook','authorshasbooks'); 
+			$this->categoryModel   = $this->model('Category','categories');
+			$this->authorHasBookModel = $this->model('AuthorHasBook','authorshasbooks'); 
 		}
 	
 		public function show(){ 
@@ -93,22 +93,19 @@
 				$books = $this->booksModel->getBooksTitle($param);
 
 				foreach ($books as $book) {
-					echo "<li class='option'><div class='card book-list col-2 mr-3 mb-3'>
-					<a href='" .URL_ROUTE ."books/read/$book->book_topolographic '><img class='card-img-top' src=' " .URL_ROUTE."media/images/book/$book->book_img'style='width:100%'>
-					<p>$book->book_title </p></a>";
+					echo "<div class='card book-list col-2 mr-3 mb-3'>
+							<a href='" .URL_ROUTE ."books/read/$book->book_topolographic '><img class='card-img-top' src=' " .URL_ROUTE."media/images/book/$book->book_img'style='width:100%'>
+							<p>$book->book_title </p></a>";
 					
-					$AHB=$this->autHasBookModel->getAutorTipe($book->book_id);
-					foreach ($AHB as $AHBS) {
-					
-					echo"<p> $AHBS->author_name  $AHBS->author_lastname   </p>";
+					$authorHasBook = $this->authorHasBookModel->getAutorTipe($book->book_id);
+					foreach ($authorHasBook as $authorsHasBook) { 
+						echo"<p>$authorsHasBook->author_name $authorsHasBook->author_lastname</p>";
 					}
-					echo "<input type='hidden'name ='isbn' value='$book->book_isbn '>";
-					echo"</div></li></tr>";
+					echo "<input type='hidden' name='isbn' value='$book->book_isbn'></div>";
 				}
 			}
 		}
 	
-
 		public function read($topolographic){
 			//consultar book
 			$books = $this->booksModel->getBook($topolographic);

@@ -152,7 +152,7 @@
                                     ('HISTORIA DE LA ECONOMIA','330[091]','33'),
                                     ('ECONOMIA DE LATINOAMERICA MERCOSUR','330[7/8]','33'),
                                     ('ECONOMIA -ECONOMIA POLITICA','330[82]','33'),
-                                    ('HISTORIA DE LAS TEORIAS ECONOMICAS-TEORIAS ECONOMICAS ANTERIORES AL SIGLO XX','330.8','33');
+                                    ('HISTORIA DE LAS TEORIAS ECONOMICAS-TEORIAS ECONOMICAS ANTERIORES AL SIGLO XX','330.8','33'),
                                     ('TRABAJO-HISTORIA DEL TRABAJO-ECONOMIA DEL TRABAJO','331','33'),
                                     ('HISTORIA DEL TRABAJO EN ARGENTINA','331[82]','33'),
                                     ('CONDICIONES Y MEDIO AMBIENTE DE TRABAJO-SEGURIDAD EN EL TRABAJO','331.4','33'),
@@ -435,7 +435,7 @@
                                     ('LITERATURA ALEMANA','830','82'),
                                     ('LITERATURA DE LOS PAISES BAJOS','839.3','82'),
                                     ('LITERATURA NORUEGALITERATURA SUECA-LITERATURA DANESA-LITERATURA FINESA','839.6 ','82'),
-                                    ('LITERATURA FRANCESA -HISTORIA DE LA LITERATURA FRANCESA-CRITICA Y ESTUDIOS LITERARIOS FRANCESES','840','82')
+                                    ('LITERATURA FRANCESA -HISTORIA DE LA LITERATURA FRANCESA-CRITICA Y ESTUDIOS LITERARIOS FRANCESES','840','82'),
                                     ('TEATRO FRANCES','840-2','82'),
                                     ('TEATRO ESPAÑOL','860-2','82'),
                                     ('POESIA FRANCESA','840-1','82'),
@@ -574,7 +574,7 @@
 
             $this->db->query("INSERT INTO `school`(`school_name`) 
                                 VALUES ('Escuela de Ciencias de la Salud'),
-                                    (''''Escuela de Ingeniería y Ciencias Ambientales'),
+                                    ('Escuela de Ingeniería y Ciencias Ambientales'),
                                     ('Escuela de Gestión de Empresas y Economía'),
                                     ('Escuela de Ciencias Sociales y Educación')
                             ");
@@ -584,7 +584,7 @@
                                     ('LICENCIATURA EN OBSTETRICIA','1'),
                                     ('LICENCIATURA EN ENFERMERÍA','1'),
                                     ('LICENCIATURA EN ACTIVIDAD FÍSICA','1'),
-                                    ('MEDICINA','1')
+                                    ('MEDICINA','1'),
                                     ('BIOINGENIERIA','2'),
                                     ('INGENIERÍA EN SISTEMAS DE INFORMACIÓN','2'),
                                     ('INGENIERÍA EN AGROINDUSTRIA','2'),
