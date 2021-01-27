@@ -422,8 +422,13 @@ $("#select-user").click(function(event) {
         $("#user_list").isotope({ filter: filterValue });
     });
 
-//fechas de pestamo
+//funcion habilitar  inputs CON DISABLED
 
+        $('#submit').click(function(){
+            
+            $('input').prop('disabled', false);
+
+         } );
 
 
     /*

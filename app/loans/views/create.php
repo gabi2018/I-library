@@ -1,5 +1,5 @@
 <?php $DateCurrent =  $param['date-current']; 
-    
+    $DateFinishLoan=$param['date-finish-loan']
         ?>
 <div class="col-10 mt-2">
     <h4 class="mb-3">Registrar Prestamo</h4>
@@ -53,11 +53,11 @@
         <div class="form-group row">
             <label for="example-datetime-local-input" class="col-2 col-form-label">fecha actual</label>
             <div class="col-10">
-            <input class="form-control" type="text" name="datetime-loan" value='<?php echo $DateCurrent;?>' disabled id="datetime-loan-current">
+            <input class="form-control" type="date"  name="datetime_loan" disabled value='<?php echo date('Y-m-d', strtotime($DateCurrent));?>' id="datetime-loan-current">
             </div> 
             <label for="example-datetime-local-input" class="col-2 col-form-label">fecha devolucion</label>
             <div class="col-10">
-            <input class="form-control" type="date" name="datetime-retur-loan" value="" id="datetime-loan">
+            <input class="form-control" type="date" name="datetime_finish_loan"  value='<?php echo date('Y-m-d', strtotime($DateFinishLoan) );?>' id="datetime-loan">
             </div> 
              
 
@@ -65,7 +65,7 @@
         
         
         <div class="form-group mt-5">
-            <button type="submit" class="form-control btn btn-primary" name="loan-register">Registar prestamo</button>
+            <button type="submit" class="form-control btn btn-primary" id='submit' name="loan-register">Registar prestamo</button>
         </div>  
     </form> 
 </div> 
