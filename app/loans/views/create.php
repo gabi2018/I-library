@@ -34,7 +34,7 @@
                     <div class="container-select">
                      <div class="selected-s" id="select-book">Seleccionar book</div>
                          <div class="container-options" id="container-book">
-                             <input type="text"  class="form-control search" id="search_book_loan" required placeholder="Buscar libro" data-url="<?php echo URL_ROUTE?>Books/search"> 
+                             <input type="text"  class="form-control search" id="search_book_loan" required placeholder="Buscar libro" data-url="<?php echo URL_ROUTE?>Books/searchForLoan"> 
                               <ul class="options" id="options-book" ></ul>
                     </div>
                     </div>

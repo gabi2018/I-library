@@ -105,7 +105,27 @@
 				}
 			}
 		}
-	
+		
+
+		public function searchForLoan(){
+			if(isset($_POST['search'])){
+				$param = ['book' => trim($_POST['search'])];
+				$books = $this->booksModel->getBooksTitle($param);
+
+				foreach ($books as $book) {
+					echo "<li class='option'><div class='card book-list col-2 mr-3 mb-3'>
+							 '<img class='card-img-top' src=' " .URL_ROUTE."media/images/book/$book->book_img'style='width:100%'>
+								</div>							
+								<div><p style='color:#343a40;font-size:100%;font-family:arial black'>$book->book_title</p>";
+					
+					$authorHasBook = $this->authorHasBookModel->getAutorTipe($book->book_id);
+					foreach ($authorHasBook as $authorsHasBook) { 
+						echo"<p style='font-size:80%'>$authorsHasBook->author_name $authorsHasBook->author_lastname</p>";
+					}
+					echo "<input type='hidden' name='isbn' value='$book->book_isbn'></div></li>";
+				}
+			}
+		}
 		public function read($topolographic){
 			//consultar book
 			$books = $this->booksModel->getBook($topolographic);

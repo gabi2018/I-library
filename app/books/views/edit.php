@@ -182,7 +182,7 @@
                 <div class="row"> 
                     <div class="form-group col-6">
                         <label for="category-book">Categoria</label>
-                        <select name="category-topic" class="form-control" id="category-book" >	 <!-- cnsultar con nacho como funciona  -->
+                        <select name="category-topic" class="form-control" id="category-book" >	 
                             <option  selected value ='<?php echo$CaSuTe->category_id?>'><?php echo$CaSuTe->category_name?></option>
                              
                         </select>
@@ -195,16 +195,16 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="topo-book">Código topolografico</label>
-                        <input type="text" name="book-topo" class="form-control"  id="topo-book"  value="<?php echo $book->book_topolographic?>" required  placeholder="Generación automática"> 
+                        <input type="text" name="book-topo" class="form-control"  id="topo-book"  disabled value="<?php echo $book->book_topolographic?>" required  placeholder="Generación automática"> 
                     </div>
                     <div class="form-group col-6">
                         <label for="cata-book">Código catalografico</label>
-                        <input type="text" name="book-cata" class="form-control" id="cata-book" value="<?php echo $book->book_catalographic?>" required placeholder="Generacion automática"> 
+                        <input type="text" name="book-cata" class="form-control" id="cata-book" disableds value="<?php echo $book->book_catalographic?>" required placeholder="Generacion automática"> 
                     </div>
                 </div> 
             </div>
             <div class="form-group">
-                <button type="submit" class="form-control btn btn-primary" name="book-update">Guardar datos</button>
+                <button type="submit" class="form-control btn btn-primary" id="submit" name="book-update">Guardar datos</button>
             </div>
         </div> 
     </form> 
