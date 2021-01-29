@@ -20,5 +20,21 @@ class Loan{
 				return 'exito';
 
         }
+        public function getLoans(){
+			$this->db->query('SELECT L.loan_id, L.loan_delivery_date, L.loan_return_date, L.loan_status,B.book_title,U.user_name   
+							  FROM   Loan L,user U,Book B
+							  WHERE  U.user_dni=L.user_dni
+                              AND     B.book_id=L.book_id
+                              Limit 5
+                               ');
+
+			$response = $this->db->getRecords();
+			return $response;
+		}
+
+
+
+
+
     }
     ?>
