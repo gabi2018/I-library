@@ -9,7 +9,11 @@
             $this->bookModel=$this->model('Book','books');
         }
         public function index(){
-            $this->view('index');
+
+            $loans = $this->loanModel->getLoans();
+			$param = [ 'loan' => $loans ];
+            $this->view('index',$param);
+            
         }
 
 		public function create(){
@@ -69,7 +73,9 @@
 
             return $fechaPrestamo7Dias;
         }
-		public function show(){}
+		public function show(){
+
+        }
 
 		public function edit(){
             $this->view('edit');
