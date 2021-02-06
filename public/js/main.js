@@ -150,6 +150,20 @@ $(document).ready(function() {
             }); 
         }
     });
+
+
+
+//seearch input loan index
+    $('#search_loan').keyup(function(){ 
+        var input = $(this).val();
+        if(input != ""){
+            url = $(this).attr('data-url');
+            search(input, url).done(function(response){  
+                $('#init').remove();
+                $('#result').html(response);  
+            }); 
+        }
+    });
     //busqueda de libro por titulo en prestamo
 
 $('#search_book_loan').keyup(function(){ 
@@ -165,6 +179,7 @@ $('#search_book_loan').keyup(function(){
         }
        
     });
+
 
 //bysqueda user en loan
 $('#search_user_loan').keyup(function(){

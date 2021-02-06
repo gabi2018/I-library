@@ -152,6 +152,7 @@
 					
 					echo "<div class='col-6 mb-3 mr-3 '>";
 					echo"<p>$user->user_name $user->user_lastname </p>";
+					echo"<p>DNI: $user->user_dni</p>";
 					if($user->user_defaulter==1){
 						echo"<font color='red'>Socio con  morosidad</font>";
 					}
