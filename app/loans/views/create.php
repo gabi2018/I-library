@@ -41,7 +41,7 @@
             </div>
             <div class="col-6 mt-2">
                 <div id="book_media" data-url="<?php echo URL_ROUTE ?>Books/getsStatusBook"></div>
-                <span id="availability"></span>
+                <div id="availability"></div>
             </div>
         </div>
         <div class="form-group row">
@@ -54,17 +54,10 @@
                 <input class="form-control" type="date" name="datetime_finish_loan" value='<?php echo date('Y-m-d', strtotime($DateFinishLoan)); ?>' id="datetime-loan">
             </div>
         </div>
-        <div class="form-group mt-5">
-            <button type="submit" class="form-control btn btn-primary" id='submit' name="loan-register">Registar prestamo</button>
+        <div class="form-group mt-3">
+            <button type="submit" class="form-control btn btn-primary" id='submit' name="loan-register"  ><a href="../fpdf/PDF.php" target="_blank">Registar prestamo</a></button>
         </div>
+       
     </form>
-    <div class="col-6 mt-2">
-        <div class="media">
-            <img class="mr-3" src="<?php echo URL_ROUTE;?>media/images/book/default-cover-book.png" alt="User profile img" style="width: 50px; height:70px;">
-            <div class="media-body">
-                <h5 class="mt-0">Book title extra large for test</h5>
-                <p>Status status status</p>
-            </div>
-        </div>     
-    </div> 
+   
 </div>

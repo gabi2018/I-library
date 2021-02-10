@@ -275,9 +275,9 @@
 					echo "<input type=hidden name=book_id value='$book->book_id' >
 						<p>topolographic code :$book->book_topolographic<p>";
 
-					echo "<h6>Libros disponibles: </h6>" . $quantity;
+					echo "<h6 id='num'>Libros disponibles: </h6>" . $quantity;
 				} else {
-					echo "No disponible";
+					echo "<h6 id='num'>No hay libros disponibles para prestamos</h6>";
 				}
 			}
 		} 

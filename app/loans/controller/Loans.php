@@ -68,9 +68,11 @@
 					if($this->loanModel->addLoan($param)){
                          
                         $this->bookModel->updateStatusbook($param);
-                        echo"<p>exito<p>";
-                        redirect('loans/create');
-                        echo"<br>exito<br>";
+                       
+                       
+                        
+                      redirect('loans/create');
+                        echo"<br>exit NDNDNo<br>";
 					}
 					else{
 						die("FATAL ERROR");
@@ -104,8 +106,9 @@
             $this->view('edit');
         }
 
-		public function update(){}
+		public function Control(){}
 
-		public function delete(){}
+        public function delete(){}
+        
     }
 ?>

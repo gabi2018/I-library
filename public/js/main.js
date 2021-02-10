@@ -167,6 +167,7 @@ $(document).ready(function() {
     //busqueda de libro por titulo en prestamo
 
 $('#search_book_loan').keyup(function(){ 
+    hablitarRegister();
         var input = $(this).val();
         if(input != ""){
             url = $(this).attr('data-url');
@@ -238,7 +239,9 @@ function closeSelectUser(container, select, options, selected){
             $(container).toggleClass("open");                      
             $("#book_media").html(input);
             availability(isbn,url).done(function(response){
+                
                 $('#availability').html(response);
+                desabilitarRegister(response);
             });
             
         }); 
@@ -257,6 +260,29 @@ $("#select-user").click(function(event) {
     $("#select-book").click(function(event) {
         selectSimulator(event, $(this), "#container-book"); 
     });
+
+//inabilitar registrar prestamo y activar reserva
+    function desabilitarRegister(string){
+        var val=string.replace(/<[^>]+>/g, '');
+        
+        if(val=='No hay libros disponibles para prestamos'){
+            $('#submit').removeClass('form-control btn btn-primary');
+            $('#submit').addClass("form-control btn btn-secondary");
+            
+            $('#submit').attr({disabled:true});
+        }
+
+
+    };
+
+
+    //habilitar register
+    function hablitarRegister(){
+    $('#submit').removeClass('form-control btn btn-secondary');
+    $('#submit').addClass("form-control btn btn-primary");         
+    $('#submit').attr({disabled:false});
+
+    }
 
 
 
@@ -444,6 +470,8 @@ $("#select-user").click(function(event) {
             $('input').prop('disabled', false);
 
          } );
+
+//generar tiket prestamo
 
 
     /*
