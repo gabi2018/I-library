@@ -266,24 +266,38 @@ $("#select-user").click(function(event) {
         var val=string.replace(/<[^>]+>/g, '');
         
         if(val=='No hay libros disponibles para prestamos'){
-            $('#submit').removeClass('form-control btn btn-primary');
-            $('#submit').addClass("form-control btn btn-secondary");
+            $('#submit_loan').removeClass('form-control btn btn-primary');
+            $('#submit_loan').addClass("form-control btn btn-secondary");
             
-            $('#submit').attr({disabled:true});
+            $('#submit_loan').attr({disabled:true});
         }
 
 
     };
 
 
-    //habilitar register
+    //habilitar register PRESTAMO
     function hablitarRegister(){
-    $('#submit').removeClass('form-control btn btn-secondary');
-    $('#submit').addClass("form-control btn btn-primary");         
-    $('#submit').attr({disabled:false});
+    $('#submit_loan').removeClass('form-control btn btn-secondary');
+    $('#submit_loan').addClass("form-control btn btn-primary");         
+    $('#submit_loan').attr({disabled:false});
 
-    }
+            }
 
+        $('#submit_loan').click(function(){
+            user=$('input:hidden[name=user_dni]').val();
+            book=$('input:hidden[name=book_id]').val();
+            $('input').prop('disabled', false);
+            
+            if(( book!=null )&& ( user!=null)){
+            
+                 window.open('../fpdf/PDF.php', '_blank')
+            }
+            
+
+
+            
+        });
 
 
     //busqueda de socios por nombre o apellido

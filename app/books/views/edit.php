@@ -70,7 +70,7 @@
                   
                     <div class="col-6 form-group" id="cantEjemplar" style="display">
                         <label for="cant-book">Cantidad de ejemplares</label>
-                <input type="num" name="book-cantidad"   id="cant-book"value="<?php echo$cantidad->book_cantidad?>" class="form-control"  ">
+                <input type="num" name="book-cantidad"   id="cant-book"value="<?php echo$cantidad->book_cantidad?>" class="form-control"  >
                 <input name='book-cantidad-vieja' type='hidden' value='<?php echo $cantidad->book_cantidad?>'>
                 
                     </div>
@@ -142,7 +142,7 @@
             <!-- Datos de Edición -->
             <div class="tab-pane fade" id="nav-editorial" role="tabpanel">
                 <div class="row">
-                    <div class="form-group col-11">
+                    <div class="form-group col-11">de
                         <label for="editorial-add">Editorial</label>
                         <input type="hidden" id="selected-editorial">
                         <div class="container-select">

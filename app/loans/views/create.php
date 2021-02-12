@@ -32,7 +32,7 @@
                     <div class="container-select">
                         <div class="selected-s" id="select-book">Seleccionar book</div>
                         <div class="container-options" id="container-book">
-                            <input type="text" class="form-control search" id="search_book_loan" required placeholder="Buscar libro" data-url="<?php echo URL_ROUTE ?>Books/searchForLoan">
+                            <input type="text" class="form-control search" id="search_book_loan" required  name='book-name' placeholder="Buscar libro" data-url="<?php echo URL_ROUTE ?>Books/searchForLoan">
                             <ul class="options" id="options-book"></ul>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="form-group mt-3">
-            <button type="submit" class="form-control btn btn-primary" id='submit' name="loan-register"  ><a href="../fpdf/PDF.php" target="_blank">Registar prestamo</a></button>
+            <button type="submit" class="form-control btn btn-primary" id='submit_loan' name="loan-register"  >Registar prestamo</button>
         </div>
        
     </form>

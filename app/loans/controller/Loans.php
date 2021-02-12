@@ -68,16 +68,19 @@
 					if($this->loanModel->addLoan($param)){
                          
                         $this->bookModel->updateStatusbook($param);
-                       
-                       
+                        redirect('loans/create');
                         
-                      redirect('loans/create');
+                                            
+                        
+            
                         echo"<br>exit NDNDNo<br>";
 					}
 					else{
 						die("FATAL ERROR");
-					}
-				}
+                    }
+                    echo 'segundo if';
+                }
+                echo'primer if';
 			}
 		}	
 
