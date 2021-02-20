@@ -283,7 +283,7 @@ $("#select-user").click(function(event) {
     $('#submit_loan').attr({disabled:false});
 
             }
-
+//abrir pdf comprobante prestamo
         $('#submit_loan').click(function(){
             user=$('input:hidden[name=user_dni]').val();
             book=$('input:hidden[name=book_id]').val();
@@ -291,7 +291,7 @@ $("#select-user").click(function(event) {
             
             if(( book!=null )&& ( user!=null)){
             
-                 window.open('../fpdf/PDF.php', '_blank')
+                 window.open('../fpdf/PDF.php/?dni=1222'.user, '_blank')
             }
             
 
