@@ -150,9 +150,24 @@ $(document).ready(function() {
             }); 
         }
     });
+
+
+
+//seearch input loan index
+    $('#search_loan').keyup(function(){ 
+        var input = $(this).val();
+        if(input != ""){
+            url = $(this).attr('data-url');
+            search(input, url).done(function(response){  
+                $('#init').remove();
+                $('#result').html(response);  
+            }); 
+        }
+    });
     //busqueda de libro por titulo en prestamo
 
 $('#search_book_loan').keyup(function(){ 
+    hablitarRegister();
         var input = $(this).val();
         if(input != ""){
             url = $(this).attr('data-url');
@@ -165,6 +180,7 @@ $('#search_book_loan').keyup(function(){
         }
        
     });
+
 
 //bysqueda user en loan
 $('#search_user_loan').keyup(function(){
@@ -223,7 +239,9 @@ function closeSelectUser(container, select, options, selected){
             $(container).toggleClass("open");                      
             $("#book_media").html(input);
             availability(isbn,url).done(function(response){
+                
                 $('#availability').html(response);
+                desabilitarRegister(response);
             });
             
         }); 
@@ -243,6 +261,43 @@ $("#select-user").click(function(event) {
         selectSimulator(event, $(this), "#container-book"); 
     });
 
+//inabilitar registrar prestamo y activar reserva
+    function desabilitarRegister(string){
+        var val=string.replace(/<[^>]+>/g, '');
+        
+        if(val=='No hay libros disponibles para prestamos'){
+            $('#submit_loan').removeClass('form-control btn btn-primary');
+            $('#submit_loan').addClass("form-control btn btn-secondary");
+            
+            $('#submit_loan').attr({disabled:true});
+        }
+
+
+    };
+
+
+    //habilitar register PRESTAMO
+    function hablitarRegister(){
+    $('#submit_loan').removeClass('form-control btn btn-secondary');
+    $('#submit_loan').addClass("form-control btn btn-primary");         
+    $('#submit_loan').attr({disabled:false});
+
+            }
+//abrir pdf comprobante prestamo
+        $('#submit_loan').click(function(){
+            user=$('input:hidden[name=user_dni]').val();
+            book=$('input:hidden[name=book_id]').val();
+            $('input').prop('disabled', false);
+            
+            if(( book!=null )&& ( user!=null)){
+            
+                 window.open('../fpdf/PDF.php/?dni=1222'.user, '_blank')
+            }
+            
+
+
+            
+        });
 
 
     //busqueda de socios por nombre o apellido
@@ -429,6 +484,8 @@ $("#select-user").click(function(event) {
             $('input').prop('disabled', false);
 
          } );
+
+//generar tiket prestamo
 
 
     /*

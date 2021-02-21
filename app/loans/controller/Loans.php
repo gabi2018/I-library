@@ -25,6 +25,29 @@
             $this->view('create',$param);
         }
 
+        public function search(){
+            if(isset($_POST['search'])){
+				$param = $_POST['search'];
+				$loans = $this->loanModel->getLoanDni($param);
+				foreach ($loans as  $loan) {
+                  echo " 
+								<tr >
+								<td>$loan->user_name $loan->user_lastname</td>
+								<td>$loan->book_title</td>
+								<td>$loan->loan_delivery_date</td>
+								<td>$loan->loan_return_date</td>
+								<td>$loan->loan_status</td>
+								<td>$loan->user_type_desc</td>
+                                </tr>
+                                ";
+					
+				}
+			}
+
+
+        }
+
+
 		public function store(){
 
         if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['loan-register'])){
@@ -45,14 +68,19 @@
 					if($this->loanModel->addLoan($param)){
                          
                         $this->bookModel->updateStatusbook($param);
-                        echo"<p>exito<p>";
                         redirect('loans/create');
-                        echo"<br>exito<br>";
+                        
+                                            
+                        
+            
+                        echo"<br>exit NDNDNo<br>";
 					}
 					else{
 						die("FATAL ERROR");
-					}
-				}
+                    }
+                    echo 'segundo if';
+                }
+                echo'primer if';
 			}
 		}	
 
@@ -81,8 +109,9 @@
             $this->view('edit');
         }
 
-		public function update(){}
+		public function Control(){}
 
-		public function delete(){}
+        public function delete(){}
+        
     }
 ?>
