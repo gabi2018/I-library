@@ -102,6 +102,10 @@
 			//$this->view;
 		}
 
+		public function import(){
+			$this->view('import');
+		}
+
 		public function search(){
 			if(isset($_POST['search'])){
 				$param = ['user' => trim($_POST['search'])];
@@ -169,7 +173,7 @@
  					     </li>";
 				}
 
-
+ 
 			}
 
 

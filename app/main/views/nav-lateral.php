@@ -93,7 +93,7 @@
             </a>
           </li>  
           <li>
-            <a href="<?php echo URL_ROUTE ?>users">
+            <a href="<?php echo URL_ROUTE ?>users\import">
               <span><i class="material-icons">move_to_inbox</i></span> 
               <span class="menu-text">Importar socios</span> 
             </a>

@@ -6,7 +6,6 @@
 		private $editorialModel;
 
 		public function __construct(){
-
 			parent::__construct();
 			$this->booksModel      = $this->model('Book','books');
 			$this->authorModel     = $this->model('Author', 'authors');
@@ -19,30 +18,28 @@
 
 		public function searchGeneral(){
 			if(isset($_POST['search'])){
-					
-				$date=[
-						   'book'=>trim($_POST['search']),
-						   'author'=>trim($_POST['search']),
-						   'editorial'=>trim($_POST['search']),
+				$date = [
+					'book'      => trim($_POST['search']),
+					'author'    => trim($_POST['search']),
+					'editorial' => trim($_POST['search']),
 				];
 
-			$param = [
-					'book'=>$this->booksModel->getBooksTitle($date), 
-				'authors'=> $this->authorModel->getAuthorName($date),
-			  'editorials'=> $this->editorialModel->getEditorialName($date),
-			 ];
+				$param = [
+					'book'       => $this->booksModel->getBooksTitle($date), 
+					'authors'    => $this->authorModel->getAuthorName($date),
+			  		'editorials' => $this->editorialModel->getEditorialName($date),
+			 	];
 			 
-
-			   foreach ($param as $search ){
+			   foreach ($param as $search){
 				 	foreach($search as $key =>$value) {
-						 echo "<li class='option' id=$key><span>$value</span></li>";
-					 }
+						echo "<li class='option' id=$key><span>$value</span></li>";
+					}
 				}  
 			}
-
 		}
 
-
-	}
-
+		public function configuration(){
+			$this->view('configuration');
+		} 
+	} 
 ?>
