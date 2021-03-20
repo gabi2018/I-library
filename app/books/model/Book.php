@@ -73,7 +73,7 @@
 			//for de acuerdo a cantidad de ejemplares  y book
 			if ($param){	
 						for ($i = $cantidadInitioBook; $i <= $numberCopies; $i++){ 
-				$cod_topolographic = $param['book-topo'].'-'.$i;
+				$cod_topolographic = $param['book-topo'].'-'.$i;//guardar en un arreglo
 				$book_status=$param['book-status_id'];
 					if(($i==1)&&($book_status==1)){//pone no disponible al primer ejemplar de cada libro 
 						$book_status=5;
@@ -126,7 +126,7 @@
 						}
 					}
 				}
-				return true;
+				return true; //delvolver el arreglo del codigo topolografico
 			}
 			
 		}

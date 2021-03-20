@@ -35,7 +35,7 @@
 		public function addUser($param){
 			$this->db->query('INSERT INTO user 
 										 (user_dni, user_name, user_lastname, user_address, user_phone, user_email, user_password, user_type_id, user_img) 
-							    VALUES   (:user_dni, :user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, 1, :user_img)');
+							    VALUES   (:user_dni, :user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, :user_type_id, :user_img)');
 			
 			if(!empty ($param['user-img']['name'])){	
 				$nameImg = $param['user-dni'];
@@ -58,6 +58,7 @@
 			$this->db->bind(':user_phone',    $param['user-phone']);
 			$this->db->bind(':user_email',    $param['user-email']);
 			$this->db->bind(':user_password', $param['user-pass']); 
+			$this->db->bind(':user_type_id', $param['user-type-id']); 
 			$this->db->bind(':user_img',$nameImg);
 			
 			# Run

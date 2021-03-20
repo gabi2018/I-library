@@ -37,8 +37,8 @@
 						'user-phone' 	=> trim($_POST['user-phone']),
 						'user-email' 	=> trim($_POST['user-email']),
 						'user-img'      => $_FILES['user-dni'],
-						'user-pass'     => $pass
-						//'user-type' 	=> trim($_POST['user-type'])
+						'user-pass'     => $pass,
+						'user-type-id' 	=> trim($_POST['user-type'])
 					];
                     
 					if($this->userModel->addUser($param)){
