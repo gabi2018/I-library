@@ -83,7 +83,7 @@
 		public function getUser($dni){
 			$this->db->query('SELECT *
 								FROM user 
-								WHERE user_dni = user_dni');
+								WHERE user_dni = :user_dni');
 			$this->db->bind(':user_dni', $dni);		  
 			$response = $this->db->getRecord();
 			return $response;
@@ -105,36 +105,16 @@
 		/*funcion que edita los usuarios y recibe un arreglo como parametro */
 		public function editUsers($param){		
 			$this->db->query('UPDATE user 
-								 SET user_name = :user_name,
-								 	 user_lastname = :user_lastname,
-								 	 user_address = :user_address, 
-								     user_phone = :user_phone, 
-									 user_email = :user_email,
-									 user_defaulter = 1,
-									 user_img = :user_img, 
-							   WHERE user_dni = :user_dni');
+							  SET user_address = :user_address, 
+							      user_phone   = :user_phone, 
+							      user_email   = :user_email, 
+							  WHERE user_dni   = :user_dni');
 			
 			# Link values
-			$this->db->bind(':user_name',      $param['user-name']);
-			$this->db->bind(':user_lastname',  $param['user-lastname']);
-			$this->db->bind(':user_phone',     $param['user-phone']);
-			$this->db->bind(':user_address',   $param['user-address']);
-			$this->db->bind(':user_email',     $param['user-email']);
-			$this->db->bind(':user_defaulter', $param['user-defaulter']);
-
-			$nameImg='';
-				
-			if(!empty($param['user-img'])){			
-				$nameImg = $param['user-dni'];
-				$file 	 = $param['user-img']['tmp_name'];
-				$rut 	 = '../public/media/partner/'.$nameImg; 
-				copy($file,$rut);
-
-			}else{
-				$nameImg = 'default-user.png';
-			}
-			
-			$this->db->bind(':user_img',$nameImg);
+			$this->db->bind(':user_dni',     $param['user-dni']); 
+			$this->db->bind(':user_phone',   $param['user-phone']);
+			$this->db->bind(':user_address', $param['user-address']);
+			$this->db->bind(':user_email',   $param['user-email']); 
 			
 			# Run
 			return $this->db->execute();
@@ -192,4 +172,3 @@
 		 * de lo contrario no mostrará nada.
 		*/
 	}
- ?>

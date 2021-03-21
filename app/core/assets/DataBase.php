@@ -12,7 +12,7 @@
 		public function __construct(){
 			# Conexion config
 			# Data origin name
-			$dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+			$dsn = SDBM . ':host=' . $this->host . ';dbname=' . $this->dbname;
 			# PDO options
 			$option = array(
 				PDO::ATTR_PERSISTENT => true,
