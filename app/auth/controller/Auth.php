@@ -16,8 +16,18 @@
 					
 					if(!empty($user) && password_verify($pass, $user->user_password)){
 						$_SESSION['username'] = "$user->user_name $user->user_lastname";
-						$_SESSION['userpic']  = "$user->user_img";
-						redirect('home');	
+						$_SESSION['userpic']  = "$user->user_img";	
+
+						$typeUser=$user->user_type_id;
+						switch ($typeUser) {
+							case '1':
+								redirect('home');
+								break;
+							
+							default:
+							redirect('login');
+								break;
+						}
 					} 
 					else{ 
 						redirect('login');
