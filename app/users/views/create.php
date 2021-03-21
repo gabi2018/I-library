@@ -24,14 +24,8 @@
             </div>
         </div> 
         <div class="row"> 
-            <div class="form-group col-12">
-                <label for="address-user">Dirección</label>
-                <input type="texx" name="user-address" class="form-control" id="address-user" required placeholder="Ingresar dirección"> 
-            </div> 
-        </div>
-        <div class="row">
             <div class="form-group col-6">
-                <label for="doc-user">Documento</label>
+                <label for="doc-user">DNI</label>
                 <input type="text" name="user-doc" id="doc-user" class="form-control" placeholder="Ingresar número de documento" required onkeyup="copyOnPassword(event);"> 
                 <input type="hidden" name="user-pass" id="pass-user" class="form-control" placeholder="Se generará automaticamente una contraseña"> 
             </div>   
@@ -39,6 +33,32 @@
                 <label for="phone-user">Teléfono</label>
                 <input type="number" name="user-phone" id="phone-user" class="form-control" placeholder="Ingresar número de teléfono" required> 
             </div>  
+
+        </div>
+      
+        <div class="row">
+        <div class="form-group col-12">
+                <label for="address-user">Dirección</label>
+                <input type="texx" name="user-address" class="form-control" id="address-user" required placeholder="Ingresar dirección"> 
+            </div> 
+         
+           
+        </div>
+        
+        <div class="row">
+             <div class="form-group col-6">
+                <div class="form-group">
+                    <label for="user-school">Tipo de Usuario</label>
+                    <select name="user-type" id="user-type" class="form-control" required>
+                        <option value="none" disabled selected>Seleccionar usuario</option> 
+                        <?php 
+                            foreach ($param["usertypes"] as $key => $value) {
+                                echo "<option value=$value->user_type_id>$value->user_type_desc</option>";
+                            }                          
+                            ?>
+                    </select>
+                </div>  
+            </div> 
         </div>
         <div class="row">
             <div class="form-group col-6">

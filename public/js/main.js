@@ -291,7 +291,7 @@ $("#select-user").click(function(event) {
             
             if(( book!=null )&& ( user!=null)){
             
-                 window.open('../fpdf/PDF.php/?dni=1222'.user, '_blank')
+                 window.open('../fpdf/PDF.php/?dni=1222', '_blank')
             }
             
 

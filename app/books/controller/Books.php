@@ -75,7 +75,7 @@
 						'book-cata'		 => trim($_POST['book-cata']),
 					];
 
-					if ($this->booksModel->addBook($param, 1, $cantidadBook)) {
+					if ($this->booksModel->addBook($param, 1, $cantidadBook)) {//hacer asignacion a una variablee 
 						echo '<p>guardado con exito<p>';
 						redirect('books/index');
 					} 
@@ -238,7 +238,7 @@
 							'book-cata'		 => trim($_POST['book-cata']),
 						];
 
-						$this->booksModel->addBook($param, $cantidadVieja + 1, $cantidadBook);
+						$this->booksModel->addBook($param, $cantidadVieja + 1, $cantidadBook);//agrega  ejemplares nuevos si mofifica cantidad
 					} elseif ($cantidadBook < $cantidadVieja) {
 						$Ids = $this->booksModel->getIdsBooks($isbnViejo);
 						$cantidadVieja = $cantidadVieja - 1;
