@@ -66,7 +66,6 @@
 						'user-address' => trim($_POST['user-address']),
 						'user-email'   => trim($_POST['user-email'])
 					];
-
 					if ($this->userModel->editUsers($param)) {
 						redirect('users/index');
 					} else {

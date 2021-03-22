@@ -107,7 +107,7 @@
 			$this->db->query('UPDATE user 
 							  SET user_address = :user_address, 
 							      user_phone   = :user_phone, 
-							      user_email   = :user_email, 
+							      user_email   = :user_email
 							  WHERE user_dni   = :user_dni');
 			
 			# Link values
