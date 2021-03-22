@@ -9,6 +9,7 @@
                 <a class="nav-item nav-link" id="editorial-tab" data-toggle="tab" href="#nav-editorial" role="tab">Datos de edición</a>
             </div>
         </nav>
+        <div id="error"></div>
         <div class="tab-content mt-3" id="nav-tabContent">
             <!-- Datos del Libro -->
             <div class="tab-pane fade show active" id="nav-book" role="tabpanel"> 
@@ -20,7 +21,7 @@
                         </div> 
                         <div class="form-group">
                             <label for="isbn-book">ISBN</label>
-                            <input type="text" name="book-isbn" class="form-control" id="isbn-book" required placeholder="XXX-X-XX-XXXXXX-X"> 
+                            <input type="text" name="book-isbn" class="form-control" id="isbn-book" required placeholder="XXX-X-XX-XXXXXX-X" onblur="validationISBN()"> 
                         </div> 
                         <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
@@ -190,6 +191,7 @@
         </div> 
     </form> 
 </div>
+
 <?php
     require_once APP_ROUTE . '/authors/views/create.php'; 
     require_once APP_ROUTE . '/editorials/views/create.php'; 

@@ -20,12 +20,11 @@ class Users extends Controller
 		$this->view('index', $param);
 	}
 
-<<<<<<< HEAD
 	public function create()
 	{
 		$param = [
 			'usertypes' => $this->userTypeModel->getUserTypes(),
-			'schools'   => $this->schoolModel->getSchools()
+			'schools'   => $this->schoolModel->getSchools(),
 		];
 		$this->view('create', $param);
 	}
@@ -51,34 +50,12 @@ class Users extends Controller
 					redirect('users/index');
 				} else {
 					die("FATAL ERROR");
-=======
-		public function store(){
-			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-register'])){
-				if(isset($_POST['user-pass']) && isset($_POST['user-doc'])) {
-					$pass  =  password_hash(trim($_POST['user-pass']), PASSWORD_BCRYPT, ['cost' => 12]);
-					$param = [
-						'user-name' 	=> trim($_POST['user-name']),
-						'user-lastname' => trim($_POST['user-lastname']),
-						'user-address' 	=> trim($_POST['user-address']),
-						'user-dni'      => trim($_POST['user-doc']),
-						'user-phone' 	=> trim($_POST['user-phone']),
-						'user-email' 	=> trim($_POST['user-email']),
-						'user-img'      => $_FILES['user-dni'],
-						'user-pass'     => $pass,
-						'user-type-id' 	=> trim($_POST['user-type'])
-					];
-                    
-					if($this->userModel->addUser($param)){
-						redirect('users/index');
-					}
-					else{
-						die("FATAL ERROR");
-					}
->>>>>>> 2a20480890cdc4f95f8a5b648384047cccede4c0
 				}
-			}
+			}	
 		}
-	}
+	}			
+		
+	
 
 	public function edit($dni)
 	{
@@ -99,12 +76,13 @@ class Users extends Controller
 
 				if ($this->userModel->editUsers($param)) {
 					redirect('users/index');
-				} else {
-					die('Error locooo');
+				} 
+				else {
+					die('Error');
 				}
-			} else {
-				echo "error";
-			}
+			} 
+			
+
 		}
 	}
 
