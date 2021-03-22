@@ -63,7 +63,10 @@ $(document).ready(function(){
             });
         });
     });
-
+    // Asyncronic search
+    function search(param, url) { 
+        return $.post(url, {search : param});
+    }
      //busqueda de socios por nombre o apellido
      $('#search_user').keyup(function(){
         var input = $(this).val(); 
