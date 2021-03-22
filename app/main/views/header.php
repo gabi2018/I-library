@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="<?php echo URL_ROUTE ?>/css/bootstrap-grid.min.css">
 		<link rel="stylesheet" href="<?php echo URL_ROUTE ?>/css/bootstrap-reboot.min.css">
 		<link rel="stylesheet" href="<?php echo URL_ROUTE ?>/css/style.css">
+		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/jquery-3.3.1.min.js"></script>
 	</head>
 	<body style="background-color: #f2f7ff;">
 		<?php require_once APP_ROUTE . '/main/views/nav.php'; ?> 
