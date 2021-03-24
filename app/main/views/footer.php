@@ -10,5 +10,6 @@
 		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/cutter.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/main.js"></script>
+		
 	</body>
 </html>

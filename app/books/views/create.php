@@ -9,6 +9,7 @@
                 <a class="nav-item nav-link" id="editorial-tab" data-toggle="tab" href="#nav-editorial" role="tab">Datos de edición</a>
             </div>
         </nav>
+        
         <div class="tab-content mt-3" id="nav-tabContent">
             <!-- Datos del Libro -->
             <div class="tab-pane fade show active" id="nav-book" role="tabpanel"> 
@@ -16,15 +17,18 @@
                     <div class="col-9">
                         <div class="form-group">
                             <label for="title-book">Título</label>
-                            <input type="text" name="book-title" class="form-control" id="title-book" required placeholder="Ingresar título del libro"> 
+                            <input type="text" name="book-title" class="form-control" id="title-book" required placeholder="Ingresar título del libro" maxlength ="100"> 
                         </div> 
                         <div class="form-group">
                             <label for="isbn-book">ISBN</label>
-                            <input type="text" name="book-isbn" class="form-control" id="isbn-book" required placeholder="XXX-X-XX-XXXXXX-X"> 
+                            <input type="text" name="book-isbn" class="form-control" id="isbn-book" required placeholder="XXX-X-XX-XXXXXX-X" maxlength ="13" > 
+                            <div class="invalid-feedback">Número ISBN no valido</div>
                         </div> 
                         <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
-                            <input type="number" name="book-pages" class="form-control" id="pages-book" required placeholder="Ingresar cantidad de páginas"> 
+                            <input type="text" name="book-pages" class="form-control" id="pages-book" required placeholder="Ingresar cantidad de páginas" maxlength ="6"> 
+                            
+                        
                         </div> 
                     </div> 
                     <div class="col-3">
@@ -37,11 +41,15 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="year-book">Año de publicación</label>
-                        <input  type="text" name="book-year" id="year-book" class="form-control" placeholder="Ingresar año de publicación" required> 
+                        <input  type="text" name="book-year" id="year-book" class="form-control" placeholder="Ingresar año de publicación" maxlength ="4" required> 
+                        <div class="invalid-feedback">Número año no valido</div>
+
                     </div>  
                     <div class="form-group col-6">
                         <label for="vol-book">Volumen</label>
-                        <input type="text" name="book-vol" id="vol-book" class="form-control" placeholder="Ingresar número de volumen"> 
+                        <input type="text" name="book-vol" id="vol-book" class="form-control"  maxlength ="6" placeholder="Ingresar número de volumen">
+                        <div class="invalid-feedback">Número Volumen no valido</div>
+ 
                     </div> 
                 </div>
                 <div class="row">
@@ -66,12 +74,14 @@
                     </div>
                     <div class="col-6 form-group" id="cantEjemplar" style="display: none">
                         <label for="cant-book">Cantidad de ejemplares</label>
-                        <input type="number" name="book-cant" id="cant-book" class="form-control" placeholder="Ingresar cantidad de ejemplares"> 
+                        <input type="number" name="book-cant" id="cant-book" class="form-control" placeholder="Ingresar cantidad de ejemplares">
+                        <div class="invalid-feedback">Número  muy grande de ejemplares</div>
+ 
                     </div>
                 </div>                                  
                 <div class="form-group">
                     <label for="desc-book">Descripción</label>
-                    <textarea class="form-control" name="book-desc" id="desc-book" rows="3" required placeholder="Ingresar una descripción del libro"></textarea> 
+                    <textarea class="form-control" name="book-desc" id="desc-book" rows="3" required placeholder="Ingresar una descripción del libro" maxlength ="254"></textarea> 
                 </div>   
             </div>
             <!-- Datos de Autor -->
@@ -166,13 +176,15 @@
                     </div>
                     <div class="form-group col-6">
                         <label for="edition-book">Edición</label>
-                        <input type="text" name="book-edition" id="edition-book" class="form-control" placeholder="Ingresar número de edición"> 
+                        <input type="text" name="book-edition" id="edition-book" class="form-control" placeholder="Ingresar número de edición">
+                        <div class="invalid-feedback">Número de edicion no valido</div>
+ 
                     </div>  
                 </div>
                 <div class="row"> 
                     <div class="form-group col-6">
                         <label for="cata-book">Código catalografico</label>
-                        <input type="text" name="book-cata" class="form-control" id="cata-book" required disabled placeholder="Generacion automática" ><!-- si se deja el disabled no envia los datos atraves de post--> 
+                        <input type="text" name="book-cata" class="form-control" id="cata-book" required disabled placeholder="Generacion automática" >
                     </div> 
                     <div class="form-group col-5">
                         <label for="topo-book">Código topolografico</label>
@@ -190,7 +202,10 @@
         </div> 
     </form> 
 </div>
+
+
 <?php
     require_once APP_ROUTE . '/authors/views/create.php'; 
     require_once APP_ROUTE . '/editorials/views/create.php'; 
 ?>
+<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/book.js"></script>

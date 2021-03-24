@@ -5,7 +5,7 @@
             <div class="col-9">
                 <div class="form-group">
                     <label for="name-user">Nombre</label>
-                    <input type="text" name="user-name" class="form-control" id="name-user" required placeholder="Ingresar nombre">
+                    <input type="text" name="user-name" class="form-control" id="name-user"  maxlength ="80"  required placeholder="Ingresar nombre">
                 </div>
                 <div class="form-group">
                     <label for="lastname-user">Apellido</label>
@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email-user">Email</label>
-                    <input type="email" name="user-email" id="email-user" class="form-control" placeholder="Ingresar dirección de email">
+                    <input type="email" name="user-email" id="email-user" class="form-control"  maxlength ="100"  placeholder="Ingresar dirección de email">
                     <div class="invalid-feedback">Email no valido</div>
                 </div>
             </div>
@@ -27,13 +27,13 @@
         <div class="row">
             <div class="form-group col-6">
                 <label for="doc-user">DNI</label>
-                <input type="text" name="user-doc" id="doc-user" class="form-control justNumbers" placeholder="Ingresar número de documento" required>
+                <input type="text" name="user-doc" id="doc-user" class="form-control justNumbers"  maxlength ="8" placeholder="Ingresar número de documento" required>
                 <input type="hidden" name="user-pass" id="pass-user" class="form-control" placeholder="Se generará automaticamente una contraseña">
                 <div class="invalid-feedback">Número dni no valido</div>
             </div>
             <div class="form-group col-6">
                 <label for="phone-user">Teléfono</label>
-                <input type="text" name="user-phone" id="phone-user" class="form-control justNumbers" placeholder="Ingresar número de teléfono" required>
+                <input type="text" name="user-phone" id="phone-user" class="form-control justNumbers"   maxlength ="15" placeholder="Ingresar número de teléfono" required>
                 <div class="invalid-feedback">Número de teléfono no valido</div>
             </div>
 

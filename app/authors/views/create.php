@@ -10,10 +10,10 @@
       <div class="modal-body">
         <form  method="post" target="_top">
           <div class="form-group">
-            <input name="author-name" type="text" class="form-control" id="new-name-author" placeholder="Nombre del autor" required>
+            <input name="author-name" type="text" class="form-control" id="new-name-author" placeholder="Nombre del autor" maxlength ="80"required>
           </div>
           <div class="form-group">
-            <input name="author-lastname" type="text" class="form-control" id="new-lastname-author" placeholder="Apellido del autor" required>
+            <input name="author-lastname" type="text" class="form-control" id="new-lastname-author" placeholder="Apellido del autor" maxlength ="80" required>
           </div>
           <div class="modal-footer">
             <button type="submit" name="register" data-dismiss="modal" data-url="<?php echo URL_ROUTE ?>authors/store" id="save-author" class="btn btn-primary">Agregar</button>

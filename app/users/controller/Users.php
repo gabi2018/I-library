@@ -17,13 +17,17 @@
 			$this->view('index', $param);
 		}
 
-		public function create(){
-			$param = [
-				'usertypes' => $this->userTypeModel->getUserTypes(),
-				'schools'   => $this->schoolModel->getSchools()
-			];
-			$this->view('create', $param);
-		}
+	public function create()
+	{
+		$param = [
+			'usertypes' => $this->userTypeModel->getUserTypes(),
+			'schools'   => $this->schoolModel->getSchools(),
+		];
+		$this->view('create', $param);
+	}
+
+	
+
 
 		public function store(){
 			if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-register'])){
@@ -48,7 +52,7 @@
 						die("FATAL ERROR");
 					}
 				}
-			}
+			}	
 		}
 
 		public function edit($dni){
@@ -57,25 +61,26 @@
 			$this->view('edit', $param);
 		}
 
-		public function update($dni){
-			if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-update'])){
-				if (isset($_POST['user-phone']) && isset($_POST['user-address']) && isset($_POST['user-email'])){
-					$param = [
-						'user-dni'     => $dni,
-						'user-phone'   => trim($_POST['user-phone']),
-						'user-address' => trim($_POST['user-address']),
-						'user-email'   => trim($_POST['user-email'])
-					];
-					if ($this->userModel->editUsers($param)) {
-						redirect('users/index');
-					} else {
-						die('Error locooo');
-					}
-				} else {
-					echo "error";
+	public function update($dni){
+		if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-update'])){
+			if (isset($_POST['user-phone']) && isset($_POST['user-address']) && isset($_POST['user-email'])){
+				$param = [
+					'user-dni'     => $dni,
+					'user-phone'   => trim($_POST['user-phone']),
+					'user-address' => trim($_POST['user-address']),
+					'user-email'   => trim($_POST['user-email'])
+				];
+
+				if ($this->userModel->editUsers($param)) {
+					redirect('users/index');
+				} 
+				else {
+					die('Error');
 				}
-			}
+			} 
+			
 		}
+	}
 
 		/*Deshactivar un Usuario */
 		public function disable($dni){
