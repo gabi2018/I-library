@@ -5,7 +5,7 @@
 		<a href=""><span class="material-icons">sort</span></a>
 		<a href=""><span class="material-icons">swap_vert</span></a> 
 		<a href="javascript:void(0)" data-filter=".card" id="card" class="view-type" ><span class="material-icons">view_module</span></a>
-		<a href="javascript:void(0)" data-filter=".list" id="list" class="view-type"style="display: none;"><span class="material-icons">view_list</span></a>
+		<a href="javascript:void(0)" data-filter=".list" id="list" class="view-type" style="display: none;"><span class="material-icons">view_list</span></a>
 	</div>
 	<div class="col-6">
 		<?php require_once "search.php"?>

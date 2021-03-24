@@ -1,6 +1,4 @@
-<?php
-$users = $param['users'];
-?>
+<?php $users = $param['users']; ?>
 <div class="col-10 mt-2">
     <h4 class="mb-3">Editar socio</h4>
     <form method="post" action='<?php echo URL_ROUTE . "users/update/$users->user_dni"; ?>' enctype="multipart/form-data">
@@ -16,12 +14,13 @@ $users = $param['users'];
                 </div>
                 <div class="form-group">
                     <label for="email-user">Email</label>
-                    <input type="email" name="user-email" id="email-user" class="form-control" placeholder="Ingresar dirección de email" value="<?php echo $users->user_email; ?>">
+                    <input type="email" name="user-email" id="email-user" class="form-control" placeholder="Ingresar dirección de email" value="<?php echo $users->user_email; ?>" required>
+                    <div class="invalid-feedback">Email no valido</div>
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
-                    <img class="justify-content-end" id="cover-preview" for="cover-img" src="<?php echo URL_ROUTE; ?>media/images/system/default-user.png"></label>
+                    <img class="justify-content-end" id="cover-preview" for="cover-img" src="<?php echo URL_ROUTE . "media/images/partner/$users->user_img"; ?>"></label>
                     <input name="user-img" type="file" class="form-control-file" accept="image/*" id="cover-img" value="<?php echo $users->user_img; ?>" disabled>
                 </div>
             </div>
@@ -39,7 +38,8 @@ $users = $param['users'];
             </div>
             <div class="form-group col-6">
                 <label for="phone-user">Teléfono</label>
-                <input type="number" name="user-phone" id="phone-user" class="form-control" placeholder="Ingresar número de teléfono" value="<?php echo $users->user_phone; ?>" required>
+                <input type="number" name="user-phone" id="phone-user" class="form-control justNumbers" placeholder="Ingresar número de teléfono" value="<?php echo $users->user_phone; ?>" required>
+                <div class="invalid-feedback">Número de teléfono no valido</div>
             </div>
         </div>
         <div class="form-group">
@@ -47,3 +47,4 @@ $users = $param['users'];
         </div>
     </form>
 </div>
+<script type="text/javascript" src="<?php echo URL_ROUTE; ?>js/users.js"></script>

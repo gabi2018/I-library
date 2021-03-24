@@ -1,15 +1,23 @@
 $(document).ready(function(){
+    const validate ={
+        email_val : false0,
+        dni_val   : false,
+        phone_val : false
+    };
+
     /*
      * Validaciones 
      */
 
-    function valid(value){
+    function valid(value, validate){
         value.addClass("is-valid");
         value.removeClass("is-invalid");
+        validate = true;
     }
-    function invalid(value){
+    function invalid(value, validate){
         value.addClass("is-invalid");
         value.removeClass("is-valid");
+        validate = false;
     }
 
     // Validar email
@@ -17,13 +25,14 @@ $(document).ready(function(){
         var ex_regular_email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             email = $(this).val();
 
-        ex_regular_email.test(email) ? valid($(this)) : invalid($(this)); 
+        ex_regular_email.test(email) ? valid($(this), validate.email_val) : invalid($(this), validate.email_val); 
+        console.log(validate.email_val);
     });
 
     // Validar numero de documento
     $("#doc-user").keyup(function(){
         var ex_regular_dni = /^\d{8}(?:[-\s]\d{4})?$/,
-        dni = $(this).val();
+            dni = $(this).val();
 
         ex_regular_dni.test(dni) ? valid($(this)) : invalid($(this)); 
     }); 
@@ -44,7 +53,6 @@ $(document).ready(function(){
     $("#doc-user").keyup(function() {
         $('#pass-user').val(($('#doc-user').val()));
     });
-
 
     //funcion para el registro de escuelas y carreras del usuario
     $("#user-school").change(function() {
