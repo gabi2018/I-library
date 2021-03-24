@@ -22,17 +22,17 @@
                     <div class="col-9">
                         <div class="form-group">
                             <label for="title-book">Título</label>
-                            <input type="text" name="book-title" class="form-control" id="title-book" required value="<?php echo $book->book_title?>"> 
+                            <input type="text" name="book-title" class="form-control" id="title-book" required  maxlength ="100"value="<?php echo $book->book_title?>"> 
                         </div> 
                         <div class="form-group">
                             <label for="isbn-book">ISBN</label>
-                            <input type="text" name="book-isbn" class="form-control" id="isbn-book" required value="<?php echo $book->book_isbn?>" > 
+                            <input type="number" name="book-isbn" class="form-control" id="isbn-book" maxlength ="13" required value="<?php echo $book->book_isbn?>" > 
                             <input type="hidden" name="book-isbn-viejo" class="form-control"  required value="<?php echo $book->book_isbn?>"> 
                             <input type="hidden" name="book-id" class="form-control"  required value="<?php echo $book->book_id?>"> 
                         </div> 
                         <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
-                            <input type="number" name="book-pages" class="form-control" id="pages-book" required value="<?php echo $book->book_num_pages?>" > 
+                            <input type="number" name="book-pages" class="form-control" maxlength ="6" id="pages-book" required value="<?php echo $book->book_num_pages?>" > 
                         </div> 
                     </div> 
                     <div class="col-3">
@@ -48,11 +48,11 @@
                 </div>       <div class="row">
                     <div class="form-group col-6">
                         <label for="year-book">Año de publicación</label>
-                        <input  type="text" name="book-year" id="year-book" class="form-control" value="<?php echo $book->book_year?>"> 
+                        <input  type="number" name="book-year"  maxlength ="4" id="year-book" class="form-control" value="<?php echo $book->book_year?>"> 
                     </div>  
                     <div class="form-group col-6">
                         <label for="vol-book">Volumen</label>
-                        <input type="text" name="book-vol" id="vol-book" class="form-control" value="<?php echo $book->book_vol?>"> 
+                        <input type="text" name="book-vol" id="vol-book" maxlength ="5"class="form-control" value="<?php echo $book->book_vol?>"> 
                     </div> 
                 </div>
                 <div class="row">

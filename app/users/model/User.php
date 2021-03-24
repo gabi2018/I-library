@@ -1,5 +1,4 @@
 <?php  
-
 	class User{
 		private $db;
 		
@@ -18,7 +17,8 @@
 									 user.user_img,
 									 user_type.user_type_desc 
 							  FROM   user, user_type
-							  WHERE  user.user_type_id = user_type.user_type_id');
+							  WHERE  user.user_type_id = user_type.user_type_id
+							  AND    user.user_type_id <> 1');
 
 			$response = $this->db->getRecords();
 			return $response;
@@ -107,7 +107,7 @@
 			$this->db->query('UPDATE user 
 							  SET user_address = :user_address, 
 							      user_phone   = :user_phone, 
-							      user_email   = :user_email, 
+							      user_email   = :user_email
 							  WHERE user_dni   = :user_dni');
 			
 			# Link values
@@ -136,7 +136,8 @@
 									 UT.user_type_desc 
 							  FROM   user U 
 							  INNER JOIN user_type UT ON U.user_type_id = UT.user_type_id 
-							  WHERE U.user_name LIKE "%":user_param"%" 
+							  WHERE U.user_name LIKE "%":user_param"%"
+							  AND U.user_type_id <> 1
 							  ORDER BY U.user_name,U.user_lastname');
 			$this->db->bind(':user_param', $param['user']);
 			$result = $this->db->getRecords();

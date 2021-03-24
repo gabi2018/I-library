@@ -3,7 +3,7 @@ $users = $param['users'];
 ?>
 <div class="col-10 mt-2">
     <h4 class="mb-3">Editar socio</h4>
-    <form method="post" action="<?php echo URL_ROUTE . "users/update/$users->dni"; ?> target=" _top" enctype="multipart/form-data">
+    <form method="post" action='<?php echo URL_ROUTE . "users/update/$users->user_dni"; ?>' enctype="multipart/form-data">
         <div class="row">
             <div class="col-9">
                 <div class="form-group">
@@ -22,7 +22,7 @@ $users = $param['users'];
             <div class="col-3">
                 <div class="form-group">
                     <img class="justify-content-end" id="cover-preview" for="cover-img" src="<?php echo URL_ROUTE; ?>media/images/system/default-user.png"></label>
-                    <input name="user-dni" type="file" class="form-control-file" accept="image/*" id="cover-img" value="<?php echo $users->user_img; ?>" disabled>
+                    <input name="user-img" type="file" class="form-control-file" accept="image/*" id="cover-img" value="<?php echo $users->user_img; ?>" disabled>
                 </div>
             </div>
         </div>
@@ -35,8 +35,7 @@ $users = $param['users'];
         <div class="row">
             <div class="form-group col-6">
                 <label for="doc-user">Documento</label>
-                <input type="text" name="user-doc" id="doc-user" class="form-control" placeholder="Ingresar número de documento" required onkeyup="copyOnPassword(event); " value="<?php echo $users->user_dni ?>" disabled>
-                <input type="hidden" name="user-pass" id="pass-user" class="form-control" placeholder="Se generará automaticamente una contraseña">
+                <input type="text" name="user-doc" id="doc-user" class="form-control" placeholder="Ingresar número de documento" required value="<?php echo $users->user_dni ?>" disabled>
             </div>
             <div class="form-group col-6">
                 <label for="phone-user">Teléfono</label>
@@ -44,7 +43,7 @@ $users = $param['users'];
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="form-control btn btn-primary" name="user-update">Guardar</button>
+            <button type="submit" class="form-control btn btn-primary" name="user-update">Actualizar</button>
         </div>
     </form>
 </div>

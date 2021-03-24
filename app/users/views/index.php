@@ -20,3 +20,4 @@
 </div>
 
 <div class="col-12 mt-4" id="search_result_user" style="display: none;"></div>
+<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/users.js"></script>

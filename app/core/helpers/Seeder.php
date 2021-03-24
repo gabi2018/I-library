@@ -572,11 +572,11 @@
                                     ('5','graduado')
                             ");
 
-            $this->db->query("INSERT INTO `school`(`school_name`) 
-                                VALUES ('Escuela de Ciencias de la Salud'),
-                                    ('Escuela de Ingeniería y Ciencias Ambientales'),
-                                    ('Escuela de Gestión de Empresas y Economía'),
-                                    ('Escuela de Ciencias Sociales y Educación')
+            $this->db->query("INSERT INTO `school`(`school_id`, `school_name`) 
+                                VALUES ('1', 'Escuela de Ciencias de la Salud'),
+                                       ('2', 'Escuela de Ingeniería y Ciencias Ambientales'),
+                                       ('3', 'Escuela de Gestión de Empresas y Economía'),
+                                       ('4', 'Escuela de Ciencias Sociales y Educación')
                             ");
 
             $this->db->query("INSERT INTO `career`(`career_name`, `school_id`) 
@@ -605,4 +605,3 @@
             #ALTER TABLE `book` DROP FOREIGN KEY `fk_book_book_status1`; ALTER TABLE `book` ADD CONSTRAINT `fk_book_book_status1` FOREIGN KEY (`book_status_id`) REFERENCES `book_status`(`book_status_id`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `book` DROP FOREIGN KEY `fk_book_category1`; ALTER TABLE `book` ADD CONSTRAINT `fk_book_category1` FOREIGN KEY (`category_id`) REFERENCES `category`(`category_id`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `book` DROP FOREIGN KEY `fk_book_languaje1`; ALTER TABLE `book` ADD CONSTRAINT `fk_book_languaje1` FOREIGN KEY (`languaje_id`) REFERENCES `languaje`(`languaje_id`) ON DELETE CASCADE ON UPDATE CAS
         }
     }
-?>

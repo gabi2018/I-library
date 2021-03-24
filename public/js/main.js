@@ -73,17 +73,7 @@ $(document).ready(function() {
         console.log(response);
         return response;
     } 
-
-    //Genera codigo catalografico
-    $("#title-book").change(function(){
-
-    });
-    
-    // Genera la clave copiando el dni ingresado
-    $("#doc-user").keyup(function() {
-        $('#pass-user').val(($('#doc-user').val()));
-    });
-
+   
     //Function which allows only the entry numbers
     $('.justNumbers').keypress(function(e) {
         var keynum = window.event ? window.event.keyCode : e.which;
@@ -197,30 +187,20 @@ $('#search_user_loan').keyup(function(){
 
 });
 
-//closet select user
-
-function closeSelectUser(container, select, options, selected){
-    $(options).click(function() {
-        
-        var value = $(this).find("h5").html();
-        
-        url=$('#book_media').attr('data-url');
-        
-        input = $(this).html();
-        
-        $(select).html(value);
-        $(select).attr("data-id", $(this).attr("id"));
-        $(selected).val(value);
-        $(container).toggleClass("open");                      
-        $("#user_media").html(input);
-
-        
+    //closet select user
+    function closeSelectUser(container, select, options, selected){
+        $(options).click(function() {
+            var value = $(this).find("h5").html(),
+                url   = $('#book_media').attr('data-url'),
+                input = $(this).html();
             
-        
-        
-    }); 
-    
-} 
+            $(select).html(value);
+            $(select).attr("data-id", $(this).attr("id"));
+            $(selected).val(value);
+            $(container).toggleClass("open");                      
+            $("#user_media").html(input);
+        }); 
+    } 
 
     //closet select de search boook en loan 
     function closeSelectBook(container, select, options, selected){
@@ -300,40 +280,9 @@ $("#select-user").click(function(event) {
         });
 
 
-    //busqueda de socios por nombre o apellido
-    $('#search_user').keyup(function(){
-        var input = $(this).val(); 
-        if(input != "" ){
-            url = $(this).attr('data-url');
-            search(input, url).done(function(response){ 
-                $('#search_result_user').html(response);
-                $("#search_result_user").css("display","initial");
-                $("#user_list").css("display","none");
-                
-            }); 
-        }
-        else{
-            $("#user_list").css("display","initial");
-            $("#search_result_user").css("display","none");
-        }
-    }); 
+   
 
-    //funcion para el registro de escuelas y carreras del usuario
-    $("#user-school").change(function() {
-        url = $(this).attr('data-url');
-        $("#user-school option:selected").each(function() {
-            value = $(this).val();
-            url += "/" + value;
-            $.get(url, { value }, function(data) {
-                $("#user-career").empty().removeAttr("disabled").append("<option disabled selected>Seleccionar carrera</option>");
-                aux = data.split(".");
-                for (i = 0; i < aux.length - 1; i++) {
-                    option = (aux[i].split("-"));
-                    $("#user-career").append("<option value=" + option[0] + ">" + option[1] + "</option>")
-                }
-            });
-        });
-    });
+ 
 
     // Funcion para guardado de categoria
     $("#save-editorial").click(function(event){
@@ -458,24 +407,7 @@ $("#select-user").click(function(event) {
         $("#topo-book").val(subtopic+category);
     });
 
-    //ISOTOPE
-    $("#user_list").isotope({
-        filter: '.list'
-    });
-
-    $('.view-type').click(function() {
-        var filterValue = $(this).attr('data-filter'); 
-        id = filterValue.substr(1);
-        $('#'+id).css('display', 'none');   
-        if(id == 'list'){
-            $('#card').css('display', 'initial');
-        }      
-        else{
-            $('#list').css('display', 'initial');
-        }   
-        
-        $("#user_list").isotope({ filter: filterValue });
-    });
+    
 
 //funcion habilitar  inputs CON DISABLED
 
