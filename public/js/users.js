@@ -111,4 +111,6 @@ $(document).ready(function(){
         
         $("#user_list").isotope({ filter: filterValue });
     });
+
+    //
 });

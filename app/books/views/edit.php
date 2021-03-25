@@ -29,10 +29,13 @@
                             <input type="number" name="book-isbn" class="form-control" id="isbn-book" maxlength ="13" required value="<?php echo $book->book_isbn?>" > 
                             <input type="hidden" name="book-isbn-viejo" class="form-control"  required value="<?php echo $book->book_isbn?>"> 
                             <input type="hidden" name="book-id" class="form-control"  required value="<?php echo $book->book_id?>"> 
+                            <div class="invalid-feedback">Número ISBN no valido</div>
+                        
                         </div> 
                         <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
                             <input type="number" name="book-pages" class="form-control" maxlength ="6" id="pages-book" required value="<?php echo $book->book_num_pages?>" > 
+                            <div class="invalid-feedback">Número de paginas no valido</div>
                         </div> 
                     </div> 
                     <div class="col-3">
@@ -49,10 +52,12 @@
                     <div class="form-group col-6">
                         <label for="year-book">Año de publicación</label>
                         <input  type="number" name="book-year"  maxlength ="4" id="year-book" class="form-control" value="<?php echo $book->book_year?>"> 
+                        <div class="invalid-feedback">año no valido</div>
                     </div>  
                     <div class="form-group col-6">
                         <label for="vol-book">Volumen</label>
                         <input type="text" name="book-vol" id="vol-book" maxlength ="5"class="form-control" value="<?php echo $book->book_vol?>"> 
+                        <div class="invalid-feedback">Número de volumen no valido</div>
                     </div> 
                 </div>
                 <div class="row">
@@ -72,6 +77,7 @@
                         <label for="cant-book">Cantidad de ejemplares</label>
                 <input type="num" name="book-cantidad"   id="cant-book"value="<?php echo$cantidad->book_cantidad?>" class="form-control"  >
                 <input name='book-cantidad-vieja' type='hidden' value='<?php echo $cantidad->book_cantidad?>'>
+                <div class="invalid-feedback">Número de ejemplares no valido</div>
                 
                     </div>
                 </div>                                  
@@ -212,4 +218,6 @@
 <?php
     require_once APP_ROUTE . '/authors/views/create.php'; 
     require_once APP_ROUTE . '/editorials/views/create.php'; 
+
 ?>
+<script type="text/javascript" src="<?php echo URL_ROUTE;?>js/book.js"></script>

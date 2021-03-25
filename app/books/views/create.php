@@ -26,14 +26,14 @@
                         </div> 
                         <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
-                            <input type="text" name="book-pages" class="form-control" id="pages-book" required placeholder="Ingresar cantidad de páginas" maxlength ="6"> 
-                            
+                            <input type="num" name="book-pages" class="form-control" id="pages-book" required placeholder="Ingresar cantidad de páginas" maxlength ="6"> 
+                            <div class="invalid-feedback">Número ISBN no valido</div>
                         
                         </div> 
                     </div> 
                     <div class="col-3">
                         <div class="form-group">
-                            <img for="cover-img" class="justify-content-end" id="cover-preview" src="<?php echo URL_ROUTE;?>media/images/book/default-cover-book.png""> 
+                            <img for="cover-img" class="justify-content-end" id="cover-preview" src="<?php echo URL_ROUTE;?>media/images/book/default-cover-book.png"> 
                             <input name="book-img" type="file" class="form-control-file" accept="image/*" id="cover-img">
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                     </div>  
                     <div class="form-group col-6">
                         <label for="vol-book">Volumen</label>
-                        <input type="text" name="book-vol" id="vol-book" class="form-control"  maxlength ="6" placeholder="Ingresar número de volumen">
+                        <input type="number" name="book-vol" id="vol-book" class="form-control"  maxlength ="6" placeholder="Ingresar número de volumen">
                         <div class="invalid-feedback">Número Volumen no valido</div>
  
                     </div> 
