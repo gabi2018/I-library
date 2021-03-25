@@ -21,12 +21,12 @@
                         </div> 
                         <div class="form-group">
                             <label for="isbn-book">ISBN</label>
-                            <input type="text" name="book-isbn" class="form-control" id="isbn-book" required placeholder="XXX-X-XX-XXXXXX-X" maxlength ="13" > 
+                            <input type="text" name="book-isbn" class="form-control justNumbers" id="isbn-book" required placeholder="XXX-X-XX-XXXXXX-X" maxlength ="13" > 
                             <div class="invalid-feedback">Número ISBN no valido</div>
                         </div> 
                         <div class="form-group">
                             <label for="pages-book">Cantidad de páginas</label>
-                            <input type="num" name="book-pages" class="form-control" id="pages-book" required placeholder="Ingresar cantidad de páginas" maxlength ="6"> 
+                            <input type="text" name="book-pages" class="form-control justNumbers" id="pages-book" required placeholder="Ingresar cantidad de páginas" maxlength ="5"> 
                             <div class="invalid-feedback">Número ISBN no valido</div>
                         
                         </div> 
@@ -41,13 +41,13 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="year-book">Año de publicación</label>
-                        <input  type="text" name="book-year" id="year-book" class="form-control" placeholder="Ingresar año de publicación" maxlength ="4" required> 
+                        <input  type="text" name="book-year" id="year-book" class="form-control justNumbers" placeholder="Ingresar año de publicación" maxlength ="4" required> 
                         <div class="invalid-feedback">Número año no valido</div>
 
                     </div>  
                     <div class="form-group col-6">
                         <label for="vol-book">Volumen</label>
-                        <input type="number" name="book-vol" id="vol-book" class="form-control"  maxlength ="6" placeholder="Ingresar número de volumen">
+                        <input type="text" name="book-vol" id="vol-book" class="form-control justNumbers"  maxlength ="5" placeholder="Ingresar número de volumen">
                         <div class="invalid-feedback">Número Volumen no valido</div>
  
                     </div> 
@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-6 form-group" id="cantEjemplar" style="display: none">
                         <label for="cant-book">Cantidad de ejemplares</label>
-                        <input type="number" name="book-cant" id="cant-book" class="form-control" placeholder="Ingresar cantidad de ejemplares">
+                        <input type="text" name="book-cant" id="cant-book" class="form-control" placeholder="Ingresar cantidad de ejemplares">
                         <div class="invalid-feedback">Número  muy grande de ejemplares</div>
  
                     </div>
