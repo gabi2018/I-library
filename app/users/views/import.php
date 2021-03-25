@@ -2,9 +2,11 @@
     <div class="col-12 text-center">
         <h3>Importar alumnos del sistema Siu Guarani</h3>
     </div>
-    <div class="col-12 text-center mt-3">
-        <button type="button" class="btn btn-primary">Importar</button>
+    <div class="col-2  mt-3">
+        <button type="button"  id="import" class="btn btn-primary"  data-url="<?php echo URL_ROUTE?>Users/readSIU">Importar</button>
         <hr>
+        
+                <button type="submit" class="btn btn-primary" id='submit'name="book-register"disabled>Guardar</button>
     </div>
 
     <div class="col-12">
@@ -15,40 +17,17 @@
                     <th scope="col">DNI</th>
                     <th scope="col">Name Lastname</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Action 1 y 2</th>
+                    <th scope="col">Carrera</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
+        
+            <tbody id='import-socios'></div>
+               
             </tbody>
         </table>
         <hr>
     </div>
 
-    <div class="col-12 mt-2">
-        <h4>Alumnos ya registrado</h4>
-        <table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Name Lastname</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Action 1 y 2</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    
 </div>
+<script type="text/javascript" src="<?php echo URL_ROUTE; ?>js/users.js"></script>

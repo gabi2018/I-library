@@ -16,7 +16,7 @@
 	<body style="background-color: #f2f7ff;">
 		<?php require_once APP_ROUTE . '/main/views/nav.php'; ?> 
 		<div class="container-fluid">
-			<div class="row" bgcolor="#E2EEF8">
+			<div class="row" bgcoluor="#E2EEF8">
 				<div class="col-2">
 					<?php require_once APP_ROUTE . '/main/views/nav-lateral.php'; ?>
 				</div>

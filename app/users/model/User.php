@@ -81,6 +81,7 @@
 	
 		/*funcion trae un solo usuario*/
 		public function getUser($dni){
+			$dni =  $this->db->deleteSpecialChars($dni,'int'); 
 			$this->db->query('SELECT *
 								FROM user 
 								WHERE user_dni = :user_dni');
@@ -166,10 +167,22 @@
 		public function isDefaulter($dni){
 			return($this->getUser($dni))->user_defaulter;
 		}
+
+
+
 		/** 
-		 * Los datos que se mostrarán en una consulta de socio son: 
-		 * nombre, apellido, dirección, teléfono, tipo de socio y si es moroso. 
-		 * En caso de ser moroso se mostrará un campo con la leyenda “moroso”, 
-		 * de lo contrario no mostrará nada.
+		 *Traer la vista de la base de datos del siu guarani
 		*/
+
+		public function getSociosSIU(){
+			$this->db->query('SELECT * 
+								FROM  usuarios_siu
+								WHERE 1
+								ORDER BY DNI');
+
+			$response = $this->db->getRecords();
+			return $response;
+
+
+		}
 	}

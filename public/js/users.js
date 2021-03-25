@@ -1,6 +1,6 @@
 $(document).ready(function(){
     const validate ={
-        email_val : false0,
+        email_val : false,
         dni_val   : false,
         phone_val : false
     };
@@ -112,5 +112,20 @@ $(document).ready(function(){
         $("#user_list").isotope({ filter: filterValue });
     });
 
-    //
+    //ver los socios a importar 
+
+    $('#import').click(function(){
+        url = $(this).attr('data-url');
+        imports(url).done(function(response){ 
+            
+            $('#import-socios').html(response);
+            
+            
+        }); 
+
+    });
+
+    function imports(url) { 
+        return $.post(url, {importDate: 'confirm'});
+    }
 });

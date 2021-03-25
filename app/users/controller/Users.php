@@ -173,4 +173,31 @@
 				}
 			}
 		}
+
+
+
+
+
+		//MOSTRAR LOS ALUMNOS A GUARDAR 
+		public function readSIU(){
+			if (isset($_POST['importDate'])) {
+			$users = $this->userModel->getSociosSIU();
+			foreach ($users as $user) {
+
+				echo"<tr>
+				<th scope='row'>$user->DNI</th>
+				<td>$user->nombre $user->apellido</td>
+				<td> $user->email</td>
+				<td>$user->carrera_desc</td>
+				</tr>";
+
+				
+				
+			}
+
+		}
 	}
+
+
+
+}
