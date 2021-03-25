@@ -1,23 +1,21 @@
 $(document).ready(function(){
-    const validate ={
-        email_val : false,
-        dni_val   : false,
-        phone_val : false
-    };
+    let email_val = false,
+        dni_val   = false,
+        phone_val = false;
 
     /*
      * Validaciones 
      */
 
-    function valid(value, validate){
+    function valid(value){
         value.addClass("is-valid");
         value.removeClass("is-invalid");
-        validate = true;
+        return true;
     }
-    function invalid(value, validate){
+    function invalid(value){
         value.addClass("is-invalid");
         value.removeClass("is-valid");
-        validate = false;
+        return false;
     }
 
     // Validar email
@@ -25,8 +23,8 @@ $(document).ready(function(){
         var ex_regular_email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             email = $(this).val();
 
-        ex_regular_email.test(email) ? valid($(this), validate.email_val) : invalid($(this), validate.email_val); 
-        console.log(validate.email_val);
+        ex_regular_email.test(email) ? email_val = valid($(this)) : email_val = invalid($(this)); 
+        console.log(email_val);
     });
 
     // Validar numero de documento
@@ -34,7 +32,7 @@ $(document).ready(function(){
         var ex_regular_dni = /^\d{8}(?:[-\s]\d{4})?$/,
             dni = $(this).val();
 
-        ex_regular_dni.test(dni) ? valid($(this)) : invalid($(this)); 
+        ex_regular_dni.test(dni) ? dni_val = valid($(this)) : dni_val = invalid($(this)); 
     }); 
 
     //Validar telefono
@@ -42,9 +40,14 @@ $(document).ready(function(){
         var ex_regular_phone = /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/,
             phone = $(this).val();
 
-        ex_regular_phone.test(phone) ? valid($(this)) : invalid($(this)); 
+        ex_regular_phone.test(phone) ? phone_val = valid($(this)) : phone_val = invalid($(this)); 
     });
     
+    $("#register-user").submit(function(event){
+        if(!email_val && dni_val && phone_val){
+            event.preventDefault();
+        }
+    });
     /*
      * Funciones 
      */

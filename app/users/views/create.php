@@ -1,6 +1,6 @@
 <div class="col-10 mt-2">
     <h4 class="mb-3">Agregar nuevo socio</h4>
-    <form method="post" action="<?php echo URL_ROUTE ?>users/store" target="_top" enctype="multipart/form-data">
+    <form method="post" id="register-user" action="<?php echo URL_ROUTE ?>users/store" target="_top" enctype="multipart/form-data">
         <div class="row">
             <div class="col-9">
                 <div class="form-group">
