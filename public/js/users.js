@@ -119,7 +119,7 @@ $(document).ready(function(){
         imports(url).done(function(response){ 
             
             $('#import-socios').html(response);
-            
+            $('button').prop('disabled', false);
             
         }); 
 

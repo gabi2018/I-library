@@ -126,7 +126,7 @@
 						}
 					}
 				}
-				return true; //delvolver el arreglo del codigo topolografico
+				return true; 
 			}
 			
 		}
