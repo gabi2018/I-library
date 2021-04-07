@@ -39,6 +39,7 @@ class User
 
 	public function addUser($param)
 	{
+		if(isset($param)){
 		$this->db->query('INSERT INTO user 
 										 (user_dni, user_name, user_lastname, user_address, user_phone, user_email, user_password, user_type_id, user_img) 
 							    VALUES   (:user_dni, :user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, :user_type_id, :user_img)');
@@ -54,20 +55,29 @@ class User
 		} else {
 			$nameImg = 'default-user.png';
 		}
-
+		$dni=  $this->db->deleteSpecialChars($param['user-dni'], 'int');
 		# Link values 
 		$this->db->bind(':user_name',     $param['user-name']);
 		$this->db->bind(':user_lastname', $param['user-lastname']);
 		$this->db->bind(':user_address',  $param['user-address']);
-		$this->db->bind(':user_dni',      $param['user-dni']);
+		$this->db->bind(':user_dni',      $dni);
 		$this->db->bind(':user_phone',    $param['user-phone']);
 		$this->db->bind(':user_email',    $param['user-email']);
 		$this->db->bind(':user_password', $param['user-pass']);
 		$this->db->bind(':user_type_id', $param['user-type-id']);
 		$this->db->bind(':user_img', $nameImg);
-
+	
+		$careerId=$param['user-career'];
 		# Run
-		return $this->db->execute();
+		if($this->db->execute()){
+		
+			
+			$this->addUHC($dni,$careerId);							
+			}
+
+			return true;
+		}
+		
 	}
 
 	public function userRecord($param)
@@ -245,4 +255,19 @@ class User
 		}
 
 	}
+	public function addUHC($DNI_id,$career_id){
+
+		$this->db->query('INSERT INTO user_has_career(user_dni,career_id)
+										  VALUES (:user_dni,:career_id)');
+					
+						$this->db->bind(':user_dni',$DNI_id);
+						$this->db->bind(':career_id',$career_id);
+				
+						$this->db->execute();					
+					
+
+
+	}
+
+	
 }

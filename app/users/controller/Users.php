@@ -37,6 +37,11 @@ class Users extends Controller
 		if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-register'])) {
 			if (isset($_POST['user-pass']) && isset($_POST['user-doc'])) {
 				$pass  =  password_hash(trim($_POST['user-pass']), PASSWORD_BCRYPT, ['cost' => 12]);
+
+				$career = $_POST['career-user'];
+				$school = $_POST['school-user'];
+
+			
 				$param = [
 					'user-name' 	=> trim($_POST['user-name']),
 					'user-lastname' => trim($_POST['user-lastname']),
@@ -46,11 +51,13 @@ class Users extends Controller
 					'user-email' 	=> trim($_POST['user-email']),
 					'user-img'      => $_FILES['user-dni'],
 					'user-pass'     => $pass,
-					'user-type-id' 	=> trim($_POST['user-type'])
+					'user-type-id' 	=> trim($_POST['user-type']),
+					'user-school' 	=> trim($school),
+					'user-career' 	=> trim($career),
 				];
 
 				if ($this->userModel->addUser($param)) {
-					redirect('users/index');
+					redirect('users/create.php');
 				} else {
 					die("FATAL ERROR");
 				}
@@ -202,17 +209,16 @@ class Users extends Controller
 			}
 		}
 	}
-	public function storeUserSiu(){
+	public function storeUserSiu()
+	{
 		if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-Siu-register'])) {
-			
-				if ($this->userModel->addUserSiu()) {
-					redirect('users/import');
-				} else {
-					die('Error');
-				}
-			
+
+			if ($this->userModel->addUserSiu()) {
+				redirect('users/import');
+			} else {
+				die('Error');
+			}
 		}
-
 	}
-
 }
+?>

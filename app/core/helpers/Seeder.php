@@ -576,7 +576,8 @@
                                 VALUES ('1', 'Escuela de Ciencias de la Salud'),
                                        ('2', 'Escuela de Ingeniería y Ciencias Ambientales'),
                                        ('3', 'Escuela de Gestión de Empresas y Economía'),
-                                       ('4', 'Escuela de Ciencias Sociales y Educación')
+                                       ('4', 'Escuela de Ciencias Sociales y Educación'),
+                                       ('5','Ninguna'),
                             ");
 
             $this->db->query("INSERT INTO `career`(`career_name`, `school_id`) 
@@ -598,7 +599,8 @@
                                     ('TECNICATURA UNIVERSITARIA EN GESTIÓN DEPORTIVA','3'),
                                     ('TECNICATURA UNIVERSITARIA EN MARKETING CULTURAL Y DEPORTIVO','3'),
                                     ('PROFESORADO DE EDUCACIÓN INICIAL','4'),
-                                    ('PROFESORADO DE  EDUCACIÓN PRIMARIA','4')"
+                                    ('PROFESORADO DE  EDUCACIÓN PRIMARIA','4')
+                                    ('Ninguna','5')"
                             );
 
             #consulta para poner en cascada a book
