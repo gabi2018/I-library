@@ -41,11 +41,10 @@
                     <div class="col-3">
                         <div class="form-group">
                             <img for="cover-img" class="justify-content-end" id="cover-preview"  src="<?php echo URL_ROUTE;?>media/images/book/<?php echo $book->book_img?>"> 
-                            <?php $partes_ruta = pathinfo( URL_ROUTE.'media/images/book/'. $book->book_img);
-                                $ext='.'.$partes_ruta['extension'];
-                            ?>
-                            <input name='ext-vieja' type='hidden' value='<?php echo $ext?>'>
+                        
                             <input name="book-img" type="file" class="form-control-file"  accept="image/*" id="cover-img">
+                            <input name='ext-vieja' id='img-vieja' type='hidden' value='<?php echo $book->book_img?>'>
+                            
                         </div>
                     </div>
                 </div>       <div class="row">
@@ -138,7 +137,7 @@
                 </div>
                 <div class="form-group"> 
                                         
-                    <select multiple name="author-list[]" id="list-author" style="display: none">
+                    <select multiple name="author-list[]" id="list-author" style="display:none">
                     <?php foreach ($authors as $author) :?>
                     <option value="<?php echo$author->author_id."_".$author->author_type_id?>" id="<?php echo  $author->author_id."_".$author->author_type_id?>" selected></option>
                     <?php endforeach; ?>
