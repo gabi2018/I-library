@@ -6,7 +6,6 @@ $(document).ready(function(){
     /*
      * Validaciones 
      */
-
     function valid(value){
         value.addClass("is-valid");
         value.removeClass("is-invalid");
