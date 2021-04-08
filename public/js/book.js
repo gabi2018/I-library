@@ -18,7 +18,7 @@ $(document).ready(function() {
  });
 
    
-
+ 
 /*#########################################validacion de inputs del Regustrar libro */
 
 function valid(value){
