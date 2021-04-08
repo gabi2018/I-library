@@ -5,8 +5,10 @@
     <div class="col-2  mt-3">
         <button type="button"  id="import" class="btn btn-primary"  data-url="<?php echo URL_ROUTE?>Users/readSIU">Importar</button>
         <hr>
+        <form method="post" action="<?php echo URL_ROUTE ?>users/storeUserSiu" target="_top" enctype="multipart/form-data ">
         
-                <button type="submit" class="btn btn-primary" id='submit'name="book-register"disabled>Guardar</button>
+                <button type="submit" class="btn btn-primary" id="submit"name="user-Siu-register"disabled>Guardar</button>
+    </form>
     </div>
 
     <div class="col-12">
@@ -18,6 +20,7 @@
                     <th scope="col">Name Lastname</th>
                     <th scope="col">Email</th>
                     <th scope="col">Carrera</th>
+                    <th scope="col">Rol</th>
                 </tr>
             </thead>
         

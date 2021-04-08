@@ -197,7 +197,7 @@
 							'book-title'	 => trim($_POST['book-title']),
 							'book-isbn'		 => trim($_POST['book-isbn']),
 							'book-img'		 => $_FILES['book-img'],
-							'ext-img-vieja' => trim($_POST['ext-vieja']),
+							'img-vieja' => trim($_POST['ext-vieja']),
 							'book-pages'	 => trim($_POST['book-pages']),
 							'book-category'  => trim($_POST['category-topic']),
 
@@ -295,4 +295,3 @@
 			$this->booksModel->deletBook($param);
 		}
 	}
-?>

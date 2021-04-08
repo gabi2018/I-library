@@ -126,7 +126,7 @@
 						}
 					}
 				}
-				return true; //delvolver el arreglo del codigo topolografico
+				return true; 
 			}
 			
 		}
@@ -180,7 +180,8 @@
 				$this->db->bind(':book_cata', $param['book-cata']);  //este es para el catalografico	
 				$nameImg = '';				
 						if($i ==1) {
-								if($param['ext-img-vieja']=='.' ){	
+								if($param['img-vieja']=='0' ){	
+								
 								$file=	$param['book-img']['tmp_name']	;
 								$type=$param['book-img']['type'];
 								$ext=explode( '/', $type);
@@ -190,7 +191,7 @@
 								$this->db->bind(':book_img', $nameImg);						
 								}	
 								else{					
-								$this->db->bind(':book_img', $isbn.$param['ext-img-vieja']);	
+								$this->db->bind(':book_img', $param['img-vieja']);	
 								}
 							}													
 						else{

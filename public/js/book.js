@@ -100,7 +100,16 @@ function invalid(value){
            
             });
 /*######################################################################*/
-          
+    ///ditar imagen book conservar vieja          
+    $('#cover-img').change(function(){
+        
+    $('#img-vieja').val('0');
+   
+    });
+
+
+
+
 $("#subtopic-book").change(function() {
     url = $(this).attr('data-url');
     $("#subtopic-book option:selected").each(function() {

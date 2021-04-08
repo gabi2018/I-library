@@ -58,12 +58,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="academic-data">
             <div class="form-group col-6">
                 <div class="form-group">
                     <label for="user-school">Escuela</label>
                     <select name="school-user" id="user-school" data-url="<?php echo URL_ROUTE ?>careers/show" class="form-control" required>
-                        <option value="none" disabled selected>Seleccionar escuela</option>
+                        <option value="5" selected>Seleccionar escuela</option>
                         <?php
                             foreach ($param["schools"] as $key => $value) {
                                 echo "<option value=$value->school_id>$value->school_name</option>";
@@ -76,13 +76,13 @@
                 <div class="form-group">
                     <label for="user-career">Carrera</label>
                     <select name="career-user" id="user-career" class="form-control" required disabled>
-                        <option value="none" disabled selected>Seleccionar carrera</option>
+                        <option value="20"  selected>Seleccionar carrera</option>
                     </select>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="form-control btn btn-primary" name="user-register">Guardar</button>
+            <button type="submit" id="submit" class="form-control btn btn-primary" name="user-register">Guardar</button>
         </div>
     </form>
 </div>
