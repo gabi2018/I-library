@@ -176,13 +176,14 @@ $('#search_book').keyup(function(){
         }    
     });
 
-    $(".delautor").click(function() { 
-        id  = ($(this).attr('id')).replace(".", "_"); 
+    $(".delautor material ").click(function() { 
+        alert('entro');
+        id  = ($(this).attr("id")).replace(".", "_"); 
         url = $(this).attr('data-url'); 
         
         $('#'+id+'').remove(); 
         $('#list-author #'+id).remove();
-        // segir aca ruta para qe se active la funcion ara borrra autor has book
+        // segir aca ruta para qe se active la funcion ara borra autor has book
         deletAutor(id,url).done(function(response){         
             if(response){
                 alert("se elimino autor");
@@ -192,7 +193,7 @@ $('#search_book').keyup(function(){
          
     function deletAutor(id, url){ 
         response = $.post(url,{idtipo: id}); 
-        console.log(response);
+    
         return response;
     } 
       // Funcion para guardado de categoria
@@ -328,12 +329,12 @@ $('#search_book').keyup(function(){
         $('#submit').click(function(){
             
             $('input').prop('disabled', false);
+            
 
          } );
 
 
-
-
+// mensajes de confirmacion 
 
 
 

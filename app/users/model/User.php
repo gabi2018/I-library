@@ -39,45 +39,44 @@ class User
 
 	public function addUser($param)
 	{
-		if(isset($param)){
-		$this->db->query('INSERT INTO user 
-										 (user_dni, user_name, user_lastname, user_address, user_phone, user_email, user_password, user_type_id, user_img) 
-							    VALUES   (:user_dni, :user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, :user_type_id, :user_img)');
+		if (isset($param)) {
+			$this->db->query('INSERT INTO user 
+						 (user_dni, user_name, user_lastname, user_address, user_phone, user_email, user_password, user_type_id, user_img) 
+						  VALUES (:user_dni, :user_name, :user_lastname, :user_address, :user_phone, :user_email, :user_password, :user_type_id, :user_img)');
 
-		if (!empty($param['user-img']['name'])) {
-			$nameImg = $param['user-dni'];
-			$file 	 = $param['user-img']['tmp_name'];
-			$type = $param['user-img']['type'];
-			$ext = explode('/', $type);
-			$nameImg = $nameImg . '.' . $ext[1];
-			$rut 	 = 'media/images/partner/' . $nameImg;
-			copy($file, $rut);
-		} else {
-			$nameImg = 'default-user.png';
-		}
-		$dni=  $this->db->deleteSpecialChars($param['user-dni'], 'int');
-		# Link values 
-		$this->db->bind(':user_name',     $param['user-name']);
-		$this->db->bind(':user_lastname', $param['user-lastname']);
-		$this->db->bind(':user_address',  $param['user-address']);
-		$this->db->bind(':user_dni',      $dni);
-		$this->db->bind(':user_phone',    $param['user-phone']);
-		$this->db->bind(':user_email',    $param['user-email']);
-		$this->db->bind(':user_password', $param['user-pass']);
-		$this->db->bind(':user_type_id', $param['user-type-id']);
-		$this->db->bind(':user_img', $nameImg);
-	
-		$careerId=$param['user-career'];
-		# Run
-		if($this->db->execute()){
-		
-			
-			$this->addUHC($dni,$careerId);							
+			if (!empty($param['user-img']['name'])) {
+				$nameImg = $param['user-dni'];
+				$file 	 = $param['user-img']['tmp_name'];
+				$type = $param['user-img']['type'];
+				$ext = explode('/', $type);
+				$nameImg = $nameImg . '.' . $ext[1];
+				$rut 	 = 'media/images/partner/' . $nameImg;
+				copy($file, $rut);
+			} else {
+				$nameImg = 'default-user.png';
+			}
+			$dni =  $this->db->deleteSpecialChars($param['user-dni'], 'int');
+			# Link values 
+			$this->db->bind(':user_name',     $param['user-name']);
+			$this->db->bind(':user_lastname', $param['user-lastname']);
+			$this->db->bind(':user_address',  $param['user-address']);
+			$this->db->bind(':user_dni',      $dni);
+			$this->db->bind(':user_phone',    $param['user-phone']);
+			$this->db->bind(':user_email',    $param['user-email']);
+			$this->db->bind(':user_password', $param['user-pass']);
+			$this->db->bind(':user_type_id', $param['user-type-id']);
+			$this->db->bind(':user_img', $nameImg);
+
+			$careerId = $param['user-career'];
+			# Run
+			if ($this->db->execute()) {
+
+
+				$this->addUHC($dni, $careerId);
 			}
 
 			return true;
 		}
-		
 	}
 
 	public function userRecord($param)
@@ -204,7 +203,8 @@ class User
 			user_siu.tipo_rol_id=tp.tipo_rol_id and
 			user_siu.usuario_id=uc.usuario_id and
 			c.carrera_id=uc.carrera_id and
-			user_siu.condicion=true');
+			user_siu.condicion=true'
+		);
 
 		$response = $this->dbPos->getRecords();
 		return $response;
@@ -213,16 +213,18 @@ class User
 	public function addUserSiu()
 	{
 		//consulta los socios
-		if($users = $this->getSociosSIU()){
+		if ($users = $this->getSociosSIU()) {
 
 			foreach ($users as $user) {
 
-			$this->db->query('SELECT *
-				FROM user 
-			  	WHERE user.user_dni=:user_dni');
-			$this->db->bind(':user_dni', $user->dni);
-			$response = $this->db->getRecord();
-			$this->register($response, $user);
+				$this->db->query('SELECT *
+								FROM user 
+			  					WHERE user.user_dni=:user_dni');
+
+				$this->db->bind(':user_dni', $user->dni);
+
+				$response = $this->db->getRecord();
+				$this->register($response, $user);
 			}
 			return true;
 		}
@@ -244,30 +246,25 @@ class User
 				'user-email' 	=> trim($user->email),
 				'user-img'      => trim(''),
 				'user-pass'     => $pass,
-				'user-type-id' 	=> trim($user->tipo_rol_id)
+				'user-type-id' 	=> trim($user->tipo_rol_id),
+				'user-career' => trim($user->carrera_id),
 			];
-		return	$this->addUser($param);
+			return	$this->addUser($param);
 		} else {
-			if ($user->condicion==0) {
-			return	$this->disableUser($user->dni);
+			if ($user->condicion == 0) {
+				return	$this->disableUser($user->dni);
 			}
-			
 		}
-
 	}
-	public function addUHC($DNI_id,$career_id){
+	public function addUHC($DNI_id, $career_id)
+	{
 
 		$this->db->query('INSERT INTO user_has_career(user_dni,career_id)
 										  VALUES (:user_dni,:career_id)');
-					
-						$this->db->bind(':user_dni',$DNI_id);
-						$this->db->bind(':career_id',$career_id);
-				
-						$this->db->execute();					
-					
 
+		$this->db->bind(':user_dni', $DNI_id);
+		$this->db->bind(':career_id', $career_id);
 
+		$this->db->execute();
 	}
-
-	
 }

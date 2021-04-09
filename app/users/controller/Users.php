@@ -57,7 +57,7 @@ class Users extends Controller
 				];
 
 				if ($this->userModel->addUser($param)) {
-					redirect('users/create.php');
+					redirect('users/create.php?guardado=true');
 				} else {
 					die("FATAL ERROR");
 				}
@@ -84,7 +84,7 @@ class Users extends Controller
 				];
 
 				if ($this->userModel->editUsers($param)) {
-					redirect('users/index');
+					redirect('users/index?guardado=bien');
 				} else {
 					die('Error');
 				}
@@ -96,7 +96,7 @@ class Users extends Controller
 	public function disable($dni)
 	{
 		$this->userModel->disableUser($dni);
-		redirect('users/index');
+		redirect('users/index?guardado=true');
 	}
 
 	public function delete()
@@ -214,7 +214,7 @@ class Users extends Controller
 		if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['user-Siu-register'])) {
 
 			if ($this->userModel->addUserSiu()) {
-				redirect('users/import');
+				redirect('users/import?guardado=bien');
 			} else {
 				die('Error');
 			}

@@ -16,9 +16,12 @@
             <div class="input-group-append">
               <span  class="input-group-text material-icons">search</span>
             </div>
+    
           </div>
         </form>
+       
       </div>
+      
     
       <div class="col-2 text-right"> 
         <!-- NOTIFICATIONS -->
@@ -118,5 +121,6 @@
         </div>
       </div> 
     </div>
+    <div id="confirm"></div>
   </header> 
 <?php endif; ?>

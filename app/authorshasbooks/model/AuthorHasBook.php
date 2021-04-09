@@ -52,7 +52,7 @@
 							WHERE  ab.book_id=:book_id
 							AND ab.author_id = a.author_id 		
 							AND ab.author_type_id= au.author_type_id
-							and au.author_type_identifier='Principal' ");
+							and au.author_type_identifier='Principal'");
 			$this->db->bind(':book_id', $book_id);
 			$value = $this->db->getRecords();	 
 			return $value; 

@@ -69,10 +69,10 @@
 		}
         
 
-		public function addBook($param,$cantidadInitioBook,$numberCopies){//$cantidadinitiobook me da en que inicial l for
+		public function addBook($param,$cantidadInitiBook,$numberCopies){//$cantidadinitiobook me da en que inicial El for
 			//for de acuerdo a cantidad de ejemplares  y book
 			if ($param){	
-						for ($i = $cantidadInitioBook; $i <= $numberCopies; $i++){ 
+						for ($i = $cantidadInitiBook; $i <= $numberCopies; $i++){ 
 				$cod_topolographic = $param['book-topo'].'-'.$i;//guardar en un arreglo
 				$book_status=$param['book-status_id'];
 					if(($i==1)&&($book_status==1)){//pone no disponible al primer ejemplar de cada libro 
@@ -326,4 +326,3 @@ public function deletBook($param){
 
 	
 }
-?>
