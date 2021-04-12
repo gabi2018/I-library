@@ -175,8 +175,8 @@ $('#search_book').keyup(function(){
             }
         }    
     });
-
-    $(".delautor material ").click(function() { 
+   
+    $(".delautor material").click(function() { 
         alert('entro');
         id  = ($(this).attr("id")).replace(".", "_"); 
         url = $(this).attr('data-url'); 
@@ -190,12 +190,7 @@ $('#search_book').keyup(function(){
             }
         }); 
     });
-         
-    function deletAutor(id, url){ 
-        response = $.post(url,{idtipo: id}); 
     
-        return response;
-    } 
       // Funcion para guardado de categoria
       $("#save-editorial").click(function(event){
         event.preventDefault();  

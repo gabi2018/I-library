@@ -1,4 +1,4 @@
-function removeAccents(name) { 
+function removeAccents(name) { //REMUEVE TOSDOS LOS CARACTERES ACENTUADOS
     name = name.replace("Á", "A");
     name = name.replace("É", "E");
     name = name.replace("Í", "I");
@@ -45,7 +45,7 @@ function removeAccents(name) {
     return name;
 }
 
-function generateCutterCode(inputText, table) {   
+function generateCutterCode(inputText, table) {   //TABLE ARCHIVO CUTTER.TXT
     tblc = table.split("\n");
     cutter = ''; //  devuelve el valor de la tabla cutter que corresponde al input
     inputText = removeAccents(inputText);

@@ -9,7 +9,10 @@ $(document).ready(function () {
      * Validaciones 
      */
 
-    function valid(value, validate) {
+   
+
+    function valid(value){
+
         value.addClass("is-valid");
         value.removeClass("is-invalid");
         return true;
@@ -158,4 +161,5 @@ $(document).ready(function () {
        
 
      } );
+     
 });

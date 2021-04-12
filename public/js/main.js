@@ -78,7 +78,14 @@ $(document).ready(function () {
         }
 
     });
-
+   
+    
+         
+    function deletAutor(id, url){ 
+        response = $.post(url,{idtipo: id}); 
+    
+        return response;
+    } 
 
     //bysqueda user en loan
     $('#search_user_loan').keyup(function () {

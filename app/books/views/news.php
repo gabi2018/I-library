@@ -6,7 +6,7 @@
         </div>
         <div class="col-10">
             <span>+500 Libros</span>
-            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Ignacio Morinigo - <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
+            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Gabriel Cruseño- <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
         </div> 
     </div> 
 </div>
@@ -18,7 +18,7 @@
         </div>
         <div class="col-10">
             <span>+500 Libros</span>
-            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Ignacio Morinigo - <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
+            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Gabriel Cruseño-<span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
         </div>
     </div>
 </div>
@@ -29,8 +29,8 @@
             <i class="material-icons" style="font-size: 40px;">assignment_return</i>
         </div>
         <div class="col-10">
-            <span>+500 Libros</span>
-            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Ignacio Morinigo - <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
+            <span>+50 usuarios</span>
+            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Gabriel Cruseño- - <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
         </div>
     </div>
 </div>
@@ -41,8 +41,8 @@
             <i class="material-icons" style="font-size: 40px;">warning</i>
         </div>
         <div class="col-10">
-            <span>+500 Libros</span>
-            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Ignacio Morinigo - <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
+            <span>+5 devoluciones</span>
+            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Gabriel Cruseño-- <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
         </div>
     </div>
 </div>
@@ -53,8 +53,8 @@
             <i class="material-icons" style="font-size: 40px;">error</i>
         </div>
         <div class="col-10">
-            <span>+500 Libros</span>
-            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Ignacio Morinigo - <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
+            <span>+4 Sanciones</span>
+            <p><small><span class="material-icons" style="font-size: 11px;"> person</span> Gabriel Cruseño-- <span class="material-icons" style="font-size: 11px;">schedule</span> 4 hs</small></p>
         </div>
     </div>
 </div>

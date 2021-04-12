@@ -137,7 +137,7 @@
                 </div>
                 <div class="form-group"> 
                                         
-                    <select multiple name="author-list[]" id="list-author" style="display:none">
+                <select multiple name="author-list[]" id="list-author" ></select>
                     <?php foreach ($authors as $author) :?>
                     <option value="<?php echo$author->author_id."_".$author->author_type_id?>" id="<?php echo  $author->author_id."_".$author->author_type_id?>" selected></option>
                     <?php endforeach; ?>

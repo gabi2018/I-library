@@ -15,7 +15,7 @@ class PostgreDB
         ); 
 
         try {
-            $this->dbh= new PDO('pgsql:host='. HOST . ';port=5432;dbname=' . NAMEDB, USER, PASSWORD,$option);
+            $this->dbh= new PDO('pgsql:host='. HOST . ';port=5433;dbname=' . NAMEDB, USER, PASSWORD,$option);
             
         } catch (PDOException $e) {
             $this->error = $e->getMessage();

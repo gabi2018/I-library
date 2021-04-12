@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label for="user-school">Tipo de Usuario</label>
                     <select name="user-type" id="user-type" class="form-control" required>
-                        <option value="none" disabled selected>Seleccionar usuario</option>
+                        <option value="20" disabled selected>Seleccionar usuario</option>
                         <?php
                             foreach ($param["usertypes"] as $key => $value) {
                                 echo "<option value=$value->user_type_id>$value->user_type_desc</option>";

@@ -6,7 +6,6 @@ class User
 	public function __construct()
 	{
 		$this->db = new DataBase;
-		$this->dbPos = new PostgreDB;
 	}
 
 	public function getUsers()
@@ -194,16 +193,15 @@ class User
 
 	public function getSociosSIU()
 	{
-
+		$this->dbPos = new PostgreDB;
 
 		$this->dbPos->query(
 			'select * 
-			from user_siu,carrera c,tipo_rol tp,usuario_has_carrera uc
+			from usuario u,carrera c,tipo_rol tp,usuario_has_carrera uc
 			WHERE  
-			user_siu.tipo_rol_id=tp.tipo_rol_id and
-			user_siu.usuario_id=uc.usuario_id and
-			c.carrera_id=uc.carrera_id and
-			user_siu.condicion=true'
+			u.tipo_rol_id=tp.tipo_rol_id and
+			u.usuario_id=uc.usuario_id and
+			c.carrera_id=uc.carrera_id'
 		);
 
 		$response = $this->dbPos->getRecords();
@@ -216,6 +214,7 @@ class User
 		if ($users = $this->getSociosSIU()) {
 
 			foreach ($users as $user) {
+				//se fija si en i-library esta el usuario del siu  con el dni 
 
 				$this->db->query('SELECT *
 								FROM user 
@@ -224,7 +223,7 @@ class User
 				$this->db->bind(':user_dni', $user->dni);
 
 				$response = $this->db->getRecord();
-				$this->register($response, $user);
+				$this->register($response, $user);//si no encuentra el usuario lo envia a registrarse  
 			}
 			return true;
 		}
@@ -236,6 +235,7 @@ class User
 	public function register($return, $user)
 	{
 		if ($return == null) {
+			if($user->condicion == 1){
 			$pass  =  password_hash(trim($user->dni), PASSWORD_BCRYPT, ['cost' => 12]);
 			$param = [
 				'user-name' 	=> trim($user->nombre),
@@ -250,6 +250,7 @@ class User
 				'user-career' => trim($user->carrera_id),
 			];
 			return	$this->addUser($param);
+			}
 		} else {
 			if ($user->condicion == 0) {
 				return	$this->disableUser($user->dni);
